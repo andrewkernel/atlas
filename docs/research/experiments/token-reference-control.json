@@ -1,0 +1,97 @@
+{
+  "case_source_sha256": "598c708b278617fc8160aff61c14bace33a1ef8ea84e9bb2ca17fe784aac0c5a",
+  "checker_revision": "79a1fc23c36073f09b97aa99c2daad7e96e7bce4",
+  "environment_helper_sha256": "85b03be5771a63d1d163e7b0f567e204d0284b3e526ae4056942d9d0d14f02aa",
+  "modes": [
+    "TokenCase",
+    "SequenceMeanCase"
+  ],
+  "review_sha256": "fb582db3dec0a7c46091bcf3249bb57725acba9f8747a78cad94a0cc8a2a2733",
+  "seed": 2301,
+  "source_sha256": "c6309ab5ce7d838bb05b11857c5367ca32793d6b7689605f3809d5f0f694bd08",
+  "started_utc": "2026-10-15T08:20:36.139904+00:00",
+  "trials": [
+    {
+      "case": "TokenCase",
+      "checker": {
+        "all_differences": [],
+        "case": "token_reference_cases:TokenCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "Declared intended objective is mean over all nonignored target tokens",
+        "first_observed_phase": null,
+        "loss_normalization_captured": true,
+        "message": "declared executions are equivalent for one optimizer-update boundary",
+        "outcome": "PASS",
+        "peak_temporary_directory_bytes": 195639,
+        "persisted_artifact_bytes": 652,
+        "primary_difference": null,
+        "process_ids": [
+          19328,
+          18932,
+          10216
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": true
+      },
+      "objective_control": {
+        "gradient_max_abs_error": 0.0,
+        "gradient_relative_l2_error": 0.0,
+        "initial_parameters_exactly_equal": true,
+        "losses": {
+          "adapter_objective": 2.039046772024598,
+          "declared_token_oracle": 2.039046772024598
+        },
+        "scope": "Independent authored log-softmax/gather token-objective comparison on the full fixed batch; not independent human labels, a model-quality study or a checker bug.",
+        "valid_token_counts": [
+          4,
+          2,
+          1,
+          3
+        ]
+      },
+      "outer_wall_seconds": 17.012389999988955
+    },
+    {
+      "case": "SequenceMeanCase",
+      "checker": {
+        "all_differences": [],
+        "case": "token_reference_cases:SequenceMeanCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "Declared intended objective is mean over all nonignored target tokens",
+        "first_observed_phase": null,
+        "loss_normalization_captured": true,
+        "message": "declared executions are equivalent for one optimizer-update boundary",
+        "outcome": "PASS",
+        "peak_temporary_directory_bytes": 195638,
+        "persisted_artifact_bytes": 658,
+        "primary_difference": null,
+        "process_ids": [
+          24396,
+          14252,
+          6708
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": true
+      },
+      "objective_control": {
+        "gradient_max_abs_error": 0.2097564014289674,
+        "gradient_relative_l2_error": 0.44838783944638494,
+        "initial_parameters_exactly_equal": true,
+        "losses": {
+          "adapter_objective": 2.0098987699316995,
+          "declared_token_oracle": 2.039046772024598
+        },
+        "scope": "Independent authored log-softmax/gather token-objective comparison on the full fixed batch; not independent human labels, a model-quality study or a checker bug.",
+        "valid_token_counts": [
+          4,
+          2,
+          1,
+          3
+        ]
+      },
+      "outer_wall_seconds": 16.93062599998666
+    }
+  ]
+}

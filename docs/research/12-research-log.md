@@ -192,3 +192,10 @@ This is a bounded initial research/engineering investigation, not five hours of 
 - Every arm completes sixteen updates. Full-batch first-update state errors are zero; all microbatch-4 variants retain the same finite rounding differences observed earlier. Actual first-update policy callbacks save 16/64 addmm outputs. Later numerical states are not independently compared.
 - Selective checkpointing offers an intermediate observed memory/time point: full-batch allocated peak 740.36 MiB and mean process median 76.93 ms, versus contemporary identity 972.58 MiB / 74.79 ms and ordinary checkpoint 452.44 MiB / 87.52 ms. Two repetitions are descriptive, not a robust speedup, scientific-equivalence or policy-selection study. All twelve intended outcomes remain visible.
 - Checkpoints 86ba909 and 0f931ad passed Linux/Windows runs 38703908326 and 38704027781, including independent energy reconstruction and unchanged derived-record checks.
+
+## 2026-10-15 08:19–08:21 UTC — shared token-reference adequacy
+
+- Froze two original float64 embedding/linear CPU adapters at 8e3e820. One uses the declared global valid-token mean; the other deliberately uses an internally consistent mean of sequence means. Both existing-checker calls PASS against their own supplied objective.
+- The initial independent oracle collector uses a nonexistent loss field after checker completion; preserve both outer errors and complete saved checker PASS reports. Reporting-only amendment 9903439 selects the documented value field before identical rerun.
+- Independent authored full-batch log-softmax/gather gives zero gradient error for the token adapter and relative L2 0.4483878394 for the deliberately different sequence objective. All initial parameters match. This is not a checker defect, independent labels, field prevalence or observed Atlas acceptance. Denominator units/mask semantics join the explicit method-contract obligations.
+- Checkpoint d7ff731 passed Linux/Windows run 38704640516.

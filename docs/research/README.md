@@ -55,3 +55,5 @@ The strongest local observation is that checkpointing can match gradients while 
 [Assignment deliverable audit](deliverable-audit.md) maps requested outputs to documents and distinguishes the completed initial blueprint from unfinished empirical studies.
 
 [Native selective-checkpoint control](experiments/native-selective-control.md) tests another existing native baseline on the unchanged pure fixture, with all twelve trials and first-update observations retained.
+
+[Token-objective/reference adequacy](experiments/token-reference-control.md) tests a shared-reference boundary independently of nonfinite health: two internally consistent executions can agree on the wrong stated objective.

@@ -99,6 +99,7 @@ def main() -> int:
         ('derive_board_energy.py', 'board-energy-derived.json'),
         ('passive_energy_control.py', 'passive-energy-control.json'),
         ('native_selective_control.py', 'native-selective-control.json'),
+        ('token_reference_control.py', 'token-reference-control.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
@@ -229,6 +230,13 @@ def main() -> int:
     expected={(rep,mode,micro) for rep in range(2) for mode in ('identity','plain_checkpoint','selective_matmul') for micro in (16,4)}
     if intended != observed or set(observed) != expected or len(set(observed)) != len(observed):
         failures.append('Native selective intended-run denominator is incomplete/duplicated')
+    token=json.loads((ROOT/'docs/research/experiments/token-reference-control.json').read_text(encoding='utf-8'))
+    if token['case_source_sha256'] != hashlib.sha256((ROOT/'benchmarks/token_reference_cases.py').read_bytes()).hexdigest() or token['environment_helper_sha256'] != energy['source_sha256']:
+        failures.append('Token-reference case/helper identity is stale')
+    if token['review_sha256'] != hashlib.sha256((ROOT/'docs/research/competitors/trainparity-execution-review.json').read_bytes()).hexdigest():
+        failures.append('Token-reference review identity is stale')
+    if [t['case'] for t in token['trials']] != token['modes']:
+        failures.append('Token-reference intended-run denominator is incomplete')
     for name,expected_digest in derived['input_canonical_json_sha256'].items():
         value=json.loads((ROOT/'docs/research/experiments'/name).read_text(encoding='utf-8'))
         actual=hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()

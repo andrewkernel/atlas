@@ -53,3 +53,5 @@ Aggregate eligibility requires all contract-required checks to pass and no incom
 ## Tracking and persistence
 
 Use Atlas SQLite tables `experiments`, `contracts`, `plans`, `runs`, `checks`, `artifacts`, `approvals`, `events` with schema version and foreign keys. One supervisor writes transactions; workers append to private JSONL files and hand off results. MLflow receives selected metadata, metric series and artifact references via an adapter; never write directly into its internal tables. Tracking failure must not destroy evidence: leave a pending sync event and keep local JSON. Large artifacts are local and ignored by Git; small sanitized aggregate results may be committed deliberately.
+
+The [token-reference control](../research/experiments/token-reference-control.md) illustrates why LossTerms must declare denominator units and mask/ignore semantics, not only a number. Internally consistent reference/candidate adapters can agree on a different objective from the stated token-weighted intent. Check those method facts against the contract independently and give the composed baseline the same information.

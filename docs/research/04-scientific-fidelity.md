@@ -77,3 +77,5 @@ Atlas can automate data collection and a prespecified test. It cannot infer the 
 ## Architecture consequence
 
 Each strategy declares preconditions, affected dimensions and required checks. Compositions must be checked as compositions; passing isolated transformations is insufficient. Evidence is bound to code, contract, plan, environment and input identities. Any of these changing invalidates reuse unless an explicit reusable scope covers the change. The LLM cannot edit the contract, set tolerances, waive unknowns, or approve its own patch.
+
+[Explicit token-objective controls](experiments/token-reference-control.md) additionally separate reference adequacy from finite health and differential equality. A deliberately per-sequence-weighted adapter passes its own reference/candidate comparison while differing from the stated global valid-token objective. This is a supplied-reference limitation, not a checker defect or an observed Atlas decision. Declared denominator units, masks and auxiliary-term semantics need their own contract checks.
