@@ -1,0 +1,9 @@
+# Frozen QA-head relation/invariance controls
+
+The selected BERT replay's largest parameter difference is a constant-logit head bias. Test the distinction between parameter identity, finite functional observations and real-arithmetic invariance with an explicitly authored tiny CPU head, not a new checker or a BERT-quality study.
+
+Use two examples, five positions, three hidden values; inputs arange(30).reshape(2,5,3)/17-.7; affine weights [[.2,-.1,.05],[-.3,.15,.4]], bias zero; start labels [1,3], end [2,4]. Loss averages the two mean endpoint cross-entropies. Float64 cases: identical repeat, bias [.3,-.2] with the same weights, and a deliberate +.1 change to weight[0,0]. Record raw/position-centered logits, probabilities, argmax positions, losses, weights/bias gradients and finite health. Float64 unchanged/bias-shift observations should match functional values within absolute 1e-12; the weight change should alter probabilities by more than 1e-3 even if argmax remains unchanged.
+
+Separately compare the same head in float32 with bias zero versus [1e8,1e8]. This is a deliberately extreme floating-point boundary, not an observed BERT training event. Real-arithmetic softmax translation invariance does not guarantee finite-precision input logits preserve their differences after a large addition. Retain whether finite probabilities become uniform and argmax changes. This boundary must alter probabilities by more than 1e-3; preserve any unexpected result.
+
+The criteria are finite fixtures, not QA-GPU tolerances or scientific-equivalence margins. No optimizer runs. Do not retroactively waive the completed strict tensor comparison, suppress other weight differences or infer full-model functional/quality preservation. A prospective alternative relation needs declared scope and equal availability to the competent baseline. Freeze source/protocol before execution.
