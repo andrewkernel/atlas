@@ -6,4 +6,6 @@
 *.yml text eol=lf
 *.txt text eol=lf
 *.svg text eol=lf
+# Preserve the measured generated figure bytes and renderer whitespace exactly.
+docs/research/workload-screen/qa-resource-figure.svg -text -whitespace
 uv.lock text eol=lf
