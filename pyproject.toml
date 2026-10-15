@@ -1,0 +1,33 @@
+[project]
+name = "atlas-research-spec"
+version = "0.0.1"
+description = "Research specification and bounded semantic probes for Atlas"
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[dependency-groups]
+research = [
+  "torch==2.14.1+cpu",
+  "numpy==2.5.4",
+  "scipy==1.18.1",
+  "psutil==7.2.2",
+  "pytest==9.1.1",
+  "hypothesis==6.169.3",
+]
+
+[tool.uv]
+package = false
+default-groups = ["research"]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+

@@ -1,0 +1,155 @@
+{
+  "retrieved_utc": "2026-10-15T04:44:48.865788+00:00",
+  "repositories": [
+    {
+      "repository": "pytorch/pytorch",
+      "url": "https://github.com/pytorch/pytorch",
+      "default_branch": "main",
+      "head_sha": "64f6a5984749fc382465a3713ddd180bd60484e1",
+      "archived": false,
+      "pushed_at": "2026-10-15T04:34:16Z",
+      "license_spdx": "NOASSERTION",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "deepspeedai/DeepSpeed",
+      "url": "https://github.com/deepspeedai/DeepSpeed",
+      "default_branch": "master",
+      "head_sha": "5f266e26d216a705d9c64cac88fb813cefdbac4b",
+      "archived": false,
+      "pushed_at": "2026-10-15T03:43:22Z",
+      "license_spdx": "Apache-2.0",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "huggingface/accelerate",
+      "url": "https://github.com/huggingface/accelerate",
+      "default_branch": "main",
+      "head_sha": "2cc46162882e3e59bb1ea5d5d113191f6c1d5b73",
+      "archived": false,
+      "pushed_at": "2026-10-14T16:00:19Z",
+      "license_spdx": "Apache-2.0",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "hpcaitech/ColossalAI",
+      "url": "https://github.com/hpcaitech/ColossalAI",
+      "default_branch": "main",
+      "head_sha": "250c903c8212a65a8ae8c9af007ba08c7eff02b5",
+      "archived": false,
+      "pushed_at": "2026-10-14T06:37:27Z",
+      "license_spdx": "Apache-2.0",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "NVIDIA/Megatron-LM",
+      "url": "https://github.com/NVIDIA/Megatron-LM",
+      "default_branch": "main",
+      "head_sha": "56a36e5debb00f6be8ee732478936eea98a37458",
+      "archived": false,
+      "pushed_at": "2026-10-15T04:42:13Z",
+      "license_spdx": "NOASSERTION",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "parasj/checkmate",
+      "url": "https://github.com/parasj/checkmate",
+      "default_branch": "master",
+      "head_sha": "6041c777422328bb8ceaf04b34e3f68575b76ea2",
+      "archived": false,
+      "pushed_at": "2022-02-21T18:35:56Z",
+      "license_spdx": "Apache-2.0",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "topal-team/rockmate",
+      "url": "https://github.com/topal-team/rockmate",
+      "default_branch": "main",
+      "head_sha": "c2f678455393c5d872a1adb099949fe25f682bd0",
+      "archived": false,
+      "pushed_at": "2026-03-12T18:03:23Z",
+      "license_spdx": "MIT",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "alpa-projects/alpa",
+      "url": "https://github.com/alpa-projects/alpa",
+      "default_branch": "main",
+      "head_sha": "b8078a9f75cb4c90cabb4550ee48c99ef394e209",
+      "archived": true,
+      "pushed_at": "2023-12-09T16:26:31Z",
+      "license_spdx": "Apache-2.0",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "mlflow/mlflow",
+      "url": "https://github.com/mlflow/mlflow",
+      "default_branch": "master",
+      "head_sha": "2d09f29c8e4d8fa2c8c2f2570fa68f1928ec1116",
+      "archived": false,
+      "pushed_at": "2026-10-15T03:44:31Z",
+      "license_spdx": "Apache-2.0",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "deep500/deep500",
+      "url": "https://github.com/deep500/deep500",
+      "default_branch": "master",
+      "head_sha": "cd9b21ec9d494388d5e44ac1057d9bedea44d9ba",
+      "archived": false,
+      "pushed_at": "2022-05-23T12:01:31Z",
+      "license_spdx": "BSD-3-Clause",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "OrderLab/TrainCheck",
+      "url": "https://github.com/OrderLab/TrainCheck",
+      "default_branch": "main",
+      "head_sha": "e478ec66074776d4593b9633ca4d1dc24409a40b",
+      "archived": false,
+      "pushed_at": "2026-10-13T06:06:08Z",
+      "license_spdx": "NOASSERTION",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "intelland/TrainParity",
+      "url": "https://github.com/intelland/TrainParity",
+      "default_branch": "main",
+      "head_sha": "79a1fc23c36073f09b97aa99c2daad7e96e7bce4",
+      "archived": false,
+      "pushed_at": "2026-08-25T06:52:09Z",
+      "license_spdx": "MIT",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "ScalingIntelligence/KernelBench",
+      "url": "https://github.com/ScalingIntelligence/KernelBench",
+      "default_branch": "main",
+      "head_sha": "423217d9fda91e0c2d67e4a43bf62f96f6d104f1",
+      "archived": false,
+      "pushed_at": "2026-03-24T04:29:13Z",
+      "license_spdx": "NOASSERTION",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "pytorch/examples",
+      "url": "https://github.com/pytorch/examples",
+      "default_branch": "main",
+      "head_sha": "acc295dc7b90714f1bf47f06004fc19a7fe235c4",
+      "archived": false,
+      "pushed_at": "2025-09-01T17:21:47Z",
+      "license_spdx": "BSD-3-Clause",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    },
+    {
+      "repository": "zalandoresearch/fashion-mnist",
+      "url": "https://github.com/zalandoresearch/fashion-mnist",
+      "default_branch": "master",
+      "head_sha": "b2617bb6d3ffa2e429640350f613e3291e10b141",
+      "archived": false,
+      "pushed_at": "2022-06-13T20:36:21Z",
+      "license_spdx": "MIT",
+      "read_depth": "metadata; detailed capabilities are sourced separately in Markdown"
+    }
+  ]
+}

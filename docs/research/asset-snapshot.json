@@ -1,0 +1,59 @@
+{
+  "retrieved_utc": "2026-10-15T04:44:49.994639+00:00",
+  "assets": [
+    {
+      "kind": "datasets",
+      "id": "Salesforce/wikitext",
+      "revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+      "license_metadata": [
+        "cc-by-sa-3.0",
+        "gfdl"
+      ],
+      "url": "https://huggingface.co/datasets/Salesforce/wikitext"
+    },
+    {
+      "kind": "datasets",
+      "id": "stanfordnlp/sst2",
+      "revision": "8d51e7e4887a4caaa95b3fbebbf53c0490b58bbb",
+      "license_metadata": [
+        "unknown"
+      ],
+      "url": "https://huggingface.co/datasets/stanfordnlp/sst2"
+    },
+    {
+      "kind": "models",
+      "id": "distilbert/distilbert-base-uncased",
+      "revision": "12040accade4e8a0f71eabdb258fecc2e7e948be",
+      "license_metadata": "apache-2.0",
+      "url": "https://huggingface.co/distilbert/distilbert-base-uncased"
+    },
+    {
+      "kind": "models",
+      "id": "Qwen/Qwen3-4B",
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "license_metadata": "apache-2.0",
+      "url": "https://huggingface.co/Qwen/Qwen3-4B"
+    },
+    {
+      "kind": "models",
+      "id": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+      "license_metadata": "apache-2.0",
+      "url": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct"
+    },
+    {
+      "kind": "models",
+      "id": "Qwen/Qwen2.5-Coder-3B-Instruct",
+      "revision": "488639f1ff808d1d3d0ba301aef8c11461451ec5",
+      "license_metadata": "other",
+      "url": "https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct"
+    },
+    {
+      "kind": "models",
+      "id": "microsoft/Phi-4-mini-instruct",
+      "revision": "cfbefacb99257ffa30c83adab238a50856ac3083",
+      "license_metadata": "mit",
+      "url": "https://huggingface.co/microsoft/Phi-4-mini-instruct"
+    }
+  ]
+}
