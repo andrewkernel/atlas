@@ -36,6 +36,7 @@ def audit(root=ROOT):
         ('plot_qa_resource.py', 'qa-resource-figure.json'),
         ('snapshot_post_continuation_environments.py', 'post-study-environments.json'),
         ('qa_default_attention_control.py', 'qa-default-attention-control.json'),
+        ('qa_evaluation_source_screen.py', 'qa-evaluation-source-screen.json'),
     ):
         records[name] = load(name)
         if records[name]['source_sha256'] != digest('benchmarks/' + script):
@@ -44,6 +45,11 @@ def audit(root=ROOT):
     if environment['requirements_sha256'] != digest(environment['requirements_file']):
         failures.append('QA environment requirements identity stale')
     assets = records['qa-asset-manifest.json']
+    evaluation = records['qa-evaluation-source-screen.json']
+    if evaluation['bert_previously_captured_sha256'] != records['qa-source-screen.json']['records']['bert_run_squad']['sha256']:
+        failures.append('QA evaluation decoder source identity inconsistent')
+    if [entry['status'] for entry in evaluation['records']] != ['http_error', 'retrieved'] or evaluation['records'][0]['http_status'] != 404:
+        failures.append('QA evaluation source retrieval/version boundary changed')
     if assets['source_screen_sha256'] != digest('docs/research/workload-screen/qa-source-screen.json'):
         failures.append('QA acquisition source-screen identity stale')
     features = records['qa-feature-manifest.json']

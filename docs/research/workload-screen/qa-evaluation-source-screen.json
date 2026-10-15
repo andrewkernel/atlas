@@ -1,0 +1,20 @@
+{
+  "bert_previously_captured_sha256": "163fd48c7f6b5135a29e25f2cbdae65dbff9697cbff41ce3ebd7d16fdf2ea230",
+  "captured_utc": "2026-10-15T15:39:31.181777+00:00",
+  "read_scope": "Official v2 metric normalization, exact/F1, raw-score/aggregation and threshold/main sections; pinned BERT write_predictions and get_final_text sections. Text inspection only; no evaluator import/execution, dataset acquisition, model evaluation or score.",
+  "records": [
+    {
+      "http_status": 404,
+      "status": "http_error",
+      "url": "https://raw.githubusercontent.com/rajpurkar/SQuAD-explorer/eee5fdbf62f8613a7812b03419e6b29617b74fd1/evaluate-v1.1.py"
+    },
+    {
+      "bytes": 10547,
+      "sha256": "710840ce2c2c61716334c056777032f24660b83eb9869a451036e6a24d8103c4",
+      "status": "retrieved",
+      "url": "https://raw.githubusercontent.com/rajpurkar/SQuAD-explorer/eee5fdbf62f8613a7812b03419e6b29617b74fd1/evaluate-v2.0.py"
+    }
+  ],
+  "source_sha256": "2c2eea4f09c22a5d9e54d5f6324c9d5aa8f2f098a50436a58176b6cb65ff0f33",
+  "version_boundary": "The pinned repository has evaluate-v2.0.py, not the guessed v1.1 path. Its metric code informs a proposed answerable-only evaluation; it is not a replicated official v1.1 protocol."
+}
