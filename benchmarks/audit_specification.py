@@ -83,6 +83,7 @@ def main() -> int:
         ('statistical_assumption_audit.py', 'statistical-assumption-audit.json'),
         ('activation_liveness_probe.py', 'activation-liveness-probe.json'),
         ('replay_fashion_control.py', 'fashion-repeatability.json'),
+        ('derive_research_summary.py', 'derived-summary.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
@@ -125,6 +126,12 @@ def main() -> int:
     bibliography=json.loads((ROOT/'docs/research/bibliography-availability-audit.json').read_text(encoding='utf-8'))
     if bibliography['source_sha256'] != hashlib.sha256((ROOT/'benchmarks/audit_primary_bibliography.py').read_bytes()).hexdigest():
         failures.append('Bibliography capture source identity is stale')
+    derived=json.loads((ROOT/'docs/research/experiments/derived-summary.json').read_text(encoding='utf-8'))
+    for name,expected_digest in derived['input_canonical_json_sha256'].items():
+        value=json.loads((ROOT/'docs/research/experiments'/name).read_text(encoding='utf-8'))
+        actual=hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()
+        if actual != expected_digest:
+            failures.append(f'Derived-summary input identity is stale: {name}')
     print(json.dumps({'markdown_files':len(markdown),'local_links_checked':links,'unique_external_links_catalogued':len(external),'lock_package_count':len(lock['package']),'failures':failures},indent=2))
     return bool(failures)
 

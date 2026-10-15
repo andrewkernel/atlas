@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "derived_utc": "2026-10-15T06:15:50.904009+00:00",
+  "source_sha256": "c6023b57995750e2167928f8803879d2c75bbaddd9c1f93a15e664bc4b01eb0e",
+  "input_canonical_json_sha256": {
+    "cuda-memory-probe.json": "97351b49bd453cda289aaa36327ecfb1b8ac02c8f8c059b8d86115afc9bc8ac7",
+    "fashion-pilot.json": "dcf281c60fb01e147d932e9171b7e0335a81339cdf5128a6601d497be9dd1fda",
+    "fashion-repeatability.json": "11b5dc6ea78f642bc10cbe2081626915be148904e250537385f4b39a482778d0"
+  },
+  "synthetic_plans": [
+    {
+      "microbatch": 16,
+      "checkpointed": false,
+      "intended": 2,
+      "completed": 2,
+      "allocated_peak_mib": 972.58154296875,
+      "mean_of_process_median_update_seconds": 0.07452647500031162
+    },
+    {
+      "microbatch": 4,
+      "checkpointed": false,
+      "intended": 2,
+      "completed": 2,
+      "allocated_peak_mib": 508.50341796875,
+      "mean_of_process_median_update_seconds": 0.08345402500708587
+    },
+    {
+      "microbatch": 16,
+      "checkpointed": true,
+      "intended": 2,
+      "completed": 2,
+      "allocated_peak_mib": 452.4423828125,
+      "mean_of_process_median_update_seconds": 0.0877403499907814
+    },
+    {
+      "microbatch": 4,
+      "checkpointed": true,
+      "intended": 2,
+      "completed": 2,
+      "allocated_peak_mib": 378.4462890625,
+      "mean_of_process_median_update_seconds": 0.09739875000377651
+    }
+  ],
+  "fashion_arms": [
+    {
+      "candidate": false,
+      "intended": 3,
+      "completed": 3,
+      "allocated_peak_mib": 166.7880859375,
+      "mean_synchronized_update_seconds": 8.556037700385787
+    },
+    {
+      "candidate": true,
+      "intended": 3,
+      "completed": 3,
+      "allocated_peak_mib": 112.2255859375,
+      "mean_synchronized_update_seconds": 14.240542033105157
+    }
+  ],
+  "fashion_pairs": [
+    {
+      "seed": 1101,
+      "accuracy_difference_percentage_points": 0.039999999999995595,
+      "nll_difference": -0.00032974538803098863,
+      "initialization_and_order_match": true,
+      "updates_per_arm": [
+        1955,
+        1955
+      ]
+    },
+    {
+      "seed": 1102,
+      "accuracy_difference_percentage_points": -0.20999999999999908,
+      "nll_difference": 0.0018936962127685253,
+      "initialization_and_order_match": true,
+      "updates_per_arm": [
+        1955,
+        1955
+      ]
+    },
+    {
+      "seed": 1103,
+      "accuracy_difference_percentage_points": 0.050000000000005596,
+      "nll_difference": -0.0003353956699371774,
+      "initialization_and_order_match": true,
+      "updates_per_arm": [
+        1955,
+        1955
+      ]
+    }
+  ],
+  "fashion_allocated_reduction_percent": 32.71366758201545,
+  "fashion_update_time_increase_percent": 66.43851431911128,
+  "replay_status_counts": {
+    "completed": 2
+  },
+  "limitation": "Descriptive arithmetic with explicit intended/completed counts. Replays add no independent seeds; no inference, equivalence, field risk or policy efficacy estimate."
+}
