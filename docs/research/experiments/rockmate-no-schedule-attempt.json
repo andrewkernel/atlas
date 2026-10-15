@@ -1,0 +1,225 @@
+{
+  "config": {
+    "atol": 1e-06,
+    "blocks": 4,
+    "budget_bytes": 16777216,
+    "graph_extractor": "rkgb_dynamo_with_named_x_wrapper",
+    "hidden": 128,
+    "input_shape": [
+      128,
+      64,
+      64
+    ],
+    "lr": 0.01,
+    "modes": [
+      "rotor_config",
+      "rockmate_config"
+    ],
+    "momentum": 0.9,
+    "rtol": 1e-05,
+    "seed": 1801,
+    "timeout_seconds": 180,
+    "updates": 8,
+    "warmup_updates": 3,
+    "width": 64
+  },
+  "environment_keys": [
+    "CUBLAS_WORKSPACE_CONFIG",
+    "MKL_NUM_THREADS",
+    "OMP_NUM_THREADS",
+    "PATH",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONHASHSEED",
+    "PYTHONNOUSERSITE",
+    "PYTHONPATH",
+    "SystemRoot",
+    "TEMP",
+    "TMP",
+    "TORCH_HOME",
+    "WINDIR"
+  ],
+  "historical_source_commit": "fd3832a",
+  "interpretation": "Fifth attempt: named-x wrapper removes extra native-export alias; both arms construct graph with no parameter changes and original byte identities, but return no schedule at 16 MiB. Calling forward then raises missing-compiler error. Interpret as no schedule found under this configured budget, not proof of global infeasibility or algorithm defect.",
+  "review_sha256": "9148c94250b0e8337daf4133899ea7eed4a09d22c6f6431b9326ddcdc6f47486",
+  "scope": "Scoped compatibility/finite numerical control. No Atlas policy, whole-training equivalence, useful OOM rescue or general tool-performance claim.",
+  "source_sha256": "0f3ed715924dd60035d6e3446eee3ab5bc249f1d3c7af8ce5c8cc6a52f25ee07",
+  "started_utc": "20261015T064745Z",
+  "trials": [
+    {
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "budget_bytes": 16777216,
+        "graph_extractor": "rkgb_dynamo_with_named_x_wrapper",
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "rotor_config",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "construction_seconds": 0.14540680003119633,
+      "constructor_parameter_max_abs_change": 0.0,
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "error_message": "No schedule compiled, no solution to exec,\nTo be able to use the RkMod you first need to call get_compiled_fct(_HILP).",
+      "error_type": "Exception",
+      "failed_phase": "candidate_training",
+      "initial_state_sha256": "6f0833ac9df0d85fc6eaedd4a216dbb97806860771aca37f0ea84404babc54d1",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "legacy_sequential_initial_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "minor_parameter_node_count": 0,
+      "mode": "rotor_config",
+      "native_export_diagnostics": {
+        "direct_sequential_input": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [
+            "input_1 = input"
+          ],
+          "noncleanup_assignment_count": 17
+        },
+        "named_x_wrapper": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [],
+          "noncleanup_assignment_count": 16
+        }
+      },
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.0019236999796703458,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.11095360002946109,
+          0.008036400016862899,
+          0.002370400005020201,
+          0.0019236999796703458,
+          0.0020858999923802912,
+          0.0026224000030197203,
+          0.001761100022122264,
+          0.0017669000080786645
+        ]
+      },
+      "outer_wall_seconds": 7.07431739999447,
+      "schedule_present": false,
+      "status": "error",
+      "stderr_bytes": 976,
+      "stdout_bytes": 387,
+      "traceback": "Traceback (most recent call last):\n  File \"<atlas>\\benchmarks\\rockmate_compatibility_probe.py\", line 163, in worker\n    candidate_record, observed = train(candidate, model, wrapped=True)\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\benchmarks\\rockmate_compatibility_probe.py\", line 105, in train\n    prediction = module(x)\n                 ^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1783, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1794, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rockmate\\src\\rockmate\\rockmate.py\", line 439, in forward\n    raise Exception(\nException: No schedule compiled, no solution to exec,\nTo be able to use the RkMod you first need to call get_compiled_fct(_HILP).\n"
+    },
+    {
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "budget_bytes": 16777216,
+        "graph_extractor": "rkgb_dynamo_with_named_x_wrapper",
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "rotor_config",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "construction_seconds": 0.14431339997099712,
+      "constructor_parameter_max_abs_change": 0.0,
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "error_message": "No schedule compiled, no solution to exec,\nTo be able to use the RkMod you first need to call get_compiled_fct(_HILP).",
+      "error_type": "Exception",
+      "failed_phase": "candidate_training",
+      "initial_state_sha256": "6f0833ac9df0d85fc6eaedd4a216dbb97806860771aca37f0ea84404babc54d1",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "legacy_sequential_initial_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "minor_parameter_node_count": 0,
+      "mode": "rockmate_config",
+      "native_export_diagnostics": {
+        "direct_sequential_input": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [
+            "input_1 = input"
+          ],
+          "noncleanup_assignment_count": 17
+        },
+        "named_x_wrapper": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [],
+          "noncleanup_assignment_count": 16
+        }
+      },
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.0019627000438049436,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.11247189994901419,
+          0.008127500012051314,
+          0.0019251000485382974,
+          0.0019627000438049436,
+          0.002342300023883581,
+          0.0021373999770730734,
+          0.0017602000152692199,
+          0.0017946999869309366
+        ]
+      },
+      "outer_wall_seconds": 7.027785999991465,
+      "schedule_present": false,
+      "status": "error",
+      "stderr_bytes": 976,
+      "stdout_bytes": 420,
+      "traceback": "Traceback (most recent call last):\n  File \"<atlas>\\benchmarks\\rockmate_compatibility_probe.py\", line 163, in worker\n    candidate_record, observed = train(candidate, model, wrapped=True)\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\benchmarks\\rockmate_compatibility_probe.py\", line 105, in train\n    prediction = module(x)\n                 ^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1783, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\nn\\modules\\module.py\", line 1794, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rockmate\\src\\rockmate\\rockmate.py\", line 439, in forward\n    raise Exception(\nException: No schedule compiled, no solution to exec,\nTo be able to use the RkMod you first need to call get_compiled_fct(_HILP).\n"
+    }
+  ]
+}

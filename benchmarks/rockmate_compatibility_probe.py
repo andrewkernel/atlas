@@ -21,6 +21,7 @@ CONFIG = {
     "updates": 8, "warmup_updates": 3, "lr": 0.01, "momentum": 0.9,
     "modes": ["rotor_config", "rockmate_config"],
     "graph_extractor": "rkgb_dynamo_with_named_x_wrapper",
+    "bracket_budgets_mib": [64, 128],
     "timeout_seconds": 180, "rtol": 1e-5, "atol": 1e-6,
 }
 
@@ -158,6 +159,10 @@ def worker(mode: str, output: Path) -> None:
         result["schedule_present"] = candidate.op_sched is not None
         result["minor_parameter_node_count"] = len(candidate.minor_param_nodes)
         result["constructor_parameter_max_abs_change"] = max(float((p.detach().cpu() - initial[name]).abs().max()) for name, p in model.named_parameters())
+        if candidate.op_sched is None:
+            result["status"] = "no_schedule"
+            output.write_text(json.dumps(result, indent=2, sort_keys=True, allow_nan=False) + "\n", encoding="utf-8")
+            return
         model.load_state_dict(initial)
         phase = "candidate_training"
         candidate_record, observed = train(candidate, model, wrapped=True)
@@ -193,9 +198,12 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--worker", choices=CONFIG["modes"])
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--budget-mib", type=int, choices=CONFIG["bracket_budgets_mib"])
     args = parser.parse_args()
     if args.worker:
         assert args.output is not None
+        assert args.budget_mib is not None
+        CONFIG["budget_bytes"] = args.budget_mib * 1024**2
         worker(args.worker, args.output)
         return
     import psutil
@@ -215,11 +223,12 @@ def main() -> None:
                 "TEMP": str(directory), "TMP": str(directory), "TORCH_HOME": str(directory / "torch-cache"),
                 "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1", "CUBLAS_WORKSPACE_CONFIG": ":4096:8"})
     rows = []
-    for mode in CONFIG["modes"]:
-        destination = directory / (mode + ".json")
+    for mode, budget_mib in ((mode, budget) for budget in CONFIG["bracket_budgets_mib"] for mode in CONFIG["modes"]):
+        label = mode + "_" + str(budget_mib)
+        destination = directory / (label + ".json")
         started = time.perf_counter()
-        with (directory / (mode + ".stdout.txt")).open("w", encoding="utf-8") as stdout, (directory / (mode + ".stderr.txt")).open("w", encoding="utf-8") as stderr:
-            process = subprocess.Popen([str(interpreter), str(Path(__file__).resolve()), "--worker", mode, "--output", str(destination)], cwd=directory, env=env, stdout=stdout, stderr=stderr)
+        with (directory / (label + ".stdout.txt")).open("w", encoding="utf-8") as stdout, (directory / (label + ".stderr.txt")).open("w", encoding="utf-8") as stderr:
+            process = subprocess.Popen([str(interpreter), str(Path(__file__).resolve()), "--worker", mode, "--budget-mib", str(budget_mib), "--output", str(destination)], cwd=directory, env=env, stdout=stdout, stderr=stderr)
             timed_out = False
             try:
                 process.wait(timeout=CONFIG["timeout_seconds"])
@@ -240,13 +249,14 @@ def main() -> None:
         else:
             row = {"mode": mode, "status": "timeout" if timed_out else "worker_failure", "returncode": process.returncode}
         row["outer_wall_seconds"] = time.perf_counter() - started
+        row["budget_mib"] = budget_mib
         for key in ("error_message", "traceback"):
             if key in row:
                 row[key] = row[key].replace(str(ROOT), "<atlas>").replace(str(directory), "<artifact>").replace(str(Path.home()), "<profile>")
-        row["stdout_bytes"] = (directory / (mode + ".stdout.txt")).stat().st_size
-        row["stderr_bytes"] = (directory / (mode + ".stderr.txt")).stat().st_size
+        row["stdout_bytes"] = (directory / (label + ".stdout.txt")).stat().st_size
+        row["stderr_bytes"] = (directory / (label + ".stderr.txt")).stat().st_size
         rows.append(row)
-        print(mode, row["status"], row.get("failed_phase", ""), flush=True)
+        print(label, row["status"], row.get("failed_phase", ""), flush=True)
     record = {"started_utc": stamp, "config": CONFIG, "source_sha256": sha(Path(__file__)),
               "review_sha256": sha(REVIEW), "trials": rows, "environment_keys": sorted(env),
               "scope": "Scoped compatibility/finite numerical control. No Atlas policy, whole-training equivalence, useful OOM rescue or general tool-performance claim."}
