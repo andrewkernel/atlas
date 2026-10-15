@@ -1,0 +1,43 @@
+{
+  "captured_utc": "2026-10-15T14:17:09.229657+00:00",
+  "records": {
+    "alive2-pldi21.pdf": {
+      "error_type": "URLError",
+      "message": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
+      "status": "retrieval_error",
+      "url": "https://web.ist.utl.pt/nuno.lopes/pubs/alive2-pldi21.pdf"
+    },
+    "alive2-readme.md": {
+      "bytes": 14995,
+      "content_type": "text/plain",
+      "resolved_url": "https://raw.githubusercontent.com/AliveToolkit/alive2/master/README.md",
+      "sha256": "57cf564526676f6cd637e1afa5c3b3ee57474fa3542d3dd87b80de516914e31b",
+      "status": "retrieved",
+      "url": "https://raw.githubusercontent.com/AliveToolkit/alive2/master/README.md"
+    },
+    "gardner14.html": {
+      "bytes": 16530,
+      "content_type": "text/html",
+      "resolved_url": "https://proceedings.mlr.press/v32/gardner14.html",
+      "sha256": "79152c07a0945dbf6b2ccf0ca56fd2c98f0045c1585df71769f03948ab539e38",
+      "status": "retrieved",
+      "url": "https://proceedings.mlr.press/v32/gardner14.html"
+    },
+    "gardner14.pdf": {
+      "error_type": "ValueError",
+      "message": "Source exceeds fixed 4 MiB retrieval bound",
+      "status": "retrieval_error",
+      "url": "https://proceedings.mlr.press/v32/gardner14.pdf"
+    },
+    "gelbart14-v1.html": {
+      "bytes": 195689,
+      "content_type": "text/html",
+      "resolved_url": "https://arxiv.org/html/1403.5607v1",
+      "sha256": "f72f020e35941618a1efc6ff0ff79513b9338803dfd7ee033c3decce145061a7",
+      "status": "retrieved",
+      "url": "https://arxiv.org/html/1403.5607v1"
+    }
+  },
+  "scope": "Primary bytes retrieved without execution; retrieval is not full-paper reading, reproduction, proof validation or a complete novelty search.",
+  "source_sha256": "40934dd384b5400635098e51f29df2a97f3334c51d6a449d73a30ad3a44b3b7d"
+}
