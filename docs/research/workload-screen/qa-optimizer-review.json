@@ -1,0 +1,36 @@
+{
+  "captured_utc": "2026-10-15T14:30:48.790688+00:00",
+  "files": [
+    {
+      "bytes": 41130,
+      "matches_unsigned_installed_record": true,
+      "path": "torch/optim/adam.py",
+      "sha256": "8ce09c47f3960bb1b5c7d58a820b3b827892bc1d383664e6e2e2cdd3d502a6fc"
+    },
+    {
+      "bytes": 7557,
+      "matches_unsigned_installed_record": true,
+      "path": "torch/optim/adamw.py",
+      "sha256": "270402f0762defb378423bd9110cd7bee0ee37c5eece139a09bad1a1da9b08cd"
+    },
+    {
+      "bytes": 20798,
+      "matches_unsigned_installed_record": true,
+      "path": "torch/optim/sgd.py",
+      "sha256": "bdadbe7071cd59f8f7ef4ba7977d54778f9c729b4f920ef42b5f9fd6beda96d5"
+    },
+    {
+      "bytes": 52381,
+      "matches_unsigned_installed_record": true,
+      "path": "torch/optim/optimizer.py",
+      "sha256": "d5e4f1648030b6c226f6bce58a9b0eca5997e27e09759085d0cecf6fb560d11c"
+    }
+  ],
+  "observations": [
+    "Use native non-capturable non-differentiable foreach/fused-false AdamW with fixed scalar hyperparameters.",
+    "First-step ideal equation is explanatory real arithmetic, not a bitwise replacement for the installed floating-point implementation.",
+    "Alternative epsilon/SGD replay changes the method and cannot be presented as a fidelity-preserving candidate repair."
+  ],
+  "scope": "Selected optimizer source identities, AdamW single-tensor first-step/decay/moment excerpts and public SGD configuration; not a whole-module/native-library audit or signed provenance.",
+  "torch": "2.13.0+cu130"
+}
