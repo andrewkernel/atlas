@@ -1,0 +1,408 @@
+{
+  "captured_utc": "2026-10-15T08:23:59.950980+00:00",
+  "disposition": "Investigator comparison used incomplete distribution-name normalization: dot was not canonicalized with hyphen/underscore. This produced false missing-name mismatches for ruamel.yaml versus ruamel-yaml; no environment mutation inferred. Retain before corrected read-only rescan.",
+  "environment_helper_sha256": "85b03be5771a63d1d163e7b0f567e204d0284b3e526ae4056942d9d0d14f02aa",
+  "profiles": {
+    "checker": {
+      "additional_distributions_since_earlier": [],
+      "earlier_package_version_mismatches": {},
+      "earlier_record": "checker-environment.json",
+      "earlier_record_sha256": "7a17ac15849fd7530b09aece573e0564567c2dd5a28b61dc673c8e3d6fe300e9",
+      "packages": {
+        "filelock": "3.32.3",
+        "fsspec": "2026.7.0",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.3",
+        "mpmath": "1.3.0",
+        "networkx": "3.6.1",
+        "numpy": "2.4.6",
+        "setuptools": "78.1.0",
+        "sympy": "1.14.0",
+        "torch": "2.13.0+cpu",
+        "typing-extensions": "4.16.0"
+      },
+      "python": "3.11.17",
+      "requirements_file": "configs/checker-windows-py311-requirements.txt",
+      "requirements_sha256": "fed4ed666322db144291bbee0e2232f0baa7f182afa383fe79e5a87f292f6881",
+      "selected_files": [
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/utils/checkpoint.py",
+          "sha256": "54990d1f6d9ace19ef80725a670fde1f306c150cb7a206f44d3d0cbbf81e3d6f",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/sgd.py",
+          "sha256": "bdadbe7071cd59f8f7ef4ba7977d54778f9c729b4f920ef42b5f9fd6beda96d5",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/adamw.py",
+          "sha256": "270402f0762defb378423bd9110cd7bee0ee37c5eece139a09bad1a1da9b08cd",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/nn/functional.py",
+          "sha256": "0cb53bf779feac78ff663ddb72f90701a4413b305bd95a444230e5bec953a2c1",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/_dynamo/eval_frame.py",
+          "sha256": "67f9a6114c61a4898ef5aac4b6b2f50745ff0dd66da954fe32806bd2600668a2",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/fx/graph.py",
+          "sha256": "e8d20af32da24539c7f99f31517a2b56dfb2731c43a437d7e3ad0b2cf6ce8b05",
+          "status": "read"
+        }
+      ]
+    },
+    "core": {
+      "packages": {
+        "colorama": "0.4.6",
+        "filelock": "4.2.0",
+        "fsspec": "2026.9.0",
+        "hypothesis": "6.169.3",
+        "iniconfig": "2.3.1",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.4",
+        "mpmath": "1.3.0",
+        "networkx": "3.7",
+        "numpy": "2.5.4",
+        "packaging": "26.3",
+        "pip": "25.0.1",
+        "pluggy": "1.6.0",
+        "psutil": "7.2.2",
+        "pygments": "2.21.0",
+        "pytest": "9.1.1",
+        "scipy": "1.18.1",
+        "setuptools": "84.0.0",
+        "sortedcontainers": "2.4.0",
+        "sympy": "1.14.0",
+        "torch": "2.14.1+cpu",
+        "typing-extensions": "4.16.0",
+        "uv": "0.13.1"
+      },
+      "python": "3.12.10",
+      "requirements_file": "uv.lock",
+      "requirements_sha256": "1c255d3e0c9de05dd4d55870f931be4461232cf9b51f0e7772b386d13d2520f7",
+      "selected_files": [
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/utils/checkpoint.py",
+          "sha256": "4226cb5fdcbf6f4756084075c3568c5f50505e17bfc40d47c9b662325007e6e6",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/sgd.py",
+          "sha256": "34476f526f3c48d40ebfa86eef556e5d6d740239edc0bb061ea4786d6ccda275",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/adamw.py",
+          "sha256": "2e6e8609d900101dd7462cea26f2b913aeb3f337c1cd808a60094a5009e209c3",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/nn/functional.py",
+          "sha256": "33c3d1548018f7775e5d7fdfcf0b16e6bcf19f388ffc202156a88c0562767b5d",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/_dynamo/eval_frame.py",
+          "sha256": "591322852c2bd372c2062ee50abcc1e86f9bfb6d4a6f1d6cbf7b8561046f87bd",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/fx/graph.py",
+          "sha256": "93a4e7f12e17f2be6d9c0bcb8a243587fe6791d4df7f15dd0272730b625f3c36",
+          "status": "read"
+        }
+      ]
+    },
+    "interop": {
+      "additional_distributions_since_earlier": [
+        "ruamel.yaml"
+      ],
+      "earlier_package_version_mismatches": {
+        "ruamel-yaml": {
+          "current": null,
+          "earlier": "0.19.1"
+        }
+      },
+      "earlier_record": "interop-environment.json",
+      "earlier_record_sha256": "31c0cb1727c78aa073d014fb59e9838031375993daac90f45a8b0b0614bc12eb",
+      "packages": {
+        "astunparse": "1.6.3",
+        "colorama": "0.4.6",
+        "configmypy": "0.2.0",
+        "filelock": "3.32.3",
+        "fsspec": "2026.7.0",
+        "iniconfig": "2.3.1",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.3",
+        "mpmath": "1.3.0",
+        "networkx": "3.6.1",
+        "numpy": "2.4.6",
+        "packaging": "26.3",
+        "pluggy": "1.6.0",
+        "psutil": "7.2.2",
+        "pulp": "2.7.0",
+        "pygments": "2.21.0",
+        "pytest": "9.1.1",
+        "pytest-mock": "3.16.0",
+        "pyyaml": "6.0.3",
+        "ruamel.yaml": "0.19.1",
+        "setuptools": "78.1.0",
+        "six": "1.17.0",
+        "sympy": "1.14.0",
+        "torch": "2.13.0+cu130",
+        "typing-extensions": "4.16.0",
+        "wheel": "0.48.0"
+      },
+      "python": "3.11.17",
+      "requirements_file": "configs/interop-windows-py311-requirements.txt",
+      "requirements_sha256": "e9067e890fa50d16a454c2e16c5037b35993cea7152f446b461c996f8e26e68e",
+      "selected_files": [
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/utils/checkpoint.py",
+          "sha256": "54990d1f6d9ace19ef80725a670fde1f306c150cb7a206f44d3d0cbbf81e3d6f",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/sgd.py",
+          "sha256": "bdadbe7071cd59f8f7ef4ba7977d54778f9c729b4f920ef42b5f9fd6beda96d5",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/adamw.py",
+          "sha256": "270402f0762defb378423bd9110cd7bee0ee37c5eece139a09bad1a1da9b08cd",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/nn/functional.py",
+          "sha256": "0cb53bf779feac78ff663ddb72f90701a4413b305bd95a444230e5bec953a2c1",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/_dynamo/eval_frame.py",
+          "sha256": "67f9a6114c61a4898ef5aac4b6b2f50745ff0dd66da954fe32806bd2600668a2",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/fx/graph.py",
+          "sha256": "e8d20af32da24539c7f99f31517a2b56dfb2731c43a437d7e3ad0b2cf6ce8b05",
+          "status": "read"
+        }
+      ]
+    },
+    "original_cuda": {
+      "additional_distributions_since_earlier": [],
+      "earlier_package_version_mismatches": {},
+      "earlier_record": "cuda-probe-environment.json",
+      "earlier_record_sha256": "29422443a0f70d6608733589186162d503c904c05ce21ea8d72838a892a974c5",
+      "packages": {
+        "filelock": "3.32.3",
+        "fsspec": "2026.7.0",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.3",
+        "mpmath": "1.3.0",
+        "networkx": "3.6.1",
+        "numpy": "2.5.4",
+        "setuptools": "78.1.0",
+        "sympy": "1.14.0",
+        "torch": "2.14.1+cu130",
+        "typing-extensions": "4.16.0"
+      },
+      "python": "3.12.10",
+      "requirements_file": "configs/cuda-probe-windows-py312-requirements.txt",
+      "requirements_sha256": "c285e77f8e0f29a0c63d96cd8b1b0f3cb67fe15d6749c203b76c5695e1859405",
+      "selected_files": [
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/utils/checkpoint.py",
+          "sha256": "4226cb5fdcbf6f4756084075c3568c5f50505e17bfc40d47c9b662325007e6e6",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/sgd.py",
+          "sha256": "34476f526f3c48d40ebfa86eef556e5d6d740239edc0bb061ea4786d6ccda275",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/adamw.py",
+          "sha256": "2e6e8609d900101dd7462cea26f2b913aeb3f337c1cd808a60094a5009e209c3",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/nn/functional.py",
+          "sha256": "33c3d1548018f7775e5d7fdfcf0b16e6bcf19f388ffc202156a88c0562767b5d",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/_dynamo/eval_frame.py",
+          "sha256": "591322852c2bd372c2062ee50abcc1e86f9bfb6d4a6f1d6cbf7b8561046f87bd",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/fx/graph.py",
+          "sha256": "93a4e7f12e17f2be6d9c0bcb8a243587fe6791d4df7f15dd0272730b625f3c36",
+          "status": "read"
+        }
+      ]
+    },
+    "planner": {
+      "additional_distributions_since_earlier": [
+        "ruamel.yaml"
+      ],
+      "earlier_package_version_mismatches": {
+        "ruamel-yaml": {
+          "current": null,
+          "earlier": "0.19.1"
+        }
+      },
+      "earlier_record": "planner-environment.json",
+      "earlier_record_sha256": "aa5019703bc888dfd0f96f6b7a00a63783b8b629e6b247219af46daa68dd56cf",
+      "packages": {
+        "astunparse": "1.6.3",
+        "colorama": "0.4.6",
+        "configmypy": "0.2.0",
+        "filelock": "3.32.3",
+        "fsspec": "2026.7.0",
+        "iniconfig": "2.3.1",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.3",
+        "mpmath": "1.3.0",
+        "networkx": "3.6.1",
+        "numpy": "2.5.4",
+        "packaging": "26.3",
+        "pluggy": "1.6.0",
+        "psutil": "7.2.2",
+        "pulp": "2.7.0",
+        "pygments": "2.21.0",
+        "pytest": "9.1.1",
+        "pytest-mock": "3.16.0",
+        "pyyaml": "6.0.3",
+        "ruamel.yaml": "0.19.1",
+        "setuptools": "78.1.0",
+        "six": "1.17.0",
+        "sympy": "1.14.0",
+        "torch": "2.14.1+cu130",
+        "typing-extensions": "4.16.0",
+        "wheel": "0.48.0"
+      },
+      "python": "3.12.10",
+      "requirements_file": "configs/planner-windows-py312-requirements.txt",
+      "requirements_sha256": "d78d9d21a9201764934f54df49b553d868e3e259f07a5211476ea40741c2ce14",
+      "selected_files": [
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/utils/checkpoint.py",
+          "sha256": "4226cb5fdcbf6f4756084075c3568c5f50505e17bfc40d47c9b662325007e6e6",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/sgd.py",
+          "sha256": "34476f526f3c48d40ebfa86eef556e5d6d740239edc0bb061ea4786d6ccda275",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/adamw.py",
+          "sha256": "2e6e8609d900101dd7462cea26f2b913aeb3f337c1cd808a60094a5009e209c3",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/nn/functional.py",
+          "sha256": "33c3d1548018f7775e5d7fdfcf0b16e6bcf19f388ffc202156a88c0562767b5d",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/_dynamo/eval_frame.py",
+          "sha256": "591322852c2bd372c2062ee50abcc1e86f9bfb6d4a6f1d6cbf7b8561046f87bd",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/fx/graph.py",
+          "sha256": "93a4e7f12e17f2be6d9c0bcb8a243587fe6791d4df7f15dd0272730b625f3c36",
+          "status": "read"
+        }
+      ]
+    },
+    "telemetry": {
+      "packages": {
+        "nvidia-ml-py": "13.615.71"
+      },
+      "python": "3.12.10",
+      "requirements_file": "configs/telemetry-windows-py312-requirements.txt",
+      "requirements_sha256": "0dcc04d18f2bab5cffcbdceab100ad0e27c891e596953c57de0921b8e3bbd52c",
+      "selected_files": [
+        {
+          "distribution": "nvidia-ml-py",
+          "matches_installed_record": true,
+          "path": "pynvml.py",
+          "sha256": "2828e66b483bec218f461314f6da96c1e56330ed4b297a20b3444b4c43cdd14e",
+          "status": "read"
+        }
+      ]
+    }
+  },
+  "scope": "Post-experiment distribution identity and selected Python-source consistency checks. Installed wheel RECORD is not a trusted signature, whole-package integrity proof, contemporaneous attestation or scientific-correctness validation. No ML package is imported by this probe.",
+  "source_sha256": "267813a0eff37f8c96075284f59a677fac0b9ce6ba3ba9b65320ad8a1fb87ca2"
+}

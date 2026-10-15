@@ -29,3 +29,5 @@ Fashion-MNIST declares MIT. WikiText's pinned card has inconsistent licensing me
 A third [shared interop environment](experiments/interop-environment.json) pins Python 3.11.17/Torch 2.13.0+cu130/NumPy 2.4.6 within both inspected version ranges. Its official CUDA wheel/dependency hashes and actual finite controls are recorded separately; no historical environment or core lock was modified.
 
 [Read-only telemetry](experiments/board-energy-control.md) uses its own one-package [hash-pinned requirements](../../configs/telemetry-windows-py312-requirements.txt). The recorded installed binding source hash binds the finite availability/workload/passive captures; it does not establish general device support or calibration.
+
+The [post-experiment environment audit](experiments/final-environment-audit.md) reconciles six environments, earlier distribution versions and 31 selected installed Python-source RECORD hashes. It explicitly limits those checks and retains an initial name-normalization mistake; no package/driver change follows.

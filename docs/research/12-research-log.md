@@ -199,3 +199,9 @@ This is a bounded initial research/engineering investigation, not five hours of 
 - The initial independent oracle collector uses a nonexistent loss field after checker completion; preserve both outer errors and complete saved checker PASS reports. Reporting-only amendment 9903439 selects the documented value field before identical rerun.
 - Independent authored full-batch log-softmax/gather gives zero gradient error for the token adapter and relative L2 0.4483878394 for the deliberately different sequence objective. All initial parameters match. This is not a checker defect, independent labels, field prevalence or observed Atlas acceptance. Denominator units/mask semantics join the explicit method-contract obligations.
 - Checkpoint d7ff731 passed Linux/Windows run 38704640516.
+
+## 2026-10-15 08:23–08:26 UTC — final environment reconciliation
+
+- Read distribution metadata without importing ML packages across six separate environments. All 31 selected Torch/NVML Python-source files match installed RECORD hashes; earlier CUDA/checker/planner/interop versions agree after canonical package-name comparison. This is neither a whole-package integrity check nor a trusted signature.
+- An initial investigator normalizer omitted dots, falsely distinguishing ruamel.yaml from ruamel-yaml. Retain that attempted inventory, correct to the packaging specification, and rerun. No package mutation is inferred. Requirements use byte hashes, earlier JSON records use canonical hashes, and telemetry requirement line endings are normalized before hashing.
+- No matching owned training/planner/telemetry child remains. The primary policy, external-label and useful expanded-access gates remain unfinished.

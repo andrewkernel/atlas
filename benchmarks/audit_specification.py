@@ -100,6 +100,7 @@ def main() -> int:
         ('passive_energy_control.py', 'passive-energy-control.json'),
         ('native_selective_control.py', 'native-selective-control.json'),
         ('token_reference_control.py', 'token-reference-control.json'),
+        ('snapshot_final_environments.py', 'final-environment-inventory.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
@@ -237,6 +238,16 @@ def main() -> int:
         failures.append('Token-reference review identity is stale')
     if [t['case'] for t in token['trials']] != token['modes']:
         failures.append('Token-reference intended-run denominator is incomplete')
+    inventory=json.loads((ROOT/'docs/research/experiments/final-environment-inventory.json').read_text(encoding='utf-8'))
+    if inventory['environment_helper_sha256'] != energy['source_sha256']:
+        failures.append('Final environment inventory helper identity is stale')
+    for name,profile in inventory['profiles'].items():
+        if profile['requirements_sha256'] != hashlib.sha256((ROOT/profile['requirements_file']).read_bytes()).hexdigest():
+            failures.append(f'Final environment requirements identity is stale: {name}')
+        if 'earlier_record' in profile:
+            earlier=json.loads((ROOT/'docs/research/experiments'/profile['earlier_record']).read_text(encoding='utf-8'))
+            if canonical(earlier) != profile['earlier_record_canonical_json_sha256']:
+                failures.append(f'Final environment earlier-record identity is stale: {name}')
     for name,expected_digest in derived['input_canonical_json_sha256'].items():
         value=json.loads((ROOT/'docs/research/experiments'/name).read_text(encoding='utf-8'))
         actual=hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()
