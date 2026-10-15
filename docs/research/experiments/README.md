@@ -88,3 +88,5 @@ The [450 MiB allocator-cap control](cuda-budget-probe.md) records three OOMs and
 [Comparison-policy controls](comparator-contract-control.md) test exact tolerance conventions and nonfinite equality/health. Matching API parameter numbers do not define the full predicate, and existing comparison equality is not a healthy-reference certificate.
 
 [Gross-board energy replays](board-energy-control.md) preserve all six same-seed workflows, full counter/power traces, exact-rational arithmetic/replay checks and a passive discrepancy diagnostic. Counter/power disagreement remains unresolved; no energy savings, accuracy certificate or new independent training seeds are claimed.
+
+[Native selective-checkpoint controls](native-selective-control.md) add twelve contemporary three-mode/two-microbatch trials on the unchanged original synthetic fixture. The fixed existing selective policy supplies an intermediate observed memory/time point and strengthens baseline selection; no primary policy or full-training result follows.

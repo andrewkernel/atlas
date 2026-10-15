@@ -29,3 +29,5 @@ The [updated recommendation](14-updated-recommendation.md) follows from the comb
 [Comparison-convention controls](experiments/comparator-contract-control.md) separately show that a reused numerical relation can differ from the proposed contract despite matching rtol/atol numbers, and that matching nonfinite values do not establish reference health. These are constructed deterministic examples, not a field error rate.
 
 [Gross-board telemetry](experiments/board-energy-control.md) supports only the stated shared-board window readings and exact same-arm training replay. Integrated power exceeds counter deltas by 23.61–25.00% in workload windows and 5.73% in one passive follow-up. Arithmetic agreement does not calibrate either API; per-process, whole-host, causal and population energy claims remain unsupported.
+
+[Native selective checkpointing](experiments/native-selective-control.md) executes twelve fixed-configuration CUDA controls with first-update state observations and contemporary resource/timing windows. It broadens the competent native baseline without demonstrating automatic selection, full-training equivalence or a useful OOM rescue.

@@ -53,3 +53,5 @@ The strongest local observation is that checkpointing can match gradients while 
 [Independent adjudication packet specification](adjudication-protocol.md) prepares the uncompleted external-label gate, including reviewer information, disagreement retention and discovery/holdout separation. No external reviewer has been contacted or labels obtained.
 
 [Assignment deliverable audit](deliverable-audit.md) maps requested outputs to documents and distinguishes the completed initial blueprint from unfinished empirical studies.
+
+[Native selective-checkpoint control](experiments/native-selective-control.md) tests another existing native baseline on the unchanged pure fixture, with all twelve trials and first-update observations retained.

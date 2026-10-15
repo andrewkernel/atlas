@@ -185,3 +185,10 @@ This is a bounded initial research/engineering investigation, not five hours of 
 - Prepared an independent-adjudication procedure and assignment-to-deliverable audit. They explicitly retain the uncollected-label and unexecuted-primary-study limits; no outside reviewer was contacted.
 - Rechecked selected HiLoRe methods/appendices with captured versioned HTML bytes. Its conditional recovery proposition, surrogate risk, observed no-low-precision residual and larger distributed evaluation setup remain distinct scopes. This adds no paper execution, proof defect or commodity-card result.
 - Added independent exact-rational reconstruction/replay-identity checks to CPU CI, with a published-record diff check. Checkpoint a094fa5 passed Linux/Windows run 38703250319.
+
+## 2026-10-15 08:14–08:17 UTC — existing native selective baseline
+
+- Froze the exact source/protocol at d2e4343 before twelve fresh-worker trials: identity/plain/selective checkpointing, microbatch 16/4, two process repetitions, unchanged original model/data/optimizer/update windows. The child-local context wrapper leaves fixture and installed library files unchanged.
+- Every arm completes sixteen updates. Full-batch first-update state errors are zero; all microbatch-4 variants retain the same finite rounding differences observed earlier. Actual first-update policy callbacks save 16/64 addmm outputs. Later numerical states are not independently compared.
+- Selective checkpointing offers an intermediate observed memory/time point: full-batch allocated peak 740.36 MiB and mean process median 76.93 ms, versus contemporary identity 972.58 MiB / 74.79 ms and ordinary checkpoint 452.44 MiB / 87.52 ms. Two repetitions are descriptive, not a robust speedup, scientific-equivalence or policy-selection study. All twelve intended outcomes remain visible.
+- Checkpoints 86ba909 and 0f931ad passed Linux/Windows runs 38703908326 and 38704027781, including independent energy reconstruction and unchanged derived-record checks.

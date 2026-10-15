@@ -98,6 +98,7 @@ def main() -> int:
         ('board_energy_control.py', 'board-energy-control.json'),
         ('derive_board_energy.py', 'board-energy-derived.json'),
         ('passive_energy_control.py', 'passive-energy-control.json'),
+        ('native_selective_control.py', 'native-selective-control.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
@@ -220,6 +221,14 @@ def main() -> int:
     passive=json.loads((ROOT/'docs/research/experiments/passive-energy-control.json').read_text(encoding='utf-8'))
     if passive['helper_source_sha256'] != energy['source_sha256'] or passive['binding_sha256'] != availability['binding_sha256']:
         failures.append('Passive telemetry source/binding identity is stale')
+    selective=json.loads((ROOT/'docs/research/experiments/native-selective-control.json').read_text(encoding='utf-8'))
+    if selective['fixture_source_sha256'] != hashlib.sha256((ROOT/'benchmarks/cuda_memory_probe.py').read_bytes()).hexdigest() or selective['environment_helper_sha256'] != energy['source_sha256']:
+        failures.append('Native selective fixture/environment helper identity is stale')
+    intended=[(t['repetition'],t['mode'],t['micro']) for t in selective['order']]
+    observed=[(t['repetition'],t['mode'],t['microbatch']) for t in selective['trials']]
+    expected={(rep,mode,micro) for rep in range(2) for mode in ('identity','plain_checkpoint','selective_matmul') for micro in (16,4)}
+    if intended != observed or set(observed) != expected or len(set(observed)) != len(observed):
+        failures.append('Native selective intended-run denominator is incomplete/duplicated')
     for name,expected_digest in derived['input_canonical_json_sha256'].items():
         value=json.loads((ROOT/'docs/research/experiments'/name).read_text(encoding='utf-8'))
         actual=hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()
