@@ -1,0 +1,125 @@
+{
+  "arm_means": {
+    "candidate": {
+      "counter_j": 1590.8566666666666,
+      "integral_excess_percent": 24.268700826002778,
+      "power_integral_j": 1976.9627776880084,
+      "window_seconds": 21.58671895
+    },
+    "native": {
+      "counter_j": 1205.0836666666667,
+      "integral_excess_percent": 24.554249554135893,
+      "power_integral_j": 1501.0175984713583,
+      "window_seconds": 16.27652511666667
+    }
+  },
+  "input_canonical_json_sha256": {
+    "board-energy-control.json": "03cc4b322fac551082dd50667c797f54a2b226ac00674c042dd1be975b5eef61",
+    "fashion-pilot.json": "dcf281c60fb01e147d932e9171b7e0335a81339cdf5128a6601d497be9dd1fda"
+  },
+  "pairs": [
+    {
+      "counter_increase_percent": 33.40899083943631,
+      "pair": 0,
+      "window_increase_percent": 32.68296217537126
+    },
+    {
+      "counter_increase_percent": 31.20358540120891,
+      "pair": 1,
+      "window_increase_percent": 32.79464274162227
+    },
+    {
+      "counter_increase_percent": 31.452887408166742,
+      "pair": 2,
+      "window_increase_percent": 32.39765852923841
+    }
+  ],
+  "scope": "Independent arithmetic and replay identity verification; same-seed repetitions, gross shared-board windows, no calibrated or causal process-energy inference.",
+  "source_sha256": "c68c3973b19bcb16edbb7e2d68f8fe51b95e9f24618a684031ab021c021cd2bd",
+  "trials": [
+    {
+      "candidate": false,
+      "counter_j": 1187.809,
+      "counter_mean_w": 72.8896166640577,
+      "identical_training_replay": true,
+      "integral_excess_percent": 24.233251084294697,
+      "max_gap_seconds": 0.05954785,
+      "pair": 0,
+      "power_integral_j": 1475.65373737185,
+      "reported_power_mean_w": 90.5531404846387,
+      "sample_count": 300,
+      "unchanged_counter_intervals": 136,
+      "window_seconds": 16.29599735
+    },
+    {
+      "candidate": true,
+      "counter_j": 1584.644,
+      "counter_mean_w": 73.28846177682261,
+      "identical_training_replay": true,
+      "integral_excess_percent": 23.60778421439295,
+      "max_gap_seconds": 0.0581155,
+      "pair": 0,
+      "power_integral_j": 1958.743336086325,
+      "reported_power_mean_w": 90.59024368714276,
+      "sample_count": 397,
+      "unchanged_counter_intervals": 179,
+      "window_seconds": 21.622012
+    },
+    {
+      "candidate": true,
+      "counter_j": 1587.587,
+      "counter_mean_w": 73.6396516832652,
+      "identical_training_replay": true,
+      "integral_excess_percent": 24.47363189350568,
+      "max_gap_seconds": 0.0583568,
+      "pair": 1,
+      "power_integral_j": 1976.12719836915,
+      "reported_power_mean_w": 91.66194896388727,
+      "sample_count": 396,
+      "unchanged_counter_intervals": 180,
+      "window_seconds": 21.5588608
+    },
+    {
+      "candidate": false,
+      "counter_j": 1210.018,
+      "counter_mean_w": 74.5326524956886,
+      "identical_training_replay": true,
+      "integral_excess_percent": 24.43300773887661,
+      "max_gap_seconds": 0.0629683,
+      "pair": 1,
+      "power_integral_j": 1505.6617915818,
+      "reported_power_mean_w": 92.74322124795019,
+      "sample_count": 298,
+      "unchanged_counter_intervals": 135,
+      "window_seconds": 16.23473685
+    },
+    {
+      "candidate": true,
+      "counter_j": 1600.339,
+      "counter_mean_w": 74.16089413772742,
+      "identical_training_replay": true,
+      "integral_excess_percent": 24.72468637010971,
+      "max_gap_seconds": 0.05788615,
+      "pair": 2,
+      "power_integral_j": 1996.01779860855,
+      "reported_power_mean_w": 92.49694262254961,
+      "sample_count": 396,
+      "unchanged_counter_intervals": 179,
+      "window_seconds": 21.57928405
+    },
+    {
+      "candidate": false,
+      "counter_j": 1217.424,
+      "counter_mean_w": 74.69389932670151,
+      "identical_training_replay": true,
+      "integral_excess_percent": 24.99648983923637,
+      "max_gap_seconds": 0.06063255,
+      "pair": 2,
+      "power_integral_j": 1521.737266460425,
+      "reported_power_mean_w": 93.3647522824299,
+      "sample_count": 299,
+      "unchanged_counter_intervals": 135,
+      "window_seconds": 16.29884115
+    }
+  ]
+}

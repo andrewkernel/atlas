@@ -1,0 +1,5 @@
+# Passive telemetry consistency diagnostic
+
+After the frozen six workload replays showed roughly 24% disagreement between integrated reported power and cumulative-counter energy, capture 20 seconds of the same read-only APIs without launching an owned training child. Target 200 ms reads; retain actual relative timestamps and query spans, all power/counter readings, exact source and installed binding hashes. Use the unchanged minimal telemetry environment and existing environment helper, a 40-second supervisor deadline, and no GPU setting changes or process management.
+
+This follow-up is selected after observing that discrepancy. It is neither confirmatory energy inference nor an idle calibration: shared display/background board activity remains uncontrolled. Counter and power are separate diagnostics, with no favored accuracy reference. Persistence of disagreement would show only that the training-window implementation is not necessary for it; absence would not identify its cause. A driver, sensor or domain explanation remains unisolated. Preserve the raw trace and report the complete result regardless of direction.
