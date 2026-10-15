@@ -62,3 +62,12 @@ This is a bounded initial research/engineering investigation, not five hours of 
 
 - Main and research branch were confirmed at9d5f687 with a clean local worktree. Main run38685249751 passed on both Linux and Windows.
 - CI emitted an actual Node20-action deprecation warning and an upcoming ubuntu-latest image migration notice. Inspected current official release metadata/action manifests; pinned checkout v7.0.1 and setup-python v7.0.0 by commit, both using Node24. Selected ubuntu-24.04 explicitly. This is CI maintenance, not additional scientific evidence.
+
+## 2026-10-15 05:14–05:21 UTC — continued research and independent audit routes
+
+- Owner requested continued research and simultaneous double-checking. Reopened primary sources and switched to the existing research branch; no new task or delegation was created.
+- Discovered HiLoRe's September2026 preprint through a search lead; inspected its primary method, conditional exact-recovery argument and evaluation appendix. Narrowed the general novelty assessment again. Anonymous code page supplied no inspectable browser content; no absence-of-code claim.
+- Inspected pinned FairScale checkpoint functions. Specialized BatchNorm handling and recomputation guards predate Atlas, so the motivating hazard is not a new finding.
+- Found and corrected the original equivalence sample-size approximation. Original integration plus200,000 simulated sufficient-statistic repetitions per condition gives36 pairs for80% power under the illustrative normal model, versus25 in the earlier formula. This does not estimate real ML variance.
+- Ran original state/RNG controls: scoped buffer restoration repairs the known BatchNorm fixture; two dropout layers differ after partitioning even with equal final RNG states. Preserved the single-layer case that matches as a positive observation.
+-17 local tests passed. All experiments remain synthetic CPU/statistical controls; no primary policy evaluation, CUDA, full training or external framework execution yet. See the amendment ledger for correction dispositions.

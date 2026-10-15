@@ -47,6 +47,10 @@ uv run --locked python benchmarks/semantic_probes.py --output artifacts/replayed
 
 The replay command writes to ignored local artifacts so the original result remains unchanged. Exact numerics are only expected within the validated environment; timestamps and elapsed times differ.
 
+## Continuation audit controls
+
+The [equivalence-power calibration](equivalence-calibration.md) corrects the initial sample-size example using direct integration and synthetic simulation. The [state/RNG controls](state-replay-probes.md) add a narrow repair positive control and a stochastic interleaving counterexample. These bring the local suite to17 passing tests. They do not convert synthetic calibration into observed full-training evidence.
+
 ## What was not established
 
 No optimizer or planner performance, full-training effect, GPU memory saving, GPU runtime, energy, consumer-tier comparison, external framework superiority, human-labeled classification accuracy, or LLM benefit was measured. No confidence interval over real training outcomes can be inferred from 40 generated partitions. This experiment supports failure-mode analysis and test design, not the primary research hypothesis.

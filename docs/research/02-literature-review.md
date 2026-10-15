@@ -34,6 +34,8 @@ Priority went to primary papers, proceedings, official repositories and API docu
 
 ## Synthesis
 
+Continuation searches added the phrases `fidelity constrained training memory optimization`, checkpoint/BatchNorm state handling and paired-equivalence power. Primary follow-up found [HiLoRe](papers/hilore.md), [FairScale's specialized mitigation](competitors/fairscale.md), and exact-power guidance in [TOSTER](https://aaroncaldwell.us/TOSTERpkg/reference/power_t_TOST.html). These searches changed the novelty assessment and corrected the experimental budget; see the [amendment ledger](13-audit-and-amendments.md). A secondary index was used only to discover HiLoRe; the paper itself supports the retained comparison.
+
 The potentially useful gap is **decision quality at the boundary between existing memory mechanisms and explicit, workload-specific training constraints**, including interactions, refusal and verification cost. It is a candidate empirical contribution. We found no source in this bounded search demonstrating precisely the proposed held-out, single-device selection study, but that observation is not evidence of global absence.
 
 Before claiming academic originality, extend the review to derivative work on rematerialization safety, compiler validation, checkpoint side effects, contract-based ML testing, and transformation composition. Run the closest open systems on a shared case set. The [novelty analysis](06-novelty-analysis.md) defines what would invalidate the candidate claim.

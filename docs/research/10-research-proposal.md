@@ -10,6 +10,8 @@ Memory-saving transformations can make a training job fit while changing its int
 
 This is a provisional empirical gap, not an established first-of-its-kind claim. The [competitor matrix](03-competitive-landscape.md) includes direct counterexamples to broad novelty; the closest additional checks are [TrainCheck](https://www.usenix.org/conference/osdi25/presentation/jiang) and [TrainParity](https://github.com/intelland/TrainParity).
 
+The continuation's [HiLoRe comparison](papers/hilore.md) further weakens the general planner claim; [FairScale](competitors/fairscale.md) precedes the motivating state hazard. Treat the benchmark and measured incremental benefit as the research test. The [power correction](experiments/equivalence-calibration.md) also makes full-outcome equivalence more expensive than the initial illustrative calculation suggested.
+
 ## Research question and hypothesis
 
 On held-out single-device PyTorch workloads and checkpointing/accumulation plans, does contract-constrained selection accept fewer plans that violate declared training semantics, without reducing valid-feasible workload coverage, than native optimizations plus existing checks under the same eight-trial/30-minute search budget?

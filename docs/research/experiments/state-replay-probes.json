@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "started_utc": "2026-10-15T05:19:03.820362+00:00",
+  "source_sha256": "e12d66ab6da2ec57f04c18201d37473f81444f2ecaf4ed43a316e5465947e25c",
+  "environment": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "torch": "2.14.1+cpu",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "device": "cpu"
+  },
+  "seeds": [
+    771,
+    772,
+    773
+  ],
+  "batchnorm_recompute": {
+    "reference": {
+      "gradient_max_abs_error": 0.0,
+      "buffer_max_abs_error": 0.0,
+      "batches_tracked": 1,
+      "evaluation_max_abs_error": 0.0
+    },
+    "native_checkpoint": {
+      "gradient_max_abs_error": 0.0,
+      "buffer_max_abs_error": 1,
+      "batches_tracked": 2,
+      "evaluation_max_abs_error": 0.052463694234248015
+    },
+    "buffer_restore_checkpoint": {
+      "gradient_max_abs_error": 0.0,
+      "buffer_max_abs_error": 0.0,
+      "batches_tracked": 1,
+      "evaluation_max_abs_error": 0.0
+    }
+  },
+  "stochastic_partition": {
+    "dropout_layers": 1,
+    "gradient_max_abs_error": 2.7755575615628914e-17,
+    "forward_max_abs_error": 0.0,
+    "final_rng_states_equal": true,
+    "limitation": "One CPU dropout implementation/shape. Different masks can preserve a distribution while failing a pathwise contract."
+  },
+  "stochastic_interleaving": {
+    "dropout_layers": 2,
+    "gradient_max_abs_error": 0.47283647986148386,
+    "forward_max_abs_error": 0.28901760444284985,
+    "final_rng_states_equal": true,
+    "limitation": "One CPU dropout implementation/shape. Different masks can preserve a distribution while failing a pathwise contract."
+  },
+  "limitation": "Original fixtures only; no FairScale execution, generic buffer transaction guarantee, GPU or full training."
+}

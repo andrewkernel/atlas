@@ -6,6 +6,8 @@ The broad concept is an intersection of established areas: memory-constrained ex
 
 In particular, “automated memory planning” conflicts with [Rockmate](https://proceedings.mlr.press/v202/zhao23b.html) and native [memory-budget optimization](https://pytorch.org/blog/activation-checkpointing-techniques/); “preserving training with changing resources” conflicts with [EasyScale](https://arxiv.org/html/2208.14228v2); “automatically finding training invariants” conflicts with [TrainCheck](https://www.usenix.org/conference/osdi25/presentation/jiang); and “checking accumulation parity” overlaps [TrainParity](https://github.com/intelland/TrainParity).
 
+The continuation found [HiLoRe](papers/hilore.md), a closer counterexample to the broad framing. Its existence strengthens the case for making the interaction benchmark the primary artifact. [FairScale's state handling](competitors/fairscale.md) also means the BatchNorm counterexample is a known hazard, not an Atlas discovery. Candidate1 remains a falsifiable study, with weaker confidence in standalone planner novelty; candidate2 is the preferred durable output if the composed baseline is competitive.
+
 ## Candidate ranking
 
 Ratings are qualitative planning judgments, not measured probabilities of publication. Hardware refers to the proposed evaluation, not a verified requirement.

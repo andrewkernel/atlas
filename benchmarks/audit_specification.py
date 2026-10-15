@@ -74,6 +74,13 @@ def main() -> int:
     composition=json.loads((ROOT/'docs/research/experiments/cpu-composition-probes.json').read_text(encoding='utf-8'))
     if composition['source_sha256'] != hashlib.sha256((ROOT/'benchmarks/composition_probes.py').read_bytes()).hexdigest():
         failures.append('Recorded composition source hash no longer matches source')
+    for script, evidence in (
+        ('equivalence_calibration.py', 'equivalence-calibration.json'),
+        ('state_replay_probes.py', 'state-replay-probes.json'),
+    ):
+        recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
+        if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
+            failures.append(f'Recorded source hash no longer matches: {script}')
     if len(list((ROOT/'docs/research/papers').glob('*.md'))) < 25:
         failures.append('Paper notes/index missing')
     print(json.dumps({'markdown_files':len(markdown),'local_links_checked':links,'unique_external_links_catalogued':len(external),'lock_package_count':len(lock['package']),'failures':failures},indent=2))

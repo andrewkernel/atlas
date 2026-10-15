@@ -4,11 +4,11 @@ A research-first specification for a local scientific-fidelity-aware ML compute 
 
 **Assessment: Proceed with modifications.** Automatic memory optimization and training checking already have substantial prior art. Atlas should test whether explicit experiment contracts improve selection among existing memory-saving plans on a single consumer GPU. Novelty and practical benefit remain hypotheses.
 
-Start with the [executive assessment](docs/research/00-executive-assessment.md) and [research index](docs/research/README.md). The package includes a competitor matrix,24 paper notes, scientific-fidelity framework, architecture/API/security specification, benchmark protocol, six decision records and a phased roadmap.
+Start with the [executive assessment](docs/research/00-executive-assessment.md) and [research index](docs/research/README.md). The package includes a competitor matrix,25 paper notes, scientific-fidelity framework, architecture/API/security specification, benchmark protocol, six decision records and a phased roadmap. The [continuation audit](docs/research/13-audit-and-amendments.md) records corrections and closer prior art.
 
 ## Evidence status
 
-Original offline CPU probes demonstrate loss-weighting, BatchNorm, RNG, checkpoint-state and update-timing failure modes. Eleven tests passed, including 40 generated accumulation cases and two-update composition controls. **No GPU savings, full-training equivalence, LLM benefit or scientific-conclusion preservation was established.** The application has not been implemented. See [actual experiments](docs/research/experiments/README.md) and [open questions](docs/research/11-open-questions.md).
+Original offline CPU probes demonstrate loss-weighting, BatchNorm, RNG, checkpoint-state and update-timing failure modes. The expanded suite has17 passing tests, including40 generated accumulation cases, state-repair controls and a synthetic statistical-design calibration. **No GPU savings, full-training equivalence, LLM benefit or scientific-conclusion preservation was established.** The application has not been implemented. See [actual experiments](docs/research/experiments/README.md) and [open questions](docs/research/11-open-questions.md).
 
 ## Reproduce the bounded probes
 

@@ -8,6 +8,8 @@ Automatic rematerialization is established in [Checkmate](https://arxiv.org/abs/
 
 Preserving behavior is also established: [EasyScale](https://arxiv.org/html/2208.14228v2) targets consistency under changing resources; [TrainCheck](https://www.usenix.org/conference/osdi25/presentation/jiang) checks training invariants; [TrainParity](https://github.com/intelland/TrainParity) tests declared training relations. These must be explicit comparators rather than omitted neighbors.
 
+The continuation audit found an even closer recent neighbor, [HiLoRe](papers/hilore.md), which directly weakens general fidelity-constrained memory-planning novelty. [FairScale](competitors/fairscale.md) also predates Atlas's checkpoint-state example and has specialized handling. The [audit amendments](13-audit-and-amendments.md) narrow the claim and correct a statistical planning error.
+
 ## Selected question
 
 **On held-out single-device PyTorch workloads and checkpointing/accumulation plans, does contract-constrained selection accept fewer plans that violate declared training semantics, without reducing valid-feasible workload coverage, than native optimizations plus existing checks under the same eight-trial/30-minute search budget?**
@@ -24,7 +26,7 @@ A Python 3.12 command-line library with a trusted adapter, CPU/CUDA profiler, fi
 
 ## Actual evidence from this session
 
-The [CPU probes](experiments/README.md) demonstrate unequal-loss weighting errors, BatchNorm sensitivity, checkpoint/dropout RNG effects, buffer changes despite matching gradients, and clipping/update-timing faults in a checkpoint-plus-accumulation composition. Eleven tests passed, including 40 generated accumulation cases. This is evidence of specific failure modes on tiny models. No full training, GPU memory optimization, LLM comparison, energy study, or human expert labeling was performed.
+The [CPU probes](experiments/README.md) demonstrate unequal-loss weighting errors, BatchNorm sensitivity, checkpoint/dropout RNG effects, buffer changes despite matching gradients, and clipping/update-timing faults in a checkpoint-plus-accumulation composition. The continuation adds a scoped state-repair positive control, RNG-interleaving controls and synthetic equivalence-power calibration;17 tests pass, including40 generated accumulation cases. These are bounded controls, not evidence for the primary selection hypothesis. No full training, GPU memory optimization, LLM comparison, energy study, or human expert labeling was performed.
 
 A 12 GB RTX 3060 is present on the host, but the isolated research environment uses a CPU-only PyTorch wheel. No physical 6–8, 16 or 24 GB tiers were tested. No result supports a general claim that a 24 GB experiment can be reproduced on an 8 GB GPU.
 

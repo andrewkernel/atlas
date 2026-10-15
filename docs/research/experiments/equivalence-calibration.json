@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0",
+  "started_utc": "2026-10-15T05:17:54.718416+00:00",
+  "source_sha256": "4dac5d1b3df83b6fb012838828ebc1b16b934a26a7c60cf4212ab5380ac3648f",
+  "environment": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "assumptions": "iid normal paired differences; SD=1, symmetric margin=.5, each one-sided alpha=.05; no multiplicity adjustment",
+  "target_power": 0.8,
+  "old_approximation_n": 25,
+  "corrected_known_sd_approximation_n": 35,
+  "minimum_unknown_sd_n_in_searched_range": 36,
+  "cases": [
+    {
+      "n_pairs": 3,
+      "true_mean": 0.0,
+      "known_sd_power": 0.0,
+      "unknown_sd_power": 0.01902487452548366,
+      "simulation": {
+        "equivalence_decisions": 3709,
+        "repetitions": 200000,
+        "fraction": 0.018545,
+        "monte_carlo_wilson_95": [
+          0.01796291627056511,
+          0.019145578269769984
+        ],
+        "seed": 8903
+      }
+    },
+    {
+      "n_pairs": 5,
+      "true_mean": 0.0,
+      "known_sd_power": 0.0,
+      "unknown_sd_power": 0.020276173634376466,
+      "simulation": {
+        "equivalence_decisions": 4056,
+        "repetitions": 200000,
+        "fraction": 0.02028,
+        "monte_carlo_wilson_95": [
+          0.01967139362744797,
+          0.020907034264856718
+        ],
+        "seed": 8905
+      }
+    },
+    {
+      "n_pairs": 10,
+      "true_mean": 0.0,
+      "known_sd_power": 0.0,
+      "unknown_sd_power": 0.06545825672306002,
+      "simulation": {
+        "equivalence_decisions": 13227,
+        "repetitions": 200000,
+        "fraction": 0.066135,
+        "monte_carlo_wilson_95": [
+          0.06505415395447839,
+          0.06723251247071707
+        ],
+        "seed": 8910
+      }
+    },
+    {
+      "n_pairs": 25,
+      "true_mean": 0.0,
+      "known_sd_power": 0.6075298800309881,
+      "unknown_sd_power": 0.5668321543721334,
+      "simulation": {
+        "equivalence_decisions": 113871,
+        "repetitions": 200000,
+        "fraction": 0.569355,
+        "monte_carlo_wilson_95": [
+          0.5671835652486584,
+          0.5715237705587485
+        ],
+        "seed": 8925
+      }
+    },
+    {
+      "n_pairs": 35,
+      "true_mean": 0.0,
+      "known_sd_power": 0.8108798088248081,
+      "unknown_sd_power": 0.7899818836363528,
+      "simulation": {
+        "equivalence_decisions": 158143,
+        "repetitions": 200000,
+        "fraction": 0.790715,
+        "monte_carlo_wilson_95": [
+          0.7889265856060119,
+          0.7924922469114746
+        ],
+        "seed": 8935
+      }
+    },
+    {
+      "n_pairs": 36,
+      "true_mean": 0.0,
+      "known_sd_power": 0.824629073500593,
+      "unknown_sd_power": 0.8051491016577366,
+      "simulation": {
+        "equivalence_decisions": 160948,
+        "repetitions": 200000,
+        "fraction": 0.80474,
+        "monte_carlo_wilson_95": [
+          0.802996882865785,
+          0.80647141089745
+        ],
+        "seed": 8936
+      }
+    },
+    {
+      "n_pairs": 50,
+      "true_mean": 0.0,
+      "known_sd_power": 0.9413329634430458,
+      "unknown_sd_power": 0.9344134916523195,
+      "simulation": {
+        "equivalence_decisions": 186953,
+        "repetitions": 200000,
+        "fraction": 0.934765,
+        "monte_carlo_wilson_95": [
+          0.93367438502128,
+          0.9358389139810591
+        ],
+        "seed": 8950
+      }
+    }
+  ],
+  "boundary_controls": [
+    {
+      "n_pairs": 36,
+      "true_mean": 0.5,
+      "unknown_sd_probability": 0.04998856689780549,
+      "simulation": {
+        "equivalence_decisions": 9972,
+        "repetitions": 200000,
+        "fraction": 0.04986,
+        "monte_carlo_wilson_95": [
+          0.048914715384643356,
+          0.05082257622596707
+        ],
+        "seed": 9200
+      }
+    },
+    {
+      "n_pairs": 36,
+      "true_mean": -0.5,
+      "unknown_sd_probability": 0.049988566897805474,
+      "simulation": {
+        "equivalence_decisions": 9930,
+        "repetitions": 200000,
+        "fraction": 0.04965,
+        "monte_carlo_wilson_95": [
+          0.04870662503237486,
+          0.05061067464514415
+        ],
+        "seed": 9201
+      }
+    },
+    {
+      "n_pairs": 36,
+      "true_mean": 1.0,
+      "unknown_sd_probability": 2.229415263908362e-06,
+      "simulation": {
+        "equivalence_decisions": 0,
+        "repetitions": 200000,
+        "fraction": 0.0,
+        "monte_carlo_wilson_95": [
+          0.0,
+          1.920692519040967e-05
+        ],
+        "seed": 9202
+      }
+    }
+  ],
+  "limitation": "Synthetic power calibration only; no observed ML variance, validated domain margin or training equivalence."
+}

@@ -28,3 +28,4 @@ These concise notes preserve metadata, the claim actually used, limitations and 
 | [Chisel: Reliability- and Accuracy-Aware Optimization of Approximate Computational Kernels](chisel.md) | 2014 | Abstract and first-page design context. |
 | [Learning to learn by gradient descent by gradient descent](learned-optimization.md) | 2016 | Abstract only. |
 | [When More Memory Fails: Hidden Feasibility Holes in Dynamic Tensor Rematerialization](dtr-feasibility-holes.md) | 2026 | Abstract only; exploratory context, not foundation of verdict. |
+| [HiLoRe: What to Store, Compress, or Recompute for Efficient GRPO Training](hilore.md) | 2026 | Method, exact-recovery conditions and evaluation appendix inspected; not replicated. |

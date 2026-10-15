@@ -52,6 +52,8 @@ Use `use_reentrant=False` explicitly, preserve RNG state, record checkpointed mo
 
 **Observed local counterexample:** the [BatchNorm checkpoint probe](experiments/cpu-semantic-probes.json) has zero gradient difference but running-mean error approximately 0.0361 and evaluation-output error approximately 0.0262. This motivates checking buffers before and after a complete update and evaluation. It does not estimate how often that failure occurs in real projects.
 
+The continuation [state controls](experiments/state-replay-probes.md) add a repair positive control and distinguish known specialized solutions from arbitrary side-effect safety. [FairScale already handles this hazard](competitors/fairscale.md). A second stochastic control has matching final RNG state but different per-sample/layer randomness after partitioning; seed and final-state equality are insufficient for pathwise parity. Failure of pathwise parity alone does not prove a distributional change.
+
 ## Numerical comparisons
 
 Save corresponding observations at declared phases: initial state; loss accounting; pre-clip gradients; post-clip gradients; post-update state; post-scheduler state; evaluation. A missing observation yields `ABSTAIN`, not equality of absent fields. Compare keyed tensors by semantic name, shape and dtype; treat missing/extra parameters and changed trainable flags as structural differences. Exclude neither buffers nor optimizer counters.

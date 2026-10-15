@@ -47,6 +47,8 @@
 
 ## Fair comparison requirements
 
+Continuation additions: [HiLoRe](papers/hilore.md) is a direct conceptual comparator; [FairScale](competitors/fairscale.md) supplies a relevant existing state-aware checkpoint implementation. Neither was executed. Their omission from the original metadata snapshot is preserved as historical scope, not hidden by rewriting that snapshot. Include both in the next capability study; record unsupported workload/precision combinations explicitly.
+
 Use current native PyTorch as a strong baseline; do not intentionally disable an already-used efficient attention kernel and then attribute the difference to Atlas. Match optimizer, data sequence, initialization, precision contract and update count. Compare Atlas with **native mechanisms plus applicable existing checks**, not only unmodified code. For mismatched framework/Python versions, report separate capability and runtime comparisons; do not attribute version differences to the planner.
 
 Migration effort is a cost. Record adaptation hours and modified lines, but do not interpret lines as a direct measure of scientific reliability. Failed installations and unsupported workloads belong in coverage results, with versions and causes. Do not silently remove difficult systems from the table or use an incompatible configuration to make Atlas look better.

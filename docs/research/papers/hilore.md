@@ -1,0 +1,7 @@
+# HiLoRe
+
+Xinrui Chen, Mengyang Li, Ou Wu and Ji Zhang. **HiLoRe: What to Store, Compress, or Recompute for Efficient GRPO Training.** [arXiv2609.33570v1](https://arxiv.org/abs/2609.33570), submitted27 September2026, under review. Inspected abstract, [method, exact-recovery conditions and evaluation appendix](https://arxiv.org/html/2609.33570v1); not replicated. The linked anonymous code page returned no inspectable content in the browser.
+
+The paper allocates saved training states among precision-preserving storage, compression and recomputation under memory and calibrated update-risk constraints. Its GRPO-specific exposure signal informs allocation. Conditional exact recovery requires matched states, deterministic execution and accumulation order. Downstream evaluations use three-seed LoRA comparisons and a single-seed full-parameter trajectory; these are not a universal scientific-equivalence result.
+
+**Atlas assessment:** this is direct prior art against claiming a new general combination of memory optimization and training fidelity. The proposed Atlas distinction must be the particular contract/interaction benchmark and selection comparison, supported by evidence. Different target hardware or a different name is insufficient. A direct runtime comparison is conditional on shared workload/precision support; do not force a GRPO system onto an unrelated small-CNN task and interpret failure as superiority.

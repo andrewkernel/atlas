@@ -21,10 +21,11 @@ Started 2026-10-14 America/Chicago (2026-10-15 UTC). This is a bounded initial i
 | [10 Research proposal](10-research-proposal.md) | Faculty-facing narrow research package |
 | [11 Open questions](11-open-questions.md) | Unfinished evidence and stop/pivot requirements |
 | [12 Research log](12-research-log.md) | Observed chronology and execution limits |
+| [13 Audit and amendments](13-audit-and-amendments.md) | Corrections, new prior art and evidence audit |
 
 ## Supporting evidence and implementation
 
-- [24 paper notes](papers/README.md), [source register](sources.md), [competitor notes/snapshots](competitors/README.md).
+- [25 paper notes](papers/README.md), [source register](sources.md), [competitor notes/snapshots](competitors/README.md).
 - [Actual CPU probes and limits](experiments/README.md), [raw results](experiments/cpu-semantic-probes.json).
 - [Strategy-by-strategy consequences](strategy-analysis.md), [planned constructors](../../benchmarks/planned-workloads.md).
 - [Dependency/license status](dependencies-and-licenses.md), [dataset/model revisions](asset-snapshot.json).
@@ -34,6 +35,6 @@ Started 2026-10-14 America/Chicago (2026-10-15 UTC). This is a bounded initial i
 
 ## What exists versus what is proposed
 
-Executed: original CPU semantic/composition controls, eleven pytest tests including 40 generated accumulation partitions, dependency locking, source/repository inspection and documentation checks. Proposed: Atlas application, native CUDA profiling, optimization selection, full-training equivalence, expert labels, other physical hardware tiers, energy study and LLM evaluation.
+Executed: original CPU semantic/composition/state controls, synthetic equivalence-power calibration,17 pytest tests including40 generated accumulation partitions, dependency locking, source/repository inspection and documentation checks. Proposed: Atlas application, native CUDA profiling, optimization selection, full-training equivalence, expert labels, other physical hardware tiers, energy study and LLM evaluation.
 
 The strongest local observation is that checkpointing can match gradients while changing BatchNorm buffers/evaluation. That motivates evidence design; it does not validate the proposed planner or certify scientific conclusions.

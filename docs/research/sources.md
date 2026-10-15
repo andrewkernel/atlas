@@ -90,6 +90,8 @@ Search families and limitations are in the [literature review](02-literature-rev
 
 ## Reproducible source identities
 
+Continuation sources: [HiLoRe primary preprint](https://arxiv.org/abs/2609.33570v1), selected HTML method/theory/evaluation sections ([note](papers/hilore.md)); pinned [FairScale source](competitors/fairscale.md), selected checkpoint functions; [TOSTER exact-power reference](https://aaroncaldwell.us/TOSTERpkg/reference/power_t_TOST.html), paired-SD convention and exact-power methods. Neither HiLoRe/FairScale nor the TOSTER R package was executed. A failed generic TOSTER introduction URL was replaced by the working specific reference page. The original metadata snapshot is historical and was not rewritten to imply it already covered these additions.
+
 - [GitHub metadata snapshot](competitors/repository-snapshot.json):15 public repositories, exact heads/archive/license metadata; authenticated read-only API.
 - [Hugging Face snapshot](asset-snapshot.json): model/data revision hashes and card license metadata; no data/weights downloaded.
 - [Dependency snapshot](dependency-snapshot.json): PyPI metadata, Python requirement and installed-versus-optional distinction. These primary endpoints are recorded per package.
