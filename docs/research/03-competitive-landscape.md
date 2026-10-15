@@ -1,6 +1,6 @@
 # Competitor comparison
 
-**V** = explicitly documented in the linked primary source; **I** = Atlas assessment/inference. **ND** = no general scientific-conclusion verifier documented in the inspected material; this is not proof the feature is absent. No competing system was executed here. Consumer support below is a compatibility assessment, not a hardware certification. Exact inspected repository heads and license metadata are in the [snapshot](competitors/repository-snapshot.json).
+**V** = explicitly documented in the linked primary source; **I** = Atlas assessment/inference. **ND** = no general scientific-conclusion verifier documented in the inspected material; this is not proof the feature is absent. The initial matrix was source-only; later [TrainParity CPU controls](experiments/trainparity-controls.md) execute a narrow compatible subset. Consumer support below is a compatibility assessment, not a hardware certification. Exact inspected repository heads and license metadata are in the [snapshot](competitors/repository-snapshot.json).
 
 ## Mechanisms, architecture and selection
 
@@ -49,7 +49,7 @@
 
 Continuation additions: [HiLoRe](papers/hilore.md) is a direct conceptual comparator; [FairScale](competitors/fairscale.md) supplies a relevant existing state-aware checkpoint implementation. Neither was executed. Their omission from the original metadata snapshot is preserved as historical scope, not hidden by rewriting that snapshot. Include both in the next capability study; record unsupported workload/precision combinations explicitly.
 
-Deeper continuation review also adds [HiRemate/OffMate](competitors/rockmate-family.md) and confirms [TrainParity's worker/snapshot state coverage](competitors/trainparity.md). Original matrix entries are a starting classification; these additions govern current comparator selection. Buffer/state/None-gradient capture is not an unoccupied generic-verifier gap. No external system was executed.
+Deeper continuation review also adds [HiRemate/OffMate](competitors/rockmate-family.md) and confirms [TrainParity's worker/snapshot state coverage](competitors/trainparity.md). Original matrix entries are a starting classification; these additions govern current comparator selection. Buffer/state/None-gradient capture is not an unoccupied generic-verifier gap. The later TrainParity control run executes selected accumulation checks; other listed external systems remain unexecuted.
 
 Use current native PyTorch as a strong baseline; do not intentionally disable an already-used efficient attention kernel and then attribute the difference to Atlas. Match optimizer, data sequence, initialization, precision contract and update count. Compare Atlas with **native mechanisms plus applicable existing checks**, not only unmodified code. For mismatched framework/Python versions, report separate capability and runtime comparisons; do not attribute version differences to the planner.
 

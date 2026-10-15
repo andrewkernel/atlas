@@ -124,3 +124,11 @@ This is a bounded initial research/engineering investigation, not five hours of 
 
 - Standard-library derivation independently recalculated the raw CNN figures:32.7137% lower allocated memory,66.4385% higher synchronized update time and the three paired validation differences. Canonical JSON input hashes bind this arithmetic to raw records without newline sensitivity. This is not new independent experimental replication.
 - Checkpoint6618202 passed cross-platform run38691236082. The account usage tool changed from90% consumed in its prior five-hour readout to2% with a new reset timestamp(and a refreshed weekly readout). No reset/credit action was requested by the agent; continued work uses the currently reported allowance rather than claiming exhaustion.
+
+## 2026-10-15 06:18–06:30 UTC — reviewed direct-checker execution
+
+- Downloaded pinned TrainParity source as text, inspected import-time statements and its accumulation execution path, and retained source identities/license. No build hooks, downloaded fixture cases, resume commands or external checkpoints were executed. Ran only original allowlisted CPU cases with an explicit minimal child environment; this is not validated hostile-code isolation.
+- Prepared a separate official Python 3.11.17/PyTorch 2.13.0+cpu environment within the checker's declared support. NumPy 2.5.4 is incompatible with Python 3.11; selected 2.4.6 and captured exact installed dependency pins/hashes. The Atlas core lock is unchanged.
+- Froze protocol/source/config at c5a0c93. The first attempt supplied instances instead of required class import targets: all 11 setup errors are retained, with no accumulation workers launched. Amendment df967a4 corrected import targets before rerunning unchanged control meanings/parameters.
+- The second attempt produced three PASS, six FAIL, one ABSTAIN and one ERROR as predicted; 28 owned worker launches, 120.18 seconds summed check-call wall time and 143.71 seconds outer wall time. Retained the scheduler warning. These are investigator controls, not independent detection estimates, GPU/checkpoint-selection performance or a full Atlas policy study. Generic-checker overlap now has direct execution evidence.
+- Checkpoint e2a4fba passed Linux/Windows on both main and research branches (runs 38691514171 and 38691511629).

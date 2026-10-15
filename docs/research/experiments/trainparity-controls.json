@@ -1,0 +1,642 @@
+{
+  "case_source_sha256": "a068e546915bb7ca991f85362cc45341903b3696654e6cfc161877e161383d2e",
+  "claims": "Investigator-authored bounded controls; not an Atlas policy comparison, independent benchmark, full-training equivalence, or cross-environment timing comparison.",
+  "config": {
+    "atol": 1e-12,
+    "controls": [
+      {
+        "case": "BalancedCase",
+        "name": "balanced_positive",
+        "plan": {
+          "microbatch_count": 2
+        },
+        "predicted_outcome": "pass"
+      },
+      {
+        "case": "LinearCase",
+        "name": "unequal_positive",
+        "plan": {
+          "microbatch_count": 2
+        },
+        "predicted_outcome": "pass"
+      },
+      {
+        "case": "NoAccountingCase",
+        "name": "balanced_no_accounting",
+        "plan": {
+          "microbatch_count": 2
+        },
+        "predicted_outcome": "pass"
+      },
+      {
+        "case": "LinearCase",
+        "name": "unequal_wrong_mean",
+        "plan": {
+          "microbatch_count": 2,
+          "use_explicit_loss_accounting": false
+        },
+        "predicted_outcome": "fail"
+      },
+      {
+        "case": "LinearCase",
+        "name": "partial_clipping",
+        "plan": {
+          "clip_grad_norm": 0.2,
+          "clip_per_microbatch": true,
+          "microbatch_count": 2
+        },
+        "predicted_outcome": "fail"
+      },
+      {
+        "case": "LinearCase",
+        "name": "step_per_microbatch",
+        "plan": {
+          "microbatch_count": 2,
+          "optimizer_step_per_microbatch": true
+        },
+        "predicted_outcome": "fail"
+      },
+      {
+        "case": "LinearCase",
+        "name": "scheduler_per_microbatch",
+        "plan": {
+          "microbatch_count": 2,
+          "scheduler_step_per_microbatch": true
+        },
+        "predicted_outcome": "fail"
+      },
+      {
+        "case": "LinearCase",
+        "name": "omitted_tail",
+        "plan": {
+          "microbatch_count": 2,
+          "omit_final_microbatch": true
+        },
+        "predicted_outcome": "fail"
+      },
+      {
+        "case": "LinearCase",
+        "name": "erased_gradient_observation",
+        "plan": {
+          "microbatch_count": 2,
+          "zero_grad_before_gradient_observation": true
+        },
+        "predicted_outcome": "fail"
+      },
+      {
+        "case": "MetadataCase",
+        "name": "unsupported_metadata",
+        "plan": {
+          "microbatch_count": 2
+        },
+        "predicted_outcome": "abstain"
+      },
+      {
+        "case": "LinearCase",
+        "name": "invalid_plan",
+        "plan": {
+          "microbatch_count": 0
+        },
+        "predicted_outcome": "error"
+      }
+    ],
+    "revision": "79a1fc23c36073f09b97aa99c2daad7e96e7bce4",
+    "rtol": 1e-10,
+    "seed": 1701,
+    "worker_timeout_seconds": 30
+  },
+  "config_sha256": "b903b695c6d6d77e8db8ca8e29c73db416e467957932fbebbc9b6b44dcc75e73",
+  "environment_keys": [
+    "MKL_NUM_THREADS",
+    "OMP_NUM_THREADS",
+    "PATH",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONHASHSEED",
+    "PYTHONNOUSERSITE",
+    "PYTHONPATH",
+    "SystemRoot",
+    "TEMP",
+    "TMP",
+    "WINDIR"
+  ],
+  "review_sha256": "fb582db3dec0a7c46091bcf3249bb57725acba9f8747a78cad94a0cc8a2a2733",
+  "source_sha256": "b7cb47da0ef3bf477469e40d0e9b254f166c7da3097a4a540c67544257f06273",
+  "started_utc": "20261015T062609Z",
+  "trials": [
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "balanced_positive",
+      "outer_wall_seconds": 14.956363899982534,
+      "predicted_outcome": "pass",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:BalancedCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "One float64 logical MSE/SGD update, named state and declared scheduler clock",
+        "first_observed_phase": null,
+        "loss_normalization_captured": true,
+        "message": "declared executions are equivalent for one optimizer-update boundary",
+        "outcome": "PASS",
+        "peak_temporary_directory_bytes": 187509,
+        "persisted_artifact_bytes": 658,
+        "primary_difference": null,
+        "process_ids": [
+          19680,
+          19488,
+          15904
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": true
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 12.7954885000363
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "unequal_positive",
+      "outer_wall_seconds": 15.17043040000135,
+      "predicted_outcome": "pass",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:LinearCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "One float64 logical MSE/SGD update, named state and declared scheduler clock",
+        "first_observed_phase": null,
+        "loss_normalization_captured": true,
+        "message": "declared executions are equivalent for one optimizer-update boundary",
+        "outcome": "PASS",
+        "peak_temporary_directory_bytes": 187507,
+        "persisted_artifact_bytes": 654,
+        "primary_difference": null,
+        "process_ids": [
+          17700,
+          2776,
+          4300
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": true
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 13.011307000007946
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "balanced_no_accounting",
+      "outer_wall_seconds": 14.841494699998293,
+      "predicted_outcome": "pass",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:NoAccountingCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "One float64 logical MSE/SGD update, named state and declared scheduler clock",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "declared executions are equivalent for one optimizer-update boundary",
+        "outcome": "PASS",
+        "peak_temporary_directory_bytes": 186917,
+        "persisted_artifact_bytes": 662,
+        "primary_difference": null,
+        "process_ids": [
+          1744,
+          23280,
+          23220
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": true
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 12.718232899962459
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "unequal_wrong_mean",
+      "outer_wall_seconds": 14.965977699961513,
+      "predicted_outcome": "fail",
+      "result": {
+        "all_differences": [
+          {
+            "baseline": "7.0",
+            "candidate": "<missing>",
+            "max_abs_error": null,
+            "max_rel_error": null,
+            "path": "loss_accounting.denominator",
+            "reason": "missing_candidate"
+          },
+          {
+            "baseline": "tensor(shape=(), dtype=torch.float64, device=cpu, values=[2.796160714285713])",
+            "candidate": "tensor(shape=(), dtype=torch.float64, device=cpu, values=[2.9578124999999984])",
+            "max_abs_error": 0.16165178571428562,
+            "max_rel_error": 0.057812050962735895,
+            "path": "loss_accounting.effective_loss",
+            "reason": "tensor_value"
+          },
+          {
+            "baseline": "True",
+            "candidate": "False",
+            "max_abs_error": null,
+            "max_rel_error": null,
+            "path": "loss_accounting.normalization_captured",
+            "reason": "value"
+          },
+          {
+            "baseline": "tensor(shape=(), dtype=torch.float64, device=cpu, values=[19.57312499999999])",
+            "candidate": "<missing>",
+            "max_abs_error": null,
+            "max_rel_error": null,
+            "path": "loss_accounting.numerator",
+            "reason": "missing_candidate"
+          }
+        ],
+        "case": "trainparity_cases:LinearCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "One float64 logical MSE/SGD update, named state and declared scheduler clock",
+        "first_observed_phase": "loss_accounting",
+        "loss_normalization_captured": false,
+        "message": "first observed divergence in loss_accounting; not a root-cause claim",
+        "outcome": "FAIL",
+        "peak_temporary_directory_bytes": 187311,
+        "persisted_artifact_bytes": 1933,
+        "primary_difference": {
+          "baseline": "7.0",
+          "candidate": "<missing>",
+          "max_abs_error": null,
+          "max_rel_error": null,
+          "path": "loss_accounting.denominator",
+          "reason": "missing_candidate"
+        },
+        "process_ids": [
+          21816,
+          18624,
+          5772
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": true
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 12.857379199995194
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "partial_clipping",
+      "outer_wall_seconds": 15.006610799988266,
+      "predicted_outcome": "fail",
+      "result": {
+        "all_differences": [
+          {
+            "baseline": "tensor(shape=(1, 2), dtype=torch.float64, device=cpu, values=[-0.18953124661503462, -0.06385842671373052])",
+            "candidate": "tensor(shape=(1, 2), dtype=torch.float64, device=cpu, values=[-0.18870035223312712, -0.06627341373536627])",
+            "max_abs_error": 0.002414987021635756,
+            "max_rel_error": 0.037817828373095476,
+            "path": "gradient.weight",
+            "reason": "tensor_value"
+          }
+        ],
+        "case": "trainparity_cases:LinearCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "One float64 logical MSE/SGD update, named state and declared scheduler clock",
+        "first_observed_phase": "gradient",
+        "loss_normalization_captured": true,
+        "message": "first observed divergence in gradient; not a root-cause claim",
+        "outcome": "FAIL",
+        "peak_temporary_directory_bytes": 187507,
+        "persisted_artifact_bytes": 1480,
+        "primary_difference": {
+          "baseline": "tensor(shape=(1, 2), dtype=torch.float64, device=cpu, values=[-0.18953124661503462, -0.06385842671373052])",
+          "candidate": "tensor(shape=(1, 2), dtype=torch.float64, device=cpu, values=[-0.18870035223312712, -0.06627341373536627])",
+          "max_abs_error": 0.002414987021635756,
+          "max_rel_error": 0.037817828373095476,
+          "path": "gradient.weight",
+          "reason": "tensor_value"
+        },
+        "process_ids": [
+          19536,
+          7412,
+          4572
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": true
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 12.877150999964215
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "step_per_microbatch",
+      "outer_wall_seconds": 15.130136799998581,
+      "predicted_outcome": "fail",
+      "result": {
+        "all_differences": [
+          {
+            "baseline": "tensor(shape=(1, 2), dtype=torch.float64, device=cpu, values=[-9.603571428571426, -3.235714285714285])",
+            "candidate": "None",
+            "max_abs_error": null,
+            "max_rel_error": null,
+            "path": "gradient.weight",
+            "reason": "type"
+          }
+        ],
+        "case": "trainparity_cases:LinearCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "One float64 logical MSE/SGD update, named state and declared scheduler clock",
+        "first_observed_phase": "gradient",
+        "loss_normalization_captured": true,
+        "message": "first observed divergence in gradient; not a root-cause claim",
+        "outcome": "FAIL",
+        "peak_temporary_directory_bytes": 187386,
+        "persisted_artifact_bytes": 1189,
+        "primary_difference": {
+          "baseline": "tensor(shape=(1, 2), dtype=torch.float64, device=cpu, values=[-9.603571428571426, -3.235714285714285])",
+          "candidate": "None",
+          "max_abs_error": null,
+          "max_rel_error": null,
+          "path": "gradient.weight",
+          "reason": "type"
+        },
+        "process_ids": [
+          20956,
+          14900,
+          2820
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": true
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 12.97715920000337
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "scheduler_per_microbatch",
+      "outer_wall_seconds": 14.971515199984424,
+      "predicted_outcome": "fail",
+      "result": {
+        "all_differences": [
+          {
+            "baseline": "0.05",
+            "candidate": "0.0125",
+            "max_abs_error": null,
+            "max_rel_error": null,
+            "path": "optimizer.param_groups[0].lr",
+            "reason": "value"
+          }
+        ],
+        "case": "trainparity_cases:LinearCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "One float64 logical MSE/SGD update, named state and declared scheduler clock",
+        "first_observed_phase": "optimizer_state",
+        "loss_normalization_captured": true,
+        "message": "first observed divergence in optimizer_state; not a root-cause claim",
+        "outcome": "FAIL",
+        "peak_temporary_directory_bytes": 187509,
+        "persisted_artifact_bytes": 1040,
+        "primary_difference": {
+          "baseline": "0.05",
+          "candidate": "0.0125",
+          "max_abs_error": null,
+          "max_rel_error": null,
+          "path": "optimizer.param_groups[0].lr",
+          "reason": "value"
+        },
+        "process_ids": [
+          20576,
+          14596,
+          22696
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": true
+      },
+      "stderr_nonempty": true,
+      "wall_seconds": 12.840845600003377
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "omitted_tail",
+      "outer_wall_seconds": 15.024756299972069,
+      "predicted_outcome": "fail",
+      "result": {
+        "all_differences": [
+          {
+            "baseline": "7.0",
+            "candidate": "4.0",
+            "max_abs_error": null,
+            "max_rel_error": null,
+            "path": "loss_accounting.denominator",
+            "reason": "value"
+          },
+          {
+            "baseline": "tensor(shape=(), dtype=torch.float64, device=cpu, values=[2.796160714285713])",
+            "candidate": "tensor(shape=(), dtype=torch.float64, device=cpu, values=[1.8262499999999993])",
+            "max_abs_error": 0.9699107142857135,
+            "max_rel_error": 0.34687230577641526,
+            "path": "loss_accounting.effective_loss",
+            "reason": "tensor_value"
+          },
+          {
+            "baseline": "tensor(shape=(), dtype=torch.float64, device=cpu, values=[19.57312499999999])",
+            "candidate": "tensor(shape=(), dtype=torch.float64, device=cpu, values=[7.304999999999997])",
+            "max_abs_error": 12.268124999999994,
+            "max_rel_error": 0.6267841747293802,
+            "path": "loss_accounting.numerator",
+            "reason": "tensor_value"
+          }
+        ],
+        "case": "trainparity_cases:LinearCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "One float64 logical MSE/SGD update, named state and declared scheduler clock",
+        "first_observed_phase": "loss_accounting",
+        "loss_normalization_captured": true,
+        "message": "first observed divergence in loss_accounting; not a root-cause claim",
+        "outcome": "FAIL",
+        "peak_temporary_directory_bytes": 187508,
+        "persisted_artifact_bytes": 1780,
+        "primary_difference": {
+          "baseline": "7.0",
+          "candidate": "4.0",
+          "max_abs_error": null,
+          "max_rel_error": null,
+          "path": "loss_accounting.denominator",
+          "reason": "value"
+        },
+        "process_ids": [
+          14240,
+          4848,
+          16564
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": true
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 12.851359500025865
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "erased_gradient_observation",
+      "outer_wall_seconds": 15.033183599996846,
+      "predicted_outcome": "fail",
+      "result": {
+        "all_differences": [
+          {
+            "baseline": "tensor(shape=(1, 2), dtype=torch.float64, device=cpu, values=[-9.603571428571426, -3.235714285714285])",
+            "candidate": "None",
+            "max_abs_error": null,
+            "max_rel_error": null,
+            "path": "gradient.weight",
+            "reason": "type"
+          }
+        ],
+        "case": "trainparity_cases:LinearCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "One float64 logical MSE/SGD update, named state and declared scheduler clock",
+        "first_observed_phase": "gradient",
+        "loss_normalization_captured": true,
+        "message": "first observed divergence in gradient; not a root-cause claim",
+        "outcome": "FAIL",
+        "peak_temporary_directory_bytes": 187228,
+        "persisted_artifact_bytes": 1190,
+        "primary_difference": {
+          "baseline": "tensor(shape=(1, 2), dtype=torch.float64, device=cpu, values=[-9.603571428571426, -3.235714285714285])",
+          "candidate": "None",
+          "max_abs_error": null,
+          "max_rel_error": null,
+          "path": "gradient.weight",
+          "reason": "type"
+        },
+        "process_ids": [
+          10836,
+          21908,
+          20080
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": true
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 12.93765410000924
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "unsupported_metadata",
+      "outer_wall_seconds": 6.418214100005571,
+      "predicted_outcome": "abstain",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:MetadataCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "One float64 logical MSE/SGD update, named state and declared scheduler clock",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "unsupported batch leaf: str",
+        "outcome": "ABSTAIN",
+        "peak_temporary_directory_bytes": 80,
+        "persisted_artifact_bytes": 596,
+        "primary_difference": null,
+        "process_ids": [
+          22808
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 4.3121463999850675
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "invalid_plan",
+      "outer_wall_seconds": 2.186754700029269,
+      "predicted_outcome": "error",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:LinearCase",
+        "comparison_policy": "exact",
+        "equivalence": "",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "case setup failed: ValueError: microbatch_count must be positive",
+        "outcome": "ERROR",
+        "peak_temporary_directory_bytes": 0,
+        "persisted_artifact_bytes": 526,
+        "primary_difference": null,
+        "process_ids": [],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 0.000658599950838834
+    }
+  ]
+}

@@ -29,6 +29,8 @@ The owner asked for continued research and simultaneous double-checking after th
 
 ## Audit discipline
 
+Further execution amendment: [direct TrainParity controls](experiments/trainparity-controls.md) now replace the source-only limitation for a narrow CPU subset. The retained first attempt exposed an investigator adapter error, corrected before rerunning. All 11 corrected-run outcomes match the authored predictions, but labels are not independent and no primary policy study exists. Generic-checker overlap is stronger, not weaker, after execution.
+
 For each substantive claim, distinguish paper-reported results, primary implementation behavior, original measured fixtures, conditional derivation and proposed work. A source absence or failed page fetch is not a negative capability result. Record software identities; a fix for a reentrant wrapper cannot be transferred blindly to native non-reentrant checkpointing.
 
 Statistical calibration was checked through a separate mathematical integration and sampling route with boundary controls. These routes share a stated probability model; agreement does not validate that model for actual ML outcomes. The state probes include a negative control and a repaired positive control. Retain results that match unexpectedly, such as the single-dropout partition case, rather than selecting only counterexamples.

@@ -127,6 +127,25 @@ def main() -> int:
     if bibliography['source_sha256'] != hashlib.sha256((ROOT/'benchmarks/audit_primary_bibliography.py').read_bytes()).hexdigest():
         failures.append('Bibliography capture source identity is stale')
     derived=json.loads((ROOT/'docs/research/experiments/derived-summary.json').read_text(encoding='utf-8'))
+    checker=json.loads((ROOT/'docs/research/experiments/trainparity-controls.json').read_text(encoding='utf-8'))
+    for key,name in (
+        ('source_sha256','benchmarks/run_trainparity_controls.py'),
+        ('case_source_sha256','benchmarks/trainparity_cases.py'),
+        ('config_sha256','configs/trainparity-controls.json'),
+        ('review_sha256','docs/research/competitors/trainparity-execution-review.json'),
+    ):
+        if checker[key] != hashlib.sha256((ROOT/name).read_bytes()).hexdigest():
+            failures.append(f'Checker control identity is stale: {name}')
+    declared=json.loads((ROOT/'configs/trainparity-controls.json').read_text(encoding='utf-8'))
+    if checker['config'] != declared:
+        failures.append('Checker control configuration differs from frozen record')
+    intended=[item['name'] for item in declared['controls']]
+    observed=[item['name'] for item in checker['trials']]
+    if intended != observed or len(set(observed)) != len(observed):
+        failures.append('Checker control intended-run denominator is incomplete/duplicated')
+    checker_environment=json.loads((ROOT/'docs/research/experiments/checker-environment.json').read_text(encoding='utf-8'))
+    if checker_environment['requirements_sha256'] != hashlib.sha256((ROOT/checker_environment['requirements_file']).read_bytes()).hexdigest():
+        failures.append('External checker requirements identity is stale')
     for name,expected_digest in derived['input_canonical_json_sha256'].items():
         value=json.loads((ROOT/'docs/research/experiments'/name).read_text(encoding='utf-8'))
         actual=hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()

@@ -2,7 +2,7 @@
 
 This is a targeted primary-source scoping review. Most sources were retrieved on 2026-10-14 America/Chicago (2026-10-15 UTC); machine-readable snapshots carry exact retrieval times. Source claims are not independent replications. Paper abstracts, selected sections and repository documentation have different evidence depth; the table states that distinction.
 
-Search families and limitations are in the [literature review](02-literature-review.md). Existing systems were not executed. Analytical judgments, proposed contracts and plans are Atlas proposals, not facts attributed to the papers. A recent preprint is identified as such. No search establishes global absence of prior work.
+Search families and limitations are in the [literature review](02-literature-review.md). The original survey was source-only; the later [TrainParity controls](experiments/trainparity-controls.md) execute a selected compatible CPU subset. Analytical judgments, proposed contracts and plans are Atlas proposals, not facts attributed to the papers. A recent preprint is identified as such. No search establishes global absence of prior work.
 
 ## Papers
 

@@ -1,6 +1,6 @@
 # TrainParity — close overlap requiring direct comparison
 
-Primary evidence: [repository README](https://github.com/intelland/TrainParity), [comparison with TrainCheck](https://github.com/intelland/TrainParity/blob/main/docs/comparison-with-traincheck.md), and selected [accumulation source](https://github.com/intelland/TrainParity/blob/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/accumulation.py) sections. Captured head/metadata are in [repository snapshot](repository-snapshot.json). No code was executed.
+Primary evidence: [repository README](https://github.com/intelland/TrainParity), [comparison with TrainCheck](https://github.com/intelland/TrainParity/blob/main/docs/comparison-with-traincheck.md), and selected [accumulation source](https://github.com/intelland/TrainParity/blob/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/accumulation.py) sections. Captured head/metadata are in [repository snapshot](repository-snapshot.json). The initial inspection was source-only; the later [direct controls](../experiments/trainparity-controls.md) now execute selected accumulation checks in a separate compatible CPU environment.
 
 ## Verified documented scope
 
@@ -14,12 +14,14 @@ Generic accumulation verification and abstention are not Atlas novelty. The cand
 
 ## Deeper continuation inspection
 
-[Selected source/test identities](trainparity-source-inspection.json) now cover accumulation orchestration, its worker, snapshot capture, the accumulation test module and a fixture at the same pinned commit. No code was imported or executed.
+[Selected source/test identities](trainparity-source-inspection.json) now cover accumulation orchestration, its worker, snapshot capture, the accumulation test module and a fixture at the same pinned commit. That inspection preceded execution; the later direct-control run is separately identified below.
 
 The worker explicitly captures named model buffers with parameters, keyed gradients including None, canonical optimizer state, scheduler/scaler state and loss numerator/denominator observations. The generic snapshot also supports RNG and extra state. Execution-plan fields include per-microbatch optimizer/scheduler stepping, partial-gradient clipping, omitted tails and AMP ordering faults. The inspected tests include clean/faulted fresh-process controls and explicit loss-accounting divergence; listing a fault field is not a runtime replication of every fault.
 
 This overlaps more of the proposed generic verifier than the original README-level review established. Buffer capture, abstention and state/update snapshots cannot be treated as Atlas distinctions. Its worker computes loss terms for all microbatches before their backwards; a different memory-conscious executor needs a fair adaptation/capability analysis, not an assumed drop-in equivalence. Do not infer unsupported full-training or checkpoint-composition guarantees from these bounded observations.
 
-## Remaining direct experiment
+## Direct experiment and remaining comparison
 
-Use shared authored loss/update cases and compare documented observation coverage in a compatible environment. Include native strategies plus this checker as a composed baseline; measure adaptation and orchestration costs. Current advertised validation numbers were not independently replicated here.
+The [frozen direct controls](../experiments/trainparity-controls.md) now reproduce selected clean/fault/refusal/error behaviors in Python 3.11/PyTorch 2.13. Three PASS, six FAIL, one ABSTAIN and one ERROR match the authored predictions after a retained adapter-setup repair. This is a narrow executable capability comparison, not an independent replication of the repository's entire advertised validation suite.
+
+Include native strategies plus this checker as a composed baseline for the remaining independently labeled held-out selection study. Measure adaptation and total orchestration cost; do not reuse the CPU control times as GPU or cross-version performance evidence.

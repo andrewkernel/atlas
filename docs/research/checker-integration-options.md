@@ -6,7 +6,7 @@ The [deeper source audit](competitors/trainparity.md) establishes substantial ov
 
 Start with a reviewed shared workload and a mutually compatible stack for both policies. Give existing checks the same initialization, input/contract facts and named observations. Measure the checker workflow as it actually runs, plus an explicitly documented memory-conscious adaptation if necessary. Record human adaptation time and modified behavior. Keep runtime comparisons separate when environments differ.
 
-Reuse existing capture/comparison semantics where possible instead of implementing another generic state checker and presenting it as a new contribution. Any vendoring requires provenance/license compliance and maintenance responsibility; package/source reuse has not been implemented here. A source-level comparison is not a substitute for executing the eventual shared baseline.
+Reuse existing capture/comparison semantics where possible instead of implementing another generic state checker and presenting it as a new contribution. Any vendoring requires provenance/license compliance and maintenance responsibility; a separate reviewed source-path adapter now executes the [bounded CPU controls](experiments/trainparity-controls.md). This is not an integrated Atlas product. A small executable comparison is not a substitute for the eventual independently labeled shared-workload selection study.
 
 ## Streaming a known global denominator
 

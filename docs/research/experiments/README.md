@@ -70,3 +70,7 @@ The [450 MiB allocator-cap control](cuda-budget-probe.md) records three OOMs and
 [Two fresh-process replays](fashion-repeatability.md) of the lowest pilot seed reproduce each arm's final parameter digest and all epoch validation metrics exactly. They are repeatability controls, not extra independent seed pairs. [Four activation-liveness controls](activation-liveness-probe.md) separately show why a verification execution pattern can retain more memory than a streamed target plan; no external checker is run.
 
 [Derived summary arithmetic](derived-summary.json), produced by [the standard-library calculation](../../../benchmarks/derive_research_summary.py), independently recalculates headline percentages and paired differences from the raw JSON. Canonical input hashes avoid text-newline ambiguity. It confirms32.7137% lower allocated memory and66.4385% higher synchronized update time in the CNN pilot; this is descriptive arithmetic, not new independent evidence or inference.
+
+## Direct external-checker controls
+
+[TrainParity controls](trainparity-controls.md) execute a reviewed pinned checker on original CPU cases in a separate compatible stack. The setup failure, adapter amendment, protocol, all 11 outcomes and environment are retained. This confirms selected existing capabilities, not Atlas selection superiority.

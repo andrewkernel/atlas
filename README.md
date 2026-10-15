@@ -14,6 +14,8 @@ Original offline CPU probes demonstrate loss-weighting, BatchNorm, RNG, checkpoi
 
 The [evidence map](docs/research/evidence-map.md) separates measured findings, source inspections, mathematical controls and untested hypotheses. Local replay controls reproduce the lowest seed's final hashes and epoch metrics exactly within each arm; they add no independent seeds.
 
+[Direct TrainParity controls](docs/research/experiments/trainparity-controls.md) now execute the closest existing checker in a separate supported CPU environment. Its clean, faulted, refusal and error controls behave as predicted. This strengthens the requirement to reuse existing checks and demonstrate value through the remaining held-out selection comparison.
+
 ## Reproduce the bounded probes
 
 With Python 3.12 and uv 0.13.1 installed:
