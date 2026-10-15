@@ -179,3 +179,9 @@ This is a bounded initial research/engineering investigation, not five hours of 
 
 - Retrieved the official 18-page TrainCheck PDF with byte identity after the earlier landing-page failure. Selected methods/evaluation reading and visual inspection of pages 13/14 clarify precondition inference, conditioned evaluation populations, analyst review and online versus offline cost. No TrainCheck code or paper suite was run. OffMate public metadata access still fails certificate validation; no bypass or full-paper read.
 - Consolidated the observed comparison/state/execution/resource boundaries into a clearly labeled proposed JSON illustration and decision walkthrough. It is specification, not an application or completed policy benchmark. Existing conditional checks further weaken a novelty claim based on contracts alone; the primary comparison gate remains.
+
+## 2026-10-15 08:09–08:12 UTC — holdout preparation and closest-paper boundary
+
+- Prepared an independent-adjudication procedure and assignment-to-deliverable audit. They explicitly retain the uncollected-label and unexecuted-primary-study limits; no outside reviewer was contacted.
+- Rechecked selected HiLoRe methods/appendices with captured versioned HTML bytes. Its conditional recovery proposition, surrogate risk, observed no-low-precision residual and larger distributed evaluation setup remain distinct scopes. This adds no paper execution, proof defect or commodity-card result.
+- Added independent exact-rational reconstruction/replay-identity checks to CPU CI, with a published-record diff check. Checkpoint a094fa5 passed Linux/Windows run 38703250319.
