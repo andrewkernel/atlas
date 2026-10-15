@@ -1,0 +1,118 @@
+{
+  "captured_utc": "2026-10-15T07:12:55.343850+00:00",
+  "historical_source_commit": "e0d8f00",
+  "interpretation": "Initial reuse attempt: two completed positives, one worker whose error reporter required unavailable home-directory state, and two unstarted modes. Original deferred error was masked; do not infer its cause. Retained before reporting-only repair.",
+  "source_sha256": "4dc1a7f3efd6a0dbe2992e2dc6995e9ef352069675bd13dbab3d7cb4310cc1fe",
+  "trials": [
+    {
+      "atol": 1e-07,
+      "comparisons": {
+        "gradient": {
+          "finite": true,
+          "max_abs_error": 0.0,
+          "none_mismatches": [],
+          "relative_l2_error": 0.0,
+          "within_declared_tolerance": true,
+          "zero_reference_norm": false
+        },
+        "momentum": {
+          "finite": true,
+          "max_abs_error": 0.0,
+          "none_mismatches": [],
+          "relative_l2_error": 0.0,
+          "within_declared_tolerance": true,
+          "zero_reference_norm": false
+        },
+        "parameter": {
+          "finite": true,
+          "max_abs_error": 0.0,
+          "none_mismatches": [],
+          "relative_l2_error": 0.0,
+          "within_declared_tolerance": true,
+          "zero_reference_norm": false
+        }
+      },
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "torch": "2.14.1+cu130"
+      },
+      "initial_parameter_max_abs_error": 0.0,
+      "input_target_sha256": "117e24aeee95f325a9e1263b8605a6faedae50a03f20acce6f7440588ee3d413",
+      "mode": "native_streaming",
+      "observed_losses": [
+        0.5010863542556763,
+        0.5000237822532654
+      ],
+      "reference_losses": [
+        0.5010863542556763,
+        0.5000237822532654
+      ],
+      "rtol": 1e-05,
+      "seed": 1901,
+      "status": "completed"
+    },
+    {
+      "atol": 1e-07,
+      "comparisons": {
+        "gradient": {
+          "finite": true,
+          "max_abs_error": 0.0,
+          "none_mismatches": [],
+          "relative_l2_error": 0.0,
+          "within_declared_tolerance": true,
+          "zero_reference_norm": false
+        },
+        "momentum": {
+          "finite": true,
+          "max_abs_error": 0.0,
+          "none_mismatches": [],
+          "relative_l2_error": 0.0,
+          "within_declared_tolerance": true,
+          "zero_reference_norm": false
+        },
+        "parameter": {
+          "finite": true,
+          "max_abs_error": 0.0,
+          "none_mismatches": [],
+          "relative_l2_error": 0.0,
+          "within_declared_tolerance": true,
+          "zero_reference_norm": false
+        }
+      },
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "torch": "2.14.1+cu130"
+      },
+      "initial_parameter_max_abs_error": 0.0,
+      "input_target_sha256": "117e24aeee95f325a9e1263b8605a6faedae50a03f20acce6f7440588ee3d413",
+      "mode": "planner_streaming",
+      "observed_losses": [
+        0.5010863542556763,
+        0.5000237822532654
+      ],
+      "reference_losses": [
+        0.5010863542556763,
+        0.5000237822532654
+      ],
+      "rtol": 1e-05,
+      "schedule_present": true,
+      "seed": 1901,
+      "status": "completed"
+    },
+    {
+      "mode": "planner_deferred_separate",
+      "status": "worker_reporting_failure",
+      "stderr_excerpt": "<atlas>\\.tools\\planner-env\\Lib\\site-packages\\pulp\\apis\\xpress_api.py:325: SyntaxWarning: invalid escape sequence '\\ '\n  otherwise be interpreted by the Tcl shell: \\ $ \" [\nW1015 02:10:42.894000 20776 Lib\\site-packages\\torch\\utils\\flop_counter.py:113] triton not found; flop counting will not work for triton kernels\n<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\lowlevel\\measure.py:170: FutureWarning: torch.cuda.reset_max_memory_allocated now calls torch.cuda.reset_peak_memory_stats, which resets /all/ peak memory stats.\n  return torch.cuda.reset_max_memory_allocated(self.device)\nTraceback (most recent call last):\n  File \"<atlas>\\benchmarks\\planner_reuse_control.py\", line 166, in <module>\n    main()\n  File \"<atlas>\\benchmarks\\planner_reuse_control.py\", line 140, in main\n    worker(args.worker,args.output);return\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\benchmarks\\planner_reuse_control.py\", line 133, in worker\n    if key in row:row[key]=row[key].replace(str(ROOT),\"<atlas>\").replace(str(Path.home()),\"<profile>\")\n                                                                             ^^^^^^^^^^^\n  File \"<profile>\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1202, in home\n    return cls(\"~\").expanduser()\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"<profile>\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1406, in expanduser\n    raise RuntimeError(\"Could not determine home directory.\")\nRuntimeError: Could not determine home directory.\n"
+    },
+    {
+      "mode": "planner_deferred_joint",
+      "status": "not_started_after_launcher_stopped"
+    },
+    {
+      "mode": "planner_single",
+      "status": "not_started_after_launcher_stopped"
+    }
+  ]
+}

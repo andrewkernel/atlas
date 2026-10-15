@@ -5,7 +5,9 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import math
 import os
+import re
 from pathlib import Path
 import subprocess
 import time
@@ -17,6 +19,23 @@ MODES = ("native_streaming", "planner_streaming", "planner_deferred_separate", "
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def portable(value: str) -> str:
+    value = value.replace(str(ROOT), "<atlas>")
+    return re.sub(r"(?i)[a-z]:\\Users\\[^\\]+", "<profile>", value)
+
+
+def finite_json(value, path="root", invalid=None):
+    if invalid is None:
+        invalid=[]
+    if isinstance(value,float) and not math.isfinite(value):
+        invalid.append(path);return None
+    if isinstance(value,dict):
+        return {key:finite_json(child,path+'.'+key,invalid) for key,child in value.items()}
+    if isinstance(value,(list,tuple)):
+        return [finite_json(child,path+f'[{index}]',invalid) for index,child in enumerate(value)]
+    return value
 
 
 def worker(mode: str, output: Path) -> None:
@@ -130,7 +149,10 @@ def worker(mode: str, output: Path) -> None:
     except Exception as error:
         row.update({"failed_phase":phase,"error_type":type(error).__name__,"error_message":str(error)[:2000],"traceback":traceback.format_exc()[-5000:]})
     for key in ("error_message","traceback"):
-        if key in row:row[key]=row[key].replace(str(ROOT),"<atlas>").replace(str(Path.home()),"<profile>")
+        if key in row:row[key]=portable(row[key])
+    invalid=[]
+    row=finite_json(row,invalid=invalid)
+    row['nonfinite_scalar_fields']=invalid
     output.write_text(json.dumps(row,indent=2,sort_keys=True,allow_nan=False)+"\n",encoding="utf-8")
 
 
@@ -154,8 +176,17 @@ def main() -> None:
     for mode in MODES:
         target=directory/(mode+".json");started=time.perf_counter()
         with (directory/(mode+".stdout.txt")).open('w',encoding='utf-8') as stdout,(directory/(mode+".stderr.txt")).open('w',encoding='utf-8') as stderr:
-            subprocess.run([str(interpreter),str(Path(__file__).resolve()),"--worker",mode,"--output",str(target)],cwd=directory,env=env,stdout=stdout,stderr=stderr,timeout=60,check=True)
-        row=json.loads(target.read_text(encoding='utf-8'));row['outer_wall_seconds']=time.perf_counter()-started;rows.append(row)
+            try:
+                process=subprocess.run([str(interpreter),str(Path(__file__).resolve()),"--worker",mode,"--output",str(target)],cwd=directory,env=env,stdout=stdout,stderr=stderr,timeout=60,check=False)
+                returncode=process.returncode
+            except subprocess.TimeoutExpired:
+                returncode=None
+        if target.exists() and returncode==0:
+            row=json.loads(target.read_text(encoding='utf-8'))
+        else:
+            row={'mode':mode,'status':'timeout' if returncode is None else 'worker_failure','returncode':returncode,
+                 'stderr_excerpt':portable((directory/(mode+'.stderr.txt')).read_text(encoding='utf-8')[-2000:])}
+        row['outer_wall_seconds']=time.perf_counter()-started;rows.append(row)
         print(mode,row['status'],row.get('failed_phase',''),flush=True)
     result={"captured_utc":datetime.now(timezone.utc).isoformat(),"source_sha256":sha(Path(__file__)),"review_sha256":sha(review_path),"modes":MODES,"trials":rows,
             "scope":"Exploratory pure module-reuse/accumulation relation. Investigator cases, not independent labels, paper-environment replication, bug prevalence, scientific equivalence or Atlas policy evaluation."}
