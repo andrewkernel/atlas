@@ -8,7 +8,7 @@ The owner asked for continued research and simultaneous double-checking after th
 | A02 | Candidate gap between memory management and explicit fidelity | **Narrowed.** Recent [HiLoRe](papers/hilore.md) makes broad planner novelty less credible. Prioritize a specific interaction benchmark and incremental selection comparison. | Selected primary paper sections; no runtime replication |
 | A03 | BatchNorm checkpoint-state discrepancy motivates verifier | **Retained as a fixture, novelty limited.**[FairScale](competitors/fairscale.md) already has specialized mitigation. An original positive control repairs our narrow fixture. | [State-replay experiment](experiments/state-replay-probes.md); no generic mutable-region guarantee |
 | A04 | Identical seed/final RNG can support pathwise equivalence | **Insufficient.** Two-layer dropout control has equal final RNG states but different gradients after partitioning. | One CPU implementation/shape; distributional behavior and outcomes untested |
-| A05 |17 passing tests support Atlas efficacy | **Rejected interpretation.** They check research fixtures and calibration, not primary selection benefit. | No application, expert-labeled corpus or competing-system execution yet |
+| A05 |17 passing tests support Atlas efficacy | **Rejected interpretation.** They check research fixtures and calibration, not primary selection benefit. | No application or independently labeled primary corpus; later existing-system controls still do not establish Atlas selection benefit |
 | A06 | No CUDA support or measurement has been validated | **Updated with new evidence.** Separate2.14.1+cu130 environment passes native smoke and eight synthetic physical-GPU trials. | [Measured fixture](experiments/cuda-memory-probe.md), not real-workload or planner validation |
 | A07 | First complete update captures maximum training allocation | **Insufficient.** Later windows peak higher in the fixture after persistent optimizer state exists during forward/backward. | Both windows recorded; no guarantee about unseen future shapes |
 | A08 | One optimizer relative norm adequately summarizes state parity | **Refined.** Compare steps and each moment family separately so step magnitudes cannot hide small-state differences. | Published CUDA run repeats the corrected instrumentation; absolute errors retained |
@@ -28,6 +28,13 @@ The owner asked for continued research and simultaneous double-checking after th
 | A22 | Zero observed errors or a favorable selected interval certifies reliability | **Rejected implication.** Sampling units, prevalence, selection/multiplicity and stopping rules must be defined. | [Claim-selection audit](statistical-claim-selection.md); illustrative mathematics, not measured field risk |
 
 ## Audit discipline
+
+Additional execution amendments:
+
+|ID |Assumption under review |Disposition and scope |
+|---|---|---|
+|A23 |Pure-model update parity establishes preparation noninterference |[Existing planner construction](experiments/rockmate-state-control.md) advances the observed CUDA RNG while pure update comparisons match; an existing scoped Torch RNG guard restores that dimension. No generic state-transaction or distributional conclusion. |
+|A24 |A successful nominal activation-budget plan guarantees total memory below that budget |[Executed budget/schedule controls](experiments/rockmate-compatibility.md) distinguish reported schedule accounting, planned recomputation, resident allocations and observed whole peaks. Exact 512-byte reported differences remain visible; no hard-cap or algorithmic inferiority claim. |
 
 Further execution amendment: [direct TrainParity controls](experiments/trainparity-controls.md) now replace the source-only limitation for a narrow CPU subset. The retained first attempt exposed an investigator adapter error, corrected before rerunning. All 11 corrected-run outcomes match the authored predictions, but labels are not independent and no primary policy study exists. Generic-checker overlap is stronger, not weaker, after execution.
 

@@ -56,6 +56,8 @@ The continuation [state controls](experiments/state-replay-probes.md) add a repa
 
 ## Numerical comparisons
 
+The [existing-planner construction control](experiments/rockmate-state-control.md) also observes a changed CUDA global RNG before candidate training, despite unchanged model values and zero numerical errors on a pure fixed-input model. Treat scientific-start replay as a separate precondition after preparation; process freshness or pure-model parity does not establish profiling noninterference. An existing scoped Torch RNG guard repairs that observed dimension, not arbitrary state.
+
 Save corresponding observations at declared phases: initial state; loss accounting; pre-clip gradients; post-clip gradients; post-update state; post-scheduler state; evaluation. A missing observation yields `ABSTAIN`, not equality of absent fields. Compare keyed tensors by semantic name, shape and dtype; treat missing/extra parameters and changed trainable flags as structural differences. Exclude neither buffers nor optimizer counters.
 
 Use an explicitly declared elementwise criterion |a-b| <= atol + rtol*|a| for empirical comparisons, with baseline as the named reference. Also report max absolute error, relative L2 error (with a defined zero-reference rule), gradient cosine where norms are nonzero, and nonfinite counts. Cosine agreement alone can conceal scaling errors. ULP measures are optional for matching types, not a substitute for a scientific margin.

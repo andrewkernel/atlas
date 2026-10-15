@@ -49,3 +49,5 @@ Most importantly, observed total allocation did not fall below the native refere
 ## Consequence for Atlas
 
 The closest memory-planning baseline is more than a literature label: a reviewed adapted execution exists, and it can select schedules with repeated forwards while preserving these recorded updates. Generic recomputation planning plus finite numerical fidelity checks remains established territory. The remaining research gate is independently adjudicated, held-out contract-conditioned selection under comparable budgets and full workflow costs. No primary Atlas selection experiment has run.
+
+The later [construction-state control](rockmate-state-control.md) observes CUDA RNG advancement despite this pure fixture's unchanged parameters and zero numerical errors. The proposed adapter therefore needs a separately verified scientific-start replay after planning; an existing scoped Torch RNG guard is sufficient only for the observed dimension.

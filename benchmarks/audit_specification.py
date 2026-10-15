@@ -88,6 +88,7 @@ def main() -> int:
         ('rockmate_compatibility_probe.py', 'rockmate-compatibility.json'),
         ('rockmate_schedule_diagnostics.py', 'rockmate-schedule-diagnostics.json'),
         ('rockmate_budget_frontier.py', 'rockmate-budget-frontier.json'),
+        ('rockmate_state_control.py', 'rockmate-state-control.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
@@ -157,7 +158,7 @@ def main() -> int:
     observed={(trial['mode'],trial['budget_mib']) for trial in planner['trials']}
     if intended != observed or len(observed) != len(planner['trials']):
         failures.append('Planner bracket intended-run denominator is incomplete/duplicated')
-    for name in ('rockmate-schedule-diagnostics.json','rockmate-budget-frontier.json'):
+    for name in ('rockmate-schedule-diagnostics.json','rockmate-budget-frontier.json','rockmate-state-control.json'):
         record=json.loads((ROOT/'docs/research/experiments'/name).read_text(encoding='utf-8'))
         if record['fixture_source_sha256'] != hashlib.sha256((ROOT/'benchmarks/rockmate_compatibility_probe.py').read_bytes()).hexdigest():
             failures.append(f'Planner follow-up fixture identity is stale: {name}')

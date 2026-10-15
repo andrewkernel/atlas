@@ -1,0 +1,294 @@
+{
+  "candidate": {
+    "allocated_peak_bytes": 132923392,
+    "completed_updates": 8,
+    "losses": [
+      1.0031439065933228,
+      1.0031423568725586,
+      1.0031394958496094,
+      1.0031354427337646,
+      1.0031301975250244,
+      1.0031239986419678,
+      1.0031170845031738,
+      1.003109097480774
+    ],
+    "median_later_update_seconds": 0.0038323000189848244,
+    "reserved_peak_bytes": 236978176,
+    "update_seconds": [
+      0.0053329000365920365,
+      0.0045962000149302185,
+      0.004369899979792535,
+      0.0037811999791301787,
+      0.0038323000189848244,
+      0.004010199976619333,
+      0.0037039999733678997,
+      0.003885100013576448
+    ]
+  },
+  "captured_utc": "2026-10-15T07:00:31.541831+00:00",
+  "changed_inside_guard": {
+    "buffer": false,
+    "gradient": false,
+    "numpy_rng": false,
+    "parameter": false,
+    "python_rng": false,
+    "torch_cpu_rng": false,
+    "torch_cuda_rng": true,
+    "training_mode": false
+  },
+  "comparisons": {
+    "final_parameter": {
+      "max_abs_error": 0.0,
+      "within_declared_tolerance": true
+    },
+    "first_gradient": {
+      "max_abs_error": 0.0,
+      "within_declared_tolerance": true
+    },
+    "first_momentum": {
+      "max_abs_error": 0.0,
+      "within_declared_tolerance": true
+    },
+    "first_parameter": {
+      "max_abs_error": 0.0,
+      "within_declared_tolerance": true
+    }
+  },
+  "config": {
+    "atol": 1e-06,
+    "blocks": 4,
+    "bracket_budgets_mib": [
+      64,
+      128
+    ],
+    "budget_bytes": 67108864,
+    "graph_extractor": "rkgb_dynamo_with_named_x_wrapper",
+    "hidden": 128,
+    "input_shape": [
+      128,
+      64,
+      64
+    ],
+    "lr": 0.01,
+    "modes": [
+      "rotor_config",
+      "rockmate_config"
+    ],
+    "momentum": 0.9,
+    "rtol": 1e-05,
+    "seed": 1801,
+    "timeout_seconds": 180,
+    "updates": 8,
+    "warmup_updates": 3,
+    "width": 64
+  },
+  "construction_seconds": 0.16100589995039627,
+  "constructor_parameter_max_abs_change": 0.0,
+  "environment": {
+    "cuda": "13.0",
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "python": "3.12.10",
+    "torch": "2.14.1+cu130"
+  },
+  "fixture_source_sha256": "704a7364d394969dec94f631a9e0e639f8a4f2401450e89c11eda78c5967c0fa",
+  "initial_state_sha256": "6f0833ac9df0d85fc6eaedd4a216dbb97806860771aca37f0ea84404babc54d1",
+  "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+  "legacy_sequential_initial_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+  "minor_parameter_node_count": 0,
+  "mode": "rotor_config",
+  "native_export_diagnostics": {
+    "direct_sequential_input": {
+      "call_function_node_count": 16,
+      "name_alias_assignments": [
+        "input_1 = input"
+      ],
+      "noncleanup_assignment_count": 17
+    },
+    "named_x_wrapper": {
+      "call_function_node_count": 16,
+      "name_alias_assignments": [],
+      "noncleanup_assignment_count": 16
+    }
+  },
+  "native_reference": {
+    "allocated_peak_bytes": 107788288,
+    "completed_updates": 8,
+    "losses": [
+      1.0031439065933228,
+      1.0031423568725586,
+      1.0031394958496094,
+      1.0031354427337646,
+      1.0031301975250244,
+      1.0031239986419678,
+      1.0031170845031738,
+      1.003109097480774
+    ],
+    "median_later_update_seconds": 0.001886499987449497,
+    "reserved_peak_bytes": 111149056,
+    "update_seconds": [
+      0.11199260002467781,
+      0.008164800005033612,
+      0.0022920999908819795,
+      0.0017769000260159373,
+      0.0017674000118859112,
+      0.0025732999783940613,
+      0.001886499987449497,
+      0.0020044000120833516
+    ]
+  },
+  "restored_or_unchanged_after_torch_guard": {
+    "buffer": true,
+    "gradient": true,
+    "numpy_rng": true,
+    "parameter": true,
+    "python_rng": true,
+    "torch_cpu_rng": true,
+    "torch_cuda_rng": true,
+    "training_mode": true
+  },
+  "review_sha256": "9148c94250b0e8337daf4133899ea7eed4a09d22c6f6431b9326ddcdc6f47486",
+  "schedule_present": true,
+  "scope": "One pure-fixture construction observation and Torch global RNG guard. Hashes identify state but contain no recovered random data. No custom generators, opaque state, buffers with mutations, untrusted-code rollback or general transaction guarantee.",
+  "source_sha256": "bcb1fe12f51230c7dfc4b75e8d9758594376c60162d2a5a5969a9da62a57bb25",
+  "state_observations": {
+    "after_torch_guard": {
+      "buffer": {},
+      "gradient": {
+        "layers.0.bias": null,
+        "layers.0.weight": null,
+        "layers.10.bias": null,
+        "layers.10.weight": null,
+        "layers.12.bias": null,
+        "layers.12.weight": null,
+        "layers.14.bias": null,
+        "layers.14.weight": null,
+        "layers.2.bias": null,
+        "layers.2.weight": null,
+        "layers.4.bias": null,
+        "layers.4.weight": null,
+        "layers.6.bias": null,
+        "layers.6.weight": null,
+        "layers.8.bias": null,
+        "layers.8.weight": null
+      },
+      "numpy_rng": "abd50919dbbd899852254c2ebe3c7c8b9a6fac7bc5252d1fe21971005b4fd40f",
+      "parameter": {
+        "layers.0.bias": "e89ff3f0be9178a9f8d74cc82c9635dad342c7aff6deb2ec8e743a5fac45b1c2",
+        "layers.0.weight": "f7b076cfaf0bc11baccbc4b1ce00d51901d8255388adff5c76738f6a76e1133b",
+        "layers.10.bias": "e8557257faeec56968a8d3ece3a90f4ff6b63b39947e3f3c8df2964aa44d88d0",
+        "layers.10.weight": "9a509a97e79efb1c165c0ecea2834b08a7088bc22550bdd308c243ee0e6f31e3",
+        "layers.12.bias": "1c3599aea5dff3215e4028710c2be5bb42791188999f0f033a1408c04525b321",
+        "layers.12.weight": "71dcc9ed1d0e45164412f0ba81481f468949c815f3099a74aa432c79dd5c0943",
+        "layers.14.bias": "a170801c0632f745c6c2565a2b2a5e3d37b6c9f75dcde8f37074bd0ab6f8386b",
+        "layers.14.weight": "6c2f38700505c3330b8aeccb1326d19c1732639f5d9a965349f4457e155e0cf6",
+        "layers.2.bias": "d1aa30c816a9b0c3bda45d457070da41f7bead47aafcf04d76acf7fbcc539603",
+        "layers.2.weight": "4bb75f2ff973507415c75b251aa4f9e5732ec70a587cd44f3510e8bdc175f515",
+        "layers.4.bias": "60e0a84646bf5f0f1fe06205352fa498a011b9459a1f9c000672e630daeaaa07",
+        "layers.4.weight": "b098e6d329459515c8b006e5b29a71e479e46f9e796ae7198463e8cb70999948",
+        "layers.6.bias": "1dc259954c22340ca3c090345106b3ff887f1f6a362002768e9eaa35472c4209",
+        "layers.6.weight": "c33ba785ced987716272c6a1ae663a2e5d4f5f45cc5eb471b1b9750d3e25d888",
+        "layers.8.bias": "4af443dd7d8b40059875c36994250c1c46548c49c8476c10df11e0f32f6cf1dc",
+        "layers.8.weight": "5f76b413a0fa6f8c078710e6a117654e4ec1961573ce7ce10d77d9f13f4cd233"
+      },
+      "python_rng": "85b1bdae4b76318afa63004b782589949abea9e337fc82f5baa98c73f88bcb87",
+      "torch_cpu_rng": "83f675d9a00cdcc34be0367dd52e6c84780d3a4a8e0bc5b5764bb2f5d88eb465",
+      "torch_cuda_rng": [
+        "51848186f7f00343eace70c70a28a9bd9c1bd34ce5441e59f6e1184e6102fb61"
+      ],
+      "training_mode": true
+    },
+    "before": {
+      "buffer": {},
+      "gradient": {
+        "layers.0.bias": null,
+        "layers.0.weight": null,
+        "layers.10.bias": null,
+        "layers.10.weight": null,
+        "layers.12.bias": null,
+        "layers.12.weight": null,
+        "layers.14.bias": null,
+        "layers.14.weight": null,
+        "layers.2.bias": null,
+        "layers.2.weight": null,
+        "layers.4.bias": null,
+        "layers.4.weight": null,
+        "layers.6.bias": null,
+        "layers.6.weight": null,
+        "layers.8.bias": null,
+        "layers.8.weight": null
+      },
+      "numpy_rng": "abd50919dbbd899852254c2ebe3c7c8b9a6fac7bc5252d1fe21971005b4fd40f",
+      "parameter": {
+        "layers.0.bias": "e89ff3f0be9178a9f8d74cc82c9635dad342c7aff6deb2ec8e743a5fac45b1c2",
+        "layers.0.weight": "f7b076cfaf0bc11baccbc4b1ce00d51901d8255388adff5c76738f6a76e1133b",
+        "layers.10.bias": "e8557257faeec56968a8d3ece3a90f4ff6b63b39947e3f3c8df2964aa44d88d0",
+        "layers.10.weight": "9a509a97e79efb1c165c0ecea2834b08a7088bc22550bdd308c243ee0e6f31e3",
+        "layers.12.bias": "1c3599aea5dff3215e4028710c2be5bb42791188999f0f033a1408c04525b321",
+        "layers.12.weight": "71dcc9ed1d0e45164412f0ba81481f468949c815f3099a74aa432c79dd5c0943",
+        "layers.14.bias": "a170801c0632f745c6c2565a2b2a5e3d37b6c9f75dcde8f37074bd0ab6f8386b",
+        "layers.14.weight": "6c2f38700505c3330b8aeccb1326d19c1732639f5d9a965349f4457e155e0cf6",
+        "layers.2.bias": "d1aa30c816a9b0c3bda45d457070da41f7bead47aafcf04d76acf7fbcc539603",
+        "layers.2.weight": "4bb75f2ff973507415c75b251aa4f9e5732ec70a587cd44f3510e8bdc175f515",
+        "layers.4.bias": "60e0a84646bf5f0f1fe06205352fa498a011b9459a1f9c000672e630daeaaa07",
+        "layers.4.weight": "b098e6d329459515c8b006e5b29a71e479e46f9e796ae7198463e8cb70999948",
+        "layers.6.bias": "1dc259954c22340ca3c090345106b3ff887f1f6a362002768e9eaa35472c4209",
+        "layers.6.weight": "c33ba785ced987716272c6a1ae663a2e5d4f5f45cc5eb471b1b9750d3e25d888",
+        "layers.8.bias": "4af443dd7d8b40059875c36994250c1c46548c49c8476c10df11e0f32f6cf1dc",
+        "layers.8.weight": "5f76b413a0fa6f8c078710e6a117654e4ec1961573ce7ce10d77d9f13f4cd233"
+      },
+      "python_rng": "85b1bdae4b76318afa63004b782589949abea9e337fc82f5baa98c73f88bcb87",
+      "torch_cpu_rng": "83f675d9a00cdcc34be0367dd52e6c84780d3a4a8e0bc5b5764bb2f5d88eb465",
+      "torch_cuda_rng": [
+        "51848186f7f00343eace70c70a28a9bd9c1bd34ce5441e59f6e1184e6102fb61"
+      ],
+      "training_mode": true
+    },
+    "inside_guard_after_construction": {
+      "buffer": {},
+      "gradient": {
+        "layers.0.bias": null,
+        "layers.0.weight": null,
+        "layers.10.bias": null,
+        "layers.10.weight": null,
+        "layers.12.bias": null,
+        "layers.12.weight": null,
+        "layers.14.bias": null,
+        "layers.14.weight": null,
+        "layers.2.bias": null,
+        "layers.2.weight": null,
+        "layers.4.bias": null,
+        "layers.4.weight": null,
+        "layers.6.bias": null,
+        "layers.6.weight": null,
+        "layers.8.bias": null,
+        "layers.8.weight": null
+      },
+      "numpy_rng": "abd50919dbbd899852254c2ebe3c7c8b9a6fac7bc5252d1fe21971005b4fd40f",
+      "parameter": {
+        "layers.0.bias": "e89ff3f0be9178a9f8d74cc82c9635dad342c7aff6deb2ec8e743a5fac45b1c2",
+        "layers.0.weight": "f7b076cfaf0bc11baccbc4b1ce00d51901d8255388adff5c76738f6a76e1133b",
+        "layers.10.bias": "e8557257faeec56968a8d3ece3a90f4ff6b63b39947e3f3c8df2964aa44d88d0",
+        "layers.10.weight": "9a509a97e79efb1c165c0ecea2834b08a7088bc22550bdd308c243ee0e6f31e3",
+        "layers.12.bias": "1c3599aea5dff3215e4028710c2be5bb42791188999f0f033a1408c04525b321",
+        "layers.12.weight": "71dcc9ed1d0e45164412f0ba81481f468949c815f3099a74aa432c79dd5c0943",
+        "layers.14.bias": "a170801c0632f745c6c2565a2b2a5e3d37b6c9f75dcde8f37074bd0ab6f8386b",
+        "layers.14.weight": "6c2f38700505c3330b8aeccb1326d19c1732639f5d9a965349f4457e155e0cf6",
+        "layers.2.bias": "d1aa30c816a9b0c3bda45d457070da41f7bead47aafcf04d76acf7fbcc539603",
+        "layers.2.weight": "4bb75f2ff973507415c75b251aa4f9e5732ec70a587cd44f3510e8bdc175f515",
+        "layers.4.bias": "60e0a84646bf5f0f1fe06205352fa498a011b9459a1f9c000672e630daeaaa07",
+        "layers.4.weight": "b098e6d329459515c8b006e5b29a71e479e46f9e796ae7198463e8cb70999948",
+        "layers.6.bias": "1dc259954c22340ca3c090345106b3ff887f1f6a362002768e9eaa35472c4209",
+        "layers.6.weight": "c33ba785ced987716272c6a1ae663a2e5d4f5f45cc5eb471b1b9750d3e25d888",
+        "layers.8.bias": "4af443dd7d8b40059875c36994250c1c46548c49c8476c10df11e0f32f6cf1dc",
+        "layers.8.weight": "5f76b413a0fa6f8c078710e6a117654e4ec1961573ce7ce10d77d9f13f4cd233"
+      },
+      "python_rng": "85b1bdae4b76318afa63004b782589949abea9e337fc82f5baa98c73f88bcb87",
+      "torch_cpu_rng": "83f675d9a00cdcc34be0367dd52e6c84780d3a4a8e0bc5b5764bb2f5d88eb465",
+      "torch_cuda_rng": [
+        "8430ca35fceb1acb6d6ff4413d723808635618534ae19e7e2befce4092a792af"
+      ],
+      "training_mode": true
+    }
+  },
+  "status": "completed"
+}

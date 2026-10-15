@@ -78,3 +78,5 @@ The [450 MiB allocator-cap control](cuda-budget-probe.md) records three OOMs and
 ## Direct external memory-planner controls
 
 [Rockmate-family compatibility and budget controls](rockmate-compatibility.md) execute adapted pinned source on an original pure GPU workload. Frozen attempts retain factory/framework/parser/no-schedule outcomes; larger/intermediate budgets complete finite numerical controls. Static schedules and resident-memory diagnostics bound the interpretation. No Atlas policy, published performance suite or scientific outcome is replicated.
+
+[Planner-construction state control](rockmate-state-control.md) records CUDA RNG advancement before training and a scoped existing Torch guard that restores it. Other recorded dimensions remain unchanged on the pure fixture; this is not generic state rollback or a distributional result.

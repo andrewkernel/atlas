@@ -18,6 +18,8 @@ A `RunManifest` adds Python/package lock digest, wheel origin/build, PyTorch/CUD
 
 ## Run state machine
 
+Planning/profiling state and the scientific start state are separate checkpoints in this lifecycle. After model/plan preparation and before scientific input consumption or the first update, verify/replay the declared initialization, named buffers, optimizer/update state and RNG relation. A fresh worker is insufficient when its own preparation advances RNG. The [executed planner-state control](../research/experiments/rockmate-state-control.md) observes this on an existing planner even when a pure workload's update comparisons match. Restoring only Torch global RNG is a scoped mechanism; custom generators, Python/NumPy state and mutable model/optimizer state require adapter-specific treatment or abstention. Record preparation cost and avoid generic rollback promises.
+
 `created → validated → awaiting_approval → queued → running → succeeded | oom | timeout | cancelled | failed | interrupted`
 
 For trusted builtin cases whose execution policy already authorizes the spec, `validated → queued` is allowed. Human approval is required for newly imported/untrusted executable code; the MVP can reject it entirely. Approval changes a policy state, not a fidelity status. `succeeded` means execution completed, not scientific validity.
