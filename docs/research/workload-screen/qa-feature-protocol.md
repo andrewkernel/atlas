@@ -1,0 +1,11 @@
+# Frozen QA feature preparation
+
+Before inspecting model/resource results, sample 512 questions without replacement from the pinned SQuAD 1.1 training file using Python Random seed 2401. Retain every selected question and all its context windows. Use the local pinned tokenizer JSON via the installed Rust Tokenizers library; no downloaded Python program, model constructor or network lookup runs.
+
+Maximum sequence length is 384, question tokens are capped at 64, and context capacity is 384 minus question length minus three special tokens. Context window **start advances by 128 tokens**. This follows the original Google code's meaning of doc_stride; it differs from APIs where stride denotes overlap. Pad with [PAD]=0, [CLS]=101 and [SEP]=102, explicit token types and attention masks. Shuffle completed features using seed 2402.
+
+Use each question's first recorded answer. Verify its literal character substring, map both endpoints with tokenizer offsets, and label an answer-containing window with inclusive token positions. Other windows use CLS=0 for both targets. Every selected question must have at least one answer-containing window; otherwise preparation fails rather than resampling or silently discarding it. Every label stays below 384, so the model loss's ignored-index path is excluded from the declared feature batch. The logical loss denominator is **feature examples**, not original questions or context tokens.
+
+Record source/asset/array identities, selected question hashes and per-question feature/answer-window counts, shuffled question-order digest, feature shapes/dtypes, truncation count and CLS-target count. Raw text/features remain ignored. Include a local Unicode character-offset positive control and pure-function coverage/boundary tests. These tests do not establish exact original TensorFlow tokenization equivalence or scientific adequacy of the subset.
+
+The subset prepares a resource experiment, not a full training dataset or evaluation set. No dev/test data or quality inference is introduced. Subsequent resource-study code/protocol will be frozen separately after preparation and import compatibility review; no result-driven feature filtering or resizing is allowed.

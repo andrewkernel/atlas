@@ -1,6 +1,12 @@
 {
-  "captured_utc": "2026-10-15T13:14:51.185799+00:00",
+  "captured_utc": "2026-10-15T13:17:44.935240+00:00",
   "files": {
+    "data/train-v1.1.json": {
+      "bytes": 30288272,
+      "git_blob_sha1": "77f1d9a7daee11f7bc293832020f7709f63410ad",
+      "requested_url": "https://raw.githubusercontent.com/rajpurkar/SQuAD-explorer/eee5fdbf62f8613a7812b03419e6b29617b74fd1/dataset/train-v1.1.json",
+      "sha256": "3527663986b8295af4f7fcdff1ba1ff3f72d07d61a20f487cb238a6ef92fd955"
+    },
     "model/LICENSE": {
       "bytes": 11356,
       "git_blob_sha1": "f49a4e16e68b128803cc2dcea614603632b04eac",
@@ -18,6 +24,12 @@
       "git_blob_sha1": "45a2321a7ecfdaaf60a6c1fd7f5463994cc8907d",
       "requested_url": "https://huggingface.co/google-bert/bert-base-uncased/resolve/86b5e0934494bd15c9632b12f734a8a67f723594/config.json",
       "sha256": "7160e1553ad2ca51d8c1cb066be533db31826e12d173824c1bb0cb1a4f187d20"
+    },
+    "model/model.safetensors": {
+      "bytes": 440449768,
+      "git_blob_sha1": "58e2863bd720790ef515174dc827becc70103668",
+      "requested_url": "https://huggingface.co/google-bert/bert-base-uncased/resolve/86b5e0934494bd15c9632b12f734a8a67f723594/model.safetensors",
+      "sha256": "68d45e234eb4a928074dfd868cead0219ab85354cc53d20e772753c6bb9169d3"
     },
     "model/tokenizer.json": {
       "bytes": 466062,
@@ -41,5 +53,5 @@
   "scope": "Pinned public tensor/data assets only, no foreign scripts, pickle weights or dev/test set. Byte identity is not scientific correctness.",
   "source_screen_sha256": "2b8cf079f43d25985c0c89f1c7c3674073693c7b85e15b7a18f599cc2988d61f",
   "source_sha256": "68fcf0473fc4b24566a5a6dfeed286ed1e110168624020a404f90110de690c41",
-  "training_assets_requested": false
+  "training_assets_requested": true
 }
