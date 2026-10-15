@@ -94,6 +94,8 @@ Continuation sources: [HiLoRe primary preprint](https://arxiv.org/abs/2609.33570
 
 CUDA continuation used the official [PyTorch wheel index](https://download.pytorch.org/whl/cu130/torch/), [2.14 release information](https://pytorch.org/blog/pytorch-2-14-release-blog/), [NVIDIA minor-version compatibility](https://docs.nvidia.com/deploy/cuda-compatibility/minor-version-compatibility.html), and [PyTorch CUDA precision/allocator API](https://docs.pytorch.org/docs/2.14/notes/cuda.html). Actual compatibility is supported only by the recorded smoke and synthetic fixture, not inferred from the documentation alone. No driver installation was performed.
 
+Additional backward/targeted searches opened primary abstracts for [Adacc v2](papers/adacc.md), [PRAC](papers/prac.md), [TorchProbe](papers/torchprobe.md) and the specific [TensorFuzz preprint](papers/tensorfuzz.md). These notes do not imply full paper reads. [SelectiveNet's proceedings abstract](https://proceedings.mlr.press/v97/geifman19a.html) is context for established risk/coverage evaluation, not a memory-planner comparator. [Historical issue/PR records](real-world-failures.md) were checked through official pages and GitHub's API; none was executed, changed or treated as prevalence evidence.
+
 - [GitHub metadata snapshot](competitors/repository-snapshot.json):15 public repositories, exact heads/archive/license metadata; authenticated read-only API.
 - [Hugging Face snapshot](asset-snapshot.json): model/data revision hashes and card license metadata; no data/weights downloaded.
 - [Dependency snapshot](dependency-snapshot.json): PyPI metadata, Python requirement and installed-versus-optional distinction. These primary endpoints are recorded per package.

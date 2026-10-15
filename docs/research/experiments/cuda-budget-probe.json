@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0",
+  "started_utc": "2026-10-15T05:32:02.112694+00:00",
+  "source_sha256": "471efa85605c575c6f02e9d037618c8dd4af0794c2b8aeb59330b6e259912c3a",
+  "fixture_source_sha256": "d23b120b39854ccfd26c9182018e62e4727486c9907c28dafb7e0c2ba690dde0",
+  "reference_sha256": "2828111436a2a9730efec9866853787fa48f47547bda104f6997162dbc8540ad",
+  "trials": [
+    {
+      "status": "allocator_oom",
+      "driver_oom_message_excerpt": "CUDA out of memory. Tried to allocate 32.00 MiB. GPU 0 has a total capacity of 11.74 GiB of which 10.30 GiB is free. ",
+      "invalid_process_memory_diagnostic": true,
+      "allocated_peak_bytes_before_failure": 453263360,
+      "reserved_peak_bytes_before_failure": 471859200,
+      "completed_optimizer_updates": 0,
+      "returncode": 0,
+      "stderr": "",
+      "allocator_budget_mib": 450,
+      "microbatch": 16,
+      "checkpointed": false
+    },
+    {
+      "status": "allocator_oom",
+      "driver_oom_message_excerpt": "CUDA out of memory. Tried to allocate 32.00 MiB. GPU 0 has a total capacity of 11.74 GiB of which 10.29 GiB is free. ",
+      "invalid_process_memory_diagnostic": true,
+      "allocated_peak_bytes_before_failure": 436585472,
+      "reserved_peak_bytes_before_failure": 442499072,
+      "completed_optimizer_updates": 1,
+      "returncode": 0,
+      "stderr": "",
+      "allocator_budget_mib": 450,
+      "microbatch": 16,
+      "checkpointed": true
+    },
+    {
+      "status": "allocator_oom",
+      "driver_oom_message_excerpt": "CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 11.74 GiB of which 10.28 GiB is free. ",
+      "invalid_process_memory_diagnostic": true,
+      "allocated_peak_bytes_before_failure": 398757376,
+      "reserved_peak_bytes_before_failure": 459276288,
+      "completed_optimizer_updates": 1,
+      "returncode": 0,
+      "stderr": "",
+      "allocator_budget_mib": 450,
+      "microbatch": 4,
+      "checkpointed": false
+    },
+    {
+      "status": "completed",
+      "microbatch": 4,
+      "checkpointed": true,
+      "environment": {
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "capability": [
+          8,
+          6
+        ],
+        "allocator": "native",
+        "matmul_fp32_precision": "ieee",
+        "deterministic_algorithms": true
+      },
+      "parameter_count": 16805888,
+      "dtype": "float32",
+      "model_input_preparation_seconds": 0.1992422000039369,
+      "initial_allocated_bytes": 75612160,
+      "first_update_seconds": 0.19562160002533346,
+      "first_update_peak": {
+        "allocated_bytes": 354885632,
+        "reserved_bytes": 367001600
+      },
+      "measured_update_seconds": [
+        0.09631739999167621,
+        0.09662659995956346,
+        0.0965421000146307,
+        0.0952701999922283,
+        0.09578039997722954,
+        0.09704200003761798,
+        0.09648149996064603,
+        0.0957481000223197,
+        0.09734729997580871,
+        0.09763329999987036
+      ],
+      "median_update_seconds": 0.09651179998763837,
+      "measured_peak": {
+        "allocated_bytes": 396829696,
+        "reserved_bytes": 417333248
+      },
+      "first_update_comparison": {
+        "parameter": {
+          "max_abs_error": 6.239861249923706e-08,
+          "squared_error": 1.808574677887503e-12,
+          "reference_squared_norm": 10934.035898673284,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 1.2861095859892392e-08
+        },
+        "gradient": {
+          "max_abs_error": 4.729372449219227e-11,
+          "squared_error": 1.514669138029711e-16,
+          "reference_squared_norm": 0.0003157041595810481,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 6.926578113693736e-07
+        },
+        "optimizer/step": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 48.0,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/exp_avg": {
+          "max_abs_error": 4.774847184307873e-12,
+          "squared_error": 1.5185766065364646e-18,
+          "reference_squared_norm": 3.157041704223989e-06,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 6.935506661654836e-07
+        },
+        "optimizer/exp_avg_sq": {
+          "max_abs_error": 1.7889335846010823e-18,
+          "squared_error": 2.342102950470553e-32,
+          "reference_squared_norm": 1.7959967519651736e-20,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 1.1419582256631188e-06
+        }
+      },
+      "completed_logical_updates": 16,
+      "completed_optimizer_updates": 16,
+      "returncode": 0,
+      "stderr": "",
+      "allocator_budget_mib": 450
+    }
+  ],
+  "limitation": "One450 MiB PyTorch allocator cap on a physical12 GB RTX3060; not a450 MiB device, hard total-GPU quota, physical8 GB benchmark, real-workload rescue or primary selection evaluation."
+}

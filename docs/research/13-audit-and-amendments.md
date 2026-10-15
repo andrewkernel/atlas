@@ -12,6 +12,10 @@ The owner asked for continued research and simultaneous double-checking after th
 | A06 | No CUDA support or measurement has been validated | **Updated with new evidence.**Separate2.14.1+cu130 environment passes native smoke and eight synthetic physical-GPU trials. | [Measured fixture](experiments/cuda-memory-probe.md), not real-workload or planner validation |
 | A07 | First complete update captures maximum training allocation | **Insufficient.**Later windows peak higher in the fixture after persistent optimizer state exists during forward/backward. | Both windows recorded; no guarantee about unseen future shapes |
 | A08 | One optimizer relative norm adequately summarizes state parity | **Refined.**Compare steps and each moment family separately so step magnitudes cannot hide small-state differences. | Published CUDA run repeats the corrected instrumentation; absolute errors retained |
+| A09 | Unsafe/accepted alone is the primary safety endpoint | **Refined.**Use all prespecified policy units for unconditional unsafe acceptance and valid-feasible coverage; retain selective risk, unknown-label bounds and zero-acceptance null. | [Estimand protocol](evaluation-estimands.md); not measured policy results |
+| A10 | Current composed controls establish emergent interaction bugs | **Not established.**Known single-transform defects inside a composition differ from a failure of individually valid transforms. | [Composition boundary](composition-evidence.md); requires new independently adjudicated cases |
+| A11 | OOM diagnostic text is usable process-memory telemetry | **Rejected on tested configuration.**Impossible per-process values recur in capped Windows trials; use supported typed metrics. | [Budget/diagnostic control](experiments/cuda-budget-probe.md); internal sentinel explanation remains an inference |
+| A12 | Update counters alone cover scheduler/EMA and unused parameters | **Insufficient.**CPU controls have matching observed loss or successful-update counts but differing state. | [Recorded update-clock controls](experiments/update-clock-probes.md), known API semantics |
 
 ## Audit discipline
 

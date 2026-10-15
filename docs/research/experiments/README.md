@@ -58,3 +58,5 @@ The original CPU experiments establish no optimizer/planner performance, full-tr
 ## Separate physical GPU fixture
 
 The continuation's [synthetic CUDA experiment](cuda-memory-probe.md) now records allocated/reserved peaks, synchronized update timing and first-update state comparisons for four native configurations with two fresh-process repetitions each on the physical12 GB RTX3060. The [raw evidence](cuda-memory-probe.json) and [separate environment](cuda-probe-environment.json) document its scope. This supersedes the initial absence of any CUDA measurement; it does not establish primary policy efficacy, real-workload OOM rescue or scientific outcomes.
+
+The [450 MiB allocator-cap control](cuda-budget-probe.md) records three OOMs and one bounded completion, including completed-update counts and invalid driver-diagnostic flags. This is emulation on the12 GB board. The [CPU update-clock fixtures](update-clock-probes.md) record absent-versus-zero gradient behavior and a scaler-skip clock error;19 CPU tests now pass. Older test-count statements above refer to their dated checkpoints.

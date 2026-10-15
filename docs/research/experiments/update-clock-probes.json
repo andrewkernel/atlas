@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "started_utc": "2026-10-15T05:32:51.011391+00:00",
+  "source_sha256": "51adbec96ba9a507716d467b59abaef22060e9182f62b53c81394779c5aee7af",
+  "environment": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "torch": "2.14.1+cpu",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "device": "cpu"
+  },
+  "unused_parameter": {
+    "set_to_none": {
+      "second_loss": 0.15210000019499997,
+      "conditional_after_first": 1.37000000025,
+      "conditional_after_second": 1.37000000025,
+      "shared_after_second": 0.30218483606327906,
+      "unused_gradient_is_none": true,
+      "conditional_optimizer_steps": 1
+    },
+    "zero_tensor": {
+      "second_loss": 0.15210000019499997,
+      "conditional_after_first": 1.37000000025,
+      "conditional_after_second": 1.2755941750683066,
+      "shared_after_second": 0.30218483606327906,
+      "unused_gradient_is_none": false,
+      "conditional_optimizer_steps": 2
+    },
+    "conditional_parameter_abs_difference": 0.09440582518169327
+  },
+  "skipped_optimizer_step": {
+    "events": {
+      "successful_update_clock": [
+        {
+          "gradient_finite": true,
+          "optimizer_updated": true,
+          "successful_updates": 1,
+          "parameter": 0.9,
+          "lr_after_scheduler": 0.05,
+          "ema": 0.99,
+          "scale": 16.0
+        },
+        {
+          "gradient_finite": false,
+          "optimizer_updated": false,
+          "successful_updates": 1,
+          "parameter": 0.9,
+          "lr_after_scheduler": 0.05,
+          "ema": 0.99,
+          "scale": 8.0
+        },
+        {
+          "gradient_finite": true,
+          "optimizer_updated": true,
+          "successful_updates": 2,
+          "parameter": 0.85,
+          "lr_after_scheduler": 0.025,
+          "ema": 0.976,
+          "scale": 8.0
+        }
+      ],
+      "attempt_clock": [
+        {
+          "gradient_finite": true,
+          "optimizer_updated": true,
+          "successful_updates": 1,
+          "parameter": 0.9,
+          "lr_after_scheduler": 0.05,
+          "ema": 0.99,
+          "scale": 16.0
+        },
+        {
+          "gradient_finite": false,
+          "optimizer_updated": false,
+          "successful_updates": 1,
+          "parameter": 0.9,
+          "lr_after_scheduler": 0.025,
+          "ema": 0.981,
+          "scale": 8.0
+        },
+        {
+          "gradient_finite": true,
+          "optimizer_updated": true,
+          "successful_updates": 2,
+          "parameter": 0.875,
+          "lr_after_scheduler": 0.0125,
+          "ema": 0.9704,
+          "scale": 8.0
+        }
+      ]
+    },
+    "final_parameter_abs_difference": 0.025000000000000022,
+    "scope": "CPU GradScaler with an injected infinite gradient; no FP16/BF16 training or GPU arithmetic study"
+  },
+  "limitation": "Known API-semantics fixtures, not novel failures, full training or a generic verifier."
+}

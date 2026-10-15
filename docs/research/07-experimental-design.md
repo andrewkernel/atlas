@@ -6,12 +6,14 @@ The [experiment index](experiments/README.md) distinguishes executed CPU/statist
 
 | ID | Falsifiable hypothesis | Estimand / failure condition |
 |---|---|---|
-| H1, primary | Contract-aware selection accepts fewer incompatible plans without reducing valid-feasible workload coverage compared with native mechanisms plus existing checks under an equal budget | Unsafe accepted / accepted, with counts; contract-satisfying feasible workloads / all declared workloads; resource-only policy is an additional ablation |
+| H1, primary | Contract-aware selection accepts fewer incompatible plans without reducing valid-feasible workload coverage compared with native mechanisms plus existing checks under an equal budget | Known-unsafe final decisions / all declared workload units, with unknown-label bounds; valid-feasible final decisions / all units; conditional unsafe / accepted is secondary; resource-only policy is an additional ablation |
 | H2 | Explicit state and update checks detect invalid composed plans missed by gradient-only or metric-only checks | Paired detection difference on held-out labeled cases, with abstention and false rejection reported |
 | H3 | Profiling improves feasible-plan selection over fixed deterministic strategy ordering enough to cover its cost | Valid feasible completions and total search+verification+execution time; failure if added cost dominates |
 | H4, optional | Local LLM ranking improves valid feasible coverage or time to a valid plan over deterministic ranking | Paired selection outcome at equal wall-time and trial budgets including inference; failure if no practical improvement |
 
 H1 does not mean Atlas creates new optimization mechanisms. A precise superiority margin for policy selection must be frozen after a disjoint pilot; the initial study can report effect estimates and intervals without declaring universal superiority.
+
+The [estimand amendment](evaluation-estimands.md) defines policy units, candidate versus final-decision denominators, indeterminate labels, zero-acceptance behavior and fair baseline information. It supersedes using conditional unsafe/accepted alone as the primary safety endpoint. The [composition audit](composition-evidence.md) distinguishes single-transform bugs from genuinely emergent interactions; the current controls do not yet demonstrate the latter. Historical [failure provenance](real-world-failures.md) informs case selection without establishing prevalence.
 
 The primary decision criterion is observed safety/coverage dominance on the fixed held-out set, with uncertainty reported; no superiority conclusion is justified when the data are inconclusive. A separate utility gate requires at least one prespecified real workload that the unmodified reference cannot complete within the target budget but a contract-satisfying plan can. If there is no such workload, the project may still produce semantic findings but has not demonstrated expanded experimental access. These are decision criteria, not arbitrary final-accuracy equivalence margins.
 
@@ -91,6 +93,8 @@ Report unstandardized effects and 95% intervals, plus the 90% interval for a sin
 For classification proportions, give exact or Wilson intervals and denominators. Use paired tests such as McNemar for paired binary detections only when the case independence assumption is reasonable; correlated mutations require workload/fault-family grouping and cautious interpretation. Do not pool thousands of tensor elements as independent samples of tool reliability.
 
 Compute inventory: with 5 reference workload configurations,10 paired seeds and two final arms, there are100 full runs; a20-minute run would imply about 33 GPU-hours **before** search, pilots, failures or extra baselines. This is a planning arithmetic example, not a runtime prediction. Estimate real per-run cost in the pilot and reduce workload count/claims before confirmation if the budget is insufficient.
+
+Under the corrected illustrative36-pair power example, five workloads and two arms would instead require360 full runs, or120 GPU-hours at the same invented20-minute duration. That is not an estimate of actual runtime or a universal required seed count. It makes a multi-workload full-outcome-equivalence study potentially much larger than an undergraduate's primary semantic-selection pilot; narrow the supported claim before committing to unaffordable confirmation.
 
 ## Ablations and threats
 

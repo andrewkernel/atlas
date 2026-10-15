@@ -29,3 +29,7 @@ These concise notes preserve metadata, the claim actually used, limitations and 
 | [Learning to learn by gradient descent by gradient descent](learned-optimization.md) | 2016 | Abstract only. |
 | [When More Memory Fails: Hidden Feasibility Holes in Dynamic Tensor Rematerialization](dtr-feasibility-holes.md) | 2026 | Abstract only; exploratory context, not foundation of verdict. |
 | [HiLoRe: What to Store, Compress, or Recompute for Efficient GRPO Training](hilore.md) | 2026 | Method, exact-recovery conditions and evaluation appendix inspected; not replicated. |
+| [Adacc: An Adaptive Framework Unifying Compression and Activation Recomputation for LLM Training](adacc.md) |2025 |v2 abstract/metadata; not replicated |
+| [PRAC: Principal-Random Subspace for LLM Activation Compression and Memory-Efficient Training](prac.md) |2026 |Abstract/metadata; estimator proof not audited |
+| [TorchProbe: Fuzzing Dynamic Deep Learning Compilers](torchprobe.md) |2023 |Abstract/metadata; no compiler execution |
+| [TensorFuzz: Debugging Neural Networks with Coverage-Guided Fuzzing](tensorfuzz.md) |2018 preprint |Specific preprint abstract/metadata; no execution |

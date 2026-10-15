@@ -23,6 +23,8 @@ Ratings are qualitative planning judgments, not measured probabilities of public
 
 Choose candidate 1, with candidate 2 as its required evaluation artifact. Do not develop all candidates concurrently. Candidate 3 is a later pivot only if there is evidence that verification cost limits value.
 
+The continuation [composition audit](composition-evidence.md) adds a stronger limitation: current composed-update controls inject known timing/clipping defects; they are not evidence of a failure emerging only from otherwise valid transformations. Rank1 remains a bounded comparison pilot. An interaction-specific novelty claim requires isolated positive controls, independently adjudicated combined failures and a strong existing-checker comparison. The [historical provenance](real-world-failures.md) also confirms that several motivating mechanisms are established issues.
+
 ## Check each suggested direction against prior art
 
 - **Fidelity-constrained selection:** general concept is established by approximate computing, e.g. [Chisel](https://people.csail.mit.edu/rinard/paper/oopsla14.pdf). Candidate distinction is the workload-specific single-device training decision study.

@@ -32,6 +32,8 @@ class ExperimentAdapter(Protocol):
 
 `TrainingState` includes model parameters/buffers, optimizer, optional scheduler/scaler/EMA, counters and RNG recipe. `Batch` includes stable sample IDs, content or augmentation digest where available, target mask and count. Stable IDs alone do not prove matching content.
 
+Represent absent, None, zero and nonfinite gradients distinctly, keyed by parameter identity. Record optimizer attempts and actual completed updates separately; scheduler/EMA declare their intended clock. An optimizer returning None does not reveal whether it ran. [CPU controls](../research/experiments/update-clock-probes.md) motivate these fields without claiming a generic observer is implemented.
+
 `WorkloadSemantics` declares batch coupling, stochastic modules/generators, side effects, dynamic shape bounds and unsupported features. Declarations are trusted inputs with observed sanity checks, not automatically proved facts.
 
 ## OptimizationStrategy v0
