@@ -1,0 +1,35 @@
+{
+  "bytes": 1207964,
+  "deeper_read_recorded_utc": "2026-10-15T07:14:31.626256+00:00",
+  "immutable_candidate_verification": {
+    "interpretation": "Candidate file-history commit URL did not resolve; no immutable-byte verification claimed. Timestamped mutable-URL capture and local byte hash retained.",
+    "status": 404,
+    "url": "https://raw.githubusercontent.com/mlresearch/v267/90efc7267511a55c0f407c6c59287e76b07ce728/assets/gusak25a/gusak25a.pdf"
+  },
+  "pdf_pages": 26,
+  "read_scope": "Selected methods, evaluation and appendix sections, not a claim every page was read. Table 4 empty observed-time cell checked visually. No PDF/text redistribution in Git.",
+  "rendered_and_visually_inspected_pages": [
+    7,
+    17,
+    19,
+    26
+  ],
+  "resolved_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/gusak25a/gusak25a.pdf",
+  "retrieved_utc": "2026-10-15T07:05:59.454479+00:00",
+  "scope": "Primary proceedings PDF; read-only reference, not redistributed in Git",
+  "selected_text_pages_read": [
+    4,
+    5,
+    6,
+    7,
+    13,
+    17,
+    18,
+    19,
+    20,
+    25,
+    26
+  ],
+  "sha256": "74c638bff1048d5b069f16df0e27695c53daa21b6a44dbc98f27eff66fadb093",
+  "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/gusak25a/gusak25a.pdf"
+}
