@@ -84,3 +84,5 @@ The [450 MiB allocator-cap control](cuda-budget-probe.md) records three OOMs and
 [Reusable-module controls](planner-reuse-control.md) add native/single-forward/streaming positives and deferred-forward runtime failures. Existing output retention does not repair them, and a no-recomputation control rules out the claim that recomputation is necessary for the failure. The initial reporting failure and all intended modes remain inspectable.
 
 [Shared-stack integration](interop-controls.md) now runs the native checker, planned deferred checker, and a competent streaming adaptation using existing snapshot/comparison primitives in a mutually supported GPU stack. The latter passes initialized/post-update comparisons and detects a deliberate parameter change. The different control/process work is not a fair speedup benchmark.
+
+[Comparison-policy controls](comparator-contract-control.md) test exact tolerance conventions and nonfinite equality/health. Matching API parameter numbers do not define the full predicate, and existing comparison equality is not a healthy-reference certificate.

@@ -1,0 +1,211 @@
+{
+  "captured_utc": "2026-10-15T07:43:51.699960+00:00",
+  "environment": {
+    "device": "cpu",
+    "python": "3.11.17",
+    "tensor_dtype": "float64",
+    "torch": "2.13.0+cpu",
+    "trainparity": "0.1.1.dev0"
+  },
+  "helper_source_sha256": "9e3fa58afffb618c7ec4c8c6bba5099610732f161d491e6d55b034c77b48fd75",
+  "replaced_nonfinite_scalar_fields": [
+    "root.trials[8].comparison.first_difference.max_abs_error",
+    "root.trials[8].comparison.first_difference.max_rel_error"
+  ],
+  "review_sha256": "fb582db3dec0a7c46091bcf3249bb57725acba9f8747a78cad94a0cc8a2a2733",
+  "scope": "Ten deterministic constructed boundary/health controls, not ML error prevalence, scientific equivalence or GPU-kernel validation.",
+  "source_sha256": "1949a040e8ca86bb81a4b6eacd107fce711735d004220efc141c75634419deda",
+  "trials": [
+    {
+      "atol": 0.0,
+      "baseline_literal": "1",
+      "baseline_scaled_additive_rule": false,
+      "both_finite": true,
+      "candidate_literal": "1.11",
+      "comparison": {
+        "first_difference": null,
+        "message": "snapshots are equivalent under policy",
+        "outcome": "PASS"
+      },
+      "equal_nan": false,
+      "name": "tensor_candidate_scale_accept",
+      "policy": "tolerance",
+      "representation": "tensor",
+      "rtol": 0.1
+    },
+    {
+      "atol": 0.0,
+      "baseline_literal": "1",
+      "baseline_scaled_additive_rule": true,
+      "both_finite": true,
+      "candidate_literal": ".905",
+      "comparison": {
+        "first_difference": {
+          "baseline": "tensor(shape=(1,), dtype=torch.float64, device=cpu, values=[1.0])",
+          "candidate": "tensor(shape=(1,), dtype=torch.float64, device=cpu, values=[0.905])",
+          "max_abs_error": 0.09499999999999997,
+          "max_rel_error": 0.09499999999999997,
+          "path": "value",
+          "reason": "tensor_value"
+        },
+        "message": "first observed divergence at value: tensor_value",
+        "outcome": "FAIL"
+      },
+      "equal_nan": false,
+      "name": "tensor_candidate_scale_reject",
+      "policy": "tolerance",
+      "representation": "tensor",
+      "rtol": 0.1
+    },
+    {
+      "atol": 0.0,
+      "baseline_literal": "1",
+      "baseline_scaled_additive_rule": false,
+      "both_finite": true,
+      "candidate_literal": "1.11",
+      "comparison": {
+        "first_difference": null,
+        "message": "snapshots are equivalent under policy",
+        "outcome": "PASS"
+      },
+      "equal_nan": false,
+      "name": "scalar_max_scale",
+      "policy": "tolerance",
+      "representation": "scalar",
+      "rtol": 0.1
+    },
+    {
+      "atol": 0.1,
+      "baseline_literal": "1",
+      "baseline_scaled_additive_rule": true,
+      "both_finite": true,
+      "candidate_literal": "1.15",
+      "comparison": {
+        "first_difference": {
+          "baseline": "1.0",
+          "candidate": "1.15",
+          "max_abs_error": null,
+          "max_rel_error": null,
+          "path": "value",
+          "reason": "value"
+        },
+        "message": "first observed divergence at value: value",
+        "outcome": "FAIL"
+      },
+      "equal_nan": false,
+      "name": "scalar_max_vs_additive",
+      "policy": "tolerance",
+      "representation": "scalar",
+      "rtol": 0.1
+    },
+    {
+      "atol": 0.0,
+      "baseline_literal": "1",
+      "baseline_scaled_additive_rule": false,
+      "both_finite": true,
+      "candidate_literal": "1.00001000005",
+      "comparison": {
+        "first_difference": null,
+        "message": "snapshots are equivalent under policy",
+        "outcome": "PASS"
+      },
+      "equal_nan": false,
+      "name": "tensor_small_boundary",
+      "policy": "tolerance",
+      "representation": "tensor",
+      "rtol": 1e-05
+    },
+    {
+      "atol": 1e-08,
+      "baseline_literal": "inf",
+      "baseline_scaled_additive_rule": null,
+      "both_finite": false,
+      "candidate_literal": "inf",
+      "comparison": {
+        "first_difference": null,
+        "message": "snapshots are equivalent under policy",
+        "outcome": "PASS"
+      },
+      "equal_nan": false,
+      "name": "same_infinity_exact",
+      "policy": "exact",
+      "representation": "tensor",
+      "rtol": 1e-05
+    },
+    {
+      "atol": 1e-08,
+      "baseline_literal": "inf",
+      "baseline_scaled_additive_rule": null,
+      "both_finite": false,
+      "candidate_literal": "inf",
+      "comparison": {
+        "first_difference": null,
+        "message": "snapshots are equivalent under policy",
+        "outcome": "PASS"
+      },
+      "equal_nan": false,
+      "name": "same_infinity_tolerance",
+      "policy": "tolerance",
+      "representation": "tensor",
+      "rtol": 1e-05
+    },
+    {
+      "atol": 1e-08,
+      "baseline_literal": "nan",
+      "baseline_scaled_additive_rule": null,
+      "both_finite": false,
+      "candidate_literal": "nan",
+      "comparison": {
+        "first_difference": null,
+        "message": "snapshots are equivalent under policy",
+        "outcome": "PASS"
+      },
+      "equal_nan": false,
+      "name": "same_nan_exact",
+      "policy": "exact",
+      "representation": "tensor",
+      "rtol": 1e-05
+    },
+    {
+      "atol": 1e-08,
+      "baseline_literal": "nan",
+      "baseline_scaled_additive_rule": null,
+      "both_finite": false,
+      "candidate_literal": "nan",
+      "comparison": {
+        "first_difference": {
+          "baseline": "tensor(shape=(1,), dtype=torch.float64, device=cpu, values=[nan])",
+          "candidate": "tensor(shape=(1,), dtype=torch.float64, device=cpu, values=[nan])",
+          "max_abs_error": null,
+          "max_rel_error": null,
+          "path": "value",
+          "reason": "tensor_value"
+        },
+        "message": "first observed divergence at value: tensor_value",
+        "outcome": "FAIL"
+      },
+      "equal_nan": false,
+      "name": "same_nan_tolerance",
+      "policy": "tolerance",
+      "representation": "tensor",
+      "rtol": 1e-05
+    },
+    {
+      "atol": 1e-08,
+      "baseline_literal": "nan",
+      "baseline_scaled_additive_rule": null,
+      "both_finite": false,
+      "candidate_literal": "nan",
+      "comparison": {
+        "first_difference": null,
+        "message": "snapshots are equivalent under policy",
+        "outcome": "PASS"
+      },
+      "equal_nan": true,
+      "name": "same_nan_equal_nan",
+      "policy": "tolerance",
+      "representation": "tensor",
+      "rtol": 1e-05
+    }
+  ]
+}

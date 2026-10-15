@@ -25,3 +25,5 @@ Use this table to distinguish measured results, source claims, derivations and u
 The [updated recommendation](14-updated-recommendation.md) follows from the combination: engineering feasibility has direct evidence; distinct incremental research value and useful expanded access remain unresolved.
 
 [Reuse/accumulation controls](experiments/planner-reuse-control.md) additionally show that a supported streaming execution can fail under a deferred verification pattern on the tested wrapper. The failure persists without planned recomputation and is a loud runtime error, not evidence of new emergent-transform behavior or unsafe scientific acceptance. A later [shared-stack integration](experiments/interop-controls.md) now executes both sources and a competent streaming capture adaptation; no primary policy comparison is implied.
+
+[Comparison-convention controls](experiments/comparator-contract-control.md) separately show that a reused numerical relation can differ from the proposed contract despite matching rtol/atol numbers, and that matching nonfinite values do not establish reference health. These are constructed deterministic examples, not a field error rate.

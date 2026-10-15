@@ -62,6 +62,8 @@ Save corresponding observations at declared phases: initial state; loss accounti
 
 Use an explicitly declared elementwise criterion |a-b| <= atol + rtol*|a| for empirical comparisons, with baseline as the named reference. Also report max absolute error, relative L2 error (with a defined zero-reference rule), gradient cosine where norms are nonzero, and nonfinite counts. Cosine agreement alone can conceal scaling errors. ULP measures are optional for matching types, not a substitute for a scientific margin.
 
+The [executed comparison-policy audit](experiments/comparator-contract-control.md) confirms that the reused checker does not implement this exact formula uniformly: tensor scaling uses its candidate argument, while scalar comparison uses the documented symmetric/max rule. Keep those conventions named in historical artifacts; the proposed baseline-scaled rule remains a future contract predicate until a compatible adapter implements it. Equality and reference health are separate requirements, and legitimate nonfinite masks need field-specific treatment. Exact configuration/methodology checks must not be waived by a general floating tolerance.
+
 For the small float64 controls in this repository, 1e-12 is a **fixture discrimination threshold**, chosen to distinguish numerical rounding from large injected differences. It is not a universal training tolerance. A future GPU/FP32 contract needs separate calibrated numerical bounds and positive controls. Never tune the tolerance after seeing a candidate's result to make it pass. Reference nondeterminism must be measured before attributing a difference to the transformation.
 
 ## Statistical and conclusion evidence
