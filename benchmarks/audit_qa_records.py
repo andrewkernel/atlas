@@ -27,6 +27,7 @@ def audit(root=ROOT):
         ('derive_qa_resource.py', 'qa-resource-derived.json'),
         ('windows_job_control.py', 'windows-job-control.json'),
         ('qa_numerical_control.py', 'qa-numerical-control.json'),
+        ('qa_dispatch_control.py', 'qa-dispatch-control.json'),
     ):
         records[name] = load(name)
         if records[name]['source_sha256'] != digest('benchmarks/' + script):
@@ -117,6 +118,26 @@ def audit(root=ROOT):
             failures.append('QA numerical update/capture incomplete')
         if worker['negative_comparison_to_unperturbed_candidate']['outcome'] != 'FAIL':
             failures.append('QA numerical perturbation control not detected')
+    dispatch = records['qa-dispatch-control.json']
+    if dispatch['profiler_review_sha256'] != digest('docs/research/workload-screen/qa-profiler-review.json'):
+        failures.append('QA dispatch profiler review identity stale')
+    for name, expected in dispatch['helper_sha256'].items():
+        if expected != digest('benchmarks/' + name):
+            failures.append('QA dispatch helper identity stale: ' + name)
+    if [t['microbatch'] for t in dispatch['trials']] != dispatch['intended_microbatches'] or len(dispatch['trials']) != 2:
+        failures.append('QA dispatch intended-run denominator incomplete')
+    for trial in dispatch['trials']:
+        worker = trial['worker_result']
+        if trial['status'] != 'completed' or trial['retained_identities_still_alive'] or trial['job_members_after_cleanup']:
+            failures.append('QA dispatch completion/cleanup inconsistent')
+        if worker['runtime_identities'] != runtime or worker['feature_manifest_canonical_sha256'] != canonical(features):
+            failures.append('QA dispatch runtime/input identity inconsistent')
+        if worker['source_sha256'] != dispatch['source_sha256'] or worker['successful_optimizer_updates'] != 0:
+            failures.append('QA dispatch source/update scope inconsistent')
+        if not worker['all_present_gradients_finite'] or worker['present_gradient_parameter_tensors'] != 199:
+            failures.append('QA dispatch gradient health/coverage inconsistent')
+        if sum(worker['cuda_event_names_and_counts'].values()) != worker['cuda_event_count'] and not worker['cuda_event_names_truncated']:
+            failures.append('QA dispatch device-event count inconsistent')
     return failures
 
 

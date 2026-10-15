@@ -1,0 +1,9 @@
+# Observed native SDPA dispatch
+
+Both [frozen diagnostic jobs](qa-dispatch-protocol.md) complete logical-batch-32 forward/backward on the same 32 QA features, using microbatch 32 or 4. [Raw events/counts](qa-dispatch-control.json) and [scoped profiler-source review](qa-profiler-review.json) preserve the observation boundary. No optimizer step occurs, and all 199 present gradient tensors are finite in each job.
+
+The CPU trace records `aten::_scaled_dot_product_efficient_attention` and corresponding efficient forward/backward operators: 12 per full-batch execution, 96 across eight microbatches. Device events include f32 CUTLASS `fmha_cutlassF` and dropout `fmha_cutlassB` kernels, again 12/96 each. CPU/CUDA event totals are 7,445/894 and 56,592/9,065; all unique CUDA event names fit the declared 512-name bound. Actual CUDA events are observed, rather than inferred from reported CUDA time.
+
+The diagnostic therefore supports the **memory-efficient SDPA backend** for these profiled inputs. It does not support calling the observed backend FlashAttention. The first-party integration's general SDPA option and the specific dispatched implementation must remain distinct in reports. No backend/driver setting is changed. Profiler stderr contains embedded wheel-build paths; those are native build strings, not a claim about local source directories.
+
+These instrumented one-forward/backward captures do not replace the resource pilot's eight complete optimizer updates or provide a timing comparison. They do not prove dispatch for other shapes, dtypes, dropout settings, software or all checkpointed executions. Both jobs retain verified actual-worker monitoring and zero remaining group members after cleanup. This closes a narrow attribution gap while preserving the native baseline's existing capabilities.
