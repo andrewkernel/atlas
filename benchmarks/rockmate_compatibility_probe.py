@@ -20,7 +20,7 @@ CONFIG = {
     "input_shape": [128, 64, 64], "budget_bytes": 16 * 1024**2,
     "updates": 8, "warmup_updates": 3, "lr": 0.01, "momentum": 0.9,
     "modes": ["rotor_config", "rockmate_config"],
-    "graph_extractor": "rkgb_supported_jit_fallback",
+    "graph_extractor": "rkgb_dynamo_with_named_x_wrapper",
     "timeout_seconds": 180, "rtol": 1e-5, "atol": 1e-6,
 }
 
@@ -53,15 +53,40 @@ def worker(mode: str, output: Path) -> None:
         blocks = []
         for _ in range(CONFIG["blocks"]):
             blocks.extend([nn.Linear(64, 128), nn.ReLU(), nn.Linear(128, 64), nn.ReLU()])
-        template = nn.Sequential(*blocks)
+        class NamedInputStack(nn.Module):
+            def __init__(self, layers):
+                super().__init__()
+                self.layers = layers
+
+            def forward(self, x):
+                return self.layers(x)
+
+        direct_sequential = nn.Sequential(*blocks)
+        template = NamedInputStack(direct_sequential)
         initial = {name: value.detach().clone() for name, value in template.state_dict().items()}
         digest = hashlib.sha256()
         for name, value in sorted(initial.items()):
             digest.update(name.encode()); digest.update(value.numpy().tobytes())
         result["initial_state_sha256"] = digest.hexdigest()
+        legacy_digest = hashlib.sha256()
+        for name, value in sorted(initial.items()):
+            legacy_digest.update(name.removeprefix("layers.").encode())
+            legacy_digest.update(value.numpy().tobytes())
+        result["legacy_sequential_initial_sha256"] = legacy_digest.hexdigest()
         x = torch.randn(CONFIG["input_shape"], device="cuda")
         target = torch.randn_like(x)
         result["input_target_sha256"] = hashlib.sha256(x.cpu().numpy().tobytes() + target.cpu().numpy().tobytes()).hexdigest()
+        import ast
+        export_diagnostics = {}
+        for label, module in (("direct_sequential_input", direct_sequential), ("named_x_wrapper", template)):
+            exported = torch.export.export(module, (torch.ones(1, 2, 64),))
+            code = exported.graph.python_code("self").src
+            body = ast.parse(code).body[0].body
+            assignments = [node for node in body if isinstance(node, ast.Assign) and not (isinstance(node.value, ast.Constant) and node.value.value is None)]
+            export_diagnostics[label] = {"noncleanup_assignment_count": len(assignments),
+                                         "call_function_node_count": sum(node.op == "call_function" for node in exported.graph.nodes),
+                                         "name_alias_assignments": [ast.unparse(node) for node in assignments if isinstance(node.value, ast.Name)]}
+        result["native_export_diagnostics"] = export_diagnostics
 
         def train(module, original, *, wrapped: bool) -> tuple[dict, dict]:
             optimizer = torch.optim.SGD(original.parameters(), lr=CONFIG["lr"], momentum=CONFIG["momentum"])
@@ -126,14 +151,8 @@ def worker(mode: str, output: Path) -> None:
             config.solver.bottom.hilp.nb_bdg_save = 2
             config.solver.bottom.hilp.nb_bdg_peak = 2
             config.solver.bottom.hilp.nb_total_sched = 5
-        import rkgb
-        phase = "planner_graph_jit_fallback"
-        graph = rkgb.Result(model, x, inspection_device=torch.device("cuda"),
-                            use_jit_instead_of_dynamo=True,
-                            partitioners=[rkgb.partitioned.PartitionerSequence(sub_partitioner="base")],
-                            print_time_in_each_stage=True)
-        phase = "planner_construction_from_jit_graph"
-        candidate = rockmate.from_config(model, x, CONFIG["budget_bytes"], config=config, rkgb_res=graph, **common)
+        phase = "planner_construction_with_named_input"
+        candidate = rockmate.from_config(model, x, CONFIG["budget_bytes"], config=config, **common)
         torch.cuda.synchronize()
         result["construction_seconds"] = time.perf_counter() - started
         result["schedule_present"] = candidate.op_sched is not None

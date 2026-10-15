@@ -1,0 +1,187 @@
+{
+  "config": {
+    "atol": 1e-06,
+    "blocks": 4,
+    "budget_bytes": 16777216,
+    "graph_extractor": "rkgb_supported_jit_fallback",
+    "hidden": 128,
+    "input_shape": [
+      128,
+      64,
+      64
+    ],
+    "lr": 0.01,
+    "modes": [
+      "rotor_config",
+      "rockmate_config"
+    ],
+    "momentum": 0.9,
+    "rtol": 1e-05,
+    "seed": 1801,
+    "timeout_seconds": 180,
+    "updates": 8,
+    "warmup_updates": 3,
+    "width": 64
+  },
+  "environment_keys": [
+    "CUBLAS_WORKSPACE_CONFIG",
+    "MKL_NUM_THREADS",
+    "OMP_NUM_THREADS",
+    "PATH",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONHASHSEED",
+    "PYTHONNOUSERSITE",
+    "PYTHONPATH",
+    "SystemRoot",
+    "TEMP",
+    "TMP",
+    "TORCH_HOME",
+    "WINDIR"
+  ],
+  "historical_source_commit": "4cbb07b",
+  "interpretation": "Fourth attempt: supported JIT fallback builds raw graph but ForwardGraph expects (name,type) parameter pairs while JIT path supplies strings, raising ValueError. No schedule or candidate training. Both eight-update native references complete.",
+  "review_sha256": "9148c94250b0e8337daf4133899ea7eed4a09d22c6f6431b9326ddcdc6f47486",
+  "scope": "Scoped compatibility/finite numerical control. No Atlas policy, whole-training equivalence, useful OOM rescue or general tool-performance claim.",
+  "source_sha256": "e74eb6a7e9c4de5e4dc3b3dba1bf994e152f2d0e96df43148a6ac36c90d8bd23",
+  "started_utc": "20261015T064448Z",
+  "trials": [
+    {
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "budget_bytes": 16777216,
+        "graph_extractor": "rkgb_supported_jit_fallback",
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "rotor_config",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "error_message": "too many values to unpack (expected 2)",
+      "error_type": "ValueError",
+      "failed_phase": "planner_graph_jit_fallback",
+      "initial_state_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "mode": "rotor_config",
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.002119000011589378,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.11121559998719022,
+          0.007897500006947666,
+          0.0018102999893017113,
+          0.002030600036960095,
+          0.0017617999692447484,
+          0.002119000011589378,
+          0.0021524999756366014,
+          0.0024475999525748193
+        ]
+      },
+      "outer_wall_seconds": 6.173455699987244,
+      "status": "error",
+      "stderr_bytes": 520,
+      "stdout_bytes": 137,
+      "traceback": "Traceback (most recent call last):\n  File \"<atlas>\\benchmarks\\rockmate_compatibility_probe.py\", line 131, in worker\n    graph = rkgb.Result(model, x, inspection_device=torch.device(\"cuda\"),\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\rkgb.py\", line 51, in __init__\n    if \"F\" in wanted_graphs: self.build_forward()\n                             ^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\rkgb.py\", line 97, in build_forward\n    self.forward_graph = ForwardGraph(\n                         ^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\core\\forward.py\", line 91, in __init__\n    for (param_name, param_type) in rn.required_parameters: # e.g. (\"layer.0.weight\", \"param\")\n        ^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: too many values to unpack (expected 2)\n"
+    },
+    {
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "budget_bytes": 16777216,
+        "graph_extractor": "rkgb_supported_jit_fallback",
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "rotor_config",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "error_message": "too many values to unpack (expected 2)",
+      "error_type": "ValueError",
+      "failed_phase": "planner_graph_jit_fallback",
+      "initial_state_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "mode": "rockmate_config",
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.0017692999681457877,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.11280629999237135,
+          0.007625600032042712,
+          0.001879999996162951,
+          0.0017692999681457877,
+          0.002363000006880611,
+          0.0019626999855972826,
+          0.001764099986758083,
+          0.0017666000057943165
+        ]
+      },
+      "outer_wall_seconds": 6.126177700003609,
+      "status": "error",
+      "stderr_bytes": 520,
+      "stdout_bytes": 137,
+      "traceback": "Traceback (most recent call last):\n  File \"<atlas>\\benchmarks\\rockmate_compatibility_probe.py\", line 131, in worker\n    graph = rkgb.Result(model, x, inspection_device=torch.device(\"cuda\"),\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\rkgb.py\", line 51, in __init__\n    if \"F\" in wanted_graphs: self.build_forward()\n                             ^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\rkgb.py\", line 97, in build_forward\n    self.forward_graph = ForwardGraph(\n                         ^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\core\\forward.py\", line 91, in __init__\n    for (param_name, param_type) in rn.required_parameters: # e.g. (\"layer.0.weight\", \"param\")\n        ^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: too many values to unpack (expected 2)\n"
+    }
+  ]
+}
