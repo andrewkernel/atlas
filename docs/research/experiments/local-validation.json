@@ -1,0 +1,27 @@
+{
+  "completed_utc": "2026-10-15T05:07:02.687665+00:00",
+  "environment": "Python 3.12.10 / Torch 2.14.1+cpu / Windows 11",
+  "scope": "local research-package validation, not GPU/full-training or external framework evaluation",
+  "checks": [
+    {
+      "name": "specification_audit",
+      "exit_code": 0,
+      "stdout": "{\n  \"markdown_files\": 70,\n  \"local_links_checked\": 169,\n  \"unique_external_links_catalogued\": 80,\n  \"lock_package_count\": 22,\n  \"failures\": []\n}",
+      "stderr": ""
+    },
+    {
+      "name": "pytest",
+      "exit_code": 0,
+      "stdout": "...........                                                              [100%]\n11 passed in 2.32s",
+      "stderr": ""
+    },
+    {
+      "name": "git_diff_check",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "pyproject_sha256": "355afdf3874aaf2d42114e64b8de884fbbc53e0977905f4bf7312322a8cc222c",
+  "lock_sha256": "cb35b0c33e15910803e16bbebfc4ba6cf5f1a53f42e70cc8020baee2de98bcd9"
+}

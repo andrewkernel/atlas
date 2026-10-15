@@ -24,7 +24,7 @@ A Python 3.12 command-line library with a trusted adapter, CPU/CUDA profiler, fi
 
 ## Actual evidence from this session
 
-The [CPU probes](experiments/README.md) demonstrate unequal-loss weighting errors, BatchNorm sensitivity, checkpoint/dropout RNG effects, and buffer changes despite matching gradients. Eight tests passed, including 40 generated accumulation cases. This is evidence of specific failure modes on tiny models. No full training, GPU memory optimization, LLM comparison, energy study, or human expert labeling was performed.
+The [CPU probes](experiments/README.md) demonstrate unequal-loss weighting errors, BatchNorm sensitivity, checkpoint/dropout RNG effects, buffer changes despite matching gradients, and clipping/update-timing faults in a checkpoint-plus-accumulation composition. Eleven tests passed, including 40 generated accumulation cases. This is evidence of specific failure modes on tiny models. No full training, GPU memory optimization, LLM comparison, energy study, or human expert labeling was performed.
 
 A 12 GB RTX 3060 is present on the host, but the isolated research environment uses a CPU-only PyTorch wheel. No physical 6–8, 16 or 24 GB tiers were tested. No result supports a general claim that a 24 GB experiment can be reproduced on an 8 GB GPU.
 

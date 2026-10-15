@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "started_utc": "2026-10-15T05:05:10.478967+00:00",
+  "environment": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "torch": "2.14.1+cpu",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "device": "cpu"
+  },
+  "source_sha256": "ba624b9cda528c0e0dfa76f9690165f4f6b85b0e61a1fc70d7d72337c6b114a7",
+  "seed": 61,
+  "correct_composition": {
+    "fault": null,
+    "scope": "two controlled CPU float64 AdamW updates; candidate combines 3+4 accumulation and pure-region checkpointing",
+    "parameter_max_abs_error": 5.551115123125783e-17,
+    "reference": {
+      "successful_updates": 2,
+      "adam_state_steps": [
+        2
+      ]
+    },
+    "candidate": {
+      "successful_updates": 2,
+      "adam_state_steps": [
+        2
+      ]
+    }
+  },
+  "clip_timing_fault": {
+    "fault": "clip_per_microbatch",
+    "scope": "two controlled CPU float64 AdamW updates; candidate combines 3+4 accumulation and pure-region checkpointing",
+    "parameter_max_abs_error": 0.03319829443904508,
+    "reference": {
+      "successful_updates": 2,
+      "adam_state_steps": [
+        2
+      ]
+    },
+    "candidate": {
+      "successful_updates": 2,
+      "adam_state_steps": [
+        2
+      ]
+    }
+  },
+  "optimizer_timing_fault": {
+    "fault": "step_per_microbatch",
+    "scope": "two controlled CPU float64 AdamW updates; candidate combines 3+4 accumulation and pure-region checkpointing",
+    "parameter_max_abs_error": 0.02404466806704164,
+    "reference": {
+      "successful_updates": 2,
+      "adam_state_steps": [
+        2
+      ]
+    },
+    "candidate": {
+      "successful_updates": 4,
+      "adam_state_steps": [
+        4
+      ]
+    }
+  },
+  "limitation": "No planner, external dataset, full training, GPU measurements or scientific outcome equivalence tested."
+}
