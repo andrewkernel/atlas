@@ -16,6 +16,8 @@ The [evidence map](docs/research/evidence-map.md) separates measured findings, s
 
 [Direct TrainParity controls](docs/research/experiments/trainparity-controls.md) now execute the closest existing checker in a separate supported CPU environment. Its clean, faulted, refusal and error controls behave as predicted. This strengthens the requirement to reuse existing checks and demonstrate value through the remaining held-out selection comparison.
 
+[Adapted Rockmate-family GPU controls](docs/research/experiments/rockmate-compatibility.md) also execute existing planning code, including schedules with repeated forwards and zero recorded update errors on a pure fixture. All compatibility failures are retained. The diagnostic shows why a solver's nominal activation budget and whole allocated memory must be measured separately; it establishes no Atlas performance advantage.
+
 ## Reproduce the bounded probes
 
 With Python 3.12 and uv 0.13.1 installed:

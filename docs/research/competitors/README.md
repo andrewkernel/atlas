@@ -7,4 +7,4 @@
 - [Rockmate/HiRemate/OffMate family](rockmate-family.md) and [FairScale state handling](fairscale.md) refine current baseline scope.
 - [Selected TrainParity source identities](trainparity-source-inspection.json) support the deeper capture/worker comparison, without executing its code.
 
-The later [TrainParity CPU controls](../experiments/trainparity-controls.md) execute selected accumulation checks after a scoped review and compatible environment setup. Other listed external systems remain unexecuted. “Not documented in inspected sources” must not become “does not exist.”
+Later [TrainParity CPU controls](../experiments/trainparity-controls.md) and [adapted Rotor/Rockmate GPU controls](../experiments/rockmate-compatibility.md) execute selected capabilities after scoped reviews and separate environment setup. Other listed external systems remain unexecuted. “Not documented in inspected sources” must not become “does not exist.”

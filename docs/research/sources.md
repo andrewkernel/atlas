@@ -4,6 +4,8 @@ This is a targeted primary-source scoping review. Most sources were retrieved on
 
 Search families and limitations are in the [literature review](02-literature-review.md). The original survey was source-only; the later [TrainParity controls](experiments/trainparity-controls.md) execute a selected compatible CPU subset. Analytical judgments, proposed contracts and plans are Atlas proposals, not facts attributed to the papers. A recent preprint is identified as such. No search establishes global absence of prior work.
 
+Subsequent [Rockmate-family compatibility controls](experiments/rockmate-compatibility.md) execute reviewed pinned source on an original pure GPU model. Scope includes adapted configuration/tracing interfaces and finite update comparisons, with all startup/no-schedule outcomes retained. This does not retroactively change the earlier source-only snapshots or replicate the published performance studies. A separate native PyTorch export control isolates a framework precision-query interaction before attributing an external-tool failure.
+
 ## Papers
 
 | Verified primary paper link | Research note | Read depth |

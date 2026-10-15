@@ -38,6 +38,8 @@ The [allocator-cap control](experiments/cuda-budget-probe.md) is explicitly emul
 
 ## Three reasons to stop or pivot
 
+Direct existing-system controls now include [TrainParity accumulation checking](experiments/trainparity-controls.md) and [adapted Rockmate-family GPU planning](experiments/rockmate-compatibility.md). These strengthen practical prior-art overlap, while retaining compatibility failures, exact scope and workflow measurement limits. They do not replace the independent held-out policy study.
+
 1. **Insufficient incremental value:** native tools plus TrainCheck/TrainParity may achieve the same selection quality. Compare directly and pivot to an evaluation contribution if so.
 2. **Verification is too expensive or too weak:** small probes may miss late drift; full paired runs can exceed the saved compute. Measure verification cost and report inconclusive outcomes.
 3. **Access benefit is small:** memory savings may merely replace VRAM scarcity with CPU RAM, runtime, or integration burden. Measure end-to-end time and adaptation effort, and avoid institutional-equity claims without a user study.

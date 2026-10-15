@@ -74,3 +74,7 @@ The [450 MiB allocator-cap control](cuda-budget-probe.md) records three OOMs and
 ## Direct external-checker controls
 
 [TrainParity controls](trainparity-controls.md) execute a reviewed pinned checker on original CPU cases in a separate compatible stack. The setup failure, adapter amendment, protocol, all 11 outcomes and environment are retained. This confirms selected existing capabilities, not Atlas selection superiority.
+
+## Direct external memory-planner controls
+
+[Rockmate-family compatibility and budget controls](rockmate-compatibility.md) execute adapted pinned source on an original pure GPU workload. Frozen attempts retain factory/framework/parser/no-schedule outcomes; larger/intermediate budgets complete finite numerical controls. Static schedules and resident-memory diagnostics bound the interpretation. No Atlas policy, published performance suite or scientific outcome is replicated.

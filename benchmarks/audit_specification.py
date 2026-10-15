@@ -84,6 +84,10 @@ def main() -> int:
         ('activation_liveness_probe.py', 'activation-liveness-probe.json'),
         ('replay_fashion_control.py', 'fashion-repeatability.json'),
         ('derive_research_summary.py', 'derived-summary.json'),
+        ('precision_export_control.py', 'precision-export-control.json'),
+        ('rockmate_compatibility_probe.py', 'rockmate-compatibility.json'),
+        ('rockmate_schedule_diagnostics.py', 'rockmate-schedule-diagnostics.json'),
+        ('rockmate_budget_frontier.py', 'rockmate-budget-frontier.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
@@ -146,6 +150,20 @@ def main() -> int:
     checker_environment=json.loads((ROOT/'docs/research/experiments/checker-environment.json').read_text(encoding='utf-8'))
     if checker_environment['requirements_sha256'] != hashlib.sha256((ROOT/checker_environment['requirements_file']).read_bytes()).hexdigest():
         failures.append('External checker requirements identity is stale')
+    planner=json.loads((ROOT/'docs/research/experiments/rockmate-compatibility.json').read_text(encoding='utf-8'))
+    if planner['review_sha256'] != hashlib.sha256((ROOT/'docs/research/competitors/rockmate-execution-review.json').read_bytes()).hexdigest():
+        failures.append('Planner review identity is stale')
+    intended={(mode,budget) for mode in planner['config']['modes'] for budget in planner['config']['bracket_budgets_mib']}
+    observed={(trial['mode'],trial['budget_mib']) for trial in planner['trials']}
+    if intended != observed or len(observed) != len(planner['trials']):
+        failures.append('Planner bracket intended-run denominator is incomplete/duplicated')
+    for name in ('rockmate-schedule-diagnostics.json','rockmate-budget-frontier.json'):
+        record=json.loads((ROOT/'docs/research/experiments'/name).read_text(encoding='utf-8'))
+        if record['fixture_source_sha256'] != hashlib.sha256((ROOT/'benchmarks/rockmate_compatibility_probe.py').read_bytes()).hexdigest():
+            failures.append(f'Planner follow-up fixture identity is stale: {name}')
+    planner_environment=json.loads((ROOT/'docs/research/experiments/planner-environment.json').read_text(encoding='utf-8'))
+    if planner_environment['requirements_sha256'] != hashlib.sha256((ROOT/planner_environment['requirements_file']).read_bytes()).hexdigest():
+        failures.append('Planner environment requirements identity is stale')
     for name,expected_digest in derived['input_canonical_json_sha256'].items():
         value=json.loads((ROOT/'docs/research/experiments'/name).read_text(encoding='utf-8'))
         actual=hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()

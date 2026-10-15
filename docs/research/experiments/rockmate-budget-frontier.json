@@ -1,0 +1,318 @@
+{
+  "budgets_mib": [
+    32,
+    48
+  ],
+  "captured_utc": "2026-10-15T06:54:20.624292+00:00",
+  "fixture_source_sha256": "704a7364d394969dec94f631a9e0e639f8a4f2401450e89c11eda78c5967c0fa",
+  "scope": "Exploratory fixed intermediate budgets after coarse pilot and static schedule inspection. Original fixture/settings reused; no random workload sample, held-out policy comparison or scientific equivalence.",
+  "source_sha256": "d0acf46b1400aaf0d00be7701b6ced8e97d40073fd6edeebfb676617e937bcb3",
+  "trials": [
+    {
+      "budget_mib": 32,
+      "candidate": {
+        "allocated_peak_bytes": 122437632,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.0038149000029079616,
+        "reserved_peak_bytes": 236978176,
+        "update_seconds": [
+          0.005825999949593097,
+          0.003922299947589636,
+          0.0038863999652676284,
+          0.003771600022446364,
+          0.0038149000029079616,
+          0.0038293999969027936,
+          0.0037134999874979258,
+          0.003885699959937483
+        ]
+      },
+      "comparisons": {
+        "final_parameter": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_gradient": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_momentum": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_parameter": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        }
+      },
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "bracket_budgets_mib": [
+          64,
+          128
+        ],
+        "budget_bytes": 33554432,
+        "graph_extractor": "rkgb_dynamo_with_named_x_wrapper",
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "rotor_config",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "construction_seconds": 0.1486070000100881,
+      "constructor_parameter_max_abs_change": 0.0,
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "initial_state_sha256": "6f0833ac9df0d85fc6eaedd4a216dbb97806860771aca37f0ea84404babc54d1",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "legacy_sequential_initial_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "minor_parameter_node_count": 0,
+      "mode": "rotor_config",
+      "native_export_diagnostics": {
+        "direct_sequential_input": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [
+            "input_1 = input"
+          ],
+          "noncleanup_assignment_count": 17
+        },
+        "named_x_wrapper": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [],
+          "noncleanup_assignment_count": 16
+        }
+      },
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.0019612000323832035,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.11419470002874732,
+          0.008332199999131262,
+          0.0029005000251345336,
+          0.0019612000323832035,
+          0.0026645000325515866,
+          0.0017707999795675278,
+          0.001956300053279847,
+          0.0024622000055387616
+        ]
+      },
+      "outer_wall_seconds": 7.225339600001462,
+      "schedule_present": true,
+      "schedule_summary": {
+        "enabled_forward_operation_counts": {
+          "Compute(FWD[__10_relu_4])": 1,
+          "Compute(FWD[__11_linear_5])": 1,
+          "Compute(FWD[__12_relu_5])": 1,
+          "Compute(FWD[__13_linear_6])": 1,
+          "Compute(FWD[__14_relu_6])": 1,
+          "Compute(FWD[__15_linear_7])": 1,
+          "Compute(FWD[__16_relu_7])": 1,
+          "Compute(FWD[__1_linear])": 2,
+          "Compute(FWD[__2_relu])": 2,
+          "Compute(FWD[__3_linear_1])": 2,
+          "Compute(FWD[__4_relu_1])": 2,
+          "Compute(FWD[__5_linear_2])": 2,
+          "Compute(FWD[__6_relu_2])": 2,
+          "Compute(FWD[__7_linear_3])": 2,
+          "Compute(FWD[__8_relu_3])": 1,
+          "Compute(FWD[__9_linear_4])": 1
+        },
+        "planned_repeated_forward_count": 7,
+        "reported_schedule_peak_bytes": 33554944.0
+      },
+      "status": "completed"
+    },
+    {
+      "budget_mib": 48,
+      "candidate": {
+        "allocated_peak_bytes": 132923392,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.0036235000006854534,
+        "reserved_peak_bytes": 236978176,
+        "update_seconds": [
+          0.0053561000386253,
+          0.003977899963501841,
+          0.003568999993149191,
+          0.003776300000026822,
+          0.0036235000006854534,
+          0.0035371999838389456,
+          0.0035727000213228166,
+          0.0038010000134818256
+        ]
+      },
+      "comparisons": {
+        "final_parameter": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_gradient": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_momentum": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_parameter": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        }
+      },
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "bracket_budgets_mib": [
+          64,
+          128
+        ],
+        "budget_bytes": 50331648,
+        "graph_extractor": "rkgb_dynamo_with_named_x_wrapper",
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "rotor_config",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "construction_seconds": 0.15236389997880906,
+      "constructor_parameter_max_abs_change": 0.0,
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "initial_state_sha256": "6f0833ac9df0d85fc6eaedd4a216dbb97806860771aca37f0ea84404babc54d1",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "legacy_sequential_initial_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "minor_parameter_node_count": 0,
+      "mode": "rotor_config",
+      "native_export_diagnostics": {
+        "direct_sequential_input": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [
+            "input_1 = input"
+          ],
+          "noncleanup_assignment_count": 17
+        },
+        "named_x_wrapper": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [],
+          "noncleanup_assignment_count": 16
+        }
+      },
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.001955099985934794,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.11186020000604913,
+          0.008291900041513145,
+          0.003004099999088794,
+          0.0017749000107869506,
+          0.001955099985934794,
+          0.0023387999972328544,
+          0.0023219999857246876,
+          0.0018337999936193228
+        ]
+      },
+      "outer_wall_seconds": 7.133023600035813,
+      "schedule_present": true,
+      "schedule_summary": {
+        "enabled_forward_operation_counts": {
+          "Compute(FWD[__10_relu_4])": 1,
+          "Compute(FWD[__11_linear_5])": 1,
+          "Compute(FWD[__12_relu_5])": 1,
+          "Compute(FWD[__13_linear_6])": 1,
+          "Compute(FWD[__14_relu_6])": 1,
+          "Compute(FWD[__15_linear_7])": 1,
+          "Compute(FWD[__16_relu_7])": 1,
+          "Compute(FWD[__1_linear])": 1,
+          "Compute(FWD[__2_relu])": 1,
+          "Compute(FWD[__3_linear_1])": 1,
+          "Compute(FWD[__4_relu_1])": 1,
+          "Compute(FWD[__5_linear_2])": 2,
+          "Compute(FWD[__6_relu_2])": 2,
+          "Compute(FWD[__7_linear_3])": 1,
+          "Compute(FWD[__8_relu_3])": 1,
+          "Compute(FWD[__9_linear_4])": 1
+        },
+        "planned_repeated_forward_count": 2,
+        "reported_schedule_peak_bytes": 50332160.0
+      },
+      "status": "completed"
+    }
+  ]
+}
