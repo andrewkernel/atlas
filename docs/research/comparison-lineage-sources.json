@@ -1,11 +1,13 @@
 {
-  "captured_utc": "2026-10-15T14:17:09.229657+00:00",
+  "captured_utc": "2026-10-15T14:17:58.252890+00:00",
   "records": {
     "alive2-pldi21.pdf": {
-      "error_type": "URLError",
-      "message": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
-      "status": "retrieval_error",
-      "url": "https://web.ist.utl.pt/nuno.lopes/pubs/alive2-pldi21.pdf"
+      "bytes": 669022,
+      "content_type": "application/pdf",
+      "resolved_url": "https://sf.snu.ac.kr/publications/alive2.pdf",
+      "sha256": "424b50072c05be040344be295a88502459694f34e5291441b4df17bab6b698b6",
+      "status": "retrieved",
+      "url": "https://sf.snu.ac.kr/publications/alive2.pdf"
     },
     "alive2-readme.md": {
       "bytes": 14995,
@@ -24,9 +26,11 @@
       "url": "https://proceedings.mlr.press/v32/gardner14.html"
     },
     "gardner14.pdf": {
-      "error_type": "ValueError",
-      "message": "Source exceeds fixed 4 MiB retrieval bound",
-      "status": "retrieval_error",
+      "bytes": 8278316,
+      "content_type": "application/pdf",
+      "resolved_url": "https://proceedings.mlr.press/v32/gardner14.pdf",
+      "sha256": "e8b86ad843a498ce9d2e3485086c4ca5ea8f2553e2aeae7d7f6e84194ccd9178",
+      "status": "retrieved",
       "url": "https://proceedings.mlr.press/v32/gardner14.pdf"
     },
     "gelbart14-v1.html": {
@@ -39,5 +43,5 @@
     }
   },
   "scope": "Primary bytes retrieved without execution; retrieval is not full-paper reading, reproduction, proof validation or a complete novelty search.",
-  "source_sha256": "40934dd384b5400635098e51f29df2a97f3334c51d6a449d73a30ad3a44b3b7d"
+  "source_sha256": "d8c3c4f823387bb7a3eeb903c3667e235f6b1e68b77714e50a8f0baa52001022"
 }

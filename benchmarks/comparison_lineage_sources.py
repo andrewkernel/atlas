@@ -10,7 +10,7 @@ SOURCES = {
     'gardner14.pdf': 'https://proceedings.mlr.press/v32/gardner14.pdf',
     'gardner14.html': 'https://proceedings.mlr.press/v32/gardner14.html',
     'gelbart14-v1.html': 'https://arxiv.org/html/1403.5607v1',
-    'alive2-pldi21.pdf': 'https://web.ist.utl.pt/nuno.lopes/pubs/alive2-pldi21.pdf',
+    'alive2-pldi21.pdf': 'https://sf.snu.ac.kr/publications/alive2.pdf',
     'alive2-readme.md': 'https://raw.githubusercontent.com/AliveToolkit/alive2/master/README.md',
 }
 
@@ -26,9 +26,9 @@ def main():
         try:
             request = Request(url, headers={'User-Agent': 'Atlas bounded primary-source research'})
             with urlopen(request, timeout=30) as response:
-                content = response.read(4 * 1024**2 + 1)
-                if len(content) > 4 * 1024**2:
-                    raise ValueError('Source exceeds fixed 4 MiB retrieval bound')
+                content = response.read(16 * 1024**2 + 1)
+                if len(content) > 16 * 1024**2:
+                    raise ValueError('Source exceeds fixed 16 MiB retrieval bound')
                 row.update({'resolved_url': response.url, 'content_type': response.headers.get_content_type()})
             if name.endswith('.pdf') and not content.startswith(b'%PDF'):
                 raise ValueError('Expected PDF header absent')

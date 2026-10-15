@@ -24,6 +24,7 @@ Started 2026-10-14 America/Chicago (2026-10-15 UTC). This is a bounded initial i
 | [13 Audit and amendments](13-audit-and-amendments.md) | Corrections, new prior art and evidence audit |
 | [14 Updated recommendation](14-updated-recommendation.md) | Current decision after deeper comparison and real-data pilots |
 | [15 Comparison identifiability](15-comparison-identifiability.md) | Distinct-treatment requirement and benchmark-first scope amendment |
+| [16 Policy/validation lineage](16-policy-and-validation-lineage.md) | Established constrained acquisition and bounded translation validation |
 
 ## Supporting evidence and implementation
 

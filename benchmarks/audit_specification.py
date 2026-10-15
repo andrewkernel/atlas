@@ -256,6 +256,9 @@ def main() -> int:
             failures.append(f'Derived-summary input identity is stale: {name}')
     from audit_qa_records import audit as audit_qa
     failures.extend(audit_qa(ROOT))
+    lineage=json.loads((ROOT/'docs/research/comparison-lineage-sources.json').read_text(encoding='utf-8'))
+    if lineage['source_sha256'] != hashlib.sha256((ROOT/'benchmarks/comparison_lineage_sources.py').read_bytes()).hexdigest():
+        failures.append('Policy/validation lineage collector identity is stale')
     print(json.dumps({'markdown_files':len(markdown),'local_links_checked':links,'unique_external_links_catalogued':len(external),'lock_package_count':len(lock['package']),'failures':failures},indent=2))
     return bool(failures)
 

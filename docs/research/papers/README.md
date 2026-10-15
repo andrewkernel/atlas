@@ -36,3 +36,6 @@ These concise notes preserve metadata, the claim actually used, limitations and 
 | [HiRemate: Hierarchical Approach for Efficient Re-materialization of Neural Networks](hiremate.md) |2025 |Proceedings abstract and pinned repository description; not replicated |
 | [OFFMATE: full fine-tuning of LLMs on a single GPU by re-materialization and offloading](offmate.md) |2024 preprint |Author-team report and pinned README; HAL paper page inaccessible |
 | [Time-uniform, nonparametric, nonasymptotic confidence sequences](confidence-sequences.md) |2021 journal,2018 preprint |Abstract/version metadata only; no bound implemented |
+| [Bayesian Optimization with Inequality Constraints](constrained-bo-gardner.md) |2014 |Introduction and selected method; PDF page 3 visually inspected |
+| [Bayesian Optimization with Unknown Constraints](constrained-bo-gelbart.md) |2014 preprint |Abstract and selected decoupled/cost-acquisition sections of versioned HTML |
+| [Alive2: Bounded Translation Validation for LLVM](alive2.md) |2021 |Selected semantics/unsupported/loop text, PDF page 9 visual check, current README |
