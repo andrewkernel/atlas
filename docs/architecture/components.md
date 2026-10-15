@@ -40,6 +40,8 @@ Represent absent, None, zero and nonfinite gradients distinctly, keyed by parame
 
 Expose `id`, `version`, `affected_dimensions`, `check_preconditions(contract, semantics)`, `enumerate_parameters(config,budget)`, `apply_config(config,params)` and `required_checks`. Initial strategies are `microbatch_accumulation` and `activation_checkpoint`. An immutable `Plan` contains ordered operations, config diff, reasons, precondition evidence and expected affected properties. Apply only in a worker's copied config/model construction; source mutation is excluded.
 
+Include the required forward/backward scheduling relation and supported live-forward-context pattern in registered execution metadata. A verifier must execute that relation or explicitly report a different one. The [reuse control](../research/experiments/planner-reuse-control.md) passes a streaming plan but fails deferred-forward patterns on the tested existing wrapper, even without planned recomputation. Do not turn a verification executor's different schedule into a verdict about an unexecuted target plan. Streaming is eligible only when the objective/accounting supports it; opaque or nonseparable cases remain unsupported.
+
 The planner enumerates at most the declared trial cap, includes identity, removes duplicates and rejects invalid compositions. Order candidates using conservative bottleneck rules then observed cost; treat predicted memory as heuristic. Deterministic tie-break: strategy IDs and canonical parameter JSON. Cache only results with matching code/config/contract/data/environment/strategy versions and scope.
 
 ## Verification interface

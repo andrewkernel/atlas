@@ -26,4 +26,6 @@ When the full reference OOMs on the target budget, neither Atlas nor an existing
 
 ## Contribution decision
 
+An [executed reuse control](experiments/planner-reuse-control.md) now passes native/planner streaming but raises a shape error for two deferred-forward patterns on the pinned family wrapper. Keeping outputs and a non-recomputing schedule do not repair it. This tests the inspected checker's scheduling pattern, not an actual combined-tool run. A fair adapted baseline must preserve a supported target execution relation and retain unsupported/error outcomes; this loud failure supplies no unsafe-acceptance or novel-rematerialization claim.
+
 The research test is whether integrating eligibility, resource measurement, evidence and refusal yields useful decisions beyond this competent composition. If the answer is no, a well-documented integration/benchmark or upstream improvement may be the appropriate artifact. No upstream message, issue or pull request was sent in this session; this is a local reviewable integration note only.

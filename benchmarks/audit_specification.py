@@ -89,6 +89,9 @@ def main() -> int:
         ('rockmate_schedule_diagnostics.py', 'rockmate-schedule-diagnostics.json'),
         ('rockmate_budget_frontier.py', 'rockmate-budget-frontier.json'),
         ('rockmate_state_control.py', 'rockmate-state-control.json'),
+        ('planner_reuse_control.py', 'planner-reuse-control.json'),
+        ('planner_reuse_retention_control.py', 'planner-reuse-retention-control.json'),
+        ('planner_reuse_nonrecompute_control.py', 'planner-reuse-nonrecompute-control.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
@@ -165,6 +168,14 @@ def main() -> int:
     planner_environment=json.loads((ROOT/'docs/research/experiments/planner-environment.json').read_text(encoding='utf-8'))
     if planner_environment['requirements_sha256'] != hashlib.sha256((ROOT/planner_environment['requirements_file']).read_bytes()).hexdigest():
         failures.append('Planner environment requirements identity is stale')
+    for name in ('planner-reuse-control.json','planner-reuse-retention-control.json','planner-reuse-nonrecompute-control.json'):
+        record=json.loads((ROOT/'docs/research/experiments'/name).read_text(encoding='utf-8'))
+        if [trial['mode'] for trial in record['trials']] != record['modes']:
+            failures.append(f'Reuse-control intended-run denominator is incomplete: {name}')
+        if record['review_sha256'] != hashlib.sha256((ROOT/'docs/research/competitors/rockmate-execution-review.json').read_bytes()).hexdigest():
+            failures.append(f'Reuse-control review identity is stale: {name}')
+        if 'fixture_source_sha256' in record and record['fixture_source_sha256'] != hashlib.sha256((ROOT/'benchmarks/planner_reuse_control.py').read_bytes()).hexdigest():
+            failures.append(f'Reuse-control fixture identity is stale: {name}')
     for name,expected_digest in derived['input_canonical_json_sha256'].items():
         value=json.loads((ROOT/'docs/research/experiments'/name).read_text(encoding='utf-8'))
         actual=hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()

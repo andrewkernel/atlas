@@ -18,6 +18,8 @@ The [TrainParity source inspection](competitors/trainparity.md) confirms direct 
 
 The current composed-update fixtures do **not** yet demonstrate an emergent failure of individually valid transformations. [That distinction](composition-evidence.md) weakens an interaction-specific novelty claim. A new report format, explicit contract schema, local UI or optional LLM does not by itself supply missing research novelty.
 
+The [reuse follow-up](experiments/planner-reuse-control.md) now finds a concrete deferred-forward execution failure while streaming controls pass. Its persistence without planned recomputation weakens, rather than establishes, a novel emergent-transform claim. It motivates making the verifier's execution relation explicit and giving the composed baseline a supported streaming adaptation. No unsafe scientific acceptance was observed.
+
 ## Narrow claim worth testing next
 
 Does a transparent contract-conditioned selection workflow improve the safety/valid-feasible-coverage/cost tradeoff on independently adjudicated held-out training cases over a competent composition of native mechanisms and existing checkers?

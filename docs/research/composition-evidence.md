@@ -16,6 +16,8 @@ Let a contract relation R be transitive on a stated domain D. If T1 preserves R 
 
 For the initial pure-region checkpointing and separable-loss accumulation design, the mathematical obligations are comparatively straightforward when domain closure, state, randomness and update clocks are actually preserved. The difficult engineering work is observing/enforcing them on real implementations. Atlas currently has no new composition theorem or proof system.
 
+The later [existing-wrapper reuse control](experiments/planner-reuse-control.md) makes this distinction concrete. Single-forward and streaming accumulation pass; two deferred-forward patterns fail. The failure persists under an output-retention option and under a schedule with **no planned recomputation**. This weakens an emergent-rematerialization interpretation and supports only a tested execution-pattern/lifetime limitation on the pinned wrapper. The failure is loud before the optimizer update, not a silently accepted scientific violation. The test matches an inspected checker's scheduling pattern but does not execute both external systems together. A competent streaming baseline remains necessary.
+
 ## Contribution gate
 
 Before claiming an interaction benchmark as a distinct research contribution, obtain independently adjudicated cases spanning actual shared-workload compositions, compare existing checkers with the same observations, and show what is missing beyond known single-transform rules. Include cases where composition succeeds, where one transform is already invalid, and where the relation is indeterminate. Keep those categories separate in detection results.
