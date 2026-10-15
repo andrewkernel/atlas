@@ -49,7 +49,7 @@ Require an importable, registered `ExperimentAdapter` describing data/loss accou
 | FastAPI/Pydantic | Typed local service after command-line prototype | Architecture retained; packages/API not implemented or integration-tested |
 | MLflow + SQLite | Local tracking and control-state storage | Retained, deferred; separate DB ownership and migrations specified |
 | Ollama | Replaceable optional backend | Installed CLI; no models present or evaluated |
-| NVIDIA telemetry | Optional NVML via maintained binding | Device inspected with NVIDIA CLI; energy API support untested |
+| NVIDIA telemetry | Optional NVML via maintained binding | Read-only NVML counter/power APIs execute in a separate environment; [gross-board readings and unresolved disagreement](experiments/board-energy-control.md) are scoped, not calibrated attribution |
 | React/TypeScript/Vite/Tailwind | Inspection UI later | Retained; absent from research-critical path |
 | Docker | Optional reproducible trusted execution environment | CLI present; daemon/isolation/GPU behavior not validated |
 

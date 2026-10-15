@@ -111,3 +111,7 @@ Under the corrected illustrative36-pair power example, five workloads and two ar
 Remove precondition rules, state checks, gradient checks, profiling and LLM ranking one at a time. Test each transform alone and their combination. Hold out code and fault families. Preserve all candidate records to expose survivor bias and selection on noisy measurements.
 
 Threats: hand-selected easy faults; incomplete adapters; tolerance tuning; baseline version mismatch; deterministic modes atypical of normal training; missing full-scale reference; late instability; hardware-specific kernels; dataset license uncertainty; investigator-generated labels; and annotation effort excluding under-resourced users. Institutional-access or energy conclusions require their own measurements and should not be inferred from this study.
+
+## Independent labeling procedure
+
+The [adjudication packet specification](adjudication-protocol.md) makes reviewer information, blinding, property-level uncertainty, disagreement retention, leakage controls and freeze sequence concrete. It is prepared work, not completed external review. All existing authored controls remain development/discovery evidence unless an explicitly narrower study says otherwise.

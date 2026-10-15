@@ -25,5 +25,9 @@ jobs:
         run: uv sync --locked
       - name: Validate specification links and manifests
         run: uv run --locked python benchmarks/audit_specification.py
+      - name: Independently reconstruct saved energy arithmetic and replay identities
+        run: uv run --locked python benchmarks/derive_board_energy.py
+      - name: Check reconstructed evidence matches the published record
+        run: git diff --exit-code -- docs/research/experiments/board-energy-derived.json
       - name: Run bounded CPU semantic controls
         run: uv run --locked pytest -q

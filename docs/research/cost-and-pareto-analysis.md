@@ -36,3 +36,7 @@ A fixed eight-plan registry bounds what ranking can discover. If every admissibl
 ## Energy has its own measurement boundary
 
 The [same-seed board replays](experiments/board-energy-control.md) record higher gross counter energy in each combined-plan pair, with longer complete-workflow windows. Counter and integrated-power magnitudes disagree materially; preserve both and their units/windows. Shared background and repeated single-seed work prohibit process-attribution, population or calibrated energy claims. Memory reduction, time, energy and useful feasible completion remain separate objectives.
+
+## Learned-check acquisition and reuse
+
+For any learned-invariant baseline, distinguish first-user trace acquisition, inference, deployment/checking and analyst review from repeated use of an already supplied library. Give Atlas the same reusable information and charge each arm consistently. A shared frozen library can justify a separate warm-start scenario; silently treating one arm’s preparation as free creates a biased comparison. Record library identities, training/validation overlap and contract compatibility. The [deeper TrainCheck note](papers/traincheck.md) reinforces why online instrumentation overhead alone cannot represent total workflow cost.

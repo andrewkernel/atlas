@@ -58,3 +58,7 @@ This is an illustrative schema instance, not a real API response. Production evi
 ## Reproducibility and concurrency
 
 Default one active GPU worker. SQLite stores durable queue/state with transactional transitions; worker handles are never API-controlled. The CLI and service call the same core functions so transport does not change semantics. Requests cannot mutate a running contract; changing a margin or invariant creates a new revision. The report preserves previous failures even after a human chooses a modified methodology.
+
+## Concrete specification walkthrough
+
+The [evidence-contract illustration](evidence-contract-example.md) combines comparison identity, field health, execution relation, post-preparation state and resource-scope obligations. It is a reviewable proposal, not a running API or validated production schema. Before implementation, replace descriptive calibration obligations with typed values and require resolvable immutable evidence.

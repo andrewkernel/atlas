@@ -46,3 +46,5 @@ If (1) or (2) holds, publish an honest evaluation if warranted, contribute cases
 ## Evidence still needed for a novelty claim
 
 Read the closest implementations, reproduce representative cases, search forward citations and recent workshop literature, ask an advisor with ML-systems or scientific-computing expertise, and document a concrete behavior the closest baseline cannot already provide. This session establishes a defensible investigation target, not a confirmed novel algorithm.
+
+[Selected deeper TrainCheck reading](papers/traincheck.md) further weakens novelty from conditional checks alone. A proposed Atlas contract may still state an author’s resource/scientific acceptance policy, but any incremental decision benefit must survive a baseline using applicable learned invariants and existing state comparisons, under the same information and cost rules.

@@ -1,0 +1,67 @@
+{
+  "schema_version": "proposal-0.1",
+  "illustrative_only": true,
+  "implemented_policy": false,
+  "intent": "Reviewable future report and decision obligations; not an executed Atlas decision or universal template",
+  "numerical_relation": {
+    "relation_id": "atlas-baseline-additive-v1-proposed",
+    "lhs": "abs(candidate-baseline)",
+    "bound": "atol + rtol*abs(baseline)",
+    "relative_scale": "baseline",
+    "bound_combination": "sum",
+    "element_reduction": "all",
+    "comparison_dtype": "must_be_explicit_per_field",
+    "atol": "must_be_calibrated_before_confirmation",
+    "rtol": "must_be_calibrated_before_confirmation",
+    "nonfinite_policy": "must_be_explicit_per_field",
+    "library_policy_adapter_required": true
+  },
+  "method_relation": {
+    "configuration_and_data_identity": "exact",
+    "none_gradient_distinct_from_zero": true,
+    "logical_loss_denominator": "explicit_sample_or_token_accounting",
+    "successful_update_clock": "explicit_optimizer_scheduler_scaler_ema_relation",
+    "execution_order": "registered_target_forward_backward_relation",
+    "start_state": "verified_after_planning_and_profiling",
+    "stochastic_relation": "declared_pathwise_or_distributional_not_seed_only"
+  },
+  "resource_scopes": [
+    "planner_managed_activation_bytes",
+    "torch_allocated_bytes",
+    "torch_reserved_bytes",
+    "device_board_memory_bytes",
+    "host_process_rss_bytes",
+    "gross_board_energy_j",
+    "whole_host_energy_j"
+  ],
+  "resource_rules": {
+    "scope_mismatch": "ABSTAIN_ON_REQUESTED_BUDGET",
+    "unsupported_metric": "null_with_reason",
+    "counter_power_disagreement": "retain_both_unvalidated_accuracy",
+    "missing_reference": "no_invented_speedup_or_parity",
+    "allocator_cap": "emulation_label_required"
+  },
+  "claim_gates": {
+    "observed_numerical_relation": "required_valid_reference_health_and_all_declared_observations",
+    "method_compatibility": "exact_required_fields_and_preconditions",
+    "resource_feasibility": "completed_run_measured_under_matching_budget_scope",
+    "outcome_equivalence": "separate_frozen_scientifically_justified_statistical_protocol",
+    "scientific_conclusion": "explicit_domain_review_and_target_comparison",
+    "unknown_required_dimension": "ABSTAIN",
+    "execution_exception": "ERROR_never_PASS",
+    "failing_required_dimension": "FAIL"
+  },
+  "evidence_identity_requirements": [
+    "source_and_dirty_diff",
+    "contract",
+    "plan",
+    "adapter_and_executor",
+    "data_and_split",
+    "initial_state_and_rng_relation",
+    "environment_and_versions",
+    "comparison_formula_and_field_policies",
+    "measurement_units_scope_and_windows",
+    "complete_intended_run_denominator",
+    "artifact_digest_and_schema_version"
+  ]
+}

@@ -167,10 +167,15 @@ This is a bounded initial research/engineering investigation, not five hours of 
 - Identical infinity and selected NaN policies can pass equality while a separate finite-health predicate fails. The default NaN failure's infinite diagnostic summaries are represented as null with explicit field paths. Existing conventions are not labeled upstream bugs; health/configuration checks and exact comparison identity remain caller obligations. Earlier results retain their actual implemented policy.
 - Checkpoint bb30bcb passed cross-platform run 38700374277.
 
-## 2026-10-15 07:51–08:07 UTC — energy replay and independent instrument audit
+## 2026-10-15 07:51–08:05 UTC — energy replay and independent instrument audit
 
 - Read-only NVML availability supports cumulative energy and power on the physical RTX 3060. Inspected wrappers and exact binding/requirements are retained in a separate minimal environment; no settings or driver changes.
 - Froze three same-seed randomized-order replay pairs at 8fbab26 before measuring unchanged five-epoch CNN workers. All six complete with identical same-arm final/initial/data/order digests and five-epoch validation/update values. They are measurement repetitions, not additional independent seeds.
 - Independently reconstructed energy differences and power integrals using exact integer/rational units. The analytic integration control is 200 J. Gross native/candidate mean counters are 1205.084/1590.857 J over complete-workflow padded windows, not process or whole-host energy.
 - Reported-power integration exceeds counter deltas by 23.61–25.00%. A post-observation passive diagnostic frozen at b15c90a also shows 5.726% disagreement over 19.991 seconds. No favored accuracy reference, corrected result or cause is established. Retained all raw traces and strengthened measurement-scope requirements.
 - Current summary/security/dependency prose was reconciled with later external execution and energy evidence; historical logs/protocols remain dated observations. Checkpoint 0966144 passed Linux/Windows run 38701101879.
+
+## 2026-10-15 08:06–08:08 UTC — conditional-check prior art and contract synthesis
+
+- Retrieved the official 18-page TrainCheck PDF with byte identity after the earlier landing-page failure. Selected methods/evaluation reading and visual inspection of pages 13/14 clarify precondition inference, conditioned evaluation populations, analyst review and online versus offline cost. No TrainCheck code or paper suite was run. OffMate public metadata access still fails certificate validation; no bypass or full-paper read.
+- Consolidated the observed comparison/state/execution/resource boundaries into a clearly labeled proposed JSON illustration and decision walkthrough. It is specification, not an application or completed policy benchmark. Existing conditional checks further weaken a novelty claim based on contracts alone; the primary comparison gate remains.

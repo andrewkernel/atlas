@@ -47,3 +47,9 @@ Executed: original CPU semantic/composition/state/update-clock controls, statist
 The strongest local observation is that checkpointing can match gradients while changing BatchNorm buffers/evaluation. That motivates evidence design; it does not validate the proposed planner or certify scientific conclusions.
 
 [Gross-board energy controls](experiments/board-energy-control.md) add six exact same-seed training replays, independent arithmetic, and a passive telemetry diagnostic. Both raw APIs are retained despite substantial disagreement. These are not calibrated process energy or additional independent seeds.
+
+[Evidence-contract walkthroughs](../architecture/evidence-contract-example.md) collect the resulting implementation obligations without claiming an implemented decision engine. The [deeper TrainCheck note](papers/traincheck.md) now retains selected primary-PDF read/visual scope and comparator-cost limits.
+
+[Independent adjudication packet specification](adjudication-protocol.md) prepares the uncompleted external-label gate, including reviewer information, disagreement retention and discovery/holdout separation. No external reviewer has been contacted or labels obtained.
+
+[Assignment deliverable audit](deliverable-audit.md) maps requested outputs to documents and distinguishes the completed initial blueprint from unfinished empirical studies.
