@@ -1,5 +1,5 @@
 {
-  "captured_utc": "2026-10-15T08:25:24.547195+00:00",
+  "captured_utc": "2026-10-15T08:29:04.001513+00:00",
   "environment_helper_sha256": "85b03be5771a63d1d163e7b0f567e204d0284b3e526ae4056942d9d0d14f02aa",
   "profiles": {
     "checker": {
@@ -96,7 +96,7 @@
       },
       "python": "3.12.10",
       "requirements_file": "uv.lock",
-      "requirements_sha256": "1c255d3e0c9de05dd4d55870f931be4461232cf9b51f0e7772b386d13d2520f7",
+      "requirements_sha256": "cb35b0c33e15910803e16bbebfc4ba6cf5f1a53f42e70cc8020baee2de98bcd9",
       "selected_files": [
         {
           "distribution": "torch",
