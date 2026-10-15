@@ -1,0 +1,75 @@
+{
+  "amendment": "Investigator oracle/report collector used nonexistent LossAccounting.loss instead of value after checker completion. Retain both errors and saved checker reports; fix only that attribute before rerunning identical cases/protocol.",
+  "case_source_sha256": "598c708b278617fc8160aff61c14bace33a1ef8ea84e9bb2ca17fe784aac0c5a",
+  "checker_revision": "79a1fc23c36073f09b97aa99c2daad7e96e7bce4",
+  "environment_helper_sha256": "85b03be5771a63d1d163e7b0f567e204d0284b3e526ae4056942d9d0d14f02aa",
+  "historical_source_commit": "8e3e820",
+  "modes": [
+    "TokenCase",
+    "SequenceMeanCase"
+  ],
+  "retained_checker_reports": {
+    "SequenceMeanCase": {
+      "all_differences": [],
+      "case": "token_reference_cases:SequenceMeanCase",
+      "comparison_policy": "explicit_tolerance",
+      "equivalence": "Declared intended objective is mean over all nonignored target tokens",
+      "first_observed_phase": null,
+      "loss_normalization_captured": true,
+      "message": "declared executions are equivalent for one optimizer-update boundary",
+      "outcome": "PASS",
+      "peak_temporary_directory_bytes": 195638,
+      "persisted_artifact_bytes": 658,
+      "primary_difference": null,
+      "process_ids": [
+        21668,
+        6076,
+        21656
+      ],
+      "schema_version": 2,
+      "trainparity_version": "0.1.1.dev0",
+      "verified_equal_initial_state": true
+    },
+    "TokenCase": {
+      "all_differences": [],
+      "case": "token_reference_cases:TokenCase",
+      "comparison_policy": "explicit_tolerance",
+      "equivalence": "Declared intended objective is mean over all nonignored target tokens",
+      "first_observed_phase": null,
+      "loss_normalization_captured": true,
+      "message": "declared executions are equivalent for one optimizer-update boundary",
+      "outcome": "PASS",
+      "peak_temporary_directory_bytes": 195636,
+      "persisted_artifact_bytes": 649,
+      "primary_difference": null,
+      "process_ids": [
+        5220,
+        4900,
+        8868
+      ],
+      "schema_version": 2,
+      "trainparity_version": "0.1.1.dev0",
+      "verified_equal_initial_state": true
+    }
+  },
+  "review_sha256": "fb582db3dec0a7c46091bcf3249bb57725acba9f8747a78cad94a0cc8a2a2733",
+  "seed": 2301,
+  "source_sha256": "638fd8cd8d317314cf2784678fdefc22a9cd2eb594b1beb7e78e98cd6551d775",
+  "started_utc": "2026-10-15T08:19:44.314817+00:00",
+  "trials": [
+    {
+      "case": "TokenCase",
+      "outer_wall_seconds": 16.980056900007185,
+      "returncode": 1,
+      "status": "launcher_error",
+      "stderr_excerpt": "Traceback (most recent call last):\n  File \"<atlas>\\benchmarks\\token_reference_control.py\", line 53, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"<atlas>\\benchmarks\\token_reference_control.py\", line 34, in main\n    print(json.dumps({'case':a.internal,'checker':result.to_dict(),'objective_control':oracle(obj)},sort_keys=True,allow_nan=False),flush=True);return\n                                                                                       ^^^^^^^^^^^\n  File \"<atlas>\\benchmarks\\token_reference_control.py\", line 17, in oracle\n    state=case.build(2301,'cpu');batch=case.batch('cpu');loss=case.loss(state,batch).loss;loss.backward()\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'LossAccounting' object has no attribute 'loss'\n"
+    },
+    {
+      "case": "SequenceMeanCase",
+      "outer_wall_seconds": 17.065683699969668,
+      "returncode": 1,
+      "status": "launcher_error",
+      "stderr_excerpt": "Traceback (most recent call last):\n  File \"<atlas>\\benchmarks\\token_reference_control.py\", line 53, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"<atlas>\\benchmarks\\token_reference_control.py\", line 34, in main\n    print(json.dumps({'case':a.internal,'checker':result.to_dict(),'objective_control':oracle(obj)},sort_keys=True,allow_nan=False),flush=True);return\n                                                                                       ^^^^^^^^^^^\n  File \"<atlas>\\benchmarks\\token_reference_control.py\", line 17, in oracle\n    state=case.build(2301,'cpu');batch=case.batch('cpu');loss=case.loss(state,batch).loss;loss.backward()\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'LossAccounting' object has no attribute 'loss'\n"
+    }
+  ]
+}

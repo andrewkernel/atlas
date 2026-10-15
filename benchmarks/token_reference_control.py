@@ -14,7 +14,7 @@ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def oracle(case):
     import torch
     from token_reference_cases import TokenCase
-    state=case.build(2301,'cpu');batch=case.batch('cpu');loss=case.loss(state,batch).loss;loss.backward()
+    state=case.build(2301,'cpu');batch=case.batch('cpu');loss=case.loss(state,batch).value;loss.backward()
     expected=TokenCase().build(2301,'cpu');logits=expected.model(batch['x']);mask=batch['y']!=-100
     chosen=torch.log_softmax(logits,dim=-1)[mask].gather(1,batch['y'][mask,None]).sum()
     target=-chosen/int(mask.sum());target.backward()
