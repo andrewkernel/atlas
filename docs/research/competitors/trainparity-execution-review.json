@@ -1,0 +1,149 @@
+{
+  "authorized_scope": "reviewed_import_graph_and_accumulation_on_original_cpu_cases",
+  "execution_policy": "Original allowlisted CPU cases; explicit minimal child environment; bounded subprocesses; no build hooks, downloaded fixture execution, external checkpoints, privileges, credentials or network operation in the reviewed path. Not OS isolation.",
+  "files": [
+    {
+      "bytes": 653,
+      "path": "src/trainparity/__init__.py",
+      "sha256": "a4ad13d019314b247f16346e91345616d91684d4ef903c3851e0197a1ad7d401",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/__init__.py"
+    },
+    {
+      "bytes": 15927,
+      "path": "src/trainparity/accumulation.py",
+      "sha256": "36098d9fc15bedbaf9de4c17766222c7a36f4ad48b944d6519c7a404f558a2bf",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/accumulation.py"
+    },
+    {
+      "bytes": 9918,
+      "path": "src/trainparity/accumulation_worker.py",
+      "sha256": "b22fcdfb2525d180f3a1806ff6ecd726f6576119c08182d0bcd0cf2403cffb20",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/accumulation_worker.py"
+    },
+    {
+      "bytes": 3241,
+      "path": "src/trainparity/api.py",
+      "sha256": "b7bf699f1af5005643d8c2bcea0c1e10b3b9852320350f8487e6e2238fea13a6",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/api.py"
+    },
+    {
+      "bytes": 12800,
+      "path": "src/trainparity/comparison.py",
+      "sha256": "695241da22c9283c8019fc0b1b7550d3348c4aeaf6b3bbb20466b3e7e38c68cd",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/comparison.py"
+    },
+    {
+      "bytes": 2295,
+      "path": "src/trainparity/importing.py",
+      "sha256": "2bba5523ab869348fba464d44148390d8381740edeedd9607530060b2342ecc0",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/importing.py"
+    },
+    {
+      "bytes": 3478,
+      "path": "src/trainparity/optimizer_state.py",
+      "sha256": "bb06a52ecd661ce434d3d69f2c3de17e20a5340548ec657f5220445a222e1676",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/optimizer_state.py"
+    },
+    {
+      "bytes": 289,
+      "path": "src/trainparity/outcomes.py",
+      "sha256": "864940e621b14a3aabf51a7f78ef6a5854c17aa2dd95d8944010bb56bdfa1b1c",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/outcomes.py"
+    },
+    {
+      "bytes": 24451,
+      "path": "src/trainparity/process_resume.py",
+      "sha256": "372ee99e9351c8abe8b50547fcdcc2172a057acbd62b7c5ed18e26fb3081bd72",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/process_resume.py"
+    },
+    {
+      "bytes": 4296,
+      "path": "src/trainparity/process_worker.py",
+      "sha256": "ecbaacf8743746e87b840f293cc2de19bd0077aac6a5d78673c613b85b25ac62",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/process_worker.py"
+    },
+    {
+      "bytes": 2251,
+      "path": "src/trainparity/protocols.py",
+      "sha256": "6ec0906a592fcc80e37dfa3738439384b6c11762c4755f92034e11f593b97378",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/protocols.py"
+    },
+    {
+      "bytes": 76,
+      "path": "src/trainparity/quickstarts/__init__.py",
+      "sha256": "fbc0e2e26636f63dc2e2a9442b948fd5c1d74c22d71dd863b9232aa01a08443e",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/quickstarts/__init__.py"
+    },
+    {
+      "bytes": 2677,
+      "path": "src/trainparity/quickstarts/accumulation.py",
+      "sha256": "f1da60cac4d950d26db8779a3cea86d29561a6cbfe9345d2390103b86b837193",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/quickstarts/accumulation.py"
+    },
+    {
+      "bytes": 4184,
+      "path": "src/trainparity/quickstarts/resume.py",
+      "sha256": "c2f044e423ae59f6312ff23797971a7d63e417283dfe613a45101ca6ad8b8c6d",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/quickstarts/resume.py"
+    },
+    {
+      "bytes": 1317,
+      "path": "src/trainparity/quickstarts/sample_coverage.py",
+      "sha256": "c672fb7be155fcb017fcfbe2da9a06a7eb1404e8f66a8c2cddcb61ab9eec50a2",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/quickstarts/sample_coverage.py"
+    },
+    {
+      "bytes": 2351,
+      "path": "src/trainparity/results.py",
+      "sha256": "c653e2a089dfd1a729500b841f0a0dcdae726987d588ecdfaea1d9ad452f4330",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/results.py"
+    },
+    {
+      "bytes": 22519,
+      "path": "src/trainparity/sample_coverage.py",
+      "sha256": "c1d1ae1f4e4c85af48ad33b0333c4bfacba36fda8e6930cf0710fbef43f1dede",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/sample_coverage.py"
+    },
+    {
+      "bytes": 3857,
+      "path": "src/trainparity/serialization.py",
+      "sha256": "acfe8076f11e0a7e855d97d0c99ab8e0f09e42ffa670425e3966a69a2bc84f95",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/serialization.py"
+    },
+    {
+      "bytes": 5268,
+      "path": "src/trainparity/snapshot.py",
+      "sha256": "6597b6c79e7aa98d549bb90c3bdd5dc2ee3ea1a4aeaadec38a2c8908a71dbdeb",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/snapshot.py"
+    },
+    {
+      "bytes": 5153,
+      "path": "src/trainparity/state.py",
+      "sha256": "1f625dd31261b46dacdcaa4694e60c343e911061cf58491cdafa0172fefc9a72",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/state.py"
+    },
+    {
+      "bytes": 434,
+      "path": "src/trainparity/version.py",
+      "sha256": "f44e4fafa288f4d5470cb5846ff9369efa6fc35a29aa1c221793a9ce804dc46a",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/version.py"
+    },
+    {
+      "bytes": 1764,
+      "path": "pyproject.toml",
+      "sha256": "508148b56e4df7ebb88d92463ac818e48033131ba592f9dd5942bbadb3e2dde5",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/pyproject.toml"
+    },
+    {
+      "bytes": 1069,
+      "path": "LICENSE",
+      "sha256": "e07585fbf5fb89cc6f7ee97e8c24323369c8db64cea13ec6d6b87f862789c6cb",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/LICENSE"
+    }
+  ],
+  "license": "MIT; reference code remains outside Atlas Git tree, original license retained in ignored reference directory.",
+  "retrieved_utc": "2026-10-15T06:18:02.529736+00:00",
+  "review_scope": "Human/model text inspection of import-time statements and accumulation call path; no claim of exhaustive security audit or review of unused resume/quickstart behavior.",
+  "reviewed_before_execution_utc": "2026-10-15T06:25:00.780832+00:00",
+  "revision": "79a1fc23c36073f09b97aa99c2daad7e96e7bce4"
+}
