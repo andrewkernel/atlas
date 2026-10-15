@@ -1,0 +1,58 @@
+{
+  "captured_utc": "2026-10-15T13:17:04.347882+00:00",
+  "files": [
+    {
+      "bytes": 42112,
+      "path": "transformers/__init__.py",
+      "sha256": "af7867325306501e495acaca93c1c4d603849cca6614ed23510bb17c2da63ac6"
+    },
+    {
+      "bytes": 2194,
+      "path": "transformers/models/bert/configuration_bert.py",
+      "sha256": "7571591482cb348896e46789f272325cab38a0225b12c1c65a5d4dbbdcdf913b"
+    },
+    {
+      "bytes": 54510,
+      "path": "transformers/models/bert/modeling_bert.py",
+      "sha256": "fca25539f04aa121d000de218baedb619d744aaef7e93726e71ef555419c6a43"
+    },
+    {
+      "bytes": 6075,
+      "path": "transformers/models/bert/tokenization_bert.py",
+      "sha256": "ff6ab7214c7b8edc33e04585cbaffabde081f53641a1f1650d0803a91ef8d028"
+    },
+    {
+      "bytes": 31417,
+      "path": "transformers/modeling_layers.py",
+      "sha256": "ee84c7229582bc2f47bac19327ac2d96530bf94a182b5366d72d10330da99df4"
+    },
+    {
+      "bytes": 270870,
+      "path": "transformers/modeling_utils.py",
+      "sha256": "037ef3ca1d0fab4e080bae880adb5c24d68d191e0bd1fe0d626f14f0636ae448"
+    },
+    {
+      "bytes": 9385,
+      "path": "transformers/integrations/sdpa_attention.py",
+      "sha256": "0523b9e7b375941b91c226aa850ffc18af709d8f697701fd16f2babaec32f23f"
+    },
+    {
+      "bytes": 3263,
+      "path": "tokenizers/__init__.py",
+      "sha256": "6a5955273d382901d5b1f5284d887b24501464725977f6684485c2dfd2fb42f3"
+    },
+    {
+      "bytes": 20902,
+      "path": "safetensors/torch.py",
+      "sha256": "81f477f2ab5e05e99308fc55ed26028eb2bf36334404e9c5558e4730184483f0"
+    }
+  ],
+  "observations": [
+    "QA start/end cross entropies average over feature examples; position equal to sequence length is ignored. Planned feature labels remain strictly in-range, including CLS=0 out-of-window labels.",
+    "BERT LayerNorm/attention is per sequence; dropout remains stochastic and microbatching need not preserve pathwise masks.",
+    "Checkpointing uses GradientCheckpointingLayer wrappers; checkpoint kwargs are explicit, RNG preservation required.",
+    "SDPA delegates to native Torch scaled_dot_product_attention; the Python backend label does not identify the actual selected CUDA kernel.",
+    "Use direct local safetensors tensor loading and explicit builtin model class; no AutoModel/from_pretrained remote resolution is needed."
+  ],
+  "scope": "Selected installed package entry points and BERT forward/loss, per-layer non-reentrant checkpoint wrapper, eager/SDPA dispatch, local tokenizer and safetensors loading paths. Not a whole-library security audit. Only builtin BertConfig/BertForQuestionAnswering and local tensor/tokenizer data may run; no downloaded script, remote model code, pickle checkpoint, trainer, flash-attention plugin or offload branch is authorized by this review."
+}
