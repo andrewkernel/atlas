@@ -1,6 +1,12 @@
 {
   "bytes": 1207964,
   "deeper_read_recorded_utc": "2026-10-15T07:14:31.626256+00:00",
+  "earlier_history_candidate": {
+    "matches_captured_bytes": true,
+    "sha256": "74c638bff1048d5b069f16df0e27695c53daa21b6a44dbc98f27eff66fadb093",
+    "url": "https://raw.githubusercontent.com/mlresearch/v267/74712b2e711b8deb4589c58830ec290c8ff437f0/assets/gusak25a/gusak25a.pdf",
+    "verified_utc": "2026-10-15T07:17:38.837986+00:00"
+  },
   "immutable_candidate_verification": {
     "interpretation": "Candidate file-history commit URL did not resolve; no immutable-byte verification claimed. Timestamped mutable-URL capture and local byte hash retained.",
     "status": 404,
