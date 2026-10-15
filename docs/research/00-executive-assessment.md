@@ -10,9 +10,9 @@ Preserving behavior is also established: [EasyScale](https://arxiv.org/html/2208
 
 ## Selected question
 
-**On a preregistered, held-out set of single-device PyTorch workloads and activation-checkpointing/gradient-accumulation plans, does contract-constrained selection reduce acceptance of plans that violate declared training semantics, compared with resource-only selection and a composition of native optimizations plus existing checks, while retaining useful VRAM-feasible coverage within the same search and verification budget?**
+**On held-out single-device PyTorch workloads and checkpointing/accumulation plans, does contract-constrained selection accept fewer plans that violate declared training semantics, without reducing valid-feasible workload coverage, than native optimizations plus existing checks under the same eight-trial/30-minute search budget?**
 
-This question is falsifiable even if the result is that Atlas adds no value over the composed baseline. The claim concerns observed contracts and tested workloads, not all scientific conclusions or arbitrary Python.
+This question is falsifiable even if the result is that Atlas adds no value over the composed baseline. Resource-only selection is an additional ablation. The budget is the initial proposed protocol and may be amended after a disjoint pilot, before confirmation. The claim concerns observed contracts and tested workloads, not all scientific conclusions or arbitrary Python.
 
 ## Proposed contribution
 

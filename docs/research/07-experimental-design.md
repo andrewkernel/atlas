@@ -6,12 +6,14 @@ Only the [CPU semantic probes](experiments/README.md) have been executed. All re
 
 | ID | Falsifiable hypothesis | Estimand / failure condition |
 |---|---|---|
-| H1, primary | Contract-aware selection reduces unsafe acceptance relative to resource-only selection while retaining useful feasible coverage under an equal budget | Unsafe accepted / accepted; contract-satisfying feasible workloads / all declared workloads; no benefit if gains disappear against composed-checker baseline |
+| H1, primary | Contract-aware selection accepts fewer incompatible plans without reducing valid-feasible workload coverage compared with native mechanisms plus existing checks under an equal budget | Unsafe accepted / accepted, with counts; contract-satisfying feasible workloads / all declared workloads; resource-only policy is an additional ablation |
 | H2 | Explicit state and update checks detect invalid composed plans missed by gradient-only or metric-only checks | Paired detection difference on held-out labeled cases, with abstention and false rejection reported |
 | H3 | Profiling improves feasible-plan selection over fixed deterministic strategy ordering enough to cover its cost | Valid feasible completions and total search+verification+execution time; failure if added cost dominates |
 | H4, optional | Local LLM ranking improves valid feasible coverage or time to a valid plan over deterministic ranking | Paired selection outcome at equal wall-time and trial budgets including inference; failure if no practical improvement |
 
 H1 does not mean Atlas creates new optimization mechanisms. A precise superiority margin for policy selection must be frozen after a disjoint pilot; the initial study can report effect estimates and intervals without declaring universal superiority.
+
+The primary decision criterion is observed safety/coverage dominance on the fixed held-out set, with uncertainty reported; no superiority conclusion is justified when the data are inconclusive. A separate utility gate requires at least one prespecified real workload that the unmodified reference cannot complete within the target budget but a contract-satisfying plan can. If there is no such workload, the project may still produce semantic findings but has not demonstrated expanded experimental access. These are decision criteria, not arbitrary final-accuracy equivalence margins.
 
 ## Two linked studies
 

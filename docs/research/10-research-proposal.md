@@ -12,9 +12,9 @@ This is a provisional empirical gap, not an established first-of-its-kind claim.
 
 ## Research question and hypothesis
 
-On held-out single-device PyTorch workloads and checkpointing/accumulation plans, does explicit contract-conditioned selection reduce acceptance of incompatible plans while retaining useful feasible coverage at equal search/verification cost, compared with resource-only selection and native optimization plus existing checks?
+On held-out single-device PyTorch workloads and checkpointing/accumulation plans, does contract-constrained selection accept fewer plans that violate declared training semantics, without reducing valid-feasible workload coverage, than native optimizations plus existing checks under the same eight-trial/30-minute search budget?
 
-Primary hypothesis: the proposed selection policy improves the observed tradeoff between incompatible-plan acceptance and valid feasible coverage. **Null/practical failure:** the composed baseline matches or exceeds that tradeoff, or added verification cost makes the coverage gain unusable. The experiment is valuable even if the hypothesis fails.
+Primary hypothesis: the policy reduces incompatible acceptance without reducing valid-feasible coverage on the held-out set. Resource-only selection is an additional ablation. **Null/practical failure:** the composed baseline matches or exceeds that tradeoff, or added verification cost makes a gain unusable. The initial budget may change only after a disjoint pilot and before confirmation. The experiment is valuable even if the hypothesis fails.
 
 ## Method
 

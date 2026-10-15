@@ -50,3 +50,10 @@ Times are observed UTC times unless stated otherwise; local date at session star
 ## Limits and unfinished research
 
 This is a bounded initial research/engineering investigation, not five hours of research. Read depth varies:24 individual paper notes include many abstract-level notes and selected deeper reads of the closest systems. There was no systematic forward-citation review, independent expert review/labeling, competing-system execution, native CUDA study, full-training equivalence study, LLM inference comparison or energy measurement. The scoped specification is complete as an initial blueprint; these evidence gaps remain explicitly open in `11-open-questions.md`.
+
+## 2026-10-15 05:08 UTC — validation and handoff
+
+- Complete specification checkpoint45477f4 was committed and pushed. GitHub Actions run38685042339 completed successfully on Linux and Windows; local11-test suite and offline specification audit passed.
+- Tightened the primary question to an explicit safety/coverage comparison with native mechanisms plus existing checks under a fixed initial search budget. Added an expanded-access utility gate, while keeping full scientific-outcome claims separate.
+- Final recorded validation clock05:08:45 UTC, about30 minutes after the first04:39:05 clock. No five-hour duration claim. Handoff publication preserves the research branch and fast-forwards main; exact final revision is in Git history.
+- [Repository handoff](repository-status.md) records delivered files, evidence limits, CI link and immediate next coding task.

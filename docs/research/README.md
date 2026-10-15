@@ -30,6 +30,7 @@ Started 2026-10-14 America/Chicago (2026-10-15 UTC). This is a bounded initial i
 - [Dependency/license status](dependencies-and-licenses.md), [dataset/model revisions](asset-snapshot.json).
 - [Architecture decisions](decisions/README.md), [component architecture](../architecture/overview.md), [security](../architecture/security.md), [API contracts](../architecture/api-design.md).
 - [Implementation phases](../roadmap/implementation-plan.md), [milestones](../roadmap/milestones.md), [first coding task/tests](../roadmap/mvp-acceptance-criteria.md).
+- [Repository handoff and validation status](repository-status.md).
 
 ## What exists versus what is proposed
 
