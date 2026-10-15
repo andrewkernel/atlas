@@ -1,6 +1,6 @@
 {
-  "captured_utc": "2026-10-15T13:27:32.530609+00:00",
-  "helper_source_sha256": "bd77eaf770bb2bc55f1925b1074a4c7bea77ce47ee5fe18041458f2d3fe127bf",
+  "captured_utc": "2026-10-15T13:45:38.270130+00:00",
+  "helper_source_sha256": "ce0fb43328fe113d72bad98cb24a6ace545b61cb8bae932c2fa85dad43a47eaa",
   "python": "3.11.17",
   "runtime_identities": {
     "asset_manifest_canonical_sha256": "451a588e68b56a606deda6e18af3c909d512ef9182c6dd5036da9df899a12347",

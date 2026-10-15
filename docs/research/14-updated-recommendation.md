@@ -1,6 +1,6 @@
 # Updated recommendation after continued research and audit
 
-**Proceed only with a bounded benchmark/comparison pilot.** A local engineering tool is feasible. A standalone novel optimizer or scientific-verification system is not established by the current evidence. Expanding the application before the closest-baseline comparison would invest in the least certain part of the project.
+**Proceed with the benchmark package; define the distinct policy treatment before comparison.** The [identifiability amendment](15-comparison-identifiability.md) and [ADR 007](decisions/007-benchmark-first.md) refine the earlier recommendation: an equally informed competent baseline needs an explicitly different Atlas algorithm to make superiority testable. A local engineering tool is feasible; standalone optimizer/verifier novelty remains unestablished.
 
 ## What is now supported
 
@@ -44,3 +44,5 @@ External execution is limited to selected TrainParity CPU controls and adapted R
 [Twelve native selective-checkpoint controls](experiments/native-selective-control.md) further strengthen the comparator: existing per-operation saving/recomputation produces a distinct intermediate tradeoff on the original pure fixture. The bounded study should include a supported fixed selective configuration when applicable, under the same registry/search budget; it remains an existing native mechanism, not an Atlas contribution.
 
 The [token-reference control](experiments/token-reference-control.md) also confirms that finite, reproducible differential agreement cannot establish the supplied reference implements the intended objective. Make denominator units/masks and author intent explicit, share that information with the baseline, and obtain independent adjudication. This known oracle limitation is not evidence that only Atlas can enforce the contract.
+
+The second continuation executes [sixteen pretrained BERT QA resource segments](workload-screen/qa-resource-pilot.md), replacing the blanket absence of a pretrained workload screen. It does not run full fine-tuning or QA evaluation. Native SDPA is a strong baseline; eager completion above nominal device capacity exposes a Windows residency boundary. Repeated-hash differences require reference-noise diagnosis, while a separate ownership control invalidates launcher-only worker-memory readings. [Composite-loss controls](experiments/composite-objective-control.md) add objective/health boundaries and repaired positives. These advance the evaluation and architecture, not a primary-policy win.

@@ -8,5 +8,6 @@ These decisions are accepted for the initial research blueprint, not claims of i
 - [004 — Trusted-code-only execution](004-security.md)
 - [005 — Optional local model](005-local-model.md)
 - [006 — Portable artifacts and local tracking](006-tracking.md)
+- [007 — Benchmark first and a distinct policy treatment](007-benchmark-first.md)
 
 Record a new decision or explicitly supersede one when evidence changes. Do not erase the reason for an earlier scope choice.

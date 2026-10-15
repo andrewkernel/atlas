@@ -1,5 +1,7 @@
 # Experimental design — proposed, not executed
 
+Current scope amendment: [comparison identifiability](15-comparison-identifiability.md) and [ADR 007](decisions/007-benchmark-first.md) require a distinct next-action algorithm before treating H1 as an executable superiority comparison. Shared contracts do not distinguish Atlas from an equally informed baseline. The protocols below remain proposed; the QA measurements are a separately frozen development screen.
+
 The [experiment index](experiments/README.md) distinguishes executed CPU/statistical controls and bounded GPU pilots from the proposed studies. The primary selection comparison, confirmatory full-outcome equivalence, LLM and expert-labeling studies below remain proposed. Freeze a protocol commit, manifest and analysis plan before confirmatory runs. Archive amendments with reasons; do not retroactively call exploratory decisions preregistered.
 
 Continuation update: the [frozen real-data CNN pilot](experiments/fashion-pilot.md) now completes the W1 five-epoch control with three exploratory pairs. It is a pilot of fixed native plans, not the primary selection study or confirmatory outcome-equivalence study. W2/W3 and independent labeling remain unexecuted.

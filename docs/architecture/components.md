@@ -28,7 +28,7 @@ class ExperimentAdapter(Protocol):
     def observe(self, state: TrainingState, phase: Phase) -> StateObservation: ...
 ```
 
-`LossTerms` supplies differentiable summed numerator, denominator and auxiliary-term semantics. The standard executor owns logical update boundaries and weighting; the adapter provides model forward/loss behavior. Start without custom update loops. Later custom-loop adapters must emit equivalent phase observations, otherwise remain unsupported.
+`LossTerms` supplies differentiable summed numerators, per-term denominator units/masks and auxiliary-term semantics. The [objective/evidence amendment](objective-and-evidence-boundaries.md) refines this sketch with `prepare_logical_batch` and an explicit `LogicalUpdateContext` passed to microbatch loss construction. The initial executor supports reviewed metadata-constant positive global denominators; it must not infer a universal weighting rule from one scalar mean. The executor owns logical update boundaries; custom loops remain unsupported until equivalent phase observations are available.
 
 `TrainingState` includes model parameters/buffers, optimizer, optional scheduler/scaler/EMA, counters and RNG recipe. `Batch` includes stable sample IDs, content or augmentation digest where available, target mask and count. Stable IDs alone do not prove matching content.
 
@@ -42,7 +42,7 @@ Expose `id`, `version`, `affected_dimensions`, `check_preconditions(contract, se
 
 Include the required forward/backward scheduling relation and supported live-forward-context pattern in registered execution metadata. A verifier must execute that relation or explicitly report a different one. The [reuse control](../research/experiments/planner-reuse-control.md) passes a streaming plan but fails deferred-forward patterns on the tested existing wrapper, even without planned recomputation. Do not turn a verification executor's different schedule into a verdict about an unexecuted target plan. Streaming is eligible only when the objective/accounting supports it; opaque or nonseparable cases remain unsupported.
 
-The planner enumerates at most the declared trial cap, includes identity, removes duplicates and rejects invalid compositions. Order candidates using conservative bottleneck rules then observed cost; treat predicted memory as heuristic. Deterministic tie-break: strategy IDs and canonical parameter JSON. Cache only results with matching code/config/contract/data/environment/strategy versions and scope.
+The proposed planner includes identity, deduplicates candidates and rejects incompatible compositions. Predicted memory is heuristic. A future ranking policy must specify its exact next-action function and cost budget; “conservative bottleneck rules then observed cost” is not an implemented algorithm or a distinct experimental treatment. [ADR 007](../research/decisions/007-benchmark-first.md) requires this specification before primary comparison. A proposed final tie-break uses strategy IDs and canonical parameter JSON. Cache only matching identities and applicable evidence scopes.
 
 ## Verification interface
 

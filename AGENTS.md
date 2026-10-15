@@ -4,6 +4,8 @@ Atlas studies whether explicit training contracts improve selection of memory-sa
 
 Read `docs/research/14-updated-recommendation.md` and the amendment ledger before expanding scope. Real-data GPU pilots now exist, but standalone optimizer/verifier novelty remains unconfirmed. Generic state/buffer/gradient checking substantially overlaps existing TrainParity; do not rebuild it under a novelty claim without the required comparison.
 
+Read `docs/research/15-comparison-identifiability.md`, ADR 007 and `docs/architecture/objective-and-evidence-boundaries.md` for the current benchmark-first scope. A distinct policy treatment remains unselected. The frozen QA supervisor measures a Windows environment launcher rather than the actual worker; retain its historical record but do not reuse it for further training until ownership/cleanup is repaired and tested.
+
 ## Priorities and organization
 
 - Research specification and reproducible evaluation first. Do not implement the entire product at once.

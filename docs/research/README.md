@@ -23,6 +23,7 @@ Started 2026-10-14 America/Chicago (2026-10-15 UTC). This is a bounded initial i
 | [12 Research log](12-research-log.md) | Observed chronology and execution limits |
 | [13 Audit and amendments](13-audit-and-amendments.md) | Corrections, new prior art and evidence audit |
 | [14 Updated recommendation](14-updated-recommendation.md) | Current decision after deeper comparison and real-data pilots |
+| [15 Comparison identifiability](15-comparison-identifiability.md) | Distinct-treatment requirement and benchmark-first scope amendment |
 
 ## Supporting evidence and implementation
 
@@ -57,3 +58,5 @@ The strongest local observation is that checkpointing can match gradients while 
 [Native selective-checkpoint control](experiments/native-selective-control.md) tests another existing native baseline on the unchanged pure fixture, with all twelve trials and first-update observations retained.
 
 [Token-objective/reference adequacy](experiments/token-reference-control.md) tests a shared-reference boundary independently of nonfinite health: two internally consistent executions can agree on the wrong stated objective.
+
+The second continuation adds [pretrained BERT/QA resource segments](workload-screen/qa-resource-pilot.md), source/asset/feature identities, a separately locked QA environment and a retained launcher-monitor defect. [Composite objective controls](experiments/composite-objective-control.md) refine per-term normalization and health. The current suite passes 38 tests; earlier 20-test counts describe historical checkpoints. [ADR 007](decisions/007-benchmark-first.md) and the [objective/evidence interface](../architecture/objective-and-evidence-boundaries.md) now govern scope. The policy algorithm, independent labels and primary study remain uncompleted.

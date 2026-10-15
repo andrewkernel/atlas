@@ -40,7 +40,7 @@ The continuation also adds four published allocator-cap trials, statistical assu
 
 ## Next task
 
-Implement the trusted adapter/profiler vertical slice in [acceptance criteria](../roadmap/mvp-acceptance-criteria.md). Keep the required research question and composed native+checker baseline intact. Revisit the project if that comparison shows no incremental benefit.
+Advance the evaluation package under [ADR 007](decisions/007-benchmark-first.md). Any proposed adapter/profiler slice in [acceptance criteria](../roadmap/mvp-acceptance-criteria.md) requires the [objective/worker amendment](../architecture/objective-and-evidence-boundaries.md). Specify a distinct algorithm before a primary superiority comparison and preserve the equally informed native+checker baseline.
 
 ## Later execution and telemetry audit
 
@@ -49,3 +49,7 @@ Reviewed TrainParity controls, adapted Rockmate-family planning, constructor-sta
 ## Final continuation checks
 
 [Final local validation](experiments/local-validation-final.json) records source compilation, 20 passing CPU tests, the complete link/manifest audit, whitespace checks, tracked UTF-8 readability and file-size inspection after the latest controls. [Environment reconciliation](experiments/final-environment-audit.md) retains its exact selected scope. Native selective-checkpoint and token-reference controls are published separately with all attempts. The initial blueprint is complete; the primary research program remains gated by independent labels and meaningful held-out workload/policy evidence.
+
+## Second requested continuation, in progress
+
+The current suite passes 38 tests. Sixteen BERT/QA resource segments, asset/feature provenance, an invalid-host-monitor amendment, composite-objective controls and a seventh ADR extend the package. The [comparison audit](15-comparison-identifiability.md) identifies the unselected distinct-policy algorithm. Earlier validation counts remain historical. This continuation is still active; publication/CI status must be checked at its actual checkpoint.

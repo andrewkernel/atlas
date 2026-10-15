@@ -101,6 +101,7 @@ def main() -> int:
         ('native_selective_control.py', 'native-selective-control.json'),
         ('token_reference_control.py', 'token-reference-control.json'),
         ('snapshot_final_environments.py', 'final-environment-inventory.json'),
+        ('composite_objective_control.py', 'composite-objective-control.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
@@ -253,6 +254,8 @@ def main() -> int:
         actual=hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()
         if actual != expected_digest:
             failures.append(f'Derived-summary input identity is stale: {name}')
+    from audit_qa_records import audit as audit_qa
+    failures.extend(audit_qa(ROOT))
     print(json.dumps({'markdown_files':len(markdown),'local_links_checked':links,'unique_external_links_catalogued':len(external),'lock_package_count':len(lock['package']),'failures':failures},indent=2))
     return bool(failures)
 

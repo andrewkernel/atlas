@@ -1,0 +1,251 @@
+{
+  "allocation_above_device_total_trials": 2,
+  "completed_updates": 128,
+  "groups": [
+    {
+      "attention": "eager",
+      "checkpointed": false,
+      "completed": 2,
+      "completed_segment_outer_seconds_by_repetition": [
+        47.06571709999116,
+        37.62169770000037
+      ],
+      "intended_process_repetitions": 2,
+      "later_peak_allocated_bytes_by_repetition": [
+        15227238912,
+        15227238912
+      ],
+      "later_peak_reserved_bytes_by_repetition": [
+        15820914688,
+        15820914688
+      ],
+      "median_update_seconds_by_repetition": [
+        4.480391899996903,
+        3.47429749998264
+      ],
+      "microbatch": 32,
+      "same_seed_exact_digest_match_by_phase": {
+        "final_state_digest": false,
+        "first_optimizer_state_digest": false,
+        "first_post_clip_gradient_digest": false,
+        "first_state_digest": false
+      }
+    },
+    {
+      "attention": "eager",
+      "checkpointed": true,
+      "completed": 2,
+      "completed_segment_outer_seconds_by_repetition": [
+        24.531151700008195,
+        24.731650100031402
+      ],
+      "intended_process_repetitions": 2,
+      "later_peak_allocated_bytes_by_repetition": [
+        3180688384,
+        3180688384
+      ],
+      "later_peak_reserved_bytes_by_repetition": [
+        3818913792,
+        3818913792
+      ],
+      "median_update_seconds_by_repetition": [
+        1.8741265999851748,
+        1.8821169000002556
+      ],
+      "microbatch": 32,
+      "same_seed_exact_digest_match_by_phase": {
+        "final_state_digest": false,
+        "first_optimizer_state_digest": false,
+        "first_post_clip_gradient_digest": false,
+        "first_state_digest": false
+      }
+    },
+    {
+      "attention": "eager",
+      "checkpointed": false,
+      "completed": 2,
+      "completed_segment_outer_seconds_by_repetition": [
+        21.52144620002946,
+        21.510898799984716
+      ],
+      "intended_process_repetitions": 2,
+      "later_peak_allocated_bytes_by_repetition": [
+        3626230272,
+        3626230272
+      ],
+      "later_peak_reserved_bytes_by_repetition": [
+        3953131520,
+        3953131520
+      ],
+      "median_update_seconds_by_repetition": [
+        1.501305699988734,
+        1.5030219999607652
+      ],
+      "microbatch": 4,
+      "same_seed_exact_digest_match_by_phase": {
+        "final_state_digest": true,
+        "first_optimizer_state_digest": true,
+        "first_post_clip_gradient_digest": true,
+        "first_state_digest": true
+      }
+    },
+    {
+      "attention": "eager",
+      "checkpointed": true,
+      "completed": 2,
+      "completed_segment_outer_seconds_by_repetition": [
+        25.63865929999156,
+        25.53704739996465
+      ],
+      "intended_process_repetitions": 2,
+      "later_peak_allocated_bytes_by_repetition": [
+        2065937408,
+        2065937408
+      ],
+      "later_peak_reserved_bytes_by_repetition": [
+        2371878912,
+        2371878912
+      ],
+      "median_update_seconds_by_repetition": [
+        1.9815874000196345,
+        2.0010407000081614
+      ],
+      "microbatch": 4,
+      "same_seed_exact_digest_match_by_phase": {
+        "final_state_digest": true,
+        "first_optimizer_state_digest": true,
+        "first_post_clip_gradient_digest": true,
+        "first_state_digest": true
+      }
+    },
+    {
+      "attention": "sdpa",
+      "checkpointed": false,
+      "completed": 2,
+      "completed_segment_outer_seconds_by_repetition": [
+        20.310242199979257,
+        20.40567910001846
+      ],
+      "intended_process_repetitions": 2,
+      "later_peak_allocated_bytes_by_repetition": [
+        9345513984,
+        9345513984
+      ],
+      "later_peak_reserved_bytes_by_repetition": [
+        9439281152,
+        9439281152
+      ],
+      "median_update_seconds_by_repetition": [
+        1.3370204000384547,
+        1.3500668999622576
+      ],
+      "microbatch": 32,
+      "same_seed_exact_digest_match_by_phase": {
+        "final_state_digest": false,
+        "first_optimizer_state_digest": false,
+        "first_post_clip_gradient_digest": false,
+        "first_state_digest": false
+      }
+    },
+    {
+      "attention": "sdpa",
+      "checkpointed": true,
+      "completed": 2,
+      "completed_segment_outer_seconds_by_repetition": [
+        23.92598810000345,
+        23.82964869996067
+      ],
+      "intended_process_repetitions": 2,
+      "later_peak_allocated_bytes_by_repetition": [
+        2676388864,
+        2676388864
+      ],
+      "later_peak_reserved_bytes_by_repetition": [
+        2915041280,
+        2915041280
+      ],
+      "median_update_seconds_by_repetition": [
+        1.7916441999841481,
+        1.796513200039044
+      ],
+      "microbatch": 32,
+      "same_seed_exact_digest_match_by_phase": {
+        "final_state_digest": false,
+        "first_optimizer_state_digest": false,
+        "first_post_clip_gradient_digest": false,
+        "first_state_digest": false
+      }
+    },
+    {
+      "attention": "sdpa",
+      "checkpointed": false,
+      "completed": 2,
+      "completed_segment_outer_seconds_by_repetition": [
+        21.219680699985474,
+        21.215251000015996
+      ],
+      "intended_process_repetitions": 2,
+      "later_peak_allocated_bytes_by_repetition": [
+        2845925888,
+        2845925888
+      ],
+      "later_peak_reserved_bytes_by_repetition": [
+        3145728000,
+        3145728000
+      ],
+      "median_update_seconds_by_repetition": [
+        1.4524861999670975,
+        1.4641316999914125
+      ],
+      "microbatch": 4,
+      "same_seed_exact_digest_match_by_phase": {
+        "final_state_digest": true,
+        "first_optimizer_state_digest": true,
+        "first_post_clip_gradient_digest": true,
+        "first_state_digest": true
+      }
+    },
+    {
+      "attention": "sdpa",
+      "checkpointed": true,
+      "completed": 2,
+      "completed_segment_outer_seconds_by_repetition": [
+        24.733687700005248,
+        24.831611199944746
+      ],
+      "intended_process_repetitions": 2,
+      "later_peak_allocated_bytes_by_repetition": [
+        2002211840,
+        2002211840
+      ],
+      "later_peak_reserved_bytes_by_repetition": [
+        2220883968,
+        2220883968
+      ],
+      "median_update_seconds_by_repetition": [
+        1.9032574000302702,
+        1.9183246999746189
+      ],
+      "microbatch": 4,
+      "same_seed_exact_digest_match_by_phase": {
+        "final_state_digest": true,
+        "first_optimizer_state_digest": true,
+        "first_post_clip_gradient_digest": true,
+        "first_state_digest": true
+      }
+    }
+  ],
+  "host_guard_validity": "worker RSS threshold and launcher-only cancellation unvalidated for actual training process; no stop triggered in this screen",
+  "host_worker_memory_validity": "invalid: Popen PID is Windows environment launcher; actual interpreter is its descendant",
+  "intended_trials": 16,
+  "outer_worker_seconds_sum": 408.6300569999148,
+  "ownership_control_canonical_sha256": "b6db8d6debe6620f468360c2ab16306b0f60c388efe5f4f8fb709e5da2456183",
+  "pilot_canonical_sha256": "d4365c0c156bb7fc6cf578e62761ad66b48a8e4121626abc70cf22321e6efbbf",
+  "reference_self_consistency": "full-microbatch configurations do not repeat bitwise state/gradient/optimizer hashes; this record has no tensor-distance or tolerance decision",
+  "scope": "Offline arithmetic and record consistency only. No OOM rescue, physical residency, full fine-tuning, QA quality, outcome equivalence or primary-policy comparison.",
+  "source_sha256": "f715dfb316acc8594d23f89f044ab0047948eae916eb53514e1cb2a78cca8d21",
+  "statuses": {
+    "completed": 16
+  },
+  "worker_peak_rss_bytes": null
+}

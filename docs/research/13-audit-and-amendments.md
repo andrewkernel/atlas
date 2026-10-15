@@ -51,3 +51,13 @@ A26: [Actual compatible-stack streaming integration](experiments/interop-control
 A27: [Comparison-policy controls](experiments/comparator-contract-control.md) show identical numerical tolerance parameters can denote different tensor/scalar predicates. Equality may also accept matching nonfinite values while health fails. Bind the exact formula and field policy; retain earlier implemented conventions.
 
 A28: [Gross-board replays](experiments/board-energy-control.md) now replace the earlier blanket absence of energy measurements. Complete same-seed workflows have higher gross counter readings for the combined plan, but counter/integrated-power disagreement prevents treating the APIs as interchangeable calibrated energy. Passive disagreement also persists, with cause unisolated.
+
+A29: [Real pretrained QA segments](workload-screen/qa-resource-pilot.md) complete in all sixteen native configurations. Eager full-batch allocation exceeds nominal physical capacity under observed Windows behavior; completion does not prove physical residency or OOM rescue. Native SDPA strengthens the competent baseline. Full-run/quality and outcome equivalence remain untested.
+
+A30: The QA supervisor's launcher-only host-memory readings and RSS/termination guard applicability are invalid for the actual interpreter. [A separately frozen ownership control](workload-screen/worker-ownership-protocol.md) verifies the local launcher/child relation and scoped cancellation. Raw results/source remain historical; the derived record nulls worker RSS. No emergency stop triggered. A future supervisor requires a validated worker/process boundary before further training.
+
+A31: Equal initialized states and seeds do not establish observed full-batch bitwise replay for this QA environment. Preserve the differing hashes and diagnose reference noise quantitatively before differential verdicts. Hash mismatch alone is neither a magnitude nor a scientific failure.
+
+A32: [Composite-loss controls](experiments/composite-objective-control.md) refine a single denominator into explicit term-specific global context, empty-mask behavior and method-dependent normalizer semantics. The QA pilot's all-valid-endpoint special case remains supported. Forward equality and finite gradients separately do not establish correct objective differentiation or loss health.
+
+A33: [The treatment audit](15-comparison-identifiability.md) supersedes treating contract awareness alone as a primary experimental difference. With the same facts and decision function the treatments coincide; a distinct algorithm is still unselected. [ADR 007](decisions/007-benchmark-first.md) prioritizes the evaluation package and preserves the informed native-plus-checker baseline.
