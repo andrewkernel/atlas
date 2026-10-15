@@ -88,3 +88,10 @@ This is a bounded initial research/engineering investigation, not five hours of 
 - Refined H1's primary unit/denominators, indeterminate-label bounds and null selective risk for zero acceptance. Gave the composed baseline equal contract/adapter information and required a shared compatible stack for clean runtime comparisons.
 - Distinguished emergent interactions from known defects injected into a composed execution. Existing probes establish the latter, not yet the former; narrowed the novelty gate accordingly.
 - Checked primary historical issues/fix metadata and additional Adacc, PRAC, TorchProbe and TensorFuzz abstracts. No third-party research code or dataset was executed. Checkpoint2eefc7a's cross-platform run38687066842 passed; new changes require their own validation.
+
+## 2026-10-15 05:38–05:47 UTC — model-capacity, inference assumptions and pilot freeze
+
+- Captured current Qwen3.5-4B/Qwen3-4B/coder7B first-party model/config metadata and the Ollama4B manifest/config without model/projector downloads. Added component/cache/context arithmetic; no model inference or best-model claim.
+- Derived the measured four-plan Pareto tradeoff and workflow-cost limits from raw CUDA records. Summed eight child walls39.22 seconds versus6.86 seconds in80 timed update windows; no production planner-cost claim.
+- Extended statistical calibration with SD/nonzero-effect sensitivity and a constructed rare-mixture counterexample. Equal population mean/variance do not ensure valid small-sample t-interval inference. The mixture's1% event probability is invented, not estimated from training.20 local tests passed.
+- Cross-platform run38687801756 passed checkpointa965bed. Research-only original Fashion-MNIST preparation/training code and a fixed exploratory protocol are now prepared for commit **before** data acquisition/training. Three pilot seeds, five epochs, paired full versus combined native plans; canonical test partition remains untouched. This is not confirmatory equivalence or an application implementation.

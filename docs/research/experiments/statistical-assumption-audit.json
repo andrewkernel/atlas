@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.0",
+  "started_utc": "2026-10-15T05:42:36.088593+00:00",
+  "source_sha256": "2623ea4e55418235ed0d8736a61d6d674565fea879d04b7bcd73372ab96a63a9",
+  "calibration_source_sha256": "4dac5d1b3df83b6fb012838828ebc1b16b934a26a7c60cf4212ab5380ac3648f",
+  "environment": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1"
+  },
+  "normal_model": {
+    "symmetric_margin": 0.5,
+    "alpha_each_one_sided": 0.05,
+    "target_power": 0.8
+  },
+  "normal_sensitivity": [
+    {
+      "true_mean_difference": 0.0,
+      "paired_sd": 0.5,
+      "minimum_pairs_under_normal_model": 11
+    },
+    {
+      "true_mean_difference": 0.0,
+      "paired_sd": 1.0,
+      "minimum_pairs_under_normal_model": 36
+    },
+    {
+      "true_mean_difference": 0.0,
+      "paired_sd": 1.5,
+      "minimum_pairs_under_normal_model": 79
+    },
+    {
+      "true_mean_difference": 0.0,
+      "paired_sd": 2.0,
+      "minimum_pairs_under_normal_model": 139
+    },
+    {
+      "true_mean_difference": 0.25,
+      "paired_sd": 0.5,
+      "minimum_pairs_under_normal_model": 27
+    },
+    {
+      "true_mean_difference": 0.25,
+      "paired_sd": 1.0,
+      "minimum_pairs_under_normal_model": 101
+    },
+    {
+      "true_mean_difference": 0.25,
+      "paired_sd": 1.5,
+      "minimum_pairs_under_normal_model": 224
+    },
+    {
+      "true_mean_difference": 0.25,
+      "paired_sd": 2.0,
+      "minimum_pairs_under_normal_model": 398
+    }
+  ],
+  "illustrative_three_pair_pilot_sd_95_interval_for_observed_sd_1": [
+    0.5206582666988174,
+    6.2847346964853825
+  ],
+  "synthetic_distribution_cases": [
+    {
+      "distribution": "normal",
+      "n_pairs": 36,
+      "parameters": {
+        "population_mean": 0.0,
+        "population_sd": 1.0
+      },
+      "seed": 7410,
+      "repetitions": 100000,
+      "equivalence_decisions": 80643,
+      "fraction": 0.80643,
+      "monte_carlo_standard_error": 0.0012494024775867862
+    },
+    {
+      "distribution": "normal",
+      "n_pairs": 36,
+      "parameters": {
+        "population_mean": -0.5,
+        "population_sd": 1.0
+      },
+      "seed": 7411,
+      "repetitions": 100000,
+      "equivalence_decisions": 5064,
+      "fraction": 0.05064,
+      "monte_carlo_standard_error": 0.000693365635144979
+    },
+    {
+      "distribution": "normal",
+      "n_pairs": 36,
+      "parameters": {
+        "population_mean": 0.5,
+        "population_sd": 1.0
+      },
+      "seed": 7412,
+      "repetitions": 100000,
+      "equivalence_decisions": 4907,
+      "fraction": 0.04907,
+      "monte_carlo_standard_error": 0.0006830968825869432
+    },
+    {
+      "distribution": "rare_mixture",
+      "n_pairs": 36,
+      "parameters": {
+        "population_mean": 0.0,
+        "population_sd": 1.0,
+        "rare_component_probability": 0.01,
+        "noise_sd": 0.05,
+        "jump": 10.037807318213263,
+        "probability_no_rare_draw": 0.6964132180495735
+      },
+      "seed": 7420,
+      "repetitions": 100000,
+      "equivalence_decisions": 69512,
+      "fraction": 0.69512,
+      "monte_carlo_standard_error": 0.001455775345305724
+    },
+    {
+      "distribution": "rare_mixture",
+      "n_pairs": 36,
+      "parameters": {
+        "population_mean": -0.5,
+        "population_sd": 1.0,
+        "rare_component_probability": 0.01,
+        "noise_sd": 0.05,
+        "jump": 10.037807318213263,
+        "probability_no_rare_draw": 0.6964132180495735
+      },
+      "seed": 7421,
+      "repetitions": 100000,
+      "equivalence_decisions": 0,
+      "fraction": 0.0,
+      "monte_carlo_standard_error": 0.0
+    },
+    {
+      "distribution": "rare_mixture",
+      "n_pairs": 36,
+      "parameters": {
+        "population_mean": 0.5,
+        "population_sd": 1.0,
+        "rare_component_probability": 0.01,
+        "noise_sd": 0.05,
+        "jump": 10.037807318213263,
+        "probability_no_rare_draw": 0.6964132180495735
+      },
+      "seed": 7422,
+      "repetitions": 100000,
+      "equivalence_decisions": 69680,
+      "fraction": 0.6968,
+      "monte_carlo_standard_error": 0.00145351216025185
+    }
+  ],
+  "limitation": "Constructed independent probability models; no observed ML variance or rare-event frequency. Normal-model power does not validate that model or guarantee robustness of t-intervals."
+}

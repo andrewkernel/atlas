@@ -29,6 +29,7 @@ Started 2026-10-14 America/Chicago (2026-10-15 UTC). This is a bounded initial i
 - [Actual CPU probes and limits](experiments/README.md), [raw results](experiments/cpu-semantic-probes.json).
 - [Strategy-by-strategy consequences](strategy-analysis.md), [planned constructors](../../benchmarks/planned-workloads.md).
 - [Exact evaluation units/denominators](evaluation-estimands.md), [composition-evidence boundary](composition-evidence.md), [historical failure provenance](real-world-failures.md).
+- [Measured cost/Pareto analysis](cost-and-pareto-analysis.md), [local-model component/cache audit](local-model-capacity.md), [statistical assumption controls](experiments/statistical-assumption-audit.md).
 - [Dependency/license status](dependencies-and-licenses.md), [dataset/model revisions](asset-snapshot.json).
 - [Architecture decisions](decisions/README.md), [component architecture](../architecture/overview.md), [security](../architecture/security.md), [API contracts](../architecture/api-design.md).
 - [Implementation phases](../roadmap/implementation-plan.md), [milestones](../roadmap/milestones.md), [first coding task/tests](../roadmap/mvp-acceptance-criteria.md).
@@ -36,6 +37,6 @@ Started 2026-10-14 America/Chicago (2026-10-15 UTC). This is a bounded initial i
 
 ## What exists versus what is proposed
 
-Executed: original CPU semantic/composition/state/update-clock controls, synthetic equivalence-power calibration,19 pytest tests including40 generated accumulation partitions, eight synthetic CUDA trials plus four published allocator-cap trials on a physical12 GB RTX3060, dependency locking, source/repository inspection and documentation checks. Proposed: Atlas application, real-workload optimization selection, full-training equivalence, expert labels, other physical hardware tiers, energy study and LLM evaluation.
+Executed: original CPU semantic/composition/state/update-clock controls, synthetic equivalence-power/assumption calibration,20 pytest tests including40 generated accumulation partitions, eight synthetic CUDA trials plus four published allocator-cap trials on a physical12 GB RTX3060, dependency locking, source/repository inspection and documentation checks. Proposed: Atlas application, real-workload optimization selection, full-training equivalence, expert labels, other physical hardware tiers, energy study and LLM evaluation. The [real-data CNN pilot protocol](experiments/fashion-pilot-protocol.md) is frozen separately before its execution.
 
 The strongest local observation is that checkpointing can match gradients while changing BatchNorm buffers/evaluation. That motivates evidence design; it does not validate the proposed planner or certify scientific conclusions.

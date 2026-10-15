@@ -16,6 +16,9 @@ The owner asked for continued research and simultaneous double-checking after th
 | A10 | Current composed controls establish emergent interaction bugs | **Not established.**Known single-transform defects inside a composition differ from a failure of individually valid transforms. | [Composition boundary](composition-evidence.md); requires new independently adjudicated cases |
 | A11 | OOM diagnostic text is usable process-memory telemetry | **Rejected on tested configuration.**Impossible per-process values recur in capped Windows trials; use supported typed metrics. | [Budget/diagnostic control](experiments/cuda-budget-probe.md); internal sentinel explanation remains an inference |
 | A12 | Update counters alone cover scheduler/EMA and unused parameters | **Insufficient.**CPU controls have matching observed loss or successful-update counts but differing state. | [Recorded update-clock controls](experiments/update-clock-probes.md), known API semantics |
+| A13 | Parameter label /4-bit floor adequately describes local-model capacity | **Expanded.**Inspect current model components, hybrid state, cache dtype/context and registry digests separately. | [Metadata/capacity audit](local-model-capacity.md); no weights downloaded or inference measured |
+| A14 | Correct normal-model power validates outcome inference | **Rejected implication.**Same population mean/variance can coexist with severe small-sample t-interval miscoverage under a constructed rare mixture. | [Assumption controls](experiments/statistical-assumption-audit.md), not observed ML failure prevalence |
+| A15 | Smaller memory means less compute or a universally best plan | **Rejected.**All measured synthetic plans form a memory/time tradeoff; startup/verification windows are material. | [Cost/Pareto analysis](cost-and-pareto-analysis.md); no primary-policy performance claim |
 
 ## Audit discipline
 

@@ -96,6 +96,8 @@ CUDA continuation used the official [PyTorch wheel index](https://download.pytor
 
 Additional backward/targeted searches opened primary abstracts for [Adacc v2](papers/adacc.md), [PRAC](papers/prac.md), [TorchProbe](papers/torchprobe.md) and the specific [TensorFuzz preprint](papers/tensorfuzz.md). These notes do not imply full paper reads. [SelectiveNet's proceedings abstract](https://proceedings.mlr.press/v97/geifman19a.html) is context for established risk/coverage evaluation, not a memory-planner comparator. [Historical issue/PR records](real-world-failures.md) were checked through official pages and GitHub's API; none was executed, changed or treated as prevalence evidence.
 
+The [continued local-model snapshot](local-model-metadata.json) reads first-party Hugging Face model metadata/configs and Ollama registry manifests/config only. It downloads no model/projector weights. [Capacity analysis](local-model-capacity.md) labels component arithmetic and untested runtime support. The [Fashion-MNIST pinned repository/license](https://github.com/zalandoresearch/fashion-mnist/tree/b2617bb6d3ffa2e429640350f613e3291e10b141) was inspected before the frozen real-data pilot; data acquisition is a separately logged step.
+
 - [GitHub metadata snapshot](competitors/repository-snapshot.json):15 public repositories, exact heads/archive/license metadata; authenticated read-only API.
 - [Hugging Face snapshot](asset-snapshot.json): model/data revision hashes and card license metadata; no data/weights downloaded.
 - [Dependency snapshot](dependency-snapshot.json): PyPI metadata, Python requirement and installed-versus-optional distinction. These primary endpoints are recorded per package.

@@ -80,6 +80,7 @@ def main() -> int:
         ('cuda_memory_probe.py', 'cuda-memory-probe.json'),
         ('cuda_budget_probe.py', 'cuda-budget-probe.json'),
         ('update_clock_probes.py', 'update-clock-probes.json'),
+        ('statistical_assumption_audit.py', 'statistical-assumption-audit.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
@@ -92,6 +93,12 @@ def main() -> int:
     budget_result=json.loads((ROOT/'docs/research/experiments/cuda-budget-probe.json').read_text(encoding='utf-8'))
     if budget_result['fixture_source_sha256'] != hashlib.sha256((ROOT/'benchmarks/cuda_memory_probe.py').read_bytes()).hexdigest():
         failures.append('CUDA budget fixture source identity is stale')
+    model_metadata=json.loads((ROOT/'docs/research/local-model-metadata.json').read_text(encoding='utf-8'))
+    if model_metadata['source_sha256'] != hashlib.sha256((ROOT/'benchmarks/snapshot_local_model_metadata.py').read_bytes()).hexdigest():
+        failures.append('Local-model metadata snapshot source identity is stale')
+    assumptions=json.loads((ROOT/'docs/research/experiments/statistical-assumption-audit.json').read_text(encoding='utf-8'))
+    if assumptions['calibration_source_sha256'] != hashlib.sha256((ROOT/'benchmarks/equivalence_calibration.py').read_bytes()).hexdigest():
+        failures.append('Statistical assumption audit calibration identity is stale')
     print(json.dumps({'markdown_files':len(markdown),'local_links_checked':links,'unique_external_links_catalogued':len(external),'lock_package_count':len(lock['package']),'failures':failures},indent=2))
     return bool(failures)
 

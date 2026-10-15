@@ -1,0 +1,290 @@
+{
+  "schema_version": "1.0",
+  "retrieved_utc": "2026-10-15T05:39:25.558641+00:00",
+  "source_sha256": "4f2c88f58e0c103a3956f8cd01521ce829b654a02133fdc33492f071fbff22e5",
+  "models": [
+    {
+      "id": "Qwen/Qwen3.5-4B",
+      "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "license_metadata": "apache-2.0",
+      "safetensors_metadata": {
+        "parameters": {
+          "BF16": 4659861248,
+          "F32": 3840
+        },
+        "total": 4659865088
+      },
+      "api_url": "https://huggingface.co/api/models/Qwen/Qwen3.5-4B",
+      "config_url": "https://huggingface.co/Qwen/Qwen3.5-4B/resolve/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a/config.json",
+      "config_sha256": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+      "config": {
+        "architectures": [
+          "Qwen3_5ForConditionalGeneration"
+        ],
+        "image_token_id": 248056,
+        "model_type": "qwen3_5",
+        "text_config": {
+          "attention_bias": false,
+          "attention_dropout": 0.0,
+          "attn_output_gate": true,
+          "dtype": "bfloat16",
+          "eos_token_id": 248044,
+          "full_attention_interval": 4,
+          "head_dim": 256,
+          "hidden_act": "silu",
+          "hidden_size": 2560,
+          "initializer_range": 0.02,
+          "intermediate_size": 9216,
+          "layer_types": [
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention"
+          ],
+          "linear_conv_kernel_dim": 4,
+          "linear_key_head_dim": 128,
+          "linear_num_key_heads": 16,
+          "linear_num_value_heads": 32,
+          "linear_value_head_dim": 128,
+          "max_position_embeddings": 262144,
+          "mlp_only_layers": [],
+          "model_type": "qwen3_5_text",
+          "mtp_num_hidden_layers": 1,
+          "mtp_use_dedicated_embeddings": false,
+          "num_attention_heads": 16,
+          "num_hidden_layers": 32,
+          "num_key_value_heads": 4,
+          "rms_norm_eps": 1e-06,
+          "tie_word_embeddings": true,
+          "use_cache": true,
+          "vocab_size": 248320,
+          "mamba_ssm_dtype": "float32",
+          "rope_parameters": {
+            "mrope_interleaved": true,
+            "mrope_section": [
+              11,
+              11,
+              10
+            ],
+            "rope_type": "default",
+            "rope_theta": 10000000,
+            "partial_rotary_factor": 0.25
+          }
+        },
+        "tie_word_embeddings": true,
+        "transformers_version": "4.57.0.dev0",
+        "video_token_id": 248057,
+        "vision_config": {
+          "deepstack_visual_indexes": [],
+          "depth": 24,
+          "hidden_act": "gelu_pytorch_tanh",
+          "hidden_size": 1024,
+          "in_channels": 3,
+          "initializer_range": 0.02,
+          "intermediate_size": 4096,
+          "model_type": "qwen3_5",
+          "num_heads": 16,
+          "num_position_embeddings": 2304,
+          "out_hidden_size": 2560,
+          "patch_size": 16,
+          "spatial_merge_size": 2,
+          "temporal_patch_size": 2
+        },
+        "vision_end_token_id": 248054,
+        "vision_start_token_id": 248053
+      },
+      "analytical_full_attention_kv_bytes_per_token_at_2_bytes_per_element": 32768,
+      "analytical_full_attention_kv_bytes": {
+        "4096": 134217728,
+        "8192": 268435456,
+        "32768": 1073741824,
+        "262144": 8589934592
+      }
+    },
+    {
+      "id": "Qwen/Qwen3-4B",
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "license_metadata": "apache-2.0",
+      "safetensors_metadata": {
+        "parameters": {
+          "BF16": 4022468096
+        },
+        "total": 4022468096
+      },
+      "api_url": "https://huggingface.co/api/models/Qwen/Qwen3-4B",
+      "config_url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/config.json",
+      "config_sha256": "8ba006f74fecfaaeb392872a60f4a480e7ec9860153d2e1b769ec81f9a147f8a",
+      "config": {
+        "architectures": [
+          "Qwen3ForCausalLM"
+        ],
+        "attention_bias": false,
+        "attention_dropout": 0.0,
+        "bos_token_id": 151643,
+        "eos_token_id": 151645,
+        "head_dim": 128,
+        "hidden_act": "silu",
+        "hidden_size": 2560,
+        "initializer_range": 0.02,
+        "intermediate_size": 9728,
+        "max_position_embeddings": 40960,
+        "max_window_layers": 36,
+        "model_type": "qwen3",
+        "num_attention_heads": 32,
+        "num_hidden_layers": 36,
+        "num_key_value_heads": 8,
+        "rms_norm_eps": 1e-06,
+        "rope_scaling": null,
+        "rope_theta": 1000000,
+        "sliding_window": null,
+        "tie_word_embeddings": true,
+        "torch_dtype": "bfloat16",
+        "transformers_version": "4.51.0",
+        "use_cache": true,
+        "use_sliding_window": false,
+        "vocab_size": 151936
+      },
+      "analytical_full_attention_kv_bytes_per_token_at_2_bytes_per_element": 147456,
+      "analytical_full_attention_kv_bytes": {
+        "4096": 603979776,
+        "8192": 1207959552,
+        "32768": 4831838208,
+        "262144": 38654705664
+      }
+    },
+    {
+      "id": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+      "license_metadata": "apache-2.0",
+      "safetensors_metadata": {
+        "parameters": {
+          "BF16": 7615616512
+        },
+        "total": 7615616512
+      },
+      "api_url": "https://huggingface.co/api/models/Qwen/Qwen2.5-Coder-7B-Instruct",
+      "config_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct/resolve/c03e6d358207e414f1eca0bb1891e29f1db0e242/config.json",
+      "config_sha256": "c0242402ad6a13b331ea320feea8c7e3776ffb7a4eff0757b9cd667e116d9a28",
+      "config": {
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "attention_dropout": 0.0,
+        "bos_token_id": 151643,
+        "eos_token_id": 151645,
+        "hidden_act": "silu",
+        "hidden_size": 3584,
+        "initializer_range": 0.02,
+        "intermediate_size": 18944,
+        "max_position_embeddings": 32768,
+        "max_window_layers": 28,
+        "model_type": "qwen2",
+        "num_attention_heads": 28,
+        "num_hidden_layers": 28,
+        "num_key_value_heads": 4,
+        "rms_norm_eps": 1e-06,
+        "rope_theta": 1000000.0,
+        "sliding_window": 131072,
+        "tie_word_embeddings": false,
+        "torch_dtype": "bfloat16",
+        "transformers_version": "4.44.0",
+        "use_cache": true,
+        "use_sliding_window": false,
+        "vocab_size": 152064
+      },
+      "analytical_full_attention_kv_bytes_per_token_at_2_bytes_per_element": 57344,
+      "analytical_full_attention_kv_bytes": {
+        "4096": 234881024,
+        "8192": 469762048,
+        "32768": 1879048192,
+        "262144": 15032385536
+      }
+    }
+  ],
+  "ollama_registry": {
+    "manifest_url": "https://registry.ollama.ai/v2/library/qwen3.5/manifests/4b",
+    "raw_manifest_sha256": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+    "manifest": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "config": {
+        "mediaType": "application/vnd.docker.container.image.v1+json",
+        "digest": "sha256:788a4d94bc3f431ac0cd067005be4b838a09330427962952420b05d10ecf84db",
+        "size": 177
+      },
+      "layers": [
+        {
+          "mediaType": "application/vnd.ollama.image.projector",
+          "digest": "sha256:e56a899b1540860385465756dd308c84417410b94dbc1c380adffd20a921ca60",
+          "size": 675569120,
+          "from": "mmproj.gguf"
+        },
+        {
+          "mediaType": "application/vnd.ollama.image.model",
+          "digest": "sha256:a9d0a3e1d8c91732a3812becd31f8d4a8ff57414903f226306069f0437e2ac50",
+          "size": 2648593216,
+          "from": "model.gguf"
+        },
+        {
+          "mediaType": "application/vnd.ollama.image.template",
+          "digest": "sha256:b507b9c2f6ca642bffcd06665ea7c91f235fd32daeefdf875a0f938db05fb315",
+          "size": 13
+        },
+        {
+          "mediaType": "application/vnd.ollama.image.license",
+          "digest": "sha256:50cbab8a892c5f2993b8c7351a99182507472def3b1374558308605d99b86b32",
+          "size": 11343
+        },
+        {
+          "mediaType": "application/vnd.ollama.image.params",
+          "digest": "sha256:9371364b27a52acac9d87f88bd93c9db1174d8d6ec57f6888925cdc1788871ff",
+          "size": 65
+        }
+      ],
+      "runner": "llamacpp",
+      "format": "gguf"
+    },
+    "config": {
+      "model_format": "gguf",
+      "model_family": "qwen35",
+      "model_families": [
+        "qwen35"
+      ],
+      "model_type": "4.2B",
+      "file_type": "Q4_K_M",
+      "renderer": "qwen3.5",
+      "parser": "qwen3.5",
+      "requires": "0.30.0"
+    },
+    "all_layer_payload_bytes": 3324173757
+  },
+  "limitation": "Metadata only; no model/projector blobs downloaded or executed. KV formula is analytical, batch/concurrency one, two-byte elements; excludes hybrid recurrent state, weights, quantization overhead and workspaces. Context rows do not imply model support or fit."
+}

@@ -10,10 +10,13 @@ Cards are first-party descriptions, not independent Atlas evaluations. Quantizat
 |---|---|---|---|
 | [Qwen2.5-Coder-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct) | 7.61B parameters; Apache-2.0; long-context instructions describe extension | Q4_K_M or Q5_K_M; ideal raw4-bit payload about 3.81 GB, excluding metadata/KV/workspaces | Coding-oriented comparator; target8–12 GB or CPU offload; actual fit unverified |
 | [Qwen3-4B](https://huggingface.co/Qwen/Qwen3-4B) | 4B; Apache-2.0; native32,768 context; reasoning/non-reasoning modes | Q4_K_M; ideal raw4-bit payload2.0 GB | First small-model candidate; cap context at 4,096–8,192 for initial study; evaluate mode and thinking budget separately |
+| [Qwen3.5-4B](https://huggingface.co/Qwen/Qwen3.5-4B) |Apache-2.0; hybrid attention; multimodal bundle |Current small-family comparison; metadata export about3.324 GB total listed payload |Unmeasured; [capacity audit](local-model-capacity.md) distinguishes text label, bundle, cache and runtime requirements |
 | [Phi-4-mini-instruct](https://huggingface.co/microsoft/Phi-4-mini-instruct) | 3.8B; MIT;128K advertised context; function-calling format | Q4/Q5; ideal raw4-bit payload1.9 GB | Alternative family; tool-call support must be validated through selected runtime/template |
 | [Qwen2.5-Coder-3B-Instruct](https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct) | 3.09B;32,768 context; **Qwen Research license**, not Apache-2.0 | Exclude as default pending terms review | Important licensing counterexample: do not infer a family-wide license from the 7B model |
 
 These are a small comparison set chosen for manageable size and inspectable cards, not a claim to identify the best models available in2026. No vendor benchmark ranking is used to predict Atlas task performance. Four-bit parameter arithmetic is a lower-bound planning calculation; mixed-bit storage, KV cache, context, concurrency, runtime buffers and partial CPU placement determine actual memory. No tokens/sec or latency estimate is asserted.
+
+The continuation [config/registry snapshot](local-model-metadata.json) adds exact component identities and cache arithmetic for current candidates. Native context length, config position limits, disk payload and resident memory are different quantities. No LLM weights or inference were added during this audit.
 
 ## Allowed tasks
 
