@@ -33,3 +33,15 @@ The [updated recommendation](14-updated-recommendation.md) follows from the comb
 [Native selective checkpointing](experiments/native-selective-control.md) executes twelve fixed-configuration CUDA controls with first-update state observations and contemporary resource/timing windows. It broadens the competent native baseline without demonstrating automatic selection, full-training equivalence or a useful OOM rescue.
 
 [Token-reference controls](experiments/token-reference-control.md) show existing differential checks can correctly PASS a shared per-sequence objective while an external stated token-weighted objective differs. Both positive and deliberately mismatched authored adapters remain visible, along with the first investigator report error. No independent labels or novel-checker result follows.
+
+The second continuation adds the following bounded claims:
+
+| Claim | Evidence and supported scope | Unsupported extension |
+|---|---|---|
+| Native BERT trades memory for time | [Sixteen resource segments](workload-screen/qa-resource-pilot.md), one Windows GPU | Exclusive device residency, OOM rescue, quality equivalence |
+| Efficient attention is a strong baseline | [Constructor default](workload-screen/qa-default-attention-control.md) plus two [device-event captures](workload-screen/qa-dispatch-control.md) | Atlas-discovered SDPA saving, FlashAttention, every shape |
+| Existing checking works on the reduced real model | [Two owned jobs/ten executions](workload-screen/qa-numerical-control.md), full named snapshots and deliberate changes | Full-batch reproducibility, independent field accuracy |
+| Small gradients can produce larger adaptive update differences | [Selected native replays](workload-screen/qa-adam-sensitivity-control.md), 60 exact replay values | Every parameter's causal explanation, quality failure, epsilon as a method-preserving fix |
+| Unchanged references can differ | [Four fresh logical-32 jobs](workload-screen/qa-reference32-control.md), four selected parameters and independent arithmetic reconstruction | A false-alarm population rate or executed TrainParity verdict on these pairs |
+| Parameter and functional relations differ | [Tiny CPU QA-head controls](experiments/qa-gauge-control.md), stated dtypes and interventions | Full BERT equivalence or automatic waiver of strict numerical failure |
+| Scope and units matter for costs/provenance | [Workflow ledger](workload-screen/qa-workflow-costs.md), [environment reconciliation](workload-screen/post-study-environments.md) | Full selection cost, contemporaneous driver provenance, complete package attestation |

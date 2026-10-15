@@ -52,4 +52,4 @@ Reviewed TrainParity controls, adapted Rockmate-family planning, constructor-sta
 
 ## Second requested continuation, in progress
 
-The current suite passes 48 tests. Sixteen BERT/QA resource segments, asset/feature provenance, an invalid-host-monitor amendment, composite-objective controls and a seventh ADR extend the package. The [comparison audit](15-comparison-identifiability.md) identifies the unselected distinct-policy algorithm. Earlier validation counts remain historical. This continuation is still active; publication/CI status must be checked at its actual checkpoint.
+The current CPU/Windows lifecycle suite passes 56 tests (two Windows-only lifecycle cases explicitly skip on Linux). Sixteen BERT/QA resource segments, asset/feature provenance, an invalid-host-monitor amendment, composite-objective controls and a seventh ADR extend the package. The [comparison audit](15-comparison-identifiability.md) identifies the unselected distinct-policy algorithm. Earlier validation counts remain historical. This continuation is still active; publication/CI status must be checked at its actual checkpoint.

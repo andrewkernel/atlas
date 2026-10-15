@@ -102,6 +102,7 @@ def main() -> int:
         ('token_reference_control.py', 'token-reference-control.json'),
         ('snapshot_final_environments.py', 'final-environment-inventory.json'),
         ('composite_objective_control.py', 'composite-objective-control.json'),
+        ('qa_gauge_control.py', 'qa-gauge-control.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():

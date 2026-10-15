@@ -1,8 +1,8 @@
 # Executive assessment
 
-**Verdict: Proceed with modifications.** Atlas is credible as a small empirical systems project about constrained selection of memory-saving transformations. The original broad product is too ambitious for one undergraduate, and its broad novelty is contradicted by existing work. Do not describe Atlas as the first fidelity-aware optimizer or a verifier of scientific truth.
+**Current verdict: proceed with the evaluation package; require a distinct algorithm before policy superiority.** A scoped empirical/engineering project is feasible. Broad optimizer/verifier novelty is contradicted by prior work, and benchmark novelty still needs independent review. Do not describe Atlas as the first fidelity-aware optimizer or a verifier of scientific truth.
 
-The [updated recommendation](14-updated-recommendation.md) narrows this to a bounded benchmark/comparison pilot after deeper prior-art inspection and real-data training. Engineering feasibility improved; confidence in a distinct standalone optimizer/verifier contribution did not.
+The [updated recommendation](14-updated-recommendation.md), [treatment audit](15-comparison-identifiability.md) and [revised proposal](10-research-proposal.md) govern current scope. The earlier question below is conditional future work: an Atlas next-action algorithm remains unselected. Native/existing-checker BERT controls and selected reference-noise measurements improve evidence while narrowing what it supports. Historical test counts below describe earlier checkpoints; the current repository index records later validation.
 
 ## What the evidence changes
 

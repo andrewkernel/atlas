@@ -1,0 +1,717 @@
+{
+  "asset_checks": {
+    "data/train-v1.1.json": {
+      "bytes": 30288272,
+      "matches_acquisition": true,
+      "sha256": "3527663986b8295af4f7fcdff1ba1ff3f72d07d61a20f487cb238a6ef92fd955"
+    },
+    "model/LICENSE": {
+      "bytes": 11356,
+      "matches_acquisition": true,
+      "sha256": "43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1"
+    },
+    "model/README.md": {
+      "bytes": 10517,
+      "matches_acquisition": true,
+      "sha256": "9187b6018ea0010d884e78e098e328faa1b88b301570d0cce606bb35e4067e17"
+    },
+    "model/config.json": {
+      "bytes": 570,
+      "matches_acquisition": true,
+      "sha256": "7160e1553ad2ca51d8c1cb066be533db31826e12d173824c1bb0cb1a4f187d20"
+    },
+    "model/model.safetensors": {
+      "bytes": 440449768,
+      "matches_acquisition": true,
+      "sha256": "68d45e234eb4a928074dfd868cead0219ab85354cc53d20e772753c6bb9169d3"
+    },
+    "model/tokenizer.json": {
+      "bytes": 466062,
+      "matches_acquisition": true,
+      "sha256": "ce64fce797c24f68df90b40a3f74f579b336a493db14bd583fd520ea0d8c9a98"
+    },
+    "model/tokenizer_config.json": {
+      "bytes": 48,
+      "matches_acquisition": true,
+      "sha256": "a025160ef0431f1a392f6f050c1310f4c5d9fb6f275932dbccba73c4d214bf10"
+    },
+    "model/vocab.txt": {
+      "bytes": 231508,
+      "matches_acquisition": true,
+      "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    }
+  },
+  "captured_utc": "2026-10-15T15:13:02.231917+00:00",
+  "earlier_inventory_canonical_sha256": "3e3a9fd392765d76543ba5ae34fe92936ad34f55b62d1cba7a5001a90d32af26",
+  "failures": [],
+  "feature_npz_sha256": "3f7fe65e1afddac22b1d75f7146823929aa883006a849b58a039c6e8e1e044a8",
+  "helper_sha256": {
+    "board_energy_control.py": "85b03be5771a63d1d163e7b0f567e204d0284b3e526ae4056942d9d0d14f02aa",
+    "snapshot_final_environments.py": "b4a95eba5e6f8fc7dd87269ca68d6d19926d5605ea9551df49b8056494c85465",
+    "windows_job_scope.py": "8be53367c1515c7b5cf96f71b35bcb7ecf78ed1f646f1b0b52d83a79d7ad73a7"
+  },
+  "plot_figure_record_canonical_sha256": "831636740a8f2d55b9fe4e82d9ba1d95db29cb25c274b1b66ce25f6fd76105c5",
+  "post_study_driver_read": {
+    "captured_utc": "2026-10-15T15:13:10.567170+00:00",
+    "csv_columns": [
+      "name",
+      "driver_version",
+      "memory_total_MiB"
+    ],
+    "returncode": 0,
+    "scope": "Post-study vendor utility read; per-QA-worker driver/cuDNN records were not captured and are not retroactively supplied.",
+    "stdout": "NVIDIA GeForce RTX 3060, 595.95, 12288"
+  },
+  "profiles": {
+    "checker": {
+      "additional_distributions": [],
+      "packages": {
+        "filelock": "3.32.3",
+        "fsspec": "2026.7.0",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.3",
+        "mpmath": "1.3.0",
+        "networkx": "3.6.1",
+        "numpy": "2.4.6",
+        "setuptools": "78.1.0",
+        "sympy": "1.14.0",
+        "torch": "2.13.0+cpu",
+        "typing-extensions": "4.16.0"
+      },
+      "prior_version_mismatches": {},
+      "python": "3.11.17",
+      "requirements_file": "configs/checker-windows-py311-requirements.txt",
+      "requirements_sha256": "fed4ed666322db144291bbee0e2232f0baa7f182afa383fe79e5a87f292f6881",
+      "runtime_read": null,
+      "scope": "Distribution metadata and selected Python-source hashes; unsigned RECORD is not a signature or whole-package attestation.",
+      "selected_files": [
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/_dynamo/eval_frame.py",
+          "sha256": "67f9a6114c61a4898ef5aac4b6b2f50745ff0dd66da954fe32806bd2600668a2",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/fx/graph.py",
+          "sha256": "e8d20af32da24539c7f99f31517a2b56dfb2731c43a437d7e3ad0b2cf6ce8b05",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/nn/functional.py",
+          "sha256": "0cb53bf779feac78ff663ddb72f90701a4413b305bd95a444230e5bec953a2c1",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/adamw.py",
+          "sha256": "270402f0762defb378423bd9110cd7bee0ee37c5eece139a09bad1a1da9b08cd",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/sgd.py",
+          "sha256": "bdadbe7071cd59f8f7ef4ba7977d54778f9c729b4f920ef42b5f9fd6beda96d5",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/utils/checkpoint.py",
+          "sha256": "54990d1f6d9ace19ef80725a670fde1f306c150cb7a206f44d3d0cbbf81e3d6f",
+          "status": "read"
+        }
+      ]
+    },
+    "core": {
+      "additional_distributions": [],
+      "packages": {
+        "colorama": "0.4.6",
+        "filelock": "4.2.0",
+        "fsspec": "2026.9.0",
+        "hypothesis": "6.169.3",
+        "iniconfig": "2.3.1",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.4",
+        "mpmath": "1.3.0",
+        "networkx": "3.7",
+        "numpy": "2.5.4",
+        "packaging": "26.3",
+        "pip": "25.0.1",
+        "pluggy": "1.6.0",
+        "psutil": "7.2.2",
+        "pygments": "2.21.0",
+        "pytest": "9.1.1",
+        "scipy": "1.18.1",
+        "setuptools": "84.0.0",
+        "sortedcontainers": "2.4.0",
+        "sympy": "1.14.0",
+        "torch": "2.14.1+cpu",
+        "typing-extensions": "4.16.0",
+        "uv": "0.13.1"
+      },
+      "prior_version_mismatches": {},
+      "python": "3.12.10",
+      "requirements_file": "uv.lock",
+      "requirements_sha256": "cb35b0c33e15910803e16bbebfc4ba6cf5f1a53f42e70cc8020baee2de98bcd9",
+      "runtime_read": null,
+      "scope": "Distribution metadata and selected Python-source hashes; unsigned RECORD is not a signature or whole-package attestation.",
+      "selected_files": [
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/_dynamo/eval_frame.py",
+          "sha256": "591322852c2bd372c2062ee50abcc1e86f9bfb6d4a6f1d6cbf7b8561046f87bd",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/fx/graph.py",
+          "sha256": "93a4e7f12e17f2be6d9c0bcb8a243587fe6791d4df7f15dd0272730b625f3c36",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/nn/functional.py",
+          "sha256": "33c3d1548018f7775e5d7fdfcf0b16e6bcf19f388ffc202156a88c0562767b5d",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/adamw.py",
+          "sha256": "2e6e8609d900101dd7462cea26f2b913aeb3f337c1cd808a60094a5009e209c3",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/sgd.py",
+          "sha256": "34476f526f3c48d40ebfa86eef556e5d6d740239edc0bb061ea4786d6ccda275",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/utils/checkpoint.py",
+          "sha256": "4226cb5fdcbf6f4756084075c3568c5f50505e17bfc40d47c9b662325007e6e6",
+          "status": "read"
+        }
+      ]
+    },
+    "interop": {
+      "additional_distributions": [],
+      "packages": {
+        "astunparse": "1.6.3",
+        "colorama": "0.4.6",
+        "configmypy": "0.2.0",
+        "filelock": "3.32.3",
+        "fsspec": "2026.7.0",
+        "iniconfig": "2.3.1",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.3",
+        "mpmath": "1.3.0",
+        "networkx": "3.6.1",
+        "numpy": "2.4.6",
+        "packaging": "26.3",
+        "pluggy": "1.6.0",
+        "psutil": "7.2.2",
+        "pulp": "2.7.0",
+        "pygments": "2.21.0",
+        "pytest": "9.1.1",
+        "pytest-mock": "3.16.0",
+        "pyyaml": "6.0.3",
+        "ruamel-yaml": "0.19.1",
+        "setuptools": "78.1.0",
+        "six": "1.17.0",
+        "sympy": "1.14.0",
+        "torch": "2.13.0+cu130",
+        "typing-extensions": "4.16.0",
+        "wheel": "0.48.0"
+      },
+      "prior_version_mismatches": {},
+      "python": "3.11.17",
+      "requirements_file": "configs/interop-windows-py311-requirements.txt",
+      "requirements_sha256": "e9067e890fa50d16a454c2e16c5037b35993cea7152f446b461c996f8e26e68e",
+      "runtime_read": null,
+      "scope": "Distribution metadata and selected Python-source hashes; unsigned RECORD is not a signature or whole-package attestation.",
+      "selected_files": [
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/_dynamo/eval_frame.py",
+          "sha256": "67f9a6114c61a4898ef5aac4b6b2f50745ff0dd66da954fe32806bd2600668a2",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/fx/graph.py",
+          "sha256": "e8d20af32da24539c7f99f31517a2b56dfb2731c43a437d7e3ad0b2cf6ce8b05",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/nn/functional.py",
+          "sha256": "0cb53bf779feac78ff663ddb72f90701a4413b305bd95a444230e5bec953a2c1",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/adamw.py",
+          "sha256": "270402f0762defb378423bd9110cd7bee0ee37c5eece139a09bad1a1da9b08cd",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/sgd.py",
+          "sha256": "bdadbe7071cd59f8f7ef4ba7977d54778f9c729b4f920ef42b5f9fd6beda96d5",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/utils/checkpoint.py",
+          "sha256": "54990d1f6d9ace19ef80725a670fde1f306c150cb7a206f44d3d0cbbf81e3d6f",
+          "status": "read"
+        }
+      ]
+    },
+    "original_cuda": {
+      "additional_distributions": [],
+      "packages": {
+        "filelock": "3.32.3",
+        "fsspec": "2026.7.0",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.3",
+        "mpmath": "1.3.0",
+        "networkx": "3.6.1",
+        "numpy": "2.5.4",
+        "setuptools": "78.1.0",
+        "sympy": "1.14.0",
+        "torch": "2.14.1+cu130",
+        "typing-extensions": "4.16.0"
+      },
+      "prior_version_mismatches": {},
+      "python": "3.12.10",
+      "requirements_file": "configs/cuda-probe-windows-py312-requirements.txt",
+      "requirements_sha256": "c285e77f8e0f29a0c63d96cd8b1b0f3cb67fe15d6749c203b76c5695e1859405",
+      "runtime_read": null,
+      "scope": "Distribution metadata and selected Python-source hashes; unsigned RECORD is not a signature or whole-package attestation.",
+      "selected_files": [
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/_dynamo/eval_frame.py",
+          "sha256": "591322852c2bd372c2062ee50abcc1e86f9bfb6d4a6f1d6cbf7b8561046f87bd",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/fx/graph.py",
+          "sha256": "93a4e7f12e17f2be6d9c0bcb8a243587fe6791d4df7f15dd0272730b625f3c36",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/nn/functional.py",
+          "sha256": "33c3d1548018f7775e5d7fdfcf0b16e6bcf19f388ffc202156a88c0562767b5d",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/adamw.py",
+          "sha256": "2e6e8609d900101dd7462cea26f2b913aeb3f337c1cd808a60094a5009e209c3",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/sgd.py",
+          "sha256": "34476f526f3c48d40ebfa86eef556e5d6d740239edc0bb061ea4786d6ccda275",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/utils/checkpoint.py",
+          "sha256": "4226cb5fdcbf6f4756084075c3568c5f50505e17bfc40d47c9b662325007e6e6",
+          "status": "read"
+        }
+      ]
+    },
+    "planner": {
+      "additional_distributions": [],
+      "packages": {
+        "astunparse": "1.6.3",
+        "colorama": "0.4.6",
+        "configmypy": "0.2.0",
+        "filelock": "3.32.3",
+        "fsspec": "2026.7.0",
+        "iniconfig": "2.3.1",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.3",
+        "mpmath": "1.3.0",
+        "networkx": "3.6.1",
+        "numpy": "2.5.4",
+        "packaging": "26.3",
+        "pluggy": "1.6.0",
+        "psutil": "7.2.2",
+        "pulp": "2.7.0",
+        "pygments": "2.21.0",
+        "pytest": "9.1.1",
+        "pytest-mock": "3.16.0",
+        "pyyaml": "6.0.3",
+        "ruamel-yaml": "0.19.1",
+        "setuptools": "78.1.0",
+        "six": "1.17.0",
+        "sympy": "1.14.0",
+        "torch": "2.14.1+cu130",
+        "typing-extensions": "4.16.0",
+        "wheel": "0.48.0"
+      },
+      "prior_version_mismatches": {},
+      "python": "3.12.10",
+      "requirements_file": "configs/planner-windows-py312-requirements.txt",
+      "requirements_sha256": "d78d9d21a9201764934f54df49b553d868e3e259f07a5211476ea40741c2ce14",
+      "runtime_read": null,
+      "scope": "Distribution metadata and selected Python-source hashes; unsigned RECORD is not a signature or whole-package attestation.",
+      "selected_files": [
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/_dynamo/eval_frame.py",
+          "sha256": "591322852c2bd372c2062ee50abcc1e86f9bfb6d4a6f1d6cbf7b8561046f87bd",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/fx/graph.py",
+          "sha256": "93a4e7f12e17f2be6d9c0bcb8a243587fe6791d4df7f15dd0272730b625f3c36",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/nn/functional.py",
+          "sha256": "33c3d1548018f7775e5d7fdfcf0b16e6bcf19f388ffc202156a88c0562767b5d",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/adamw.py",
+          "sha256": "2e6e8609d900101dd7462cea26f2b913aeb3f337c1cd808a60094a5009e209c3",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/sgd.py",
+          "sha256": "34476f526f3c48d40ebfa86eef556e5d6d740239edc0bb061ea4786d6ccda275",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/utils/checkpoint.py",
+          "sha256": "4226cb5fdcbf6f4756084075c3568c5f50505e17bfc40d47c9b662325007e6e6",
+          "status": "read"
+        }
+      ]
+    },
+    "plot": {
+      "additional_distributions": [],
+      "packages": {
+        "contourpy": "1.3.3",
+        "cycler": "0.12.1",
+        "fonttools": "4.67.0",
+        "kiwisolver": "1.5.1",
+        "matplotlib": "3.11.2",
+        "numpy": "2.4.6",
+        "packaging": "26.3",
+        "pillow": "12.3.0",
+        "pyparsing": "3.3.3",
+        "python-dateutil": "2.9.0.post0",
+        "six": "1.17.0"
+      },
+      "prior_version_mismatches": {},
+      "python": "3.11.17",
+      "requirements_file": "configs/plot-windows-py311-requirements.txt",
+      "requirements_sha256": "b9a4c604a0fc51d12917b85db9b17251b703af8784a15562add7b703889ebc7c",
+      "runtime_read": null,
+      "scope": "Distribution metadata and selected Python-source hashes; unsigned RECORD is not a signature or whole-package attestation.",
+      "selected_files": [
+        {
+          "distribution": "matplotlib",
+          "matches_installed_record": true,
+          "path": "matplotlib/__init__.py",
+          "sha256": "37abb78e74e9e0085a4e306a919606ffa8ff3c263def80ae2f4d938cfa79cd32",
+          "status": "read"
+        },
+        {
+          "distribution": "matplotlib",
+          "matches_installed_record": true,
+          "path": "matplotlib/backends/backend_svg.py",
+          "sha256": "c489775b9891f18bfb31b706e72406da267a9b52033a5d1fd60e59230c48d565",
+          "status": "read"
+        },
+        {
+          "distribution": "matplotlib",
+          "matches_installed_record": true,
+          "path": "matplotlib/pyplot.py",
+          "sha256": "2c27b5739ad10034f22866cc7647ce968c56f9625cf0f7a288b800e94917ea51",
+          "status": "read"
+        }
+      ]
+    },
+    "qa": {
+      "additional_distributions": [],
+      "packages": {
+        "annotated-doc": "0.0.5",
+        "anyio": "4.15.1",
+        "click": "8.5.0",
+        "colorama": "0.4.6",
+        "filelock": "3.32.3",
+        "fsspec": "2026.7.0",
+        "h11": "0.16.0",
+        "hf-xet": "1.7.0",
+        "httpcore2": "2.13.1",
+        "httpx2": "2.13.1",
+        "huggingface-hub": "2.2.0",
+        "idna": "3.20",
+        "jinja2": "3.1.6",
+        "markdown-it-py": "4.2.0",
+        "markupsafe": "3.0.3",
+        "mdurl": "0.1.2",
+        "mpmath": "1.3.0",
+        "networkx": "3.6.1",
+        "numpy": "2.4.6",
+        "packaging": "26.3",
+        "pygments": "2.21.0",
+        "pyyaml": "6.0.3",
+        "regex": "2026.9.29",
+        "rich": "15.0.0",
+        "safetensors": "0.8.0",
+        "setuptools": "78.1.0",
+        "shellingham": "1.5.4",
+        "sympy": "1.14.0",
+        "tokenizers": "0.23.3",
+        "torch": "2.13.0+cu130",
+        "tqdm": "4.70.1",
+        "transformers": "5.19.0",
+        "truststore": "0.10.5",
+        "typer": "0.27.3",
+        "typing-extensions": "4.16.0"
+      },
+      "prior_version_mismatches": {},
+      "python": "3.11.17",
+      "requirements_file": "configs/qa-windows-py311-requirements.txt",
+      "requirements_sha256": "5be53c50e316e59baea17a8f7e234fd311e6972e16df79da17dd63d85f6bde9d",
+      "runtime_read": {
+        "cuda_build": "13.0",
+        "cuda_context_initialized": true,
+        "cudnn": 92000,
+        "observed_after_studies": true,
+        "scope": "Post-study library version read; no model/training runs, not a per-worker contemporaneous record.",
+        "torch": "2.13.0+cu130"
+      },
+      "scope": "Distribution metadata and selected Python-source hashes; unsigned RECORD is not a signature or whole-package attestation.",
+      "selected_files": [
+        {
+          "distribution": "safetensors",
+          "matches_installed_record": true,
+          "path": "safetensors/torch.py",
+          "sha256": "81f477f2ab5e05e99308fc55ed26028eb2bf36334404e9c5558e4730184483f0",
+          "status": "read"
+        },
+        {
+          "distribution": "tokenizers",
+          "matches_installed_record": true,
+          "path": "tokenizers/__init__.py",
+          "sha256": "6a5955273d382901d5b1f5284d887b24501464725977f6684485c2dfd2fb42f3",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/_dynamo/eval_frame.py",
+          "sha256": "67f9a6114c61a4898ef5aac4b6b2f50745ff0dd66da954fe32806bd2600668a2",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/autograd/profiler.py",
+          "sha256": "3162a323c1b52bf1a4b9939f80d184d78bcf0f8d65e4150f1ef1135c4d51ae7e",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/fx/graph.py",
+          "sha256": "e8d20af32da24539c7f99f31517a2b56dfb2731c43a437d7e3ad0b2cf6ce8b05",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/nn/functional.py",
+          "sha256": "0cb53bf779feac78ff663ddb72f90701a4413b305bd95a444230e5bec953a2c1",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/adam.py",
+          "sha256": "8ce09c47f3960bb1b5c7d58a820b3b827892bc1d383664e6e2e2cdd3d502a6fc",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/adamw.py",
+          "sha256": "270402f0762defb378423bd9110cd7bee0ee37c5eece139a09bad1a1da9b08cd",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/optimizer.py",
+          "sha256": "d5e4f1648030b6c226f6bce58a9b0eca5997e27e09759085d0cecf6fb560d11c",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/optim/sgd.py",
+          "sha256": "bdadbe7071cd59f8f7ef4ba7977d54778f9c729b4f920ef42b5f9fd6beda96d5",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/profiler/__init__.py",
+          "sha256": "1fac2fc1a1d129f44b5f843a1a9da44562179bf2d80ab9399173047a7285e7b7",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/profiler/profiler.py",
+          "sha256": "c978bd297b55afbb2e5282cb68c5ea04ee2c722a335cdc719ed82d17a176258d",
+          "status": "read"
+        },
+        {
+          "distribution": "torch",
+          "matches_installed_record": true,
+          "path": "torch/utils/checkpoint.py",
+          "sha256": "54990d1f6d9ace19ef80725a670fde1f306c150cb7a206f44d3d0cbbf81e3d6f",
+          "status": "read"
+        },
+        {
+          "distribution": "transformers",
+          "matches_installed_record": true,
+          "path": "transformers/__init__.py",
+          "sha256": "af7867325306501e495acaca93c1c4d603849cca6614ed23510bb17c2da63ac6",
+          "status": "read"
+        },
+        {
+          "distribution": "transformers",
+          "matches_installed_record": true,
+          "path": "transformers/integrations/sdpa_attention.py",
+          "sha256": "0523b9e7b375941b91c226aa850ffc18af709d8f697701fd16f2babaec32f23f",
+          "status": "read"
+        },
+        {
+          "distribution": "transformers",
+          "matches_installed_record": true,
+          "path": "transformers/modeling_layers.py",
+          "sha256": "ee84c7229582bc2f47bac19327ac2d96530bf94a182b5366d72d10330da99df4",
+          "status": "read"
+        },
+        {
+          "distribution": "transformers",
+          "matches_installed_record": true,
+          "path": "transformers/modeling_utils.py",
+          "sha256": "037ef3ca1d0fab4e080bae880adb5c24d68d191e0bd1fe0d626f14f0636ae448",
+          "status": "read"
+        },
+        {
+          "distribution": "transformers",
+          "matches_installed_record": true,
+          "path": "transformers/models/bert/configuration_bert.py",
+          "sha256": "7571591482cb348896e46789f272325cab38a0225b12c1c65a5d4dbbdcdf913b",
+          "status": "read"
+        },
+        {
+          "distribution": "transformers",
+          "matches_installed_record": true,
+          "path": "transformers/models/bert/modeling_bert.py",
+          "sha256": "fca25539f04aa121d000de218baedb619d744aaef7e93726e71ef555419c6a43",
+          "status": "read"
+        },
+        {
+          "distribution": "transformers",
+          "matches_installed_record": true,
+          "path": "transformers/models/bert/tokenization_bert.py",
+          "sha256": "ff6ab7214c7b8edc33e04585cbaffabde081f53641a1f1650d0803a91ef8d028",
+          "status": "read"
+        }
+      ]
+    },
+    "telemetry": {
+      "additional_distributions": [],
+      "packages": {
+        "nvidia-ml-py": "13.615.71"
+      },
+      "prior_version_mismatches": {},
+      "python": "3.12.10",
+      "requirements_file": "configs/telemetry-windows-py312-requirements.txt",
+      "requirements_sha256": "0dcc04d18f2bab5cffcbdceab100ad0e27c891e596953c57de0921b8e3bbd52c",
+      "runtime_read": null,
+      "scope": "Distribution metadata and selected Python-source hashes; unsigned RECORD is not a signature or whole-package attestation.",
+      "selected_files": [
+        {
+          "distribution": "nvidia-ml-py",
+          "matches_installed_record": true,
+          "path": "pynvml.py",
+          "sha256": "2828e66b483bec218f461314f6da96c1e56330ed4b297a20b3444b4c43cdd14e",
+          "status": "read"
+        }
+      ]
+    }
+  },
+  "qa_asset_manifest_canonical_sha256": "451a588e68b56a606deda6e18af3c909d512ef9182c6dd5036da9df899a12347",
+  "qa_before_canonical_sha256": "377910f9ecb04b8cdb34f4ff2e68e964186fcc68dca3128f1620d4470efeb5f9",
+  "qa_feature_manifest_canonical_sha256": "f0620c6a33c93f2db3ca2433260904fc8120747488970617e8fd6f6c7c17ce7e",
+  "reviewed_reference_checks": {
+    "rockmate": {
+      "all_match": true,
+      "files": 53,
+      "review_canonical_sha256": "968025244ac896baccf43d1e308355d0b8ff16b0d100f05af44273d916883486"
+    },
+    "trainparity": {
+      "all_match": true,
+      "files": 23,
+      "review_canonical_sha256": "c47d94c471429bff2f7f1ac602564b991effbb57aa026d956fd7615e5f10efaf"
+    }
+  },
+  "scope": "Post-study checks, not contemporaneous attestation or a full supply-chain/driver audit. Only QA runtime read explicitly imports Torch; no model or training runs.",
+  "source_sha256": "dae3136d21b3f53b4619cadd557c5b2ecae971cae78eb3d553600052f0b011cf"
+}

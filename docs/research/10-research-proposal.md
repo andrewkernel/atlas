@@ -2,43 +2,45 @@
 
 ## Title
 
-**Contract-Constrained Selection of Memory-Saving PyTorch Training Plans on a Single Consumer GPU**
+**Evaluating Scoped Fidelity Evidence for Native PyTorch Training Plans on a Consumer GPU**
 
 ## Problem and candidate gap
 
-Memory-saving transformations can make a training job fit while changing its intended update or mutable state. Existing runtimes already supply sophisticated optimization mechanisms, and validation tools already check important training properties. The open question for this project is whether making explicit contract evidence part of **plan selection**, especially for combinations, yields useful decisions beyond composing those existing capabilities.
+Memory-saving transformations can change an intended update or mutable state, while finite checks observe only particular relations/windows. Existing runtimes and validation tools already supply substantial capabilities. The immediate project is a reproducible evaluation package examining which claims those observations justify and what resource/verification costs they incur on limited hardware.
 
-This is a provisional empirical gap, not an established first-of-its-kind claim. The [competitor matrix](03-competitive-landscape.md) includes direct counterexamples to broad novelty; the closest additional checks are [TrainCheck](https://www.usenix.org/conference/osdi25/presentation/jiang) and [TrainParity](https://github.com/intelland/TrainParity).
+Benchmark novelty itself remains unestablished. The [competitor matrix](03-competitive-landscape.md), TrainCheck/TrainParity and [constrained-acquisition/translation-validation lineages](16-policy-and-validation-lineage.md) prevent broad first-of-its-kind claims. [ADR 007](decisions/007-benchmark-first.md) prioritizes evaluation and existing-tool integration, with an explicit stop/pivot option.
 
 The continuation's [HiLoRe comparison](papers/hilore.md) further weakens the general planner claim; [FairScale](competitors/fairscale.md) precedes the motivating state hazard. Treat the benchmark and measured incremental benefit as the research test. The [power correction](experiments/equivalence-calibration.md) also makes full-outcome equivalence more expensive than the initial illustrative calculation suggested.
 
 ## Research question and hypothesis
 
-On held-out single-device PyTorch workloads and checkpointing/accumulation plans, does contract-constrained selection accept fewer plans that violate declared training semantics, without reducing valid-feasible workload coverage, than native optimizations plus existing checks under the same eight-trial/30-minute search budget?
+Immediate questions: on a declared fixed corpus, when do reference repeatability, objective adequacy, execution scheduling and observer coverage limit available fidelity claims? What resource/host-memory/workflow tradeoffs remain after using competent native mechanisms and supported existing checks?
 
-Primary hypothesis: the policy reduces incompatible acceptance without reducing valid-feasible coverage on the held-out set. Resource-only selection is an additional ablation. **Null/practical failure:** the composed baseline matches or exceeds that tradeoff, or added verification cost makes a gain unusable. The initial budget may change only after a disjoint pilot and before confirmation. The experiment is valuable even if the hypothesis fails.
+The earlier selection-superiority hypothesis is conditional future work. [The treatment audit](15-comparison-identifiability.md) identifies the missing distinct Atlas algorithm: equal facts/checks and an equal decision function do not define distinct treatments. No confirmatory policy comparison should start until algorithm, objective, information and budgets are frozen after a disjoint pilot. A negative result that existing composition suffices is acceptable. Current investigator-created cases are development evidence, not an independent holdout or field-prevalence estimate.
 
 ## Method
 
-1. Define a small contract schema with invariant data/objective/update fields and scoped comparison rules.
-2. Implement trusted adapters and profile complete logical updates on CPU and a validated CUDA environment.
-3. Enumerate at most 8 native strict plans per workload; apply precondition rules and bounded differential checks, including buffers and update clocks.
-4. Compare selection policies under the same wall-time/trial budgets. Record every failed, rejected and abstained candidate.
-5. Evaluate final outcomes only under prespecified repeated full-run protocols; leave conclusion fidelity unverified when those runs are unavailable.
+1. Freeze intent, reference protocol, executor/observer and required relation separately; record denominator units, precision, fields and horizons.
+2. Use trusted adapters and existing capture/checker primitives in a mutually supported stack. Profile full logical updates and validate the actual owned worker boundary.
+3. Build positive/invalid/indeterminate development cases, retaining reference-noise and observer-failure cases. Obtain independent adjudication before using a new corpus for confirmatory evaluation.
+4. Compare native recipes and applicable checking scopes with all failures, missing evidence and costs retained. Different relations answer different questions; do not call their disagreement a classifier error without a shared intended target and independent labels.
+5. Run outcome/quality studies only with a separately frozen evaluation method, margins and sufficient repeated full runs. Leave unavailable domain conclusions unverified.
 
-The method proposes no new optimizer, rematerialization solver or automatic theorem prover. Its engineering output is an auditable evidence trail; its research output is measured selection behavior and a reusable interaction benchmark.
+The method proposes no new optimizer, solver or theorem prover. A reusable benchmark/evidence package is the current engineering deliverable. A research contribution depends on a meaningful independently reviewed corpus, repeatable findings beyond established toy mechanisms, or a later distinct policy that survives the competent baseline. Current compositions do not establish a new emergent interaction.
 
 ## Baselines and evaluation
 
-Use unmodified/native PyTorch, manual configuration, compatible native automated checkpointing and Rockmate/DeepSpeed subsets, an explicit native-plus-checker composition, deterministic Atlas, optional LLM ranking, and fidelity-disabled Atlas. Primary semantic evaluation uses positive/negative/unknown cases with held-out code/fault families and two qualified annotators. Resource evaluation uses a small CNN, two decoder sizes and pretrained fine-tuning, conditioned on source/license resolution.
+The essential baseline is native full-batch, supported efficient attention, checkpointing/accumulation and the same applicable existing checks with equal adapter facts. Existing Rockmate-family subsets supply scoped compatibility evidence; their historical paper performance is not replicated. Optional algorithms/LLM ablations wait for a defined policy. Independent semantic review requires at least two qualified annotators and explicit relation labels; none has been obtained.
+
+Executed development evidence includes real-data CNN pilots and pretrained BERT/QA resource/first-update controls. The logical-32 BERT reference itself varies in selected fields, while reduced-batch checkpointing passes the existing comparator. These refine the study, not a policy advantage. Full QA fine-tuning/evaluation, decoder studies and other physical GPU tiers remain unexecuted or conditional. See the [resource evidence](workload-screen/qa-resource-pilot.md), [reference-noise diagnostic](workload-screen/qa-reference32-control.md) and [cost-window limits](workload-screen/qa-workflow-costs.md).
 
 Metrics: valid feasible coverage, incompatible acceptance, false rejection/abstention, memory peaks, total time, search/check overhead, failure rate and paired outcome uncertainty. Numerical equivalence and scientific margins are distinct. See the complete [experimental design](07-experimental-design.md), including actual-versus-planned evidence and power limits.
 
 ## Expected contribution, if supported
 
-- An explicit mapping from declared training requirements to plan eligibility and necessary evidence.
-- An audited benchmark of checkpointing/accumulation interactions and unknown cases.
-- An empirical demonstration of incremental selection benefit **or** a well-supported negative result explaining why existing composition suffices.
+- A versioned corpus of declared relations, assumptions, reference/observer limitations and independently reviewed labels if obtainable.
+- Reproducible native/existing-tool measurements with complete failure and cost accounting.
+- A defensible empirical case study or negative result; incremental selection benefit is an additional conditional claim requiring a distinct algorithm.
 
 The benchmark could be a more durable contribution than a large application. No publication, impact or acceptance is guaranteed.
 
@@ -58,6 +60,6 @@ No live deadline or guaranteed suitable workshop is asserted. Establish the rese
 
 ## Immediate next step
 
-The continuation [updated recommendation](14-updated-recommendation.md) and [checker-integration options](checker-integration-options.md) govern this stage: use the minimal profiling path to establish a shared strong-baseline comparison, rather than rebuilding generic checking as a novelty claim. Real-data pilot evidence now exists, but independently adjudicated cases and incremental benefit remain unproven.
+The [updated recommendation](14-updated-recommendation.md), [treatment audit](15-comparison-identifiability.md) and [claim applicability](../architecture/claim-applicability.md) govern this stage. Existing-tool prototypes now run on real BERT; production interfaces and independent adjudication remain uncompleted. Preserve the discovered metadata gap: post-study driver/cuDNN reads do not replace contemporaneous per-worker capture.
 
-Implement the deterministic adapter/profiler vertical slice described in [first coding milestone](../roadmap/mvp-acceptance-criteria.md). Do not start a frontend, generic code agent or distributed runtime. Reassess the project after one complete native baseline profile and an observed cost/coverage comparison on the first interaction cases.
+Implement the narrow trusted adapter/profiler/report slice in the [revised coding milestone](../roadmap/mvp-acceptance-criteria.md), and prepare independent-review pilot packets without presenting the current cases as untouched holdout. Do not start a frontend, generic verifier or distributed runtime. Reassess research value before developing a new ranking algorithm.

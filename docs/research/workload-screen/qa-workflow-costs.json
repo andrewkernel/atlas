@@ -1,0 +1,93 @@
+{
+  "attempted_worker_windows": 25,
+  "bert_model_executions": 34,
+  "input_canonical_sha256": {
+    "qa-adam-sensitivity-control.json": "6bd8c54dd853a1b5016a1723d7806c08dbc981488a159169dbd19fb5a0d78802",
+    "qa-dispatch-control.json": "ff13cab2322440d26726fd6d134ea8e674c610993dd77a85654198f1f40a1634",
+    "qa-numerical-control.json": "77f85d2ed2dd3aa1c82e807d0f916b996c01de9179b4b81812edb338bec40b47",
+    "qa-reference32-control.json": "748a815b8612b9c768171a3c47d60b7240283874b6df71e9723963c5ebdb66d0",
+    "qa-resource-pilot.json": "d4365c0c156bb7fc6cf578e62761ad66b48a8e4121626abc70cf22321e6efbbf"
+  },
+  "nonadditivity": "Child lifetimes contain measured updates/captures. Adding nested categories to outer double counts.",
+  "omissions": [
+    "Controller imports/environment construction/job creation outside those timers",
+    "Parent-side array analysis, source retrieval, environment installation, engineering and adjudication effort",
+    "Unreported capture/comparison/negative-control subdivisions cannot be inferred as a residual category"
+  ],
+  "reported_supervised_window_seconds_sum": 536.6760569998878,
+  "scope": "Sum of sequential declared supervised windows across development studies; not a whole-policy/end-to-end research cost, exclusive allocation, GPU-active time, independent sample count or fair performance comparison.",
+  "source_sha256": "7af5dff1ee123cf4e129096342a8dce6d18949171a819e4142311b0562fba681",
+  "studies": [
+    {
+      "attempted_worker_windows": 16,
+      "bert_model_executions": 16,
+      "completed_workers": 16,
+      "cost_scope": "Declared timer windows only; child/update/capture intervals are nested, not additive to outer.",
+      "record": "qa-resource-pilot.json",
+      "reported_child_lifetime_seconds_sum": 395.4201648001326,
+      "reported_complete_update_seconds_sum": 257.8983499001479,
+      "reported_complete_update_timer_count": 128,
+      "reported_main_capture_seconds_sum": null,
+      "reported_main_capture_timer_count": 0,
+      "reported_supervised_window_seconds_sum": 408.6300569999148,
+      "successful_bert_optimizer_updates": 128
+    },
+    {
+      "attempted_worker_windows": 2,
+      "bert_model_executions": 10,
+      "completed_workers": 2,
+      "cost_scope": "Declared timer windows only; child/update/capture intervals are nested, not additive to outer.",
+      "record": "qa-numerical-control.json",
+      "reported_child_lifetime_seconds_sum": 71.15248680004152,
+      "reported_complete_update_seconds_sum": null,
+      "reported_complete_update_timer_count": 0,
+      "reported_main_capture_seconds_sum": 4.677332000050228,
+      "reported_main_capture_timer_count": 10,
+      "reported_supervised_window_seconds_sum": 72.70299999997951,
+      "successful_bert_optimizer_updates": 10
+    },
+    {
+      "attempted_worker_windows": 2,
+      "bert_model_executions": 2,
+      "completed_workers": 2,
+      "cost_scope": "Declared timer windows only; child/update/capture intervals are nested, not additive to outer.",
+      "record": "qa-dispatch-control.json",
+      "reported_child_lifetime_seconds_sum": 15.222545300028287,
+      "reported_complete_update_seconds_sum": null,
+      "reported_complete_update_timer_count": 0,
+      "reported_main_capture_seconds_sum": null,
+      "reported_main_capture_timer_count": 0,
+      "reported_supervised_window_seconds_sum": 17.17200000002049,
+      "successful_bert_optimizer_updates": 0
+    },
+    {
+      "attempted_worker_windows": 1,
+      "bert_model_executions": 2,
+      "completed_workers": 1,
+      "cost_scope": "Declared timer windows only; child/update/capture intervals are nested, not additive to outer.",
+      "record": "qa-adam-sensitivity-control.json",
+      "reported_child_lifetime_seconds_sum": 8.204702400020324,
+      "reported_complete_update_seconds_sum": null,
+      "reported_complete_update_timer_count": 0,
+      "reported_main_capture_seconds_sum": null,
+      "reported_main_capture_timer_count": 0,
+      "reported_supervised_window_seconds_sum": 9.045999999972992,
+      "successful_bert_optimizer_updates": 2
+    },
+    {
+      "attempted_worker_windows": 4,
+      "bert_model_executions": 4,
+      "completed_workers": 4,
+      "cost_scope": "Declared timer windows only; child/update/capture intervals are nested, not additive to outer.",
+      "record": "qa-reference32-control.json",
+      "reported_child_lifetime_seconds_sum": 25.86570749996463,
+      "reported_complete_update_seconds_sum": null,
+      "reported_complete_update_timer_count": 0,
+      "reported_main_capture_seconds_sum": null,
+      "reported_main_capture_timer_count": 0,
+      "reported_supervised_window_seconds_sum": 29.125,
+      "successful_bert_optimizer_updates": 4
+    }
+  ],
+  "successful_bert_optimizer_updates": 144
+}

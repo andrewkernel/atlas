@@ -1,0 +1,9 @@
+# QA-head parameter, functional and arithmetic relations
+
+The [frozen tiny CPU control](qa-gauge-protocol.md) completes the identical-repeat, float64 bias shift, float64 weight fault and deliberately extreme float32 cases. [Raw results](qa-gauge-control.json), [source](../../../benchmarks/qa_gauge_control.py), [tests](../../../tests/test_qa_gauge_control.py). No BERT training/evaluation or new general checker runs here.
+
+With float64 bias changed by [.3,-.2], raw logits change by .3, while centered logits/probabilities differ at most 2.78e-17; loss and weight gradients match exactly in the observed fixture. A strict parameter/raw-logit relation and this finite functional relation therefore give different answers to different questions. Neither should be silently relabeled as the other.
+
+A deliberate weight change leaves argmax positions unchanged but changes probabilities by about .00730 and loss by .000622. Argmax alone cannot verify probability/objective preservation. Separately, adding bias 1e8 in float32 loses the small position-logit differences before softmax: observed probabilities become uniform and argmax changes. Probability difference reaches about .0180, with all observed values finite. This is an artificial floating-point boundary, not an observed training fault; exact real-arithmetic translation invariance does not automatically certify its finite-precision implementation.
+
+These known mechanisms constrain the [selected BERT replay interpretation](../workload-screen/qa-adam-sensitivity-control.md). They do not waive its frozen tensor predicate, excuse other weight differences, establish whole-model functional invariance, or certify scientific conclusions. Any alternative required relation needs a prospective contract, support/precision assumptions and equal availability to the baseline.

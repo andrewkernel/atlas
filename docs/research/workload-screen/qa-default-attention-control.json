@@ -1,0 +1,28 @@
+{
+  "captured_utc": "2026-10-15T15:27:56.292526+00:00",
+  "helper_sha256": {
+    "board_energy_control.py": "85b03be5771a63d1d163e7b0f567e204d0284b3e526ae4056942d9d0d14f02aa",
+    "qa_native_helpers.py": "ce0fb43328fe113d72bad98cb24a6ace545b61cb8bae932c2fa85dad43a47eaa",
+    "windows_job_scope.py": "8be53367c1515c7b5cf96f71b35bcb7ecf78ed1f646f1b0b52d83a79d7ad73a7",
+    "worker_ownership_control.py": "0a193bded06c214b0cba9213b0958955ddce61d3af72d86aa3f3ae8c7782eda8"
+  },
+  "job_members_after_cleanup": 0,
+  "source_sha256": "968a0d0e5a9dd59607703425019816f64cf145e25cc70fd89b5b5452b1a169f5",
+  "status": "completed",
+  "supervised_probe_seconds": 4.282000000006519,
+  "worker_result": {
+    "attention_after_constructor": "sdpa",
+    "attention_before_constructor": null,
+    "parameter_count": 108893186,
+    "parameter_devices": [
+      "cpu"
+    ],
+    "runtime_identities": {
+      "asset_manifest_canonical_sha256": "451a588e68b56a606deda6e18af3c909d512ef9182c6dd5036da9df899a12347",
+      "environment_canonical_sha256": "377910f9ecb04b8cdb34f4ff2e68e964186fcc68dca3128f1620d4470efeb5f9",
+      "review_sha256": "97071ca0cbaf654da651a1cb7ef4242c3268beb78140604ebd1c9a6e2493940c"
+    },
+    "scope": "Builtin CPU constructor with pinned full config and fresh random parameters; no checkpoint load, forward, optimizer, CUDA measurement or training.",
+    "torch": "2.13.0+cu130"
+  }
+}

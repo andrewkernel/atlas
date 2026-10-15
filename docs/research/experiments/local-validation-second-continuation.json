@@ -1,0 +1,99 @@
+{
+  "captured_utc": "2026-10-15T15:36:44.785510+00:00",
+  "scope": "Current local compilation/text/size/manifest/link/CPU/Windows lifecycle checks; no GPU experiment rerun or independent scientific validation.",
+  "git_head_before_capture": "ee480ace5f2e5fbdbb707cda556a1a9065bba05d",
+  "capture_source_sha256": "6d3fda641a2fa26836fddc9f98884c5276f74d21f4df53d56f3cf80b10cb34c9",
+  "audit_source_sha256": "703988b0d50293c259304fdff346c0b4449fe829c620a01f789f4f85a68d8cd8",
+  "qa_audit_source_sha256": "0a8430c67a7be522a7920be3eb65f20ad711859865037fd346a2bc422b20f692",
+  "compiled_python_files": 78,
+  "utf8_text_files_checked": 333,
+  "largest_files": [
+    {
+      "bytes": 613911,
+      "path": "docs/research/experiments/board-energy-control.json"
+    },
+    {
+      "bytes": 139857,
+      "path": "docs/research/workload-screen/qa-resource-figure.svg"
+    },
+    {
+      "bytes": 129623,
+      "path": "docs/research/workload-screen/qa-resource-pilot.json"
+    },
+    {
+      "bytes": 83513,
+      "path": "docs/research/workload-screen/qa-feature-manifest.json"
+    },
+    {
+      "bytes": 55332,
+      "path": "docs/research/workload-screen/qa-reference32-control.json"
+    },
+    {
+      "bytes": 49550,
+      "path": "docs/research/workload-screen/qa-numerical-control.json"
+    },
+    {
+      "bytes": 46791,
+      "path": "docs/research/12-research-log.md"
+    },
+    {
+      "bytes": 43201,
+      "path": "uv.lock"
+    }
+  ],
+  "checks": [
+    {
+      "command": [
+        "C:\\Users\\andre\\.codex\\.chatgpt-projects\\g-p-6ad058cc234081918a97c7f15322e553\\atlas\\.venv\\Scripts\\python.exe",
+        "benchmarks/audit_specification.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"markdown_files\": 157,\n  \"local_links_checked\": 786,\n  \"unique_external_links_catalogued\": 151,\n  \"lock_package_count\": 22,\n  \"failures\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\andre\\.codex\\.chatgpt-projects\\g-p-6ad058cc234081918a97c7f15322e553\\atlas\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "returncode": 0,
+      "stdout": "........................................................                 [100%]\n56 passed in 3.11s\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "known_worker_query": {
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "@(Get-CimInstance Win32_Process | Where-Object { $_.Name -match '^python(w)?\\.exe$' -and $_.CommandLine -match '(qa_(resource_pilot|numerical_control|dispatch_control|adam_sensitivity_control|reference32_control|default_attention_control)|windows_job_control|worker_ownership_control)\\.py' } | Select-Object ProcessId,ParentProcessId,Name) | ConvertTo-Json -Compress"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "failures": []
+}

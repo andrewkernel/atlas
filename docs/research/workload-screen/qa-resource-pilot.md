@@ -4,6 +4,8 @@ All sixteen intended fresh-process trials complete eight logical updates each: 1
 
 ## Native tradeoff on the observed desktop
 
+**Baseline correction:** [the pinned built-in constructor already defaults to SDPA](qa-default-attention-control.md). Eager here is an explicitly requested condition. Do not credit Atlas with the default native SDPA saving or treat eager as the ordinary unmodified library baseline.
+
 Later allocated peaks are identical across the two repetitions; each time entry below is the median of five synchronized measured updates in one process. GiB means 2^30 bytes. These repeated seeds are not independent scientific outcomes or a population inference.
 
 | Attention request | Microbatch | Per-layer checkpoint | Later allocated GiB | Update seconds, repetitions 1 / 2 |
@@ -16,6 +18,10 @@ Later allocated peaks are identical across the two repetitions; each time entry 
 | SDPA | 32 | on | 2.4926 | 1.7916 / 1.7965 |
 | SDPA | 4 | off | 2.6505 | 1.4525 / 1.4641 |
 | SDPA | 4 | on | 1.8647 | 1.9033 / 1.9183 |
+
+![Allocated peaks and repeated process update medians](qa-resource-figure.svg)
+
+The standalone figure uses the frozen observations, with [render/source/environment identities](qa-resource-figure.json). No extra benchmark runs or uncertainty intervals are introduced by rendering it.
 
 The eager full-batch run allocates 15,227,238,912 bytes against CUDA-reported device total 12,603,752,448 bytes. Completion therefore cannot establish that its allocations fit exclusively in physical VRAM. [NVIDIA documents](https://nvidia.custhelp.com/app/answers/detail/a_id/5490) driver support for falling back to system memory with a possible speed penalty. That mechanism is consistent with the observation; the local per-application driver policy and actual residency/migration were not measured. Do not assert a causal explanation for the timing difference, infer another physical GPU's feasibility, or relabel this as an OOM rescue. Driver settings were not changed. Allocated and reserved bytes remain separate fields in the raw data.
 

@@ -1,0 +1,171 @@
+{
+  "arrays_checked": 32,
+  "captured_utc": "2026-10-15T14:50:06.203155+00:00",
+  "comparisons": [
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg__bert.embeddings.position_embeddings.weight",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg__bert.encoder.layer.0.attention.self.query.weight",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg__qa_outputs.bias",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg__qa_outputs.weight",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg_sq__bert.embeddings.position_embeddings.weight",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg_sq__bert.encoder.layer.0.attention.self.query.weight",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg_sq__qa_outputs.bias",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg_sq__qa_outputs.weight",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "gradient__bert.embeddings.position_embeddings.weight",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "gradient__bert.encoder.layer.0.attention.self.query.weight",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "gradient__qa_outputs.bias",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "gradient__qa_outputs.weight",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "parameter__bert.embeddings.position_embeddings.weight",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "parameter__bert.encoder.layer.0.attention.self.query.weight",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "parameter__qa_outputs.bias",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "parameter__qa_outputs.weight",
+      "dropout": 0.1
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg__bert.embeddings.position_embeddings.weight",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg__bert.encoder.layer.0.attention.self.query.weight",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg__qa_outputs.bias",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg__qa_outputs.weight",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg_sq__bert.embeddings.position_embeddings.weight",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg_sq__bert.encoder.layer.0.attention.self.query.weight",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg_sq__qa_outputs.bias",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "exp_avg_sq__qa_outputs.weight",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "gradient__bert.embeddings.position_embeddings.weight",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "gradient__bert.encoder.layer.0.attention.self.query.weight",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "gradient__qa_outputs.bias",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "gradient__qa_outputs.weight",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "parameter__bert.embeddings.position_embeddings.weight",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "parameter__bert.encoder.layer.0.attention.self.query.weight",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "parameter__qa_outputs.bias",
+      "dropout": 0.0
+    },
+    {
+      "all_reconstructed_fields_match": true,
+      "array": "parameter__qa_outputs.weight",
+      "dropout": 0.0
+    }
+  ],
+  "elements_checked": 7876624,
+  "failures": [],
+  "input_canonical_sha256": "748a815b8612b9c768171a3c47d60b7240283874b6df71e9723963c5ebdb66d0",
+  "scope": "Post-hoc independent scalar/fsum arithmetic and retained artifact identities; not new training, full-state coverage or independent scientific labels.",
+  "source_sha256": "e252664edabbab6784d121962b203885e6383dfb83dbfccd041a4e32e7da14c3"
+}

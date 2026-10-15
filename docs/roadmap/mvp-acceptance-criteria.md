@@ -2,11 +2,13 @@
 
 ## Smallest useful research MVP
 
-One registered training adapter, complete-update profiling on CPU and optional CUDA, two supported native memory strategies, a finite deterministic planner, differential checks across loss/gradient/state/update phases, explicit unknowns, and reproducible JSON/Markdown records. Trusted code only. No required LLM, frontend, cloud, arbitrary source rewriting or distributed runtime.
+The next useful release is a registered adapter/profiler and scoped evidence-report pipeline. It measures complete logical updates, preserves immutable inputs and records explicit unknowns. Reuse compatible existing comparison primitives. A later finite native plan grid is engineering infrastructure; a distinct selection algorithm remains unselected under [ADR 007](../research/decisions/007-benchmark-first.md). No required LLM, frontend, cloud, arbitrary source rewriting or distributed runtime.
 
 ## Immediate next task: deterministic profiling vertical slice
 
 Use the [updated research gate](../research/14-updated-recommendation.md) and [existing-checker integration note](../research/checker-integration-options.md) when implementing this slice. The independent research fixtures do not complete this production milestone, and generic buffer/state checks are already substantially covered by existing work. Prioritize a comparable native-plus-checker baseline before expanding mechanisms or UI.
+
+The new [objective/worker boundaries](../architecture/objective-and-evidence-boundaries.md) and [claim-applicability design](../architecture/claim-applicability.md) govern the interfaces. Native QA/checker prototypes now execute, but the production adapter/API remains unbuilt. Historical environment profiles are for reproducing research; the MVP should require one CPU controller and at most one deliberately matched optional ML-worker profile, not all eight environments.
 
 Implement the first native adapter and profiler, **before implementing optimization**.
 
@@ -36,6 +38,11 @@ Validate config without importing target code, construct the registered trusted 
 6. Simulated telemetry-unavailable conditions produce explicit null/reason, not fabricated measurements. Mocking is appropriate for this availability behavior, not for the entire training computation.
 7. Optional physical-CUDA test, skipped explicitly when unavailable: complete update, synchronized timing, allocated/reserved peaks, device identity and no accidental concurrent inference. A deliberately small bounded allocation tests counter availability without forcing host/device exhaustion.
 8. Output-path traversal, stale run IDs and interrupted writes are rejected or safely reported; source files remain unchanged.
+9. A Windows environment launcher and actual interpreter are both inside the owned boundary before training. Test wrong creation identity, failed assignment, missing startup acknowledgment, timeout, normal exit, cancellation and group-handle close. Exit zero after cancellation cannot produce a completed scientific verdict. Linux needs its own tested process-group profile; Windows evidence does not establish it.
+10. A registered optional worker can use the compatible Python 3.11/Torch 2.13 stack while the controller remains Python 3.12. Resolve only fixed profile IDs; reject arbitrary interpreter/import paths. Record actual runtime, driver/cuDNN/device settings inside the measured worker rather than filling them from a post-study read.
+11. LogicalUpdateContext computes reviewed global metadata denominators before microbatch backward. Multi-head/unequal-tail and empty-local positive controls match; undefined global means and unsupported model-dependent normalizers abstain explicitly. The schema distinguishes features/questions/tokens and auxiliary update frequency.
+12. A known unstable-reference fixture preserves its literal comparison result but leaves transformation attribution unverified. A supported finite pair cannot satisfy a different horizon/field/relation. Strict parameter and functional contracts are separate; neither automatically overrides the other.
+13. Capture request/process lifetimes and nested preparation, update, checking and artifact windows without double counting. Cold and warm scopes are named. Failed trials and reference repeats consume the same declared budget for every arm; unmeasured subdivisions remain unavailable.
 
 Do not call M1 done until CPU integration and lifecycle tests pass; CUDA support is marked unvalidated until its real-device test passes. Add dependencies only when needed, update the lock and record the tested environment.
 
@@ -46,7 +53,7 @@ Do not call M1 done until CPU integration and lifecycle tests pass; CUDA support
 | Planner | Identity plus at most declared plan cap, deterministic ordering, no contract relaxation, no-plan explanation |
 | Accumulation | Same logical samples/targets/denominator and update clock; unequal/tail positive and negative controls; batch-coupled cases rejected/abstained |
 | Checkpointing | Explicit eligible regions; RNG/state checks; BatchNorm/counterexample faults detected |
-| Fidelity | Per-dimension result/status/scope; numerical tolerances distinct from statistical margins; missing evidence abstains |
+| Fidelity | Reused supported checks plus distinct observation/predicate/claim/applicability records; exact precision/field scope; missing evidence abstains |
 | Tracking | JSON survives MLflow outage; SQLite transactions; large artifacts ignored by Git |
 | Safety | Trusted-code policy enforced; no inherited credentials or arbitrary API shell/import fields; hard-isolation claims absent unless validated |
 | Evaluation | Native/manual/composed baselines, failures included, held-out case definitions, actual hardware versus emulation labeled |

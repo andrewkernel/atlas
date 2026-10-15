@@ -1,5 +1,7 @@
 # Novelty analysis and research candidate ranking
 
+Current amendment: [ADR 007](decisions/007-benchmark-first.md), [the treatment audit](15-comparison-identifiability.md) and [additional prior-art lineages](16-policy-and-validation-lineage.md) supersede treating the earlier rank-1 policy as a ready-to-run study. Its distinct algorithm is unselected. The benchmark/evaluation package is the immediate artifact, with novelty still unestablished; the earlier ranking is a development hypothesis, not a confirmed contribution.
+
 ## Verdict on the broad idea
 
 The broad concept is an intersection of established areas: memory-constrained execution, accuracy/semantics-constrained optimization, training validation and reproducibility. There is no evidence that the phrase “scientific fidelity” names one unified established subfield with the exact proposed product boundary. There is abundant evidence that its component research questions already exist. Rebranding them is not originality.

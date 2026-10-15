@@ -1,0 +1,66 @@
+{
+  "environment": {
+    "matplotlib": "3.11.2",
+    "packages": [
+      {
+        "name": "contourpy",
+        "version": "1.3.3"
+      },
+      {
+        "name": "cycler",
+        "version": "0.12.1"
+      },
+      {
+        "name": "fonttools",
+        "version": "4.67.0"
+      },
+      {
+        "name": "kiwisolver",
+        "version": "1.5.1"
+      },
+      {
+        "name": "matplotlib",
+        "version": "3.11.2"
+      },
+      {
+        "name": "numpy",
+        "version": "2.4.6"
+      },
+      {
+        "name": "packaging",
+        "version": "26.3"
+      },
+      {
+        "name": "pillow",
+        "version": "12.3.0"
+      },
+      {
+        "name": "pyparsing",
+        "version": "3.3.3"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "six",
+        "version": "1.17.0"
+      }
+    ],
+    "python": "3.11.17"
+  },
+  "figure": {
+    "bytes": 139857,
+    "path": "docs/research/workload-screen/qa-resource-figure.svg",
+    "sha256": "f3938b628276ed0f80d44f539cc5608b2210a81765d8153f5267c9bfd7d02a32"
+  },
+  "input_canonical_sha256": {
+    "qa-resource-derived.json": "2ab664eeed8b2f4c96fdd6b94842fe53deab5226f0a9a54821fcfbd34023d3c1",
+    "qa-resource-pilot.json": "d4365c0c156bb7fc6cf578e62761ad66b48a8e4121626abc70cf22321e6efbbf"
+  },
+  "requirements_file": "configs/plot-windows-py311-requirements.txt",
+  "requirements_sha256": "b9a4c604a0fc51d12917b85db9b17251b703af8784a15562add7b703889ebc7c",
+  "scope": "Figure of frozen allocator/update-time observations, not scientific equivalence, exclusive residency or population uncertainty.",
+  "setup_note": "Bundled runtime lacked plotting packages. A separate binary/hash-locked 3.11 plotting environment was used. An initial resolver build-interpreter warning was avoided by selecting the existing 3.11 executable explicitly; core/ML environments were unchanged.",
+  "source_sha256": "9a1a4a6108bdad0c98da508e5e6095805cf5b3bdb91d52eef2d2269b0e9d4cc3"
+}

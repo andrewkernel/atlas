@@ -1,6 +1,7 @@
 """Offline QA artifact provenance checks; no Torch import or asset download."""
 import hashlib
 import json
+import math
 from pathlib import Path
 
 try:
@@ -29,6 +30,12 @@ def audit(root=ROOT):
         ('qa_numerical_control.py', 'qa-numerical-control.json'),
         ('qa_dispatch_control.py', 'qa-dispatch-control.json'),
         ('qa_adam_sensitivity_control.py', 'qa-adam-sensitivity-control.json'),
+        ('qa_reference32_control.py', 'qa-reference32-control.json'),
+        ('verify_qa_reference32_artifacts.py', 'qa-reference32-reconstruction.json'),
+        ('derive_qa_workflow_costs.py', 'qa-workflow-costs.json'),
+        ('plot_qa_resource.py', 'qa-resource-figure.json'),
+        ('snapshot_post_continuation_environments.py', 'post-study-environments.json'),
+        ('qa_default_attention_control.py', 'qa-default-attention-control.json'),
     ):
         records[name] = load(name)
         if records[name]['source_sha256'] != digest('benchmarks/' + script):
@@ -56,6 +63,17 @@ def audit(root=ROOT):
     runtime = {'environment_canonical_sha256': canonical(environment),
                'asset_manifest_canonical_sha256': canonical(assets),
                'review_sha256': digest('docs/research/workload-screen/qa-execution-review.json')}
+    default = records['qa-default-attention-control.json']
+    for name, expected in default['helper_sha256'].items():
+        if expected != digest('benchmarks/' + name):
+            failures.append('QA constructor-default helper identity stale: ' + name)
+    worker = default['worker_result']
+    if default['status'] != 'completed' or default['job_members_after_cleanup'] != 0:
+        failures.append('QA constructor-default completion/cleanup inconsistent')
+    if worker['runtime_identities'] != runtime or worker['parameter_devices'] != ['cpu'] or worker['parameter_count'] != 108893186:
+        failures.append('QA constructor-default runtime/device/model scope inconsistent')
+    if worker['attention_before_constructor'] is not None or worker['attention_after_constructor'] != 'sdpa':
+        failures.append('QA recorded constructor-default observation changed')
     pilot = records['qa-resource-pilot.json']
     helper = digest('benchmarks/qa_native_helpers.py')
     if pilot['helper_source_sha256'] != helper or pilot['environment_helper_sha256'] != digest('benchmarks/board_energy_control.py'):
@@ -159,6 +177,93 @@ def audit(root=ROOT):
         failures.append('QA sensitivity execution/selection denominator inconsistent')
     if any(not x['equal_gradient_positive_exact'] for x in worker['replays']):
         failures.append('QA sensitivity equal-gradient control failed')
+    reference = records['qa-reference32-control.json']
+    for name, expected in reference['helper_sha256'].items():
+        if expected != digest('benchmarks/' + name):
+            failures.append('QA logical-32 reference helper identity stale: ' + name)
+    expected = original.replace("ALLOWED = {'qa_numerical_control.py', 'qa_dispatch_control.py'}", "ALLOWED = {'qa_reference32_control.py'}")
+    if (root / 'benchmarks/qa_reference_supervisor.py').read_text(encoding='utf-8') != expected:
+        failures.append('QA reference supervisor differs beyond declared registry change')
+    order = [[t['dropout'], t['repetition']] for t in reference['trials']]
+    if order != reference['order'] or len(order) != 4 or len({tuple(x) for x in order}) != 4:
+        failures.append('QA reference intended-run denominator inconsistent')
+    expected_keys = {phase + '__' + name for name in reference['selected_parameters']
+                     for phase in ('parameter', 'gradient', 'exp_avg', 'exp_avg_sq')}
+    for trial in reference['trials']:
+        worker = trial['worker_result']
+        if trial['status'] != 'completed' or trial['retained_identities_still_alive'] or trial['job_members_after_cleanup']:
+            failures.append('QA reference completion/cleanup inconsistent')
+        if worker['runtime_identities'] != runtime or worker['source_sha256'] != reference['source_sha256']:
+            failures.append('QA reference runtime/source identity inconsistent')
+        if worker['feature_manifest_canonical_sha256'] != canonical(features) or worker['successful_updates'] != 1:
+            failures.append('QA reference input/update scope inconsistent')
+        if set(worker['selected_arrays']) != expected_keys or worker['selected_state_file']['bytes'] >= 32 * 1024**2:
+            failures.append('QA reference selected-state coverage/size inconsistent')
+    for pair in reference['pairs']:
+        trials = [t['worker_result'] for t in reference['trials'] if t['dropout'] == pair['dropout']]
+        if len(trials) != 2 or pair['status'] != 'measured' or set(pair['selected_tensor_differences']) != expected_keys:
+            failures.append('QA reference pair denominator inconsistent')
+            continue
+        first, second = trials
+        for name, field in (('whole_model_digest_equal', 'post_model_state_digest'),
+                            ('whole_gradient_digest_equal', 'post_clip_gradient_digest'),
+                            ('scientific_end_rng_equal', 'scientific_end_rng')):
+            if pair[name] != (first[field] == second[field]):
+                failures.append('QA reference paired identity/equality inconsistent: ' + name)
+        for name, metric in pair['selected_tensor_differences'].items():
+            if not metric['finite'] or not 0 <= metric['diagnostic_exceeded_elements'] <= metric['elements']:
+                failures.append('QA reference field health/count inconsistent: ' + name)
+            maximum = abs(metric['reference_at_maximum'] - metric['candidate_at_maximum'])
+            if not math.isclose(maximum, metric['maximum_absolute_difference'], rel_tol=1e-12, abs_tol=0.):
+                failures.append('QA reference maximum arithmetic inconsistent: ' + name)
+            denominator = metric['reference_square_sum']
+            value = (metric['difference_square_sum'] / denominator)**.5 if denominator else None
+            saved = metric['relative_l2_error']
+            if (value is None) != (saved is None) or (value is not None and not math.isclose(value, saved, rel_tol=1e-12, abs_tol=0.)):
+                failures.append('QA reference norm arithmetic inconsistent: ' + name)
+    reconstruction = records['qa-reference32-reconstruction.json']
+    if reconstruction['input_canonical_sha256'] != canonical(reference) or reconstruction['failures']:
+        failures.append('QA reference reconstruction input identity/results inconsistent')
+    if reconstruction['arrays_checked'] != 32 or reconstruction['elements_checked'] != 7876624:
+        failures.append('QA reference reconstruction coverage inconsistent')
+    costs = records['qa-workflow-costs.json']
+    for name, expected in costs['input_canonical_sha256'].items():
+        if expected != canonical(load(name)):
+            failures.append('QA cost input identity stale: ' + name)
+    if (costs['attempted_worker_windows'], costs['bert_model_executions'], costs['successful_bert_optimizer_updates']) != (25, 34, 144):
+        failures.append('QA cost execution/update units inconsistent')
+    if not math.isclose(math.fsum(row['reported_supervised_window_seconds_sum'] for row in costs['studies']), costs['reported_supervised_window_seconds_sum'], rel_tol=1e-12):
+        failures.append('QA supervised-window cost arithmetic inconsistent')
+    figure = records['qa-resource-figure.json']
+    for name, expected in figure['input_canonical_sha256'].items():
+        if expected != canonical(load(name)):
+            failures.append('QA figure input identity stale: ' + name)
+    if figure['figure']['sha256'] != digest(figure['figure']['path']) or figure['requirements_sha256'] != digest(figure['requirements_file']):
+        failures.append('QA figure/requirements identity stale')
+    post = records['post-study-environments.json']
+    for name, expected in post['helper_sha256'].items():
+        if expected != digest('benchmarks/' + name):
+            failures.append('Post-study environment helper identity stale: ' + name)
+    prior = json.loads((root / 'docs/research/experiments/final-environment-inventory.json').read_text(encoding='utf-8'))
+    if post['earlier_inventory_canonical_sha256'] != canonical(prior) or post['qa_before_canonical_sha256'] != canonical(environment) or post['plot_figure_record_canonical_sha256'] != canonical(figure):
+        failures.append('Post-study environment prior input identity stale')
+    if post['qa_asset_manifest_canonical_sha256'] != canonical(assets) or post['qa_feature_manifest_canonical_sha256'] != canonical(features):
+        failures.append('Post-study asset/feature manifest identity stale')
+    if post['failures'] or len(post['profiles']) != 8 or len(post['asset_checks']) != 8:
+        failures.append('Post-study reconciliation incomplete/failed')
+    for name, profile in post['profiles'].items():
+        if profile['requirements_sha256'] != digest(profile['requirements_file']) or profile['prior_version_mismatches'] or profile['additional_distributions']:
+            failures.append('Post-study environment requirements/versions inconsistent: ' + name)
+        if any(not entry['matches_installed_record'] for entry in profile['selected_files']):
+            failures.append('Post-study selected installed source mismatch: ' + name)
+    if sum(len(profile['selected_files']) for profile in post['profiles'].values()) != 54:
+        failures.append('Post-study selected-source coverage inconsistent')
+    if any(not entry['matches_acquisition'] for entry in post['asset_checks'].values()) or post['feature_npz_sha256'] != features['npz_sha256']:
+        failures.append('Post-study input byte identity mismatch')
+    for label, value in post['reviewed_reference_checks'].items():
+        review = json.loads((root / f'docs/research/competitors/{label}-execution-review.json').read_text(encoding='utf-8'))
+        if not value['all_match'] or value['review_canonical_sha256'] != canonical(review):
+            failures.append('Post-study reviewed source identity mismatch: ' + label)
     return failures
 
 
