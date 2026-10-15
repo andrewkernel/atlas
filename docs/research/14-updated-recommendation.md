@@ -4,11 +4,11 @@
 
 ## What is now supported
 
-- The physical12 GB RTX3060 runs a separate PyTorch2.14.1/CUDA13.0 environment. Native checkpointing/microbatching show measured memory/time tradeoffs in [synthetic profiles](experiments/cuda-memory-probe.md), a clearly labeled [allocator-cap control](experiments/cuda-budget-probe.md), and [six five-epoch real-data CNN pilots](experiments/fashion-pilot.md).
+- The physical12 GB RTX 3060 runs a separate PyTorch 2.14.1/CUDA 13.0 environment. Native checkpointing/microbatching show measured memory/time tradeoffs in [synthetic profiles](experiments/cuda-memory-probe.md), a clearly labeled [allocator-cap control](experiments/cuda-budget-probe.md), and [six five-epoch real-data CNN pilots](experiments/fashion-pilot.md).
 - Original CPU controls establish specific denominator, BatchNorm, RNG assignment, clipping, absent-gradient and update-clock hazards. They also include positive/repair controls. These are finite fixtures, largely established mechanisms.
 - Statistical audits corrected an actual power-formula error and demonstrated why valid normal-model power is not enough to justify the outcome model. Full-scientific claims need substantially more than small numerical checks.
 
-The CNN reference fits easily. Its combined plan reduces allocated peak by about32.7% while summed synchronized update time increases about66%. Three paired validation differences range-.21 to+.05 percentage points; there is no powered equivalence conclusion. This is useful feasibility/debugging evidence, not expanded access or primary-policy superiority.
+The CNN reference fits easily. Its combined plan reduces allocated peak by about 32.7% while summed synchronized update time increases about 66%. Three paired validation differences range-.21 to+.05 percentage points; there is no powered equivalence conclusion. This is useful feasibility/debugging evidence, not expanded access or primary-policy superiority.
 
 ## What became less credible
 
@@ -35,4 +35,4 @@ If the existing composition matches the tradeoff or verifier cost overwhelms its
 
 ## Remaining limits
 
-No competing research system was executed, no independent annotators/advisor reviewed the cases, no primary selection experiment ran, no real OOM workload was rescued, and no6–8/16/24 GB card was tested. There is no energy or local-model inference result, no general scientific-conclusion certification and no validated hostile-code sandbox. WikiText/pretrained workloads remain conditional. The research log records actual duration; the continuation is not retroactively called a five-hour investigation.
+No competing research system was executed, no independent annotators/advisor reviewed the cases, no primary selection experiment ran, no real OOM workload was rescued, and no 6–8/16/24 GB card was tested. There is no energy or local-model inference result, no general scientific-conclusion certification and no validated hostile-code sandbox. WikiText/pretrained workloads remain conditional. The research log records actual duration; the continuation is not retroactively called a five-hour investigation.

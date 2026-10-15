@@ -1,6 +1,6 @@
 # FairScale checkpoint-state handling
 
-Inspected official repository at commit `146f160241651e1211c4247979f159a4ef43b54a` on2026-10-15. This is a targeted source read, not execution or a compatibility certification.
+Inspected official repository at commit `146f160241651e1211c4247979f159a4ef43b54a` on 2026-10-15. This is a targeted source read, not execution or a compatibility certification.
 
 - [checkpoint_utils.py](https://github.com/facebookresearch/fairscale/blob/146f160241651e1211c4247979f159a4ef43b54a/fairscale/nn/checkpoint/checkpoint_utils.py) defines `patch_batchnorm`: hooks suppress running-stat tracking in the no-grad forward.
 - [checkpoint_activations.py](https://github.com/facebookresearch/fairscale/blob/146f160241651e1211c4247979f159a4ef43b54a/fairscale/nn/checkpoint/checkpoint_activations.py) invokes that patch in its wrapper and exposes recomputation context for guarding side effects. Its custom autograd path has a no-grad forward and a grad-enabled recomputation.

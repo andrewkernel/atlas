@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "started_utc": "2026-10-15T05:59:40.881731+00:00",
+  "source_sha256": "127d0708e68d1d687128fb9df0683544bc6f6aa0182ce2162f3c8350c5c036e0",
+  "reference_sha256": "2828111436a2a9730efec9866853787fa48f47547bda104f6997162dbc8540ad",
+  "trials": [
+    {
+      "status": "completed",
+      "deferred_backward": false,
+      "allocator_cap_mib": null,
+      "completed_optimizer_updates": 8,
+      "first_update_max_abs_errors": {
+        "parameter": 6.239861249923706e-08,
+        "gradient": 4.729372449219227e-11,
+        "momentum1": 4.774847184307873e-12,
+        "momentum2": 1.7889335846010823e-18
+      },
+      "allocated_peak_bytes": 531109376,
+      "reserved_peak_bytes": 543162368,
+      "environment": {
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060"
+      },
+      "scope": "Eight repeated-input updates, microbatch4/logical16, no checkpointing; original pattern analogue only",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "status": "completed",
+      "deferred_backward": true,
+      "allocator_cap_mib": null,
+      "completed_optimizer_updates": 8,
+      "first_update_max_abs_errors": {
+        "parameter": 6.239861249923706e-08,
+        "gradient": 4.729372449219227e-11,
+        "momentum1": 4.774847184307873e-12,
+        "momentum2": 1.7889335846010823e-18
+      },
+      "allocated_peak_bytes": 967408640,
+      "reserved_peak_bytes": 1029701632,
+      "environment": {
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060"
+      },
+      "scope": "Eight repeated-input updates, microbatch4/logical16, no checkpointing; original pattern analogue only",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "status": "completed",
+      "deferred_backward": false,
+      "allocator_cap_mib": 600,
+      "completed_optimizer_updates": 8,
+      "first_update_max_abs_errors": {
+        "parameter": 6.239861249923706e-08,
+        "gradient": 4.729372449219227e-11,
+        "momentum1": 4.774847184307873e-12,
+        "momentum2": 1.7889335846010823e-18
+      },
+      "allocated_peak_bytes": 531109376,
+      "reserved_peak_bytes": 543162368,
+      "environment": {
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060"
+      },
+      "scope": "Eight repeated-input updates, microbatch4/logical16, no checkpointing; original pattern analogue only",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "status": "allocator_oom",
+      "deferred_backward": true,
+      "allocator_cap_mib": 600,
+      "completed_optimizer_updates": 0,
+      "first_update_max_abs_errors": null,
+      "allocated_peak_bytes": 614786560,
+      "reserved_peak_bytes": 622854144,
+      "environment": {
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060"
+      },
+      "scope": "Eight repeated-input updates, microbatch4/logical16, no checkpointing; original pattern analogue only",
+      "returncode": 0,
+      "stderr": ""
+    }
+  ],
+  "limitation": "Original control, not TrainParity execution or a global capability result. Artificial allocator cap on12 GB GPU, no physical smaller-card claim or training outcome study."
+}

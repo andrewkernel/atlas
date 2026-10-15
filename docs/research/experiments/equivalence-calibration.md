@@ -8,7 +8,7 @@ Suppose independent paired differences are normal with true mean0, population SD
 
 `-Delta + z_(1-alpha)*sigma/sqrt(n) < sample_mean < Delta - z_(1-alpha)*sigma/sqrt(n)`.
 
-Standardizing the sample mean gives joint power `max(0, 2*Phi(Delta*sqrt(n)/sigma-z_(1-alpha))-1)`. Setting power to1-beta yields `n = ((z_(1-alpha)+z_(1-beta/2))*sigma/Delta)^2`. This is a derivation under the stated model, not a general power formula for every experimental design.
+Standardizing the sample mean gives joint power `max(0, 2*Phi(Delta*sqrt(n)/sigma-z_(1-alpha))-1)`. Setting power to 1-beta yields `n = ((z_(1-alpha)+z_(1-beta/2))*sigma/Delta)^2`. This is a derivation under the stated model, not a general power formula for every experimental design.
 
 For unknown SD, the sample mean and sample variance are independent under normality. [Original audit code](../../../benchmarks/equivalence_calibration.py) integrates the conditional acceptance probability over a chi-square variance distribution. A separate deterministic-seed simulation draws those sufficient statistics directly. [TOSTER](https://aaroncaldwell.us/TOSTERpkg/reference/power_t_TOST.html) documents exact one-sample/paired TOST power and defines paired SD as the SD of differences; this code was independently written and the R package was not executed.
 

@@ -13,13 +13,13 @@ Using the average of the two fresh-process medians for each plan:
 |Full16, checkpoint |452.44 |87.74 |
 |Micro4, checkpoint |378.45 |97.40 |
 
-For a hypothetical **observed allocated-byte** budget of1000 MiB, the full plan is fastest;600 MiB selects micro4 without checkpoint;500 MiB selects full16 with checkpoint;400 MiB selects the combined plan. These are arithmetic choices from the measured set, not fresh capped executions or hard capacity guarantees. Reserved memory, fragmentation, native non-allocator use and later shapes can change actual success. The separate450 MiB [allocator-cap experiment](experiments/cuda-budget-probe.md) supplies an actual bounded control at one cap only.
+For a hypothetical **observed allocated-byte** budget of 1000 MiB, the full plan is fastest;600 MiB selects micro4 without checkpoint;500 MiB selects full16 with checkpoint;400 MiB selects the combined plan. These are arithmetic choices from the measured set, not fresh capped executions or hard capacity guarantees. Reserved memory, fragmentation, native non-allocator use and later shapes can change actual success. The separate450 MiB [allocator-cap experiment](experiments/cuda-budget-probe.md) supplies an actual bounded control at one cap only.
 
 The fixture reference already fits the physical device. Thus memory reduction here is not evidence of expanded experimental access. Every measured memory-saving plan is slower. Calling the result a general compute-saving optimization would obscure the actual objective: meeting a resource constraint with an acceptable declared method/cost.
 
 ## Costs outside timed updates
 
-Across the published eight child trials, summed owned-child wall time is39.22 seconds. The80 timed update samples total6.86 seconds; first updates total1.43 seconds and model/input preparation1.54 seconds. The remaining wall time includes imports, warmups, CPU state snapshots/comparison, serialization, process startup and other overhead. These windows are nested/different scopes, not independent additive estimates of a production pipeline.
+Across the published eight child trials, summed owned-child wall time is39.22 seconds. The 80 timed update samples total 6.86 seconds; first updates total 1.43 seconds and model/input preparation1.54 seconds. The remaining wall time includes imports, warmups, CPU state snapshots/comparison, serialization, process startup and other overhead. These windows are nested/different scopes, not independent additive estimates of a production pipeline.
 
 This39.22-second sum is not a measured Atlas planning cost: it includes two repetitions, research diagnostics and no selection policy. It does demonstrate why reporting only the kernel/training window can omit material workflow cost. Dependency installation/downloads and the author's investigation time are outside those child windows. Include whichever startup costs the future deployment scenario actually incurs, and report cold versus repeated use separately.
 

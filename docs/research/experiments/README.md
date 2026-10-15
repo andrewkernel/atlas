@@ -2,7 +2,7 @@
 
 ## Scope and environment
 
-On2026-10-15 at 04:43:58 UTC, ran original offline CPU probes with Python 3.12.10 and PyTorch 2.14.1+cpu on Windows 11, one PyTorch thread, deterministic algorithms enabled. No external datasets/models/checkpoints or research-repository code were executed. A12 GB RTX 3060 is installed on the host, but these probes use no CUDA.
+On 2026-10-15 at 04:43:58 UTC, ran original offline CPU probes with Python 3.12.10 and PyTorch 2.14.1+cpu on Windows 11, one PyTorch thread, deterministic algorithms enabled. No external datasets/models/checkpoints or research-repository code were executed. A12 GB RTX 3060 is installed on the host, but these probes use no CUDA.
 
 Code: [`benchmarks/semantic_probes.py`](../../../benchmarks/semantic_probes.py). Raw small structured evidence: [CPU results](cpu-semantic-probes.json). The result records the source SHA256, seeds, environment and measurement scope. Dependency versions/hashes are in the root lock; the [dependency snapshot](../dependency-snapshot.json) records metadata and untested optional components.
 
@@ -17,7 +17,7 @@ Code: [`benchmarks/semantic_probes.py`](../../../benchmarks/semantic_probes.py).
 | Checkpoint dropout, preserve RNG | Gradient 0; forward0 | Positive recomputation control |
 | Checkpoint dropout, do not preserve RNG | Gradient 0.064949; forward0 | A matching forward result can hide backward inconsistency |
 | Checkpoint BatchNorm region | Gradient 0; running mean0.036057; evaluation output0.026179 | Gradient parity can hide changed mutable buffers |
-| Float32 `(1e8-1e8)+1` versus `1e8+(-1e8+1)` |1 versus0 | Arithmetic order matters independently of methodology |
+| Float32 `(1e8-1e8)+1` versus `1e8+(-1e8+1)` |1 versus 0 | Arithmetic order matters independently of methodology |
 
 BatchNorm's tracked-batch counter was1 for the reference and 2 for the checkpointed region. These values are implementation-specific observations of this fixture, not a universal statement about every checkpoint configuration.
 
@@ -49,20 +49,22 @@ The replay command writes to ignored local artifacts so the original result rema
 
 ## Continuation audit controls
 
-The [equivalence-power calibration](equivalence-calibration.md) corrects the initial sample-size example using direct integration and synthetic simulation. The [state/RNG controls](state-replay-probes.md) add a narrow repair positive control and a stochastic interleaving counterexample. These bring the local suite to17 passing tests. They do not convert synthetic calibration into observed full-training evidence.
+The [equivalence-power calibration](equivalence-calibration.md) corrects the initial sample-size example using direct integration and synthetic simulation. The [state/RNG controls](state-replay-probes.md) add a narrow repair positive control and a stochastic interleaving counterexample. These bring the local suite to 17 passing tests. They do not convert synthetic calibration into observed full-training evidence.
 
 ## What was not established
 
-The original CPU experiments establish no optimizer/planner performance, full-training effect, energy, consumer-tier comparison, external framework superiority, human-labeled classification accuracy, or LLM benefit. No confidence interval over real training outcomes can be inferred from40 generated partitions.
+The original CPU experiments establish no optimizer/planner performance, full-training effect, energy, consumer-tier comparison, external framework superiority, human-labeled classification accuracy, or LLM benefit. No confidence interval over real training outcomes can be inferred from 40 generated partitions.
 
 ## Separate physical GPU fixture
 
-The continuation's [synthetic CUDA experiment](cuda-memory-probe.md) now records allocated/reserved peaks, synchronized update timing and first-update state comparisons for four native configurations with two fresh-process repetitions each on the physical12 GB RTX3060. The [raw evidence](cuda-memory-probe.json) and [separate environment](cuda-probe-environment.json) document its scope. This supersedes the initial absence of any CUDA measurement; it does not establish primary policy efficacy, real-workload OOM rescue or scientific outcomes.
+The continuation's [synthetic CUDA experiment](cuda-memory-probe.md) now records allocated/reserved peaks, synchronized update timing and first-update state comparisons for four native configurations with two fresh-process repetitions each on the physical12 GB RTX 3060. The [raw evidence](cuda-memory-probe.json) and [separate environment](cuda-probe-environment.json) document its scope. This supersedes the initial absence of any CUDA measurement; it does not establish primary policy efficacy, real-workload OOM rescue or scientific outcomes.
 
-The [450 MiB allocator-cap control](cuda-budget-probe.md) records three OOMs and one bounded completion, including completed-update counts and invalid driver-diagnostic flags. This is emulation on the12 GB board. The [CPU update-clock fixtures](update-clock-probes.md) record absent-versus-zero gradient behavior and a scaler-skip clock error;19 CPU tests now pass. Older test-count statements above refer to their dated checkpoints.
+The [450 MiB allocator-cap control](cuda-budget-probe.md) records three OOMs and one bounded completion, including completed-update counts and invalid driver-diagnostic flags. This is emulation on the 12 GB board. The [CPU update-clock fixtures](update-clock-probes.md) record absent-versus-zero gradient behavior and a scaler-skip clock error;19 CPU tests now pass. Older test-count statements above refer to their dated checkpoints.
 
 ## Real-data pilot and final calibration expansion
 
 [Six five-epoch Fashion-MNIST CNN pilots](fashion-pilot.md) now complete a protocol frozen before data acquisition/execution. Three paired pilot seeds show a32.7% allocated-memory reduction with slower updates and small differing validation endpoints; no conclusive equivalence or access claim. [Data manifest](fashion-data-manifest.json) records original training-file bytes; the canonical test set was untouched. This supersedes the initial absence of any real-data training, while retaining the limits of every earlier synthetic experiment.
 
-[Statistical assumption controls](statistical-assumption-audit.md) add model/SD/effect sensitivity and a rare-mixture counterexample; the current CPU suite has20 passing tests. Its constructed probabilities are not estimated ML failure frequencies.
+[Statistical assumption controls](statistical-assumption-audit.md) add model/SD/effect sensitivity and a rare-mixture counterexample; the current CPU suite has 20 passing tests. Its constructed probabilities are not estimated ML failure frequencies.
+
+[Two fresh-process replays](fashion-repeatability.md) of the lowest pilot seed reproduce each arm's final parameter digest and all epoch validation metrics exactly. They are repeatability controls, not extra independent seed pairs. [Four activation-liveness controls](activation-liveness-probe.md) separately show why a verification execution pattern can retain more memory than a streamed target plan; no external checker is run.

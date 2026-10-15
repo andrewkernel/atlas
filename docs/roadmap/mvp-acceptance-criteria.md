@@ -6,6 +6,8 @@ One registered training adapter, complete-update profiling on CPU and optional C
 
 ## Immediate next task: deterministic profiling vertical slice
 
+Use the [updated research gate](../research/14-updated-recommendation.md) and [existing-checker integration note](../research/checker-integration-options.md) when implementing this slice. The independent research fixtures do not complete this production milestone, and generic buffer/state checks are already substantially covered by existing work. Prioritize a comparable native-plus-checker baseline before expanding mechanisms or UI.
+
 Implement the first native adapter and profiler, **before implementing optimization**.
 
 Likely files:

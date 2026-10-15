@@ -58,4 +58,6 @@ No live deadline or guaranteed suitable workshop is asserted. Establish the rese
 
 ## Immediate next step
 
+The continuation [updated recommendation](14-updated-recommendation.md) and [checker-integration options](checker-integration-options.md) govern this stage: use the minimal profiling path to establish a shared strong-baseline comparison, rather than rebuilding generic checking as a novelty claim. Real-data pilot evidence now exists, but independently adjudicated cases and incremental benefit remain unproven.
+
 Implement the deterministic adapter/profiler vertical slice described in [first coding milestone](../roadmap/mvp-acceptance-criteria.md). Do not start a frontend, generic code agent or distributed runtime. Reassess the project after one complete native baseline profile and an observed cost/coverage comparison on the first interaction cases.

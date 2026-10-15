@@ -1,0 +1,162 @@
+{
+  "retrieved_utc": "2026-10-15T06:06:22.221909+00:00",
+  "scope": "Publisher-deposited Crossref records for selected citations; not content verification",
+  "records": [
+    {
+      "doi": "10.1145/3373376.3378505",
+      "source_url": "https://api.crossref.org/works/10.1145/3373376.3378505",
+      "title": [
+        "Capuchin"
+      ],
+      "authors": [
+        {
+          "given": "Xuan",
+          "family": "Peng"
+        },
+        {
+          "given": "Xuanhua",
+          "family": "Shi"
+        },
+        {
+          "given": "Hulin",
+          "family": "Dai"
+        },
+        {
+          "given": "Hai",
+          "family": "Jin"
+        },
+        {
+          "given": "Weiliang",
+          "family": "Ma"
+        },
+        {
+          "given": "Qian",
+          "family": "Xiong"
+        },
+        {
+          "given": "Fan",
+          "family": "Yang"
+        },
+        {
+          "given": "Xuehai",
+          "family": "Qian"
+        }
+      ],
+      "container_title": [
+        "Proceedings of the Twenty-Fifth International Conference on Architectural Support for Programming Languages and Operating Systems"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2020,
+            3,
+            9
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2020,
+            3,
+            9
+          ]
+        ]
+      },
+      "subtitle": [
+        "Tensor-based GPU Memory Management for Deep Learning"
+      ],
+      "volume": null,
+      "issue": null,
+      "page": "891-905"
+    },
+    {
+      "doi": "10.1177/1948550617697177",
+      "source_url": "https://api.crossref.org/works/10.1177/1948550617697177",
+      "title": [
+        "Equivalence Tests"
+      ],
+      "authors": [
+        {
+          "given": "Dani\u00ebl",
+          "family": "Lakens"
+        }
+      ],
+      "container_title": [
+        "Social Psychological and Personality Science"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2017,
+            5
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2017,
+            5
+          ]
+        ]
+      },
+      "subtitle": [
+        "A Practical Primer for\n                    <i>t</i>\n                    Tests, Correlations, and Meta-Analyses"
+      ],
+      "volume": "8",
+      "issue": "4",
+      "page": "355-362"
+    },
+    {
+      "doi": "10.1214/20-AOS1991",
+      "source_url": "https://api.crossref.org/works/10.1214/20-AOS1991",
+      "title": [
+        "Time-uniform, nonparametric, nonasymptotic confidence sequences"
+      ],
+      "authors": [
+        {
+          "given": "Steven R.",
+          "family": "Howard"
+        },
+        {
+          "given": "Aaditya",
+          "family": "Ramdas"
+        },
+        {
+          "given": "Jon",
+          "family": "McAuliffe"
+        },
+        {
+          "given": "Jasjeet",
+          "family": "Sekhon"
+        }
+      ],
+      "container_title": [
+        "The Annals of Statistics"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2021,
+            4,
+            1
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2021,
+            4,
+            1
+          ]
+        ]
+      },
+      "subtitle": [],
+      "volume": "49",
+      "issue": "2",
+      "page": "1055-1080"
+    }
+  ]
+}

@@ -8,9 +8,11 @@ Start with the [updated recommendation](docs/research/14-updated-recommendation.
 
 ## Evidence status
 
-Original offline CPU probes demonstrate loss-weighting, BatchNorm, RNG, checkpoint-state and update-timing failure modes. The expanded suite has20 passing tests, including40 generated accumulation cases, state-repair controls and synthetic statistical-design/assumption calibration. [Eight synthetic GPU trials](docs/research/experiments/cuda-memory-probe.md) measure a memory/time tradeoff on the physical12 GB RTX3060; a separate [allocator-cap control](docs/research/experiments/cuda-budget-probe.md) labels emulation explicitly. **No real-workload OOM rescue, full-training equivalence, LLM benefit or scientific-conclusion preservation was established.** The application has not been implemented. See [actual experiments](docs/research/experiments/README.md) and [open questions](docs/research/11-open-questions.md).
+Original offline CPU probes demonstrate loss-weighting, BatchNorm, RNG, checkpoint-state and update-timing failure modes. The expanded suite has 20 passing tests, including 40 generated accumulation cases, state-repair controls and synthetic statistical-design/assumption calibration. [Eight synthetic GPU trials](docs/research/experiments/cuda-memory-probe.md) measure a memory/time tradeoff on the physical12 GB RTX 3060; a separate [allocator-cap control](docs/research/experiments/cuda-budget-probe.md) labels emulation explicitly. **No real-workload OOM rescue, full-training equivalence, LLM benefit or scientific-conclusion preservation was established.** The application has not been implemented. See [actual experiments](docs/research/experiments/README.md) and [open questions](docs/research/11-open-questions.md).
 
-[Six real-data five-epoch CNN pilots](docs/research/experiments/fashion-pilot.md) also completed: about32.7% lower allocated memory for the combined native plan, longer update time, and small paired validation differences. This is exploratory three-seed evidence, not a conclusive equivalence or planner-superiority result.
+[Six real-data five-epoch CNN pilots](docs/research/experiments/fashion-pilot.md) also completed: about 32.7% lower allocated memory for the combined native plan, longer update time, and small paired validation differences. This is exploratory three-seed evidence, not a conclusive equivalence or planner-superiority result.
+
+The [evidence map](docs/research/evidence-map.md) separates measured findings, source inspections, mathematical controls and untested hypotheses. Local replay controls reproduce the lowest seed's final hashes and epoch metrics exactly within each arm; they add no independent seeds.
 
 ## Reproduce the bounded probes
 

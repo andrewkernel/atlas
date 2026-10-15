@@ -31,6 +31,10 @@ Started 2026-10-14 America/Chicago (2026-10-15 UTC). This is a bounded initial i
 - [Strategy-by-strategy consequences](strategy-analysis.md), [planned constructors](../../benchmarks/planned-workloads.md).
 - [Exact evaluation units/denominators](evaluation-estimands.md), [composition-evidence boundary](composition-evidence.md), [historical failure provenance](real-world-failures.md).
 - [Measured cost/Pareto analysis](cost-and-pareto-analysis.md), [local-model component/cache audit](local-model-capacity.md), [statistical assumption controls](experiments/statistical-assumption-audit.md).
+- [Verification-pattern memory control](experiments/activation-liveness-probe.md), [existing-checker integration options](checker-integration-options.md).
+- [Reliability/multiplicity/stopping audit](statistical-claim-selection.md).
+- [Bibliography availability/metadata audit](bibliography-audit.md), [fresh-process training repeatability](experiments/fashion-repeatability.md).
+- [Claim-to-evidence map](evidence-map.md) for reviewing the supported conclusions and limits.
 - [Dependency/license status](dependencies-and-licenses.md), [dataset/model revisions](asset-snapshot.json).
 - [Architecture decisions](decisions/README.md), [component architecture](../architecture/overview.md), [security](../architecture/security.md), [API contracts](../architecture/api-design.md).
 - [Implementation phases](../roadmap/implementation-plan.md), [milestones](../roadmap/milestones.md), [first coding task/tests](../roadmap/mvp-acceptance-criteria.md).
@@ -38,6 +42,6 @@ Started 2026-10-14 America/Chicago (2026-10-15 UTC). This is a bounded initial i
 
 ## What exists versus what is proposed
 
-Executed: original CPU semantic/composition/state/update-clock controls, statistical calibration,20 pytest tests including40 generated accumulation partitions, eight synthetic CUDA trials, four published allocator-cap trials and six five-epoch Fashion-MNIST CNN pilots on a physical12 GB RTX3060, dependency locking, source/repository inspection and documentation checks. Proposed: Atlas application, primary optimization-selection comparison, confirmatory full-training equivalence, expert labels, other physical hardware tiers, energy study and LLM evaluation. The [real-data pilot protocol](experiments/fashion-pilot-protocol.md) was frozen before execution; [results](experiments/fashion-pilot.md) remain exploratory.
+Executed: original CPU semantic/composition/state/update-clock controls, statistical calibration,20 pytest tests including 40 generated accumulation partitions, eight synthetic CUDA trials, four published allocator-cap trials and six five-epoch Fashion-MNIST CNN pilots on a physical12 GB RTX 3060, dependency locking, source/repository inspection and documentation checks. Proposed: Atlas application, primary optimization-selection comparison, confirmatory full-training equivalence, expert labels, other physical hardware tiers, energy study and LLM evaluation. The [real-data pilot protocol](experiments/fashion-pilot-protocol.md) was frozen before execution; [results](experiments/fashion-pilot.md) remain exploratory.
 
 The strongest local observation is that checkpointing can match gradients while changing BatchNorm buffers/evaluation. That motivates evidence design; it does not validate the proposed planner or certify scientific conclusions.

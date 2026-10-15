@@ -24,7 +24,7 @@ These are three deliberately distinct **review perspectives authored in this ses
 
 ## Reviewer 3 — resource-constrained computing
 
-**Strongest objection:** reducing VRAM can increase runtime, host-RAM use, energy and setup burden. Verification may cost more than it saves. A local LLM that occupies the GPU undermines the access objective. A12 GB card is one hardware point, not evidence for6 GB laptops or institutions.
+**Strongest objection:** reducing VRAM can increase runtime, host-RAM use, energy and setup burden. Verification may cost more than it saves. A local LLM that occupies the GPU undermines the access objective. A12 GB card is one hardware point, not evidence for 6 GB laptops or institutions.
 
 **Potentially fatal:** repeated baseline/verification runs are unaffordable for the intended users, or only activation-heavy toy workloads benefit while persistent state prevents useful work. Container and CUDA setup can dominate a student's available time.
 

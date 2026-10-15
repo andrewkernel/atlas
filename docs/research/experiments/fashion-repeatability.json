@@ -1,0 +1,217 @@
+{
+  "schema_version": "1.0",
+  "started_utc": "2026-10-15T06:03:15.029223+00:00",
+  "source_sha256": "9310751cbba2d437ec469dbdde1c44b3e67afe38c47263ec874717f5d3162d72",
+  "fixture_source_sha256": "488d57f3f7e1746c6367f0384b6fb5c93b8d21b160c491c5bf75d1506cc6e12c",
+  "trials": [
+    {
+      "seed": 1101,
+      "candidate": false,
+      "status": "completed",
+      "returncode": 0,
+      "stderr": "",
+      "identities_equal_to_original": {
+        "initial_state_digest": true,
+        "split_digest": true,
+        "sample_order_digest": true,
+        "final_state_digest": true
+      },
+      "all_epoch_validation_values_equal": true,
+      "replayed_result": {
+        "status": "completed",
+        "seed": 1101,
+        "candidate": false,
+        "microbatch": 128,
+        "checkpointed": false,
+        "environment": {
+          "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+          "torch": "2.14.1+cu130",
+          "cuda_runtime": "13.0",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "gpu": "NVIDIA GeForce RTX 3060",
+          "device_total_bytes": 12603752448,
+          "deterministic_algorithms": true,
+          "cudnn_benchmark": false,
+          "fp32_precision": "ieee"
+        },
+        "initial_state_digest": "1b4e46ca14d70c41f23e713acad8fd6c3de9eb637fcc2a3a22399ae29cbd67e6",
+        "split_digest": "3cd0eb46760d13241702dcbf86687f8f2557ce15934ca61701b69769fbabf436",
+        "sample_order_digest": "0d61040e397ce09162e3f5d7b7abffa608fbccf82de31bcbcba15f930f458aca",
+        "parameter_count": 110986,
+        "first_update_max_abs_errors": {
+          "parameter": 0.0,
+          "gradient": 0.0,
+          "momentum": 0.0
+        },
+        "first_update_peak": {
+          "allocated_bytes": 174443008,
+          "reserved_bytes": 216006656
+        },
+        "whole_training_and_validation_peak": {
+          "allocated_bytes": 174889984,
+          "reserved_bytes": 218103808
+        },
+        "preparation_seconds": 1.220380800019484,
+        "reference_preparation_seconds_within_preparation": 0.28438159998040646,
+        "first_state_comparison_seconds": 0.002272999961860478,
+        "summed_synchronized_update_seconds": 8.536576397833414,
+        "history": [
+          {
+            "epoch": 1,
+            "successful_updates": 391,
+            "train_loop_wall_seconds": 1.727029500005301,
+            "validation_wall_seconds": 0.13471489999210462,
+            "validation_nll": 0.4466284863471985,
+            "validation_accuracy": 0.8357,
+            "validation_correct": 8357
+          },
+          {
+            "epoch": 2,
+            "successful_updates": 782,
+            "train_loop_wall_seconds": 1.7117028000066057,
+            "validation_wall_seconds": 0.10776370001258329,
+            "validation_nll": 0.36085839185714724,
+            "validation_accuracy": 0.8688,
+            "validation_correct": 8688
+          },
+          {
+            "epoch": 3,
+            "successful_updates": 1173,
+            "train_loop_wall_seconds": 1.7104037000099197,
+            "validation_wall_seconds": 0.11038289999123663,
+            "validation_nll": 0.34669130210876464,
+            "validation_accuracy": 0.875,
+            "validation_correct": 8750
+          },
+          {
+            "epoch": 4,
+            "successful_updates": 1564,
+            "train_loop_wall_seconds": 1.711322100018151,
+            "validation_wall_seconds": 0.10697480000089854,
+            "validation_nll": 0.31943652667999267,
+            "validation_accuracy": 0.8877,
+            "validation_correct": 8877
+          },
+          {
+            "epoch": 5,
+            "successful_updates": 1955,
+            "train_loop_wall_seconds": 1.7168712999555282,
+            "validation_wall_seconds": 0.1077740000328049,
+            "validation_nll": 0.3061892877578735,
+            "validation_accuracy": 0.8922,
+            "validation_correct": 8922
+          }
+        ],
+        "successful_updates": 1955,
+        "samples_seen": 250000,
+        "final_state_digest": "048b540f4c426de24229db6bc822b499cec3ed3e35a4f64444b8e125715dff00",
+        "worker_wall_seconds": 10.391131400014274
+      }
+    },
+    {
+      "seed": 1101,
+      "candidate": true,
+      "status": "completed",
+      "returncode": 0,
+      "stderr": "",
+      "identities_equal_to_original": {
+        "initial_state_digest": true,
+        "split_digest": true,
+        "sample_order_digest": true,
+        "final_state_digest": true
+      },
+      "all_epoch_validation_values_equal": true,
+      "replayed_result": {
+        "status": "completed",
+        "seed": 1101,
+        "candidate": true,
+        "microbatch": 32,
+        "checkpointed": true,
+        "environment": {
+          "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+          "torch": "2.14.1+cu130",
+          "cuda_runtime": "13.0",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "gpu": "NVIDIA GeForce RTX 3060",
+          "device_total_bytes": 12603752448,
+          "deterministic_algorithms": true,
+          "cudnn_benchmark": false,
+          "fp32_precision": "ieee"
+        },
+        "initial_state_digest": "1b4e46ca14d70c41f23e713acad8fd6c3de9eb637fcc2a3a22399ae29cbd67e6",
+        "split_digest": "3cd0eb46760d13241702dcbf86687f8f2557ce15934ca61701b69769fbabf436",
+        "sample_order_digest": "0d61040e397ce09162e3f5d7b7abffa608fbccf82de31bcbcba15f930f458aca",
+        "parameter_count": 110986,
+        "first_update_max_abs_errors": {
+          "parameter": 3.725290298461914e-09,
+          "gradient": 7.264316082000732e-08,
+          "momentum": 7.264316082000732e-08
+        },
+        "first_update_peak": {
+          "allocated_bytes": 95435776,
+          "reserved_bytes": 106954752
+        },
+        "whole_training_and_validation_peak": {
+          "allocated_bytes": 117677056,
+          "reserved_bytes": 146800640
+        },
+        "preparation_seconds": 1.20625960000325,
+        "reference_preparation_seconds_within_preparation": 0.282672300003469,
+        "first_state_comparison_seconds": 0.002605699992273003,
+        "summed_synchronized_update_seconds": 14.200580899312627,
+        "history": [
+          {
+            "epoch": 1,
+            "successful_updates": 391,
+            "train_loop_wall_seconds": 3.0085857000085525,
+            "validation_wall_seconds": 0.1276318000163883,
+            "validation_nll": 0.44676726570129394,
+            "validation_accuracy": 0.8357,
+            "validation_correct": 8357
+          },
+          {
+            "epoch": 2,
+            "successful_updates": 782,
+            "train_loop_wall_seconds": 2.7979574999772012,
+            "validation_wall_seconds": 0.10695560002932325,
+            "validation_nll": 0.36004699935913087,
+            "validation_accuracy": 0.8694,
+            "validation_correct": 8694
+          },
+          {
+            "epoch": 3,
+            "successful_updates": 1173,
+            "train_loop_wall_seconds": 2.7416953000356443,
+            "validation_wall_seconds": 0.10688489995663986,
+            "validation_nll": 0.34710061225891115,
+            "validation_accuracy": 0.8749,
+            "validation_correct": 8749
+          },
+          {
+            "epoch": 4,
+            "successful_updates": 1564,
+            "train_loop_wall_seconds": 2.749892499996349,
+            "validation_wall_seconds": 0.10732519999146461,
+            "validation_nll": 0.323575990486145,
+            "validation_accuracy": 0.8837,
+            "validation_correct": 8837
+          },
+          {
+            "epoch": 5,
+            "successful_updates": 1955,
+            "train_loop_wall_seconds": 2.936287300020922,
+            "validation_wall_seconds": 0.1054329999606125,
+            "validation_nll": 0.30585954236984253,
+            "validation_accuracy": 0.8926,
+            "validation_correct": 8926
+          }
+        ],
+        "successful_updates": 1955,
+        "samples_seen": 250000,
+        "final_state_digest": "a5d835df3dc942190ad3609694e45edcab24935c27935c0f9e8da3638e4eaa46",
+        "worker_wall_seconds": 16.022972500009928
+      }
+    }
+  ],
+  "limitation": "Two repeat executions of the lowest existing pilot seed; no additional independent seeds, new hypothesis test or general cross-platform determinism guarantee."
+}

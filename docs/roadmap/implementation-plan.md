@@ -15,7 +15,7 @@ Effort ranges below are **developer effort estimates**, not delivery dates or me
 
 ## Order and dependencies
 
-Phase4 can follow3 but is not a dependency of 5. Phase6 is not a dependency of any research result. The required path is 0→1→2→3→5→7. Do not implement distributed execution, arbitrary AST patches, hosted services, PostgreSQL or a custom optimizer before the primary comparison.
+Phase 4 can follow3 but is not a dependency of 5. Phase 6 is not a dependency of any research result. The required path is 0→1→2→3→5→7. Do not implement distributed execution, arbitrary AST patches, hosted services, PostgreSQL or a custom optimizer before the primary comparison.
 
 ## Work ownership for one developer
 

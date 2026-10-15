@@ -1,0 +1,57 @@
+{
+  "recorded_utc": "2026-10-15T06:14:28.070868+00:00",
+  "scope": "Capture of validation outputs actually observed immediately before this record; no GPU experiment rerun by this capture",
+  "git_head_before_checkpoint": "79d7eebb91fa63a6f64dd240e5f44da5b0e1e05b",
+  "environment": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "torch": "2.14.1+cpu",
+    "device": "cpu"
+  },
+  "observed_compileall": {
+    "command": "python -m compileall -q benchmarks tests",
+    "exit_code": 0
+  },
+  "observed_tests": {
+    "command": "python -m pytest -q",
+    "exit_code": 0,
+    "passed": 20,
+    "reported_seconds": 2.97
+  },
+  "observed_specification_audit": {
+    "exit_code": 0,
+    "markdown_files": 102,
+    "local_links_checked": 384,
+    "unique_external_links_catalogued": 114,
+    "lock_package_count": 22,
+    "failures": []
+  },
+  "observed_diff_check_exit_code": 0,
+  "observed_matching_owned_fixture_workers_after_runs": 0,
+  "source_sha256": {
+    "benchmarks/activation_liveness_probe.py": "127d0708e68d1d687128fb9df0683544bc6f6aa0182ce2162f3c8350c5c036e0",
+    "benchmarks/audit_primary_bibliography.py": "c8fc0ddf193b3e110ea2ab1d7e9c2395cd95398cdb5a543d85b776a444f33444",
+    "benchmarks/audit_specification.py": "d0326b2d5d9a16f143fe1e7a8e7ec38e7f67926b2b7fdc3c80147bee29cfb62e",
+    "benchmarks/composition_probes.py": "ba624b9cda528c0e0dfa76f9690165f4f6b85b0e61a1fc70d7d72337c6b114a7",
+    "benchmarks/cuda_budget_probe.py": "471efa85605c575c6f02e9d037618c8dd4af0794c2b8aeb59330b6e259912c3a",
+    "benchmarks/cuda_memory_probe.py": "d23b120b39854ccfd26c9182018e62e4727486c9907c28dafb7e0c2ba690dde0",
+    "benchmarks/equivalence_calibration.py": "4dac5d1b3df83b6fb012838828ebc1b16b934a26a7c60cf4212ab5380ac3648f",
+    "benchmarks/fashion_pilot.py": "488d57f3f7e1746c6367f0384b6fb5c93b8d21b160c491c5bf75d1506cc6e12c",
+    "benchmarks/prepare_fashion_data.py": "f55b6c53d17420fb69298f35e5e7459b788f757b1a684b89b9cf4a46529450fd",
+    "benchmarks/replay_fashion_control.py": "9310751cbba2d437ec469dbdde1c44b3e67afe38c47263ec874717f5d3162d72",
+    "benchmarks/semantic_probes.py": "da273a49743e2b542c341505da1bc4a0dd8d7aafac9160592f7435c9ef302819",
+    "benchmarks/snapshot_dependencies.py": "5f65e9a6b71de722384c6c8e2614157e851906696f193c6efb48c7305981fa4b",
+    "benchmarks/snapshot_local_model_metadata.py": "4f2c88f58e0c103a3956f8cd01521ce829b654a02133fdc33492f071fbff22e5",
+    "benchmarks/snapshot_references.py": "60f6ef21ac5ad0c0372513a4ca01c98b3d5c14f4a337edb7d5ffb4888e465efc",
+    "benchmarks/state_replay_probes.py": "e12d66ab6da2ec57f04c18201d37473f81444f2ecaf4ed43a316e5465947e25c",
+    "benchmarks/statistical_assumption_audit.py": "2623ea4e55418235ed0d8736a61d6d674565fea879d04b7bcd73372ab96a63a9",
+    "benchmarks/update_clock_probes.py": "51adbec96ba9a507716d467b59abaef22060e9182f62b53c81394779c5aee7af",
+    "tests/test_composition_probes.py": "70aba1c899a7f753475e9c538b9cd4056d4880e537227bf6f930a569a1a97449",
+    "tests/test_equivalence_calibration.py": "9352113316663fec64a069bfcd92f2a19f19ab0ba684a4a61a9291efb9e1d624",
+    "tests/test_research_probes.py": "2614af69cbda6eac4acb2aaf00ffb5800c2881785800cea2b47c091bbfb3bcb4",
+    "tests/test_state_replay_probes.py": "6731cbbeee3ed978d125f3d67a4056ed73d33bd6bd7fe92daa950a9e5e2291b1",
+    "tests/test_statistical_assumption_audit.py": "18890a8afe9531d56a2f291a9a08c855d233554c187e21b787ebf4fbaf6d5568",
+    "tests/test_update_clock_probes.py": "84062ee9d2d27017e1192622627479755d1040457f8e6d6451659199863720e6"
+  },
+  "lock_sha256": "1c255d3e0c9de05dd4d55870f931be4461232cf9b51f0e7772b386d13d2520f7",
+  "limitations": "This is consistency/fixture validation, not the primary selection study, independent peer review or a general safe-code sandbox."
+}

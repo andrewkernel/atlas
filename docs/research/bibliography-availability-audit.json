@@ -1,0 +1,789 @@
+{
+  "schema_version": "1.0",
+  "retrieved_utc": "2026-10-15T06:07:06.392950+00:00",
+  "source_sha256": "c8fc0ddf193b3e110ea2ab1d7e9c2395cd95398cdb5a543d85b776a444f33444",
+  "notes": [
+    {
+      "note": "actnn.md",
+      "note_heading": "ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training",
+      "note_sha256_at_retrieval": "b0dc4cb336bd1b1b0226ce08308321c8fa0f4048026bc9c4a3b50316131f2631",
+      "requested_url": "https://arxiv.org/abs/2104.14129",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2104.14129",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2104.14129] ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training",
+      "citation_metadata": {
+        "citation_title": [
+          "ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training"
+        ],
+        "citation_author": [
+          "Chen, Jianfei",
+          "Zheng, Lianmin",
+          "Yao, Zhewei",
+          "Wang, Dequan",
+          "Stoica, Ion",
+          "Mahoney, Michael W.",
+          "Gonzalez, Joseph E."
+        ],
+        "citation_date": [
+          "2021/04/29"
+        ]
+      }
+    },
+    {
+      "note": "adacc.md",
+      "note_heading": "Adacc",
+      "note_sha256_at_retrieval": "e5bd7ac9b6105b7d58a761b6edb4e3b8c6e8b8ddb1c07b88e31b2ceca2386a8a",
+      "requested_url": "https://arxiv.org/abs/2508.00806v2",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2508.00806v2",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2508.00806v2] Adacc: An Adaptive Framework Unifying Compression and Activation Recomputation for LLM Training",
+      "citation_metadata": {
+        "citation_title": [
+          "Adacc: An Adaptive Framework Unifying Compression and Activation Recomputation for LLM Training"
+        ],
+        "citation_author": [
+          "Chen, Ping",
+          "Deng, Zhuohong",
+          "Li, Ping",
+          "He, Shuibing",
+          "Zhu, Hongzi",
+          "Zheng, Yi",
+          "Wang, Zhefeng",
+          "Huai, Baoxing",
+          "Guo, Minyi"
+        ],
+        "citation_date": [
+          "2025/08/01"
+        ]
+      }
+    },
+    {
+      "note": "adafactor.md",
+      "note_heading": "Adafactor: Adaptive Learning Rates with Sublinear Memory Cost",
+      "note_sha256_at_retrieval": "b8e71eb1553e1730c7e0b51d788fb4cfa371300c984d089b77c8b0f20831012d",
+      "requested_url": "https://proceedings.mlr.press/v80/shazeer18a.html",
+      "http_status": 200,
+      "resolved_url": "https://proceedings.mlr.press/v80/shazeer18a.html",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "Adafactor: Adaptive Learning Rates with Sublinear Memory Cost",
+      "citation_metadata": {
+        "citation_title": [
+          "Adafactor: Adaptive Learning Rates with Sublinear Memory Cost"
+        ],
+        "citation_author": [
+          "Noam Shazeer",
+          "Mitchell Stern"
+        ],
+        "citation_publication_date": [
+          "2018/07/03"
+        ]
+      }
+    },
+    {
+      "note": "alpa.md",
+      "note_heading": "Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning",
+      "note_sha256_at_retrieval": "74d6ed7debe92ca8d72ba3b7158e14ca75c5f429e0732d12b4c751ca936c1edb",
+      "requested_url": "https://arxiv.org/abs/2201.12023",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2201.12023",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2201.12023] Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning",
+      "citation_metadata": {
+        "citation_title": [
+          "Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning"
+        ],
+        "citation_author": [
+          "Zheng, Lianmin",
+          "Li, Zhuohan",
+          "Zhang, Hao",
+          "Zhuang, Yonghao",
+          "Chen, Zhifeng",
+          "Huang, Yanping",
+          "Wang, Yida",
+          "Xu, Yuanzhong",
+          "Zhuo, Danyang",
+          "Xing, Eric P.",
+          "Gonzalez, Joseph E.",
+          "Stoica, Ion"
+        ],
+        "citation_date": [
+          "2022/01/28"
+        ]
+      }
+    },
+    {
+      "note": "ansor.md",
+      "note_heading": "Ansor: Generating High-Performance Tensor Programs for Deep Learning",
+      "note_sha256_at_retrieval": "0fe55708d6712794b7cef494893790a201350e25907be8f51965144b337ca22e",
+      "requested_url": "https://arxiv.org/abs/2006.06762",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2006.06762",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2006.06762] Ansor: Generating High-Performance Tensor Programs for Deep Learning",
+      "citation_metadata": {
+        "citation_title": [
+          "Ansor: Generating High-Performance Tensor Programs for Deep Learning"
+        ],
+        "citation_author": [
+          "Zheng, Lianmin",
+          "Jia, Chengfan",
+          "Sun, Minmin",
+          "Wu, Zhao",
+          "Yu, Cody Hao",
+          "Haj-Ali, Ameer",
+          "Wang, Yida",
+          "Yang, Jun",
+          "Zhuo, Danyang",
+          "Sen, Koushik",
+          "Gonzalez, Joseph E.",
+          "Stoica, Ion"
+        ],
+        "citation_date": [
+          "2020/06/11"
+        ]
+      }
+    },
+    {
+      "note": "capuchin.md",
+      "note_heading": "Capuchin: Tensor-based GPU Memory Management for Deep Learning",
+      "note_sha256_at_retrieval": "3d9601b7087c09fed1a2eedbaa1498f20bdbb38127a6390bdf608ba44529d99f",
+      "requested_url": "https://www.microsoft.com/en-us/research/publication/capuchin-tensor-based-gpu-memory-management-for-deep-learning/",
+      "http_status": 200,
+      "resolved_url": "https://www.microsoft.com/en-us/research/publication/capuchin-tensor-based-gpu-memory-management-for-deep-learning/",
+      "content_type": "text/html; charset=UTF-8",
+      "status": "html_title_retrieved",
+      "title": "Capuchin: Tensor-based GPU Memory Management for Deep Learning - Microsoft ResearchYour Privacy Choices Opt-Out IconYour Privacy Choices Opt-Out Icon",
+      "citation_metadata": {
+        "citation_title": [
+          "Capuchin: Tensor-based GPU Memory Management for Deep Learning"
+        ],
+        "citation_author": [
+          "Quan Peng",
+          "Xuanhua Shi",
+          "Hulin Dai",
+          "Hai Jin",
+          "Weiliang Ma",
+          "Qian Xiong",
+          "Fan Yang",
+          "Xuehai Qian"
+        ],
+        "citation_publication_date": [
+          "2020/03/01"
+        ]
+      }
+    },
+    {
+      "note": "checkmate.md",
+      "note_heading": "Checkmate: Breaking the Memory Wall with Optimal Tensor Rematerialization",
+      "note_sha256_at_retrieval": "e6a1c6b7552354dbfb85e6b1323023f2aca5271679394804019fd6cc2861b0cb",
+      "requested_url": "https://proceedings.mlsys.org/paper_files/paper/2020/hash/0b816ae8f06f8dd3543dc3d9ef196cab-Abstract.html",
+      "http_status": 200,
+      "resolved_url": "https://proceedings.mlsys.org/paper_files/paper/2020/hash/0b816ae8f06f8dd3543dc3d9ef196cab-Abstract.html",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "Checkmate: Breaking the Memory Wall with Optimal Tensor Rematerialization",
+      "citation_metadata": {
+        "citation_title": [
+          "Checkmate: Breaking the Memory Wall with Optimal Tensor Rematerialization"
+        ],
+        "citation_author": [
+          "Jain, Paras",
+          "Jain, Ajay",
+          "Nrusimha, Aniruddha",
+          "Gholami, Amir",
+          "Abbeel, Pieter",
+          "Gonzalez, Joseph",
+          "Keutzer, Kurt",
+          "Stoica, Ion"
+        ],
+        "citation_publication_date": [
+          "2020-03-15"
+        ]
+      }
+    },
+    {
+      "note": "chisel.md",
+      "note_heading": "Chisel: Reliability- and Accuracy-Aware Optimization of Approximate Computational Kernels",
+      "note_sha256_at_retrieval": "72678d96f8503237ccc9e3898e1f59dcb9737e745565fea3899a654219f9e2e0",
+      "requested_url": "https://people.csail.mit.edu/rinard/paper/oopsla14.pdf",
+      "http_status": 200,
+      "resolved_url": "https://people.csail.mit.edu/rinard/paper/oopsla14.pdf",
+      "content_type": "application/pdf",
+      "status": "pdf_header_retrieved",
+      "title": null
+    },
+    {
+      "note": "compute-optimal.md",
+      "note_heading": "Training Compute-Optimal Large Language Models",
+      "note_sha256_at_retrieval": "15b4122e4ea57063aeef109be3af9414ff22bd507ee95c082925b6bf8dc47ab5",
+      "requested_url": "https://arxiv.org/abs/2203.15556",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2203.15556",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2203.15556] Training Compute-Optimal Large Language Models",
+      "citation_metadata": {
+        "citation_title": [
+          "Training Compute-Optimal Large Language Models"
+        ],
+        "citation_author": [
+          "Hoffmann, Jordan",
+          "Borgeaud, Sebastian",
+          "Mensch, Arthur",
+          "Buchatskaya, Elena",
+          "Cai, Trevor",
+          "Rutherford, Eliza",
+          "Casas, Diego de Las",
+          "Hendricks, Lisa Anne",
+          "Welbl, Johannes",
+          "Clark, Aidan",
+          "Hennigan, Tom",
+          "Noland, Eric",
+          "Millican, Katie",
+          "Driessche, George van den",
+          "Damoc, Bogdan",
+          "Guy, Aurelia",
+          "Osindero, Simon",
+          "Simonyan, Karen",
+          "Elsen, Erich",
+          "Rae, Jack W.",
+          "Vinyals, Oriol",
+          "Sifre, Laurent"
+        ],
+        "citation_date": [
+          "2022/03/29"
+        ]
+      }
+    },
+    {
+      "note": "confidence-sequences.md",
+      "note_heading": "Time-uniform confidence sequences",
+      "note_sha256_at_retrieval": "f77323a930a83211b1d3951950e63b360b0de83594875aaf67cd4716947767c6",
+      "requested_url": "https://arxiv.org/abs/1810.08240",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/1810.08240",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[1810.08240] Time-uniform, nonparametric, nonasymptotic confidence sequences",
+      "citation_metadata": {
+        "citation_title": [
+          "Time-uniform, nonparametric, nonasymptotic confidence sequences"
+        ],
+        "citation_author": [
+          "Howard, Steven R.",
+          "Ramdas, Aaditya",
+          "McAuliffe, Jon",
+          "Sekhon, Jasjeet"
+        ],
+        "citation_date": [
+          "2018/10/18"
+        ]
+      }
+    },
+    {
+      "note": "deep500.md",
+      "note_heading": "A Modular Benchmarking Infrastructure for High-Performance and Reproducible Deep Learning",
+      "note_sha256_at_retrieval": "b8ca08ed2f8d6b4d8e47d60dd37625a63f28dc7cbdd9a77a8f33632b07fb1f2b",
+      "requested_url": "https://arxiv.org/abs/1901.10183",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/1901.10183",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[1901.10183] A Modular Benchmarking Infrastructure for High-Performance and Reproducible Deep Learning",
+      "citation_metadata": {
+        "citation_title": [
+          "A Modular Benchmarking Infrastructure for High-Performance and Reproducible Deep Learning"
+        ],
+        "citation_author": [
+          "Ben-Nun, Tal",
+          "Besta, Maciej",
+          "Huber, Simon",
+          "Ziogas, Alexandros Nikolaos",
+          "Peter, Daniel",
+          "Hoefler, Torsten"
+        ],
+        "citation_date": [
+          "2019/01/29"
+        ]
+      }
+    },
+    {
+      "note": "dtr-feasibility-holes.md",
+      "note_heading": "When More Memory Fails: Hidden Feasibility Holes in Dynamic Tensor Rematerialization",
+      "note_sha256_at_retrieval": "698d5c03e88be3a7ce2c9ec9720ca06e8990b92a0ec359d56ebe2457d0bee170",
+      "requested_url": "https://arxiv.org/abs/2610.14369",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2610.14369",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2610.14369] When More Memory Fails: Hidden Feasibility Holes in Dynamic Tensor Rematerialization",
+      "citation_metadata": {
+        "citation_title": [
+          "When More Memory Fails: Hidden Feasibility Holes in Dynamic Tensor Rematerialization"
+        ],
+        "citation_author": [
+          "Pagadala, Mahesh Reddy"
+        ],
+        "citation_date": [
+          "2026/10/09"
+        ]
+      }
+    },
+    {
+      "note": "dtr.md",
+      "note_heading": "Dynamic Tensor Rematerialization",
+      "note_sha256_at_retrieval": "c568c7070b9a16e97153914d74b9f2ec011871189b7756018e44892b795a5516",
+      "requested_url": "https://ztatlock.net/pubs/2021-iclr-dtr/",
+      "http_status": 200,
+      "resolved_url": "https://ztatlock.net/pubs/2021-iclr-dtr/",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "Dynamic Tensor Rematerialization",
+      "citation_metadata": {}
+    },
+    {
+      "note": "easyscale.md",
+      "note_heading": "EasyScale: Elastic Training with Consistent Accuracy and Improved Utilization on GPUs",
+      "note_sha256_at_retrieval": "82471e7a060d987c5c7db1021cf67735d3ca8acf75c10dbb4668c755d8aa06fd",
+      "requested_url": "https://arxiv.org/html/2208.14228v2",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/html/2208.14228v2",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "EasyScale: Elastic Training with Consistent Accuracy and Improved Utilization on GPUs",
+      "citation_metadata": {}
+    },
+    {
+      "note": "equivalence.md",
+      "note_heading": "Equivalence Tests: A Practical Primer for t Tests, Correlations, and Meta-Analyses",
+      "note_sha256_at_retrieval": "7a23e37e559d62edc94554c49064e058879cb44cb38df98cd49cf184a9bf28db",
+      "requested_url": "https://doi.org/10.1177/1948550617697177",
+      "status": "retrieval_unresolved",
+      "error_type": "HTTPError",
+      "http_status": 403
+    },
+    {
+      "note": "flashattention.md",
+      "note_heading": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+      "note_sha256_at_retrieval": "c67dc6f438eb73eff67b5c6168c9eb9348fc7f19f9cd5a3af7affc3a644de21a",
+      "requested_url": "https://arxiv.org/abs/2205.14135",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2205.14135",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2205.14135] FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+      "citation_metadata": {
+        "citation_title": [
+          "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness"
+        ],
+        "citation_author": [
+          "Dao, Tri",
+          "Fu, Daniel Y.",
+          "Ermon, Stefano",
+          "Rudra, Atri",
+          "R\u00e9, Christopher"
+        ],
+        "citation_date": [
+          "2022/05/27"
+        ]
+      }
+    },
+    {
+      "note": "hilore.md",
+      "note_heading": "HiLoRe",
+      "note_sha256_at_retrieval": "986f7de429427aa3bf35fe16ab2b08fdc012a44c1900aff698e5801404641081",
+      "requested_url": "https://arxiv.org/abs/2609.33570",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2609.33570",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2609.33570] HiLoRe: What to Store, Compress, or Recompute for Efficient GRPO Training",
+      "citation_metadata": {
+        "citation_title": [
+          "HiLoRe: What to Store, Compress, or Recompute for Efficient GRPO Training"
+        ],
+        "citation_author": [
+          "Chen, Xinrui",
+          "Li, Mengyang",
+          "Wu, Ou",
+          "Zhang, Ji"
+        ],
+        "citation_date": [
+          "2026/09/27"
+        ]
+      }
+    },
+    {
+      "note": "hiremate.md",
+      "note_heading": "HiRemate",
+      "note_sha256_at_retrieval": "ae31ae3871a640f0d08ff2a6fb50f54b9b8b7fac5f597b069260925cecc62c34",
+      "requested_url": "https://proceedings.mlr.press/v267/gusak25a.html",
+      "http_status": 200,
+      "resolved_url": "https://proceedings.mlr.press/v267/gusak25a.html",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "HiRemate: Hierarchical Approach for Efficient Re-materialization of Neural Networks",
+      "citation_metadata": {
+        "citation_title": [
+          "HiRemate: Hierarchical Approach for Efficient Re-materialization of Neural Networks"
+        ],
+        "citation_author": [
+          "Julia Gusak",
+          "Xunyi Zhao",
+          "Th\u00e9otime Le Hellard",
+          "Zhe Li",
+          "Lionel Eyraud-Dubois",
+          "Olivier Beaumont"
+        ],
+        "citation_publication_date": [
+          "2025/10/06"
+        ]
+      }
+    },
+    {
+      "note": "hyperband.md",
+      "note_heading": "Hyperband: A Novel Bandit-Based Approach to Hyperparameter Optimization",
+      "note_sha256_at_retrieval": "7f82401ca3cdaa6696b8ade10c035f7d7e7d96d190ba58a82cab468e743a7fe2",
+      "requested_url": "https://www.jmlr.org/papers/volume18/16-558/16-558.pdf",
+      "http_status": 200,
+      "resolved_url": "https://www.jmlr.org/papers/volume18/16-558/16-558.pdf",
+      "content_type": "application/pdf",
+      "status": "pdf_header_retrieved",
+      "title": null
+    },
+    {
+      "note": "kernelbench.md",
+      "note_heading": "KernelBench: Can LLMs Write Efficient GPU Kernels?",
+      "note_sha256_at_retrieval": "090dc2999c13614be1ef78fb58c6cfb610265b75b0286df7c718dea7a6f72985",
+      "requested_url": "https://arxiv.org/abs/2502.10517",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2502.10517",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2502.10517] KernelBench: Can LLMs Write Efficient GPU Kernels?",
+      "citation_metadata": {
+        "citation_title": [
+          "KernelBench: Can LLMs Write Efficient GPU Kernels?"
+        ],
+        "citation_author": [
+          "Ouyang, Anne",
+          "Guo, Simon",
+          "Arora, Simran",
+          "Zhang, Alex L.",
+          "Hu, William",
+          "R\u00e9, Christopher",
+          "Mirhoseini, Azalia"
+        ],
+        "citation_date": [
+          "2025/02/14"
+        ]
+      }
+    },
+    {
+      "note": "learned-optimization.md",
+      "note_heading": "Learning to learn by gradient descent by gradient descent",
+      "note_sha256_at_retrieval": "58e6087da0c0ae5321202ef34f664b6c3c1a9f5eca3b81db13f2931bc293f2d4",
+      "requested_url": "https://arxiv.org/abs/1606.04474",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/1606.04474",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[1606.04474] Learning to learn by gradient descent by gradient descent",
+      "citation_metadata": {
+        "citation_title": [
+          "Learning to learn by gradient descent by gradient descent"
+        ],
+        "citation_author": [
+          "Andrychowicz, Marcin",
+          "Denil, Misha",
+          "Gomez, Sergio",
+          "Hoffman, Matthew W.",
+          "Pfau, David",
+          "Schaul, Tom",
+          "Shillingford, Brendan",
+          "de Freitas, Nando"
+        ],
+        "citation_date": [
+          "2016/06/14"
+        ]
+      }
+    },
+    {
+      "note": "megatron.md",
+      "note_heading": "Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM",
+      "note_sha256_at_retrieval": "1ff4037c759716b8842ec43db0fe48c62c9f7a89ebe1d3337914756ded52049e",
+      "requested_url": "https://arxiv.org/abs/2104.04473",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2104.04473",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2104.04473] Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM",
+      "citation_metadata": {
+        "citation_title": [
+          "Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM"
+        ],
+        "citation_author": [
+          "Narayanan, Deepak",
+          "Shoeybi, Mohammad",
+          "Casper, Jared",
+          "LeGresley, Patrick",
+          "Patwary, Mostofa",
+          "Korthikanti, Vijay Anand",
+          "Vainbrand, Dmitri",
+          "Kashinkunti, Prethvi",
+          "Bernauer, Julie",
+          "Catanzaro, Bryan",
+          "Phanishayee, Amar",
+          "Zaharia, Matei"
+        ],
+        "citation_date": [
+          "2021/04/09"
+        ]
+      }
+    },
+    {
+      "note": "mixed-precision.md",
+      "note_heading": "Mixed Precision Training",
+      "note_sha256_at_retrieval": "4bafcae8cdd213a90c87ca35632e491755c4a9b6436a032a81661a2ea4cd82f5",
+      "requested_url": "https://arxiv.org/abs/1710.03740",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/1710.03740",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[1710.03740] Mixed Precision Training",
+      "citation_metadata": {
+        "citation_title": [
+          "Mixed Precision Training"
+        ],
+        "citation_author": [
+          "Micikevicius, Paulius",
+          "Narang, Sharan",
+          "Alben, Jonah",
+          "Diamos, Gregory",
+          "Elsen, Erich",
+          "Garcia, David",
+          "Ginsburg, Boris",
+          "Houston, Michael",
+          "Kuchaiev, Oleksii",
+          "Venkatesh, Ganesh",
+          "Wu, Hao"
+        ],
+        "citation_date": [
+          "2017/10/10"
+        ]
+      }
+    },
+    {
+      "note": "offmate.md",
+      "note_heading": "OffMate",
+      "note_sha256_at_retrieval": "fb731736d0fee463c70875a5f152292a945dc1154491d8fb803951a0707f7ca4",
+      "requested_url": "https://radar.inria.fr/report/2024/topal/index.html",
+      "status": "retrieval_unresolved",
+      "error_type": "URLError",
+      "http_status": null
+    },
+    {
+      "note": "prac.md",
+      "note_heading": "PRAC",
+      "note_sha256_at_retrieval": "8d35a940059c91519721e8b1fe2947ff6f197d87105be29b10998567ab19b63b",
+      "requested_url": "https://arxiv.org/abs/2602.23111v1",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2602.23111v1",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2602.23111v1] PRAC: Principal-Random Subspace for LLM Activation Compression and Memory-Efficient Training",
+      "citation_metadata": {
+        "citation_title": [
+          "PRAC: Principal-Random Subspace for LLM Activation Compression and Memory-Efficient Training"
+        ],
+        "citation_author": [
+          "Li, Yanyi",
+          "Zhang, Yimu",
+          "Fang, Cong"
+        ],
+        "citation_date": [
+          "2026/02/26"
+        ]
+      }
+    },
+    {
+      "note": "qlora.md",
+      "note_heading": "QLoRA: Efficient Finetuning of Quantized LLMs",
+      "note_sha256_at_retrieval": "a002704a0d340980113fbd4794fc6b8dad2778ee7719913812725e62cafad6eb",
+      "requested_url": "https://arxiv.org/abs/2305.14314",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2305.14314",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2305.14314] QLoRA: Efficient Finetuning of Quantized LLMs",
+      "citation_metadata": {
+        "citation_title": [
+          "QLoRA: Efficient Finetuning of Quantized LLMs"
+        ],
+        "citation_author": [
+          "Dettmers, Tim",
+          "Pagnoni, Artidoro",
+          "Holtzman, Ari",
+          "Zettlemoyer, Luke"
+        ],
+        "citation_date": [
+          "2023/05/23"
+        ]
+      }
+    },
+    {
+      "note": "rockmate.md",
+      "note_heading": "Rockmate: an Efficient, Fast, Automatic and Generic Tool for Re-materialization in PyTorch",
+      "note_sha256_at_retrieval": "3401ab551d0187cde29e4a391e7a197c0fb6ffb5e78a5406b791647609390bef",
+      "requested_url": "https://proceedings.mlr.press/v202/zhao23b.html",
+      "http_status": 200,
+      "resolved_url": "https://proceedings.mlr.press/v202/zhao23b.html",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "Rockmate: an Efficient, Fast, Automatic and Generic Tool for Re-materialization in PyTorch",
+      "citation_metadata": {
+        "citation_title": [
+          "Rockmate: an Efficient, Fast, Automatic and Generic Tool for Re-materialization in PyTorch"
+        ],
+        "citation_author": [
+          "Xunyi Zhao",
+          "Th\u00e9otime Le Hellard",
+          "Lionel Eyraud-Dubois",
+          "Julia Gusak",
+          "Olivier Beaumont"
+        ],
+        "citation_publication_date": [
+          "2023/07/03"
+        ]
+      }
+    },
+    {
+      "note": "tensorfuzz.md",
+      "note_heading": "TensorFuzz",
+      "note_sha256_at_retrieval": "815b3afc3d2110a6c033baa754d612653121e5d60c216d1e79fbbda9220e55d5",
+      "requested_url": "https://arxiv.org/abs/1807.10875v1",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/1807.10875v1",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[1807.10875v1] TensorFuzz: Debugging Neural Networks with Coverage-Guided Fuzzing",
+      "citation_metadata": {
+        "citation_title": [
+          "TensorFuzz: Debugging Neural Networks with Coverage-Guided Fuzzing"
+        ],
+        "citation_author": [
+          "Odena, Augustus",
+          "Goodfellow, Ian"
+        ],
+        "citation_date": [
+          "2018/07/28"
+        ]
+      }
+    },
+    {
+      "note": "torchprobe.md",
+      "note_heading": "TorchProbe",
+      "note_sha256_at_retrieval": "7e024f91bf7fe23d918297a7598bbce43f795e0e2cd1b5f3e270d23a7e9785ca",
+      "requested_url": "https://arxiv.org/abs/2310.20078v1",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2310.20078v1",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2310.20078v1] TorchProbe: Fuzzing Dynamic Deep Learning Compilers",
+      "citation_metadata": {
+        "citation_title": [
+          "TorchProbe: Fuzzing Dynamic Deep Learning Compilers"
+        ],
+        "citation_author": [
+          "Su, Qidong",
+          "Geng, Chuqin",
+          "Pekhimenko, Gennady",
+          "Si, Xujie"
+        ],
+        "citation_date": [
+          "2023/10/30"
+        ]
+      }
+    },
+    {
+      "note": "traincheck.md",
+      "note_heading": "Training with Confidence: Catching Silent Errors in Deep Learning Training with Automated Proactive Checks",
+      "note_sha256_at_retrieval": "47a2041f38d654467cac3fdda899fe99b36650dfcba964405c4255ac7ce0ba40",
+      "requested_url": "https://www.usenix.org/conference/osdi25/presentation/jiang",
+      "status": "retrieval_unresolved",
+      "error_type": "HTTPError",
+      "http_status": 403
+    },
+    {
+      "note": "variance.md",
+      "note_heading": "Accounting for Variance in Machine Learning Benchmarks",
+      "note_sha256_at_retrieval": "6bb6528c8cc1f67593d7926954c2c4e5424d586633cb7a6541f3e33c177c4d73",
+      "requested_url": "https://arxiv.org/abs/2103.03098",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2103.03098",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[2103.03098] Accounting for Variance in Machine Learning Benchmarks",
+      "citation_metadata": {
+        "citation_title": [
+          "Accounting for Variance in Machine Learning Benchmarks"
+        ],
+        "citation_author": [
+          "Bouthillier, Xavier",
+          "Delaunay, Pierre",
+          "Bronzi, Mirko",
+          "Trofimov, Assya",
+          "Nichyporuk, Brennan",
+          "Szeto, Justin",
+          "Sepah, Naz",
+          "Raff, Edward",
+          "Madan, Kanika",
+          "Voleti, Vikram",
+          "Kahou, Samira Ebrahimi",
+          "Michalski, Vincent",
+          "Serdyuk, Dmitriy",
+          "Arbel, Tal",
+          "Pal, Chris",
+          "Varoquaux, Ga\u00ebl",
+          "Vincent, Pascal"
+        ],
+        "citation_date": [
+          "2021/03/01"
+        ]
+      }
+    },
+    {
+      "note": "zero.md",
+      "note_heading": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+      "note_sha256_at_retrieval": "7410eefa4a23cb8d6f7ca44421b3735f711b91b67477dd35a73ec5f1a2828a98",
+      "requested_url": "https://arxiv.org/abs/1910.02054",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/1910.02054",
+      "content_type": "text/html; charset=utf-8",
+      "status": "html_title_retrieved",
+      "title": "[1910.02054] ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+      "citation_metadata": {
+        "citation_title": [
+          "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models"
+        ],
+        "citation_author": [
+          "Rajbhandari, Samyam",
+          "Rasley, Jeff",
+          "Ruwase, Olatunji",
+          "He, Yuxiong"
+        ],
+        "citation_date": [
+          "2019/10/04"
+        ]
+      }
+    }
+  ],
+  "limitation": "First linked primary URL per note; HTTP/title availability only. Failed/bot retrieval is not proof of a missing source. Title agreement does not verify paper claims, author lists or publication status."
+}

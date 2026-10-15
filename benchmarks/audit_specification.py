@@ -81,6 +81,8 @@ def main() -> int:
         ('cuda_budget_probe.py', 'cuda-budget-probe.json'),
         ('update_clock_probes.py', 'update-clock-probes.json'),
         ('statistical_assumption_audit.py', 'statistical-assumption-audit.json'),
+        ('activation_liveness_probe.py', 'activation-liveness-probe.json'),
+        ('replay_fashion_control.py', 'fashion-repeatability.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
@@ -117,6 +119,12 @@ def main() -> int:
             for key in ('initial_state_digest','split_digest','sample_order_digest'):
                 if pair[0][key] != pair[1][key]:
                     failures.append(f'Fashion paired identity mismatch: {seed}/{key}')
+    fashion_replay=json.loads((ROOT/'docs/research/experiments/fashion-repeatability.json').read_text(encoding='utf-8'))
+    if fashion_replay['fixture_source_sha256'] != hashlib.sha256((ROOT/'benchmarks/fashion_pilot.py').read_bytes()).hexdigest():
+        failures.append('Fashion replay fixture identity is stale')
+    bibliography=json.loads((ROOT/'docs/research/bibliography-availability-audit.json').read_text(encoding='utf-8'))
+    if bibliography['source_sha256'] != hashlib.sha256((ROOT/'benchmarks/audit_primary_bibliography.py').read_bytes()).hexdigest():
+        failures.append('Bibliography capture source identity is stale')
     print(json.dumps({'markdown_files':len(markdown),'local_links_checked':links,'unique_external_links_catalogued':len(external),'lock_package_count':len(lock['package']),'failures':failures},indent=2))
     return bool(failures)
 

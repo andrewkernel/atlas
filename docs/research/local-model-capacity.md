@@ -6,11 +6,11 @@ The original comparison set was deliberately small, but continued research shoul
 
 [Read-only snapshot source](../../benchmarks/snapshot_local_model_metadata.py) captures exact Hugging Face revisions/config hashes and the Ollama registry manifest/config in [metadata JSON](local-model-metadata.json). The original asset snapshot remains historical. Retrieved2026-10-15.
 
-- Qwen3.5-4B metadata declares Apache-2.0. Its config has32 text layers, eight full-attention and24 linear-attention layers. Full-attention KV heads4, head dimension256. The advertised4B text label is not total bundle storage: the safetensors metadata counts about4.66B tensors across included components.
-- Qwen3-4B has36 attention layers, eight KV heads and head dimension128. Its card describes32,768 native context while the config's40,960 position value is explained separately in that card. Record prompt/output limits and runtime settings rather than treating every context field as interchangeable.
-- Qwen2.5-Coder-7B-Instruct has28 layers, four KV heads and head dimension128 derived from3584/28 in its config.
+- Qwen3.5-4B metadata declares Apache-2.0. Its config has 32 text layers, eight full-attention and24 linear-attention layers. Full-attention KV heads4, head dimension256. The advertised4B text label is not total bundle storage: the safetensors metadata counts about 4.66B tensors across included components.
+- Qwen3-4B has 36 attention layers, eight KV heads and head dimension128. Its card describes32,768 native context while the config's40,960 position value is explained separately in that card. Record prompt/output limits and runtime settings rather than treating every context field as interchangeable.
+- Qwen2.5-Coder-7B-Instruct has 28 layers, four KV heads and head dimension128 derived from 3584/28 in its config.
 
-The inspected Ollama `qwen3.5:4b` export lists a2,648,593,216-byte model layer and675,569,120-byte projector layer; total listed payload about3.324 GB. Config declares Q4_K_M, renderer/parser `qwen3.5`, and minimum runtime0.30.0. These are registry metadata, not observed resident memory or proof that the installed runtime executes it correctly. A raw-response SHA256 is a captured-byte fingerprint; do not confuse it with the website's displayed tag identifier. Component digests are preserved.
+The inspected Ollama `qwen3.5:4b` export lists a2,648,593,216-byte model layer and675,569,120-byte projector layer; total listed payload about 3.324 GB. Config declares Q4_K_M, renderer/parser `qwen3.5`, and minimum runtime0.30.0. These are registry metadata, not observed resident memory or proof that the installed runtime executes it correctly. A raw-response SHA256 is a captured-byte fingerprint; do not confuse it with the website's displayed tag identifier. Component digests are preserved.
 
 ## Cache arithmetic
 

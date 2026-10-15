@@ -20,7 +20,7 @@ All paths are under `/v1`; default loopback only. A local per-install token is r
 | GET `/reports/{id}` | JSON or Markdown representation |200 read-only report with artifact references |
 | GET `/capabilities` | — |200 CPU/CUDA/telemetry/runner support and validated environment status |
 
-Use404 for unknown IDs,409 for immutable-state conflicts or duplicate incompatible idempotency requests,422 for invalid schemas, and 503 for unavailable device/model capacity. Preserve resource OOM as a terminal run reason, not merely a generic HTTP500. API error payload: code, message, safe details, retryability, related run ID; omit raw secrets/tracebacks.
+Use 404 for unknown IDs,409 for immutable-state conflicts or duplicate incompatible idempotency requests,422 for invalid schemas, and 503 for unavailable device/model capacity. Preserve resource OOM as a terminal run reason, not merely a generic HTTP500. API error payload: code, message, safe details, retryability, related run ID; omit raw secrets/tracebacks.
 
 ## Minimum schema fields
 

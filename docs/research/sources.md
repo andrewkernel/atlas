@@ -100,12 +100,14 @@ The [continued local-model snapshot](local-model-metadata.json) reads first-part
 
 The continuation subsequently acquired only Fashion-MNIST training-file data and executed original CNN code, with [byte provenance](experiments/fashion-data-manifest.json) and [six pilot results](experiments/fashion-pilot.md). No external research code/model weights ran. [Deeper TrainParity source inspection](competitors/trainparity-source-inspection.json) captures five selected source/test identities, still without execution. [HiRemate](papers/hiremate.md) uses its proceedings abstract; [OffMate](papers/offmate.md) uses the author-team report and pinned README because the HAL landing page returned an anti-bot page. No claim relies on inaccessible paper contents.
 
+The [bibliography audit](bibliography-audit.md) checks32 first primary links with preserved retrieval failures and metadata disagreements, and captures selected publisher-deposited Crossref records. [NIST](https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm) supports interval conventions; [confidence-sequence context](papers/confidence-sequences.md) is abstract-level only. [Claim-selection arithmetic](statistical-claim-selection.md) is an explicitly conditional derivation, not a population-risk result from the fixtures. Source availability, read depth and scientific correctness remain distinct.
+
 - [GitHub metadata snapshot](competitors/repository-snapshot.json):15 public repositories, exact heads/archive/license metadata; authenticated read-only API.
 - [Hugging Face snapshot](asset-snapshot.json): model/data revision hashes and card license metadata; no data/weights downloaded.
 - [Dependency snapshot](dependency-snapshot.json): PyPI metadata, Python requirement and installed-versus-optional distinction. These primary endpoints are recorded per package.
 - CPU PyTorch package source and artifact hashes are pinned in [uv.lock](../../uv.lock).
 
-Later targeted source inspection: TrainParity accumulation.py confirms declared phases and initial-state/self-consistency abstention at its captured commit; TrainCheck pyproject.toml declares version0.1.2, Python>=3.10 and Apache-2.0 text. These observations do not validate runtime compatibility. The snapshot's NOASSERTION license detector is preserved rather than overwritten by an inferred repository-wide license.
+Later targeted source inspection: TrainParity accumulation.py confirms declared phases and initial-state/self-consistency abstention at its captured commit; TrainCheck pyproject.toml declares version 0.1.2, Python>=3.10 and Apache-2.0 text. These observations do not validate runtime compatibility. The snapshot's NOASSERTION license detector is preserved rather than overwritten by an inferred repository-wide license.
 
 ## Retrieval problems and exclusions
 

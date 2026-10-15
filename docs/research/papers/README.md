@@ -35,3 +35,4 @@ These concise notes preserve metadata, the claim actually used, limitations and 
 | [TensorFuzz: Debugging Neural Networks with Coverage-Guided Fuzzing](tensorfuzz.md) |2018 preprint |Specific preprint abstract/metadata; no execution |
 | [HiRemate: Hierarchical Approach for Efficient Re-materialization of Neural Networks](hiremate.md) |2025 |Proceedings abstract and pinned repository description; not replicated |
 | [OFFMATE: full fine-tuning of LLMs on a single GPU by re-materialization and offloading](offmate.md) |2024 preprint |Author-team report and pinned README; HAL paper page inaccessible |
+| [Time-uniform, nonparametric, nonasymptotic confidence sequences](confidence-sequences.md) |2021 journal,2018 preprint |Abstract/version metadata only; no bound implemented |
