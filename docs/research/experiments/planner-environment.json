@@ -1,0 +1,118 @@
+{
+  "captured_utc": "2026-10-15T06:40:13.118372+00:00",
+  "package_sources": [
+    "https://pypi.org/simple",
+    "https://download.pytorch.org/whl/cu130"
+  ],
+  "packages": [
+    {
+      "name": "astunparse",
+      "version": "1.6.3"
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6"
+    },
+    {
+      "name": "configmypy",
+      "version": "0.2.0"
+    },
+    {
+      "name": "filelock",
+      "version": "3.32.3"
+    },
+    {
+      "name": "fsspec",
+      "version": "2026.7.0"
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.1"
+    },
+    {
+      "name": "jinja2",
+      "version": "3.1.6"
+    },
+    {
+      "name": "markupsafe",
+      "version": "3.0.3"
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0"
+    },
+    {
+      "name": "networkx",
+      "version": "3.6.1"
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.4"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.6.0"
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2"
+    },
+    {
+      "name": "pulp",
+      "version": "2.7.0"
+    },
+    {
+      "name": "pygments",
+      "version": "2.21.0"
+    },
+    {
+      "name": "pytest",
+      "version": "9.1.1"
+    },
+    {
+      "name": "pytest-mock",
+      "version": "3.16.0"
+    },
+    {
+      "name": "pyyaml",
+      "version": "6.0.3"
+    },
+    {
+      "name": "ruamel-yaml",
+      "version": "0.19.1"
+    },
+    {
+      "name": "setuptools",
+      "version": "78.1.0"
+    },
+    {
+      "name": "six",
+      "version": "1.17.0"
+    },
+    {
+      "name": "sympy",
+      "version": "1.14.0"
+    },
+    {
+      "name": "torch",
+      "version": "2.14.1+cu130"
+    },
+    {
+      "name": "typing-extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "wheel",
+      "version": "0.48.0"
+    }
+  ],
+  "python": "3.12.10",
+  "requirements_file": "configs/planner-windows-py312-requirements.txt",
+  "requirements_sha256": "d78d9d21a9201764934f54df49b553d868e3e259f07a5211476ea40741c2ce14",
+  "scope": "Separate planner compatibility environment; Atlas CPU and earlier CUDA experiment environments unchanged.",
+  "source_paths": "Pinned reviewed Rockmate/rkgb reference source via explicit PYTHONPATH; no build hooks or C extension"
+}

@@ -1,0 +1,337 @@
+{
+  "additional_capture_utc": "2026-10-15T06:33:21.373266+00:00",
+  "excluded_execution_paths": [
+    "build hooks and C extension compilation",
+    "downloaded models/tests/quickstarts",
+    "TwRemat and DAG partitioner",
+    "offload/internal optimizer integration",
+    "external pickle/checkpoint caches"
+  ],
+  "execution_scope": "original_sequential_fixture_activation_only_python_solver_paths",
+  "files": [
+    {
+      "bytes": 1071,
+      "path": "COPYING",
+      "sha256": "ebc99a13ed6a9276d9418c4b55143652570bb2e0e685cb1e9d660b36f9396e1f",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/COPYING"
+    },
+    {
+      "bytes": 5693,
+      "path": "README.md",
+      "sha256": "349731f089b9a1c4f9da3f46fa9cd53e9f177af3bddb6ecfeaf23fb1912348d0",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/README.md"
+    },
+    {
+      "bytes": 818,
+      "path": "rkgb/pyproject.toml",
+      "sha256": "cea5a71a4b96bc880b16c0fd0a8f2a855a38735821ed9bd57eef881224fa7f0a",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/pyproject.toml"
+    },
+    {
+      "bytes": 81,
+      "path": "rkgb/setup.cfg",
+      "sha256": "28fb450315b8361cd04aa6ae3e05968c985ecbfa7d135278ebb075241068d65d",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/setup.cfg"
+    },
+    {
+      "bytes": 858,
+      "path": "rockmate/pyproject.toml",
+      "sha256": "e5b72bcc9c0ef0de85226aa271106ef0638e49b326379daff5fb43f7ed4508e4",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/pyproject.toml"
+    },
+    {
+      "bytes": 81,
+      "path": "rockmate/setup.cfg",
+      "sha256": "28fb450315b8361cd04aa6ae3e05968c985ecbfa7d135278ebb075241068d65d",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/setup.cfg"
+    },
+    {
+      "bytes": 267,
+      "path": "rockmate/setup.py",
+      "sha256": "e1443744ba84a640017413f919c46568ea31a7504d11054b1a43ad7239631a29",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/setup.py"
+    },
+    {
+      "bytes": 442,
+      "path": "rockmate/src/rockmate/__init__.py",
+      "sha256": "081bcb6960cc2be910cb4d0e5b9fed88d5f407a55a36d1ecbd38a794975a9427",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/__init__.py"
+    },
+    {
+      "bytes": 12231,
+      "path": "rockmate/src/rockmate/frontend.py",
+      "sha256": "a4268e7dc6bbb308382f6857bd82ad079881a1e7ba1ce6f0de58810cd62f085e",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/frontend.py"
+    },
+    {
+      "bytes": 226,
+      "path": "rockmate/src/rockmate/solvers/__init__.py",
+      "sha256": "3c59c93d540141b862feb9fed0e44656228962545eb19428e7769e4fccab39dd",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/__init__.py"
+    },
+    {
+      "bytes": 48,
+      "path": "rockmate/src/rockmate/solvers/ilp/__init__.py",
+      "sha256": "e3f9333905a3751d25a5cf264582a82c3eb6b38199d4fce51452ff5ec6566dcb",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/ilp/__init__.py"
+    },
+    {
+      "bytes": 56,
+      "path": "rockmate/src/rockmate/solvers/rk_rotor/__init__.py",
+      "sha256": "5b07c654314f3f09fbc0a231361f7e5a6efea01b8cdabeabbf26d5e63ac4a1ec",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/rk_rotor/__init__.py"
+    },
+    {
+      "bytes": 982,
+      "path": "rkgb/src/rkgb/__init__.py",
+      "sha256": "01d893aed7db2f774d0d424454b6a5d990ff5b6d6d20e89918a5914d954ee8fb",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/__init__.py"
+    },
+    {
+      "bytes": 5578,
+      "path": "rkgb/src/rkgb/lowlevel/measure.py",
+      "sha256": "64530a18b9df358e0dfabfa63018eaa3a1e61035bc7c946a91c2309514f47805",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/lowlevel/measure.py"
+    },
+    {
+      "bytes": 30182,
+      "path": "rkgb/src/rkgb/core/backward.py",
+      "sha256": "524f68ac09440e8e316eddc24b2cba73f3ed8f65a0d7d9ff4268a3b1912a5dce",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/core/backward.py"
+    },
+    {
+      "bytes": 20834,
+      "path": "rkgb/src/rkgb/core/base.py",
+      "sha256": "b4b2589f95ac99da40fe881b4b098b95a0ec641a99a255ff91f2f9037767d670",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/core/base.py"
+    },
+    {
+      "bytes": 21502,
+      "path": "rkgb/src/rkgb/core/forward.py",
+      "sha256": "10b9053b82d1fd99d24ef4abb7480e22650a12bf94d02f183c095819c3d18326",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/core/forward.py"
+    },
+    {
+      "bytes": 38313,
+      "path": "rkgb/src/rkgb/core/hierarchical.py",
+      "sha256": "d16830262fed9316fcc4ff96d39d8f446d761f7c8c38bf1014f37c377026cf8c",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/core/hierarchical.py"
+    },
+    {
+      "bytes": 84589,
+      "path": "rkgb/src/rkgb/core/partitioned.py",
+      "sha256": "2465cceaf27d4941e7a72d0b02405269382c5cfc9cde7efb8fa45331d4f7fc59",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/core/partitioned.py"
+    },
+    {
+      "bytes": 43440,
+      "path": "rkgb/src/rkgb/core/raw.py",
+      "sha256": "4c6f97fd12a34a596d9fcdaa8bb8971f1adb9c06cb0aed0ad304f31055687cb4",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/core/raw.py"
+    },
+    {
+      "bytes": 53563,
+      "path": "rkgb/src/rkgb/core/simplified.py",
+      "sha256": "ccc06334f7c9f94a3f719d61fd216b5096ca4905c83eff146bfed00479a7bcd5",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/core/simplified.py"
+    },
+    {
+      "bytes": 18306,
+      "path": "rkgb/src/rkgb/lowlevel/anonymize.py",
+      "sha256": "0d0c9dfc5509b7df2da73d0cd216be9b2f948606ce571bd18ad29ec2fb429b30",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/lowlevel/anonymize.py"
+    },
+    {
+      "bytes": 6935,
+      "path": "rkgb/src/rkgb/lowlevel/ast_add_on.py",
+      "sha256": "db66419435efb9f577eb6943ead1300268ba0d8add0547bb104760f9ab39640f",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/lowlevel/ast_add_on.py"
+    },
+    {
+      "bytes": 2979,
+      "path": "rkgb/src/rkgb/lowlevel/constants.py",
+      "sha256": "7b98e4e26056926749237c6ec95f3fe205225e35729b6361298cd20240b2e55c",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/lowlevel/constants.py"
+    },
+    {
+      "bytes": 15702,
+      "path": "rkgb/src/rkgb/lowlevel/execution_environments.py",
+      "sha256": "078cc1202619da074c992eb42effcac4aad4c76ab8a4925aa81f6947851dc1c1",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/lowlevel/execution_environments.py"
+    },
+    {
+      "bytes": 12869,
+      "path": "rkgb/src/rkgb/lowlevel/inspection.py",
+      "sha256": "290833bf9925adb99c9c314e1e1bf8c2a115a37e1f4f2db9c21c08078d20be67",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/lowlevel/inspection.py"
+    },
+    {
+      "bytes": 3907,
+      "path": "rkgb/src/rkgb/lowlevel/jit_patch.py",
+      "sha256": "0430ebb2724e274ed8634545c3ef3f8680cdd52a07a187c5592ee7546d64b26e",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/lowlevel/jit_patch.py"
+    },
+    {
+      "bytes": 2580,
+      "path": "rkgb/src/rkgb/lowlevel/preprocess_device.py",
+      "sha256": "b494e6119b4a238fa5e02490fcd2766a62d75a1fffda0e8f8bbd18bd2772ac92",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/lowlevel/preprocess_device.py"
+    },
+    {
+      "bytes": 2901,
+      "path": "rkgb/src/rkgb/lowlevel/preprocess_samples.py",
+      "sha256": "ed236fdbeaee509a2b738acaf4f30095d932b7e0233988baeb2addd8f838df1a",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/lowlevel/preprocess_samples.py"
+    },
+    {
+      "bytes": 6892,
+      "path": "rkgb/src/rkgb/lowlevel/variable_info.py",
+      "sha256": "84954c1843b81b91113c8b1ff7d7eed1b7c151e676e05f9bcc3f409a52a94f12",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/lowlevel/variable_info.py"
+    },
+    {
+      "bytes": 7706,
+      "path": "rkgb/src/rkgb/rkgb.py",
+      "sha256": "0d33698d20e9d78f26451d46774c660e368512afd29e8d4dd4921725ae6886d7",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/rkgb.py"
+    },
+    {
+      "bytes": 2226,
+      "path": "rkgb/src/rkgb/utils/utils.py",
+      "sha256": "69431fe725dc4a00b13fe8d9ee23542c767baa433dab234c1321f35a1e2d069b",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rkgb/src/rkgb/utils/utils.py"
+    },
+    {
+      "bytes": 48202,
+      "path": "rockmate/src/rockmate/compiler.py",
+      "sha256": "daa8973b9c96b27d160488e0b392aa41542e8292762a22d3dca5a275b3ec377f",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/compiler.py"
+    },
+    {
+      "bytes": 28827,
+      "path": "rockmate/src/rockmate/op_schedule.py",
+      "sha256": "7dd3997800d8d3cd3571b7efa5b4dcb03718fddd8f293bde35bf68e070a85097",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/op_schedule.py"
+    },
+    {
+      "bytes": 31750,
+      "path": "rockmate/src/rockmate/rockmate.py",
+      "sha256": "3ecdd1d73bfde8b28f01e0cbb0fd5ce3794f49cb5899e20b17373b510f392a0f",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/rockmate.py"
+    },
+    {
+      "bytes": 15175,
+      "path": "rockmate/src/rockmate/simulation.py",
+      "sha256": "85fb326cc6f0f1c829727e7e2426d2189d99a9fb4702fbe5949ab2d39eaa6803",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/simulation.py"
+    },
+    {
+      "bytes": 9442,
+      "path": "rockmate/src/rockmate/solvers/cheap.py",
+      "sha256": "9d0a873ccf000095d7eff05416d75d1ec0dd4177d057cd70725a933ad9094e6e",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/cheap.py"
+    },
+    {
+      "bytes": 31200,
+      "path": "rockmate/src/rockmate/solvers/ilp/ilp_model.py",
+      "sha256": "3f55d22be7e96995d6b4b2fb3dead63eebd4c3272b2b48e47bfb7b4bcb125ff6",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/ilp/ilp_model.py"
+    },
+    {
+      "bytes": 30410,
+      "path": "rockmate/src/rockmate/solvers/ilp/ilp_offload.py",
+      "sha256": "30dad3e4f37301cc90bbef47419056b46d6d28d9364d8b16ffd5cefd64c9f386",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/ilp/ilp_offload.py"
+    },
+    {
+      "bytes": 34634,
+      "path": "rockmate/src/rockmate/solvers/ilp/ilp_schedule.py",
+      "sha256": "23c4e81b00f51a78fd7626f422c77f5050eaeed7ca6bcd46a52e6af5e66e3fb3",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/ilp/ilp_schedule.py"
+    },
+    {
+      "bytes": 19784,
+      "path": "rockmate/src/rockmate/solvers/ilp/ilp_solver.py",
+      "sha256": "6bf42810f7159d1b2f8a1c363085dd47c56008844164e72f7cb0234f54a32f84",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/ilp/ilp_solver.py"
+    },
+    {
+      "bytes": 1478,
+      "path": "rockmate/src/rockmate/solvers/ilp/ilp_utils.py",
+      "sha256": "7304aabd54e6f5127bd0706576e491ee5e922c4d7c25db7545b38c82416cca26",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/ilp/ilp_utils.py"
+    },
+    {
+      "bytes": 18345,
+      "path": "rockmate/src/rockmate/solvers/main.py",
+      "sha256": "4b4556dfa749a727c79575bacb4deaf2434ee4d062e0a9e6208a80d93f983b1d",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/main.py"
+    },
+    {
+      "bytes": 1474,
+      "path": "rockmate/src/rockmate/solvers/rk_rotor/csequence.py",
+      "sha256": "29a8eaedda505f6132cea90b594cc0bdcbaf8dd113358ef5eacb19b1576daecb",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/rk_rotor/csequence.py"
+    },
+    {
+      "bytes": 10991,
+      "path": "rockmate/src/rockmate/solvers/rk_rotor/def_chain.py",
+      "sha256": "069db5ccdd6c1e110ba8114b2b79d7c2d2d99a6c954e050c97d961f65c741280",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/rk_rotor/def_chain.py"
+    },
+    {
+      "bytes": 7903,
+      "path": "rockmate/src/rockmate/solvers/rk_rotor/def_sequence.py",
+      "sha256": "422f8b38f0cd58564caf1faa7852fba31f12542f5a12615da4826249ef6fb583",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/rk_rotor/def_sequence.py"
+    },
+    {
+      "bytes": 4304,
+      "path": "rockmate/src/rockmate/solvers/rk_rotor/rk_rotor.py",
+      "sha256": "481d80b604a657df8b92a64fb77613c712517ef6b9d70791067ab14e4ddc17df",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/rk_rotor/rk_rotor.py"
+    },
+    {
+      "bytes": 10370,
+      "path": "rockmate/src/rockmate/solvers/rk_rotor/rotor_solver.py",
+      "sha256": "ddce1613b8f5a9b8f53a39f98eddadf7abc36472c2226a99f0dcb8132232ae03",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/rk_rotor/rotor_solver.py"
+    },
+    {
+      "bytes": 21106,
+      "path": "rockmate/src/rockmate/solvers/rk_rotor/solver.c",
+      "sha256": "826166cb71a01e9571379bf26224fee7584f40ee992f8f1d7d9adfc8eedb4501",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/rk_rotor/solver.c"
+    },
+    {
+      "bytes": 268,
+      "path": "rockmate/src/rockmate/solvers/setup.py",
+      "sha256": "52674a6df084a535af524ce1c29968a1f17d8de63a5fc99e470e13df2e184c20",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/setup.py"
+    },
+    {
+      "bytes": 4666,
+      "path": "rockmate/src/rockmate/solvers/twremat.py",
+      "sha256": "6fbc127028f0d94a2a2c4fcd92a200e574c523ef8bd1dffc2a350a913945ccea",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/twremat.py"
+    },
+    {
+      "bytes": 13340,
+      "path": "rockmate/src/rockmate/solvers/twremat_utils.py",
+      "sha256": "be899d0dde36b28b61b52bced663220a778e89232c8fb3032a7c024b1c5d6644",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/solvers/twremat_utils.py"
+    },
+    {
+      "bytes": 3271,
+      "path": "rockmate/src/rockmate/utils.py",
+      "sha256": "c8242cb36eefb8199481b351e1b9475d4cbde5b35f40cb3a01d99b292eaf288d",
+      "url": "https://raw.githubusercontent.com/topal-team/rockmate/c2f678455393c5d872a1adb099949fe25f682bd0/rockmate/src/rockmate/utils.py"
+    }
+  ],
+  "license": "MIT; notices retained locally; source is not vendored into Atlas",
+  "retrieved_utc": "2026-10-15T06:32:42.500090+00:00",
+  "review_scope": "Scoped review of import-time AST inventory, constructor/frontend, graph-generated execution provenance, calibration, activation scheduling/compiler and filesystem/subprocess/pickle surfaces. Not exhaustive function-level or security verification.",
+  "reviewed_before_execution_utc": "2026-10-15T06:40:12.711011+00:00",
+  "revision": "c2f678455393c5d872a1adb099949fe25f682bd0",
+  "scope": "Selected source text, not imported or executed"
+}
