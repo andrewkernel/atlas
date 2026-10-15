@@ -1,0 +1,7 @@
+# Frozen metric-coverage control
+
+Freeze source/protocol before execution. Use the already captured and reviewed official v2 source with SHA-256 `710840ce2c2c61716334c056777032f24660b83eb9869a451036e6a24d8103c4`. Parse as text and execute only the six named normalization/metric/raw-score/aggregation functions in the fixed allowlist. Module imports, CLI, plotting and threshold searches are excluded. This is trusted reviewed code, not a hostile-code sandbox.
+
+Use three invented answerable questions with fixed gold strings. The complete prediction mapping contains one correct answer and two wrong answers. Run the same mapping missing one known wrong answer, the complete mapping with one unexpected ID, and an empty mapping. Retain per-ID values, warning output, aggregate without an ID list, aggregate with all explicit IDs and exact exception types. No model, dataset, CUDA or external service is involved.
+
+Expected diagnostic: a skipped missing question reduces the default scored denominator; an explicit full-ID aggregate instead lacks that score. A strict wrapper rejects missing/unexpected IDs before any complete metric claim. The purpose is to test the source-based precondition, not estimate real error prevalence, create a novel metric or call the full official evaluator broken. Record source/selected-AST identities and actual Python version; retain failures rather than alter the fixture after observing output.
