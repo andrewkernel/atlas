@@ -1,0 +1,20 @@
+{
+  "captured_utc": "2026-10-15T14:00:37.312949+00:00",
+  "environment_helper_sha256": "85b03be5771a63d1d163e7b0f567e204d0284b3e526ae4056942d9d0d14f02aa",
+  "job_helper_sha256": "9e58c4b10ca651dfc3f6a4b0952d871b677740ea4069f49f5f96b547556c698f",
+  "ownership_helper_sha256": "0a193bded06c214b0cba9213b0958955ddce61d3af72d86aa3f3ae8c7782eda8",
+  "scope": "Trusted bounded local lifecycle control; no hard memory limit, training, hostile-code isolation or all-failure-path guarantee.",
+  "source_sha256": "7c190f5b44743a03f2e0f05612c29b093e8875e236fe71b5ea607f2322f70f45",
+  "trials": [
+    {
+      "cleanup_retained_identities_still_alive": 0,
+      "error_type": "PermissionError",
+      "message": "[WinError 5] Access is denied.",
+      "mode": "natural",
+      "status": "error",
+      "use_after_close_rejected": true,
+      "wall_seconds": 0.07800000003771856,
+      "wrong_creation_identity_rejected": true
+    }
+  ]
+}

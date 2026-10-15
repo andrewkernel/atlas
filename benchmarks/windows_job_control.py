@@ -80,7 +80,9 @@ def main():
                 else:
                     raise RuntimeError('Wrong process identity was accepted')
                 for process in retained:
+                    row['phase'] = 'assign_launcher' if process.pid == launch.pid else 'assign_actual_interpreter'
                     job.assign_owned(process.pid, process.create_time())
+                row['phase'] = 'query_members'
                 members = job.members()
                 if set(members) != {p.pid for p in retained}:
                     raise RuntimeError('Job inventory differs from retained owned identities')
