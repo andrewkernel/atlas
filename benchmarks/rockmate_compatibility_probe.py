@@ -41,9 +41,11 @@ def worker(mode: str, output: Path) -> None:
         torch.set_num_threads(1)
         torch.manual_seed(CONFIG["seed"])
         torch.use_deterministic_algorithms(True)
-        torch.backends.fp32_precision = "ieee"
-        torch.backends.cuda.matmul.fp32_precision = "ieee"
-        torch.backends.cudnn.fp32_precision = "ieee"
+        # The recorded independent export control fails with the new IEEE API
+        # on this binary stack, even when conv/rnn report the same precision.
+        # Use one legacy-only setting consistently; never mix API families.
+        torch.backends.cuda.matmul.allow_tf32 = False
+        torch.backends.cudnn.allow_tf32 = False
         result["environment"] = {"python": platform.python_version(), "torch": torch.__version__,
                                  "cuda": torch.version.cuda, "gpu": torch.cuda.get_device_name(0)}
         phase = "original_fixture"

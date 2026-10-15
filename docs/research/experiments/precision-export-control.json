@@ -1,0 +1,59 @@
+{
+  "captured_utc": "2026-10-15T06:43:06.384554+00:00",
+  "scope": "Exploratory four fresh-process CPU torch.export controls in installed CUDA binary stack; no Rockmate import, GPU training or scientific equivalence claim.",
+  "source_sha256": "773cee8447369fa842b0db32583158f81aba5e4a3472054a620bbfd74fd8dae4",
+  "trials": [
+    {
+      "backend_precision": "none",
+      "conv_precision": "tf32",
+      "export": "completed",
+      "graph_node_count": 5,
+      "legacy_cudnn_query": true,
+      "mode": "default",
+      "rnn_precision": "tf32",
+      "stderr_nonempty": true,
+      "torch": "2.14.1+cu130"
+    },
+    {
+      "backend_precision": "ieee",
+      "conv_precision": "ieee",
+      "error_message": "PyTorch is checking whether allow_tf32 is enabled for cuDNN without a specific operator name,but the current flag(s) indicate that cuDNN conv and cuDNN RNN have different TF32 flags.This combination indicates that you have used a mix of the legacy and new APIs to set the TF32 flags. We suggest only using the new API to set the TF32 flag(s). See also: https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices",
+      "error_type": "RuntimeError",
+      "export": "error",
+      "legacy_cudnn_query": {
+        "error": "RuntimeError",
+        "message": "PyTorch is checking whether allow_tf32 is enabled for cuDNN without a specific operator name,but the current flag(s) indicate that cuDNN conv and cuDNN RNN have different TF32 flags.This combination indicates that you have used a mix of the legacy and new APIs to set the TF32 flags. We suggest only using the new API to set the TF32 flag(s). See also: https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices"
+      },
+      "mode": "backend_ieee",
+      "rnn_precision": "ieee",
+      "stderr_nonempty": true,
+      "torch": "2.14.1+cu130"
+    },
+    {
+      "backend_precision": "ieee",
+      "conv_precision": "ieee",
+      "error_message": "PyTorch is checking whether allow_tf32 is enabled for cuDNN without a specific operator name,but the current flag(s) indicate that cuDNN conv and cuDNN RNN have different TF32 flags.This combination indicates that you have used a mix of the legacy and new APIs to set the TF32 flags. We suggest only using the new API to set the TF32 flag(s). See also: https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices",
+      "error_type": "RuntimeError",
+      "export": "error",
+      "legacy_cudnn_query": {
+        "error": "RuntimeError",
+        "message": "PyTorch is checking whether allow_tf32 is enabled for cuDNN without a specific operator name,but the current flag(s) indicate that cuDNN conv and cuDNN RNN have different TF32 flags.This combination indicates that you have used a mix of the legacy and new APIs to set the TF32 flags. We suggest only using the new API to set the TF32 flag(s). See also: https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices"
+      },
+      "mode": "operators_ieee",
+      "rnn_precision": "ieee",
+      "stderr_nonempty": true,
+      "torch": "2.14.1+cu130"
+    },
+    {
+      "backend_precision": "none",
+      "conv_precision": "none",
+      "export": "completed",
+      "graph_node_count": 5,
+      "legacy_cudnn_query": false,
+      "mode": "legacy_only",
+      "rnn_precision": "none",
+      "stderr_nonempty": true,
+      "torch": "2.14.1+cu130"
+    }
+  ]
+}
