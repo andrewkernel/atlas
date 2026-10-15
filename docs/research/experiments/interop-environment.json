@@ -1,0 +1,118 @@
+{
+  "captured_utc": "2026-10-15T07:33:01.862070+00:00",
+  "packages": [
+    {
+      "name": "astunparse",
+      "version": "1.6.3"
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6"
+    },
+    {
+      "name": "configmypy",
+      "version": "0.2.0"
+    },
+    {
+      "name": "filelock",
+      "version": "3.32.3"
+    },
+    {
+      "name": "fsspec",
+      "version": "2026.7.0"
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.1"
+    },
+    {
+      "name": "jinja2",
+      "version": "3.1.6"
+    },
+    {
+      "name": "markupsafe",
+      "version": "3.0.3"
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0"
+    },
+    {
+      "name": "networkx",
+      "version": "3.6.1"
+    },
+    {
+      "name": "numpy",
+      "version": "2.4.6"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.6.0"
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2"
+    },
+    {
+      "name": "pulp",
+      "version": "2.7.0"
+    },
+    {
+      "name": "pygments",
+      "version": "2.21.0"
+    },
+    {
+      "name": "pytest",
+      "version": "9.1.1"
+    },
+    {
+      "name": "pytest-mock",
+      "version": "3.16.0"
+    },
+    {
+      "name": "pyyaml",
+      "version": "6.0.3"
+    },
+    {
+      "name": "ruamel-yaml",
+      "version": "0.19.1"
+    },
+    {
+      "name": "setuptools",
+      "version": "78.1.0"
+    },
+    {
+      "name": "six",
+      "version": "1.17.0"
+    },
+    {
+      "name": "sympy",
+      "version": "1.14.0"
+    },
+    {
+      "name": "torch",
+      "version": "2.13.0+cu130"
+    },
+    {
+      "name": "typing-extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "wheel",
+      "version": "0.48.0"
+    }
+  ],
+  "python": "3.11.17",
+  "requirements_file": "configs/interop-windows-py311-requirements.txt",
+  "requirements_sha256": "e9067e890fa50d16a454c2e16c5037b35993cea7152f446b461c996f8e26e68e",
+  "scope": "Separate declared-compatible shared GPU stack, not a modification to CPU/checker/planner historical environments. Resolution is not itself runtime validation.",
+  "wheel": {
+    "sha256": "45e97bd9bc0416f4f4190b5098c55119a389fa5a7c8bbf2639f08f1d04e0a0dc",
+    "source": "Official CUDA 13.0 PyTorch wheel index, observed exact link before installation",
+    "url": "https://download-r2.pytorch.org/whl/cu130/torch-2.13.0%2Bcu130-cp311-cp311-win_amd64.whl"
+  }
+}
