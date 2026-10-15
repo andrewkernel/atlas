@@ -71,3 +71,11 @@ This is a bounded initial research/engineering investigation, not five hours of 
 - Found and corrected the original equivalence sample-size approximation. Original integration plus200,000 simulated sufficient-statistic repetitions per condition gives36 pairs for80% power under the illustrative normal model, versus25 in the earlier formula. This does not estimate real ML variance.
 - Ran original state/RNG controls: scoped buffer restoration repairs the known BatchNorm fixture; two dropout layers differ after partitioning even with equal final RNG states. Preserved the single-layer case that matches as a positive observation.
 -17 local tests passed. All experiments remain synthetic CPU/statistical controls; no primary policy evaluation, CUDA, full training or external framework execution yet. See the amendment ledger for correction dispositions.
+
+## 2026-10-15 05:22–05:28 UTC — native CUDA fixture
+
+- Official CUDA13.0 wheel for PyTorch2.14.1 was verified available for Windows/Python3.12. NVIDIA's compatibility documentation supports driver-family580+ for CUDA13.x; observed host driver595.95. Installed the official binary and its dependencies in a separate ignored environment, without changing the CPU lock or driver. Native CUDA tensor smoke passed.
+- Original reviewed residual-MLP fixture completed eight fresh-process trials across microbatch16/4 and checkpoint off/on, two repetitions each. Both transformations lower measured allocation and increase median update time here. Combined allocated peak378.45 MiB versus972.58 MiB reference; no physical-device OOM occurred.
+- First-update peaks understate later peaks because persistent Adam state is present in subsequent forwards. Added explicit distinction to the resource evidence.
+- Audited the exploratory metric aggregation: integer/step tensors can dominate a combined optimizer norm. Separated Adam moment/step comparisons and added unique trial directories, then repeated the published measurement at05:24:49 UTC. Initial pilot is retained locally and excluded from the published two repetitions.
+- First-update parameters, gradients and each Adam state family were compared; smaller microbatches introduce small FP32 differences. No full-training outcome or real-workload rescue claim. Requirements are separately pinned with hashes; raw JSON carries source identity and environment.

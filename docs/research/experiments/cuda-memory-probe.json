@@ -1,0 +1,762 @@
+{
+  "schema_version": "1.0",
+  "started_utc": "2026-10-15T05:24:49.697896+00:00",
+  "source_sha256": "d23b120b39854ccfd26c9182018e62e4727486c9907c28dafb7e0c2ba690dde0",
+  "config": {
+    "logical_batch": 16,
+    "tokens": 256,
+    "width": 512,
+    "depth": 8,
+    "warmup_updates": 5,
+    "measured_updates": 10,
+    "model_seed": 884,
+    "data_seed": 885
+  },
+  "trials": [
+    {
+      "status": "completed",
+      "microbatch": 16,
+      "checkpointed": false,
+      "environment": {
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "capability": [
+          8,
+          6
+        ],
+        "allocator": "native",
+        "matmul_fp32_precision": "ieee",
+        "deterministic_algorithms": true
+      },
+      "parameter_count": 16805888,
+      "dtype": "float32",
+      "model_input_preparation_seconds": 0.20032840000931174,
+      "initial_allocated_bytes": 75612160,
+      "first_update_seconds": 0.16252640000311658,
+      "first_update_peak": {
+        "allocated_bytes": 885378560,
+        "reserved_bytes": 929038336
+      },
+      "measured_update_seconds": [
+        0.07289099995978177,
+        0.07457890000659972,
+        0.07525550003629178,
+        0.07458700001006946,
+        0.0772267000284046,
+        0.07374089997028932,
+        0.07569140003761277,
+        0.07342170004267246,
+        0.07514019997324795,
+        0.07398009998723865
+      ],
+      "median_update_seconds": 0.07458295000833459,
+      "measured_peak": {
+        "allocated_bytes": 1019825664,
+        "reserved_bytes": 1067450368
+      },
+      "first_update_comparison": {
+        "parameter": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 10934.035898673284,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "gradient": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 0.0003157041595810481,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/step": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 48.0,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/exp_avg": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 3.157041704223989e-06,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/exp_avg_sq": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 1.7959967519651736e-20,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        }
+      },
+      "completed_logical_updates": 16,
+      "returncode": 0,
+      "stderr": "",
+      "repetition": 1,
+      "owned_child_wall_seconds": 5.022171400021762
+    },
+    {
+      "status": "completed",
+      "microbatch": 16,
+      "checkpointed": true,
+      "environment": {
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "capability": [
+          8,
+          6
+        ],
+        "allocator": "native",
+        "matmul_fp32_precision": "ieee",
+        "deterministic_algorithms": true
+      },
+      "parameter_count": 16805888,
+      "dtype": "float32",
+      "model_input_preparation_seconds": 0.19218980002915487,
+      "initial_allocated_bytes": 75612160,
+      "first_update_seconds": 0.17277160001685843,
+      "first_update_peak": {
+        "allocated_bytes": 361177088,
+        "reserved_bytes": 375390208
+      },
+      "measured_update_seconds": [
+        0.08558479999192059,
+        0.08712959999684244,
+        0.08477040001889691,
+        0.08570130000589415,
+        0.08929979999084026,
+        0.08687760005705059,
+        0.08895300002768636,
+        0.08929660002468154,
+        0.08789299998898059,
+        0.08826260000932962
+      ],
+      "median_update_seconds": 0.08751129999291152,
+      "measured_peak": {
+        "allocated_bytes": 474420224,
+        "reserved_bytes": 509607936
+      },
+      "first_update_comparison": {
+        "parameter": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 10934.035898673284,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "gradient": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 0.0003157041595810481,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/step": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 48.0,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/exp_avg": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 3.157041704223989e-06,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/exp_avg_sq": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 1.7959967519651736e-20,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        }
+      },
+      "completed_logical_updates": 16,
+      "returncode": 0,
+      "stderr": "",
+      "repetition": 1,
+      "owned_child_wall_seconds": 4.853898799978197
+    },
+    {
+      "status": "completed",
+      "microbatch": 4,
+      "checkpointed": false,
+      "environment": {
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "capability": [
+          8,
+          6
+        ],
+        "allocator": "native",
+        "matmul_fp32_precision": "ieee",
+        "deterministic_algorithms": true
+      },
+      "parameter_count": 16805888,
+      "dtype": "float32",
+      "model_input_preparation_seconds": 0.19324500003131106,
+      "initial_allocated_bytes": 75612160,
+      "first_update_seconds": 0.18315959995379671,
+      "first_update_peak": {
+        "allocated_bytes": 398757376,
+        "reserved_bytes": 417333248
+      },
+      "measured_update_seconds": [
+        0.08257589995628223,
+        0.0827669000136666,
+        0.08435650001047179,
+        0.08211850002408028,
+        0.08179440000094473,
+        0.08282690000487491,
+        0.0833254000172019,
+        0.08317699999315664,
+        0.08484699996188283,
+        0.08330459997523576
+      ],
+      "median_update_seconds": 0.08300194999901578,
+      "measured_peak": {
+        "allocated_bytes": 533204480,
+        "reserved_bytes": 538968064
+      },
+      "first_update_comparison": {
+        "parameter": {
+          "max_abs_error": 6.239861249923706e-08,
+          "squared_error": 1.808574677887503e-12,
+          "reference_squared_norm": 10934.035898673284,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 1.2861095859892392e-08
+        },
+        "gradient": {
+          "max_abs_error": 4.729372449219227e-11,
+          "squared_error": 1.514669138029711e-16,
+          "reference_squared_norm": 0.0003157041595810481,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 6.926578113693736e-07
+        },
+        "optimizer/step": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 48.0,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/exp_avg": {
+          "max_abs_error": 4.774847184307873e-12,
+          "squared_error": 1.5185766065364646e-18,
+          "reference_squared_norm": 3.157041704223989e-06,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 6.935506661654836e-07
+        },
+        "optimizer/exp_avg_sq": {
+          "max_abs_error": 1.7889335846010823e-18,
+          "squared_error": 2.342102950470553e-32,
+          "reference_squared_norm": 1.7959967519651736e-20,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 1.1419582256631188e-06
+        }
+      },
+      "completed_logical_updates": 16,
+      "returncode": 0,
+      "stderr": "",
+      "repetition": 1,
+      "owned_child_wall_seconds": 4.810392000013962
+    },
+    {
+      "status": "completed",
+      "microbatch": 4,
+      "checkpointed": true,
+      "environment": {
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "capability": [
+          8,
+          6
+        ],
+        "allocator": "native",
+        "matmul_fp32_precision": "ieee",
+        "deterministic_algorithms": true
+      },
+      "parameter_count": 16805888,
+      "dtype": "float32",
+      "model_input_preparation_seconds": 0.19113210000796244,
+      "initial_allocated_bytes": 75612160,
+      "first_update_seconds": 0.19920039997668937,
+      "first_update_peak": {
+        "allocated_bytes": 354885632,
+        "reserved_bytes": 367001600
+      },
+      "measured_update_seconds": [
+        0.09615609998581931,
+        0.09654659999068826,
+        0.09623830002965406,
+        0.0958602000027895,
+        0.09702980000292882,
+        0.096977400011383,
+        0.09916559996781871,
+        0.09681980003369972,
+        0.09908559999894351,
+        0.09757570002693683
+      ],
+      "median_update_seconds": 0.09689860002254136,
+      "measured_peak": {
+        "allocated_bytes": 396829696,
+        "reserved_bytes": 417333248
+      },
+      "first_update_comparison": {
+        "parameter": {
+          "max_abs_error": 6.239861249923706e-08,
+          "squared_error": 1.808574677887503e-12,
+          "reference_squared_norm": 10934.035898673284,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 1.2861095859892392e-08
+        },
+        "gradient": {
+          "max_abs_error": 4.729372449219227e-11,
+          "squared_error": 1.514669138029711e-16,
+          "reference_squared_norm": 0.0003157041595810481,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 6.926578113693736e-07
+        },
+        "optimizer/step": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 48.0,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/exp_avg": {
+          "max_abs_error": 4.774847184307873e-12,
+          "squared_error": 1.5185766065364646e-18,
+          "reference_squared_norm": 3.157041704223989e-06,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 6.935506661654836e-07
+        },
+        "optimizer/exp_avg_sq": {
+          "max_abs_error": 1.7889335846010823e-18,
+          "squared_error": 2.342102950470553e-32,
+          "reference_squared_norm": 1.7959967519651736e-20,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 1.1419582256631188e-06
+        }
+      },
+      "completed_logical_updates": 16,
+      "returncode": 0,
+      "stderr": "",
+      "repetition": 1,
+      "owned_child_wall_seconds": 5.044584900024347
+    },
+    {
+      "status": "completed",
+      "microbatch": 4,
+      "checkpointed": true,
+      "environment": {
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "capability": [
+          8,
+          6
+        ],
+        "allocator": "native",
+        "matmul_fp32_precision": "ieee",
+        "deterministic_algorithms": true
+      },
+      "parameter_count": 16805888,
+      "dtype": "float32",
+      "model_input_preparation_seconds": 0.19048019999172539,
+      "initial_allocated_bytes": 75612160,
+      "first_update_seconds": 0.19707809999817982,
+      "first_update_peak": {
+        "allocated_bytes": 354885632,
+        "reserved_bytes": 367001600
+      },
+      "measured_update_seconds": [
+        0.09789400000590831,
+        0.0975034000002779,
+        0.0968157000024803,
+        0.09538959997007623,
+        0.09737049997784197,
+        0.09850880003068596,
+        0.09811860002810135,
+        0.10086079995380715,
+        0.09790379996411502,
+        0.09860640001716092
+      ],
+      "median_update_seconds": 0.09789889998501167,
+      "measured_peak": {
+        "allocated_bytes": 396829696,
+        "reserved_bytes": 417333248
+      },
+      "first_update_comparison": {
+        "parameter": {
+          "max_abs_error": 6.239861249923706e-08,
+          "squared_error": 1.808574677887503e-12,
+          "reference_squared_norm": 10934.035898673284,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 1.2861095859892392e-08
+        },
+        "gradient": {
+          "max_abs_error": 4.729372449219227e-11,
+          "squared_error": 1.514669138029711e-16,
+          "reference_squared_norm": 0.0003157041595810481,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 6.926578113693736e-07
+        },
+        "optimizer/step": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 48.0,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/exp_avg": {
+          "max_abs_error": 4.774847184307873e-12,
+          "squared_error": 1.5185766065364646e-18,
+          "reference_squared_norm": 3.157041704223989e-06,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 6.935506661654836e-07
+        },
+        "optimizer/exp_avg_sq": {
+          "max_abs_error": 1.7889335846010823e-18,
+          "squared_error": 2.342102950470553e-32,
+          "reference_squared_norm": 1.7959967519651736e-20,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 1.1419582256631188e-06
+        }
+      },
+      "completed_logical_updates": 16,
+      "returncode": 0,
+      "stderr": "",
+      "repetition": 2,
+      "owned_child_wall_seconds": 5.105565600038972
+    },
+    {
+      "status": "completed",
+      "microbatch": 16,
+      "checkpointed": true,
+      "environment": {
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "capability": [
+          8,
+          6
+        ],
+        "allocator": "native",
+        "matmul_fp32_precision": "ieee",
+        "deterministic_algorithms": true
+      },
+      "parameter_count": 16805888,
+      "dtype": "float32",
+      "model_input_preparation_seconds": 0.19976359995780513,
+      "initial_allocated_bytes": 75612160,
+      "first_update_seconds": 0.17317130003357306,
+      "first_update_peak": {
+        "allocated_bytes": 361177088,
+        "reserved_bytes": 375390208
+      },
+      "measured_update_seconds": [
+        0.08961689996067435,
+        0.087389099993743,
+        0.08643829997163266,
+        0.08581560000311583,
+        0.08507080003619194,
+        0.0902258999994956,
+        0.08583539997925982,
+        0.08932430000277236,
+        0.09033950004959479,
+        0.08854969998355955
+      ],
+      "median_update_seconds": 0.08796939998865128,
+      "measured_peak": {
+        "allocated_bytes": 474420224,
+        "reserved_bytes": 509607936
+      },
+      "first_update_comparison": {
+        "parameter": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 10934.035898673284,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "gradient": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 0.0003157041595810481,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/step": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 48.0,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/exp_avg": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 3.157041704223989e-06,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/exp_avg_sq": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 1.7959967519651736e-20,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        }
+      },
+      "completed_logical_updates": 16,
+      "returncode": 0,
+      "stderr": "",
+      "repetition": 2,
+      "owned_child_wall_seconds": 4.927116000035312
+    },
+    {
+      "status": "completed",
+      "microbatch": 4,
+      "checkpointed": false,
+      "environment": {
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "capability": [
+          8,
+          6
+        ],
+        "allocator": "native",
+        "matmul_fp32_precision": "ieee",
+        "deterministic_algorithms": true
+      },
+      "parameter_count": 16805888,
+      "dtype": "float32",
+      "model_input_preparation_seconds": 0.18716430000495166,
+      "initial_allocated_bytes": 75612160,
+      "first_update_seconds": 0.18172449996927753,
+      "first_update_peak": {
+        "allocated_bytes": 398757376,
+        "reserved_bytes": 417333248
+      },
+      "measured_update_seconds": [
+        0.08477580000180751,
+        0.08396910002920777,
+        0.08292349998373538,
+        0.08416090003447607,
+        0.08183859998825938,
+        0.08274010004242882,
+        0.08241029997589067,
+        0.08455500000854954,
+        0.08384310000110418,
+        0.08574269997188821
+      ],
+      "median_update_seconds": 0.08390610001515597,
+      "measured_peak": {
+        "allocated_bytes": 533204480,
+        "reserved_bytes": 538968064
+      },
+      "first_update_comparison": {
+        "parameter": {
+          "max_abs_error": 6.239861249923706e-08,
+          "squared_error": 1.808574677887503e-12,
+          "reference_squared_norm": 10934.035898673284,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 1.2861095859892392e-08
+        },
+        "gradient": {
+          "max_abs_error": 4.729372449219227e-11,
+          "squared_error": 1.514669138029711e-16,
+          "reference_squared_norm": 0.0003157041595810481,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 6.926578113693736e-07
+        },
+        "optimizer/step": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 48.0,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/exp_avg": {
+          "max_abs_error": 4.774847184307873e-12,
+          "squared_error": 1.5185766065364646e-18,
+          "reference_squared_norm": 3.157041704223989e-06,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 6.935506661654836e-07
+        },
+        "optimizer/exp_avg_sq": {
+          "max_abs_error": 1.7889335846010823e-18,
+          "squared_error": 2.342102950470553e-32,
+          "reference_squared_norm": 1.7959967519651736e-20,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 1.1419582256631188e-06
+        }
+      },
+      "completed_logical_updates": 16,
+      "returncode": 0,
+      "stderr": "",
+      "repetition": 2,
+      "owned_child_wall_seconds": 4.802067799959332
+    },
+    {
+      "status": "completed",
+      "microbatch": 16,
+      "checkpointed": false,
+      "environment": {
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "capability": [
+          8,
+          6
+        ],
+        "allocator": "native",
+        "matmul_fp32_precision": "ieee",
+        "deterministic_algorithms": true
+      },
+      "parameter_count": 16805888,
+      "dtype": "float32",
+      "model_input_preparation_seconds": 0.18887589999940246,
+      "initial_allocated_bytes": 75612160,
+      "first_update_seconds": 0.15992040000855923,
+      "first_update_peak": {
+        "allocated_bytes": 885378560,
+        "reserved_bytes": 929038336
+      },
+      "measured_update_seconds": [
+        0.07461359997978434,
+        0.07612969999900088,
+        0.07545230002142489,
+        0.07530249998671934,
+        0.07322760001989082,
+        0.07316359999822453,
+        0.07432640000479296,
+        0.07561090000672266,
+        0.07342999998945743,
+        0.0731417000060901
+      ],
+      "median_update_seconds": 0.07446999999228865,
+      "measured_peak": {
+        "allocated_bytes": 1019825664,
+        "reserved_bytes": 1067450368
+      },
+      "first_update_comparison": {
+        "parameter": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 10934.035898673284,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "gradient": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 0.0003157041595810481,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/step": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 48.0,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/exp_avg": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 3.157041704223989e-06,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        },
+        "optimizer/exp_avg_sq": {
+          "max_abs_error": 0.0,
+          "squared_error": 0.0,
+          "reference_squared_norm": 1.7959967519651736e-20,
+          "all_finite": true,
+          "tensors": 48,
+          "relative_l2_error": 0.0
+        }
+      },
+      "completed_logical_updates": 16,
+      "returncode": 0,
+      "stderr": "",
+      "repetition": 2,
+      "owned_child_wall_seconds": 4.655085499980487
+    }
+  ],
+  "limitations": "Synthetic separable residual MLP, repeated fixed input, two process repetitions per plan. No dataset, attention, OOM rescue, planner, full training, energy or scientific-equivalence result. Timing samples within a process are dependent."
+}

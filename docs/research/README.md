@@ -35,6 +35,6 @@ Started 2026-10-14 America/Chicago (2026-10-15 UTC). This is a bounded initial i
 
 ## What exists versus what is proposed
 
-Executed: original CPU semantic/composition/state controls, synthetic equivalence-power calibration,17 pytest tests including40 generated accumulation partitions, dependency locking, source/repository inspection and documentation checks. Proposed: Atlas application, native CUDA profiling, optimization selection, full-training equivalence, expert labels, other physical hardware tiers, energy study and LLM evaluation.
+Executed: original CPU semantic/composition/state controls, synthetic equivalence-power calibration,17 pytest tests including40 generated accumulation partitions, eight synthetic CUDA trials on a physical12 GB RTX3060, dependency locking, source/repository inspection and documentation checks. Proposed: Atlas application, real-workload optimization selection, full-training equivalence, expert labels, other physical hardware tiers, energy study and LLM evaluation.
 
 The strongest local observation is that checkpointing can match gradients while changing BatchNorm buffers/evaluation. That motivates evidence design; it does not validate the proposed planner or certify scientific conclusions.

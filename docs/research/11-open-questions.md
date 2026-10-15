@@ -10,7 +10,7 @@ Priorities: **P0** changes the credibility of the research question; **P1** is r
 | P1 | Which real failure families are missing from authored probes? | Mutation benchmark can be self-confirming | Audit historical issues, independently label cases and hold out families; no labels obtained yet |
 | P1 | What can be said when full baseline OOMs locally? | Fidelity comparison is missing, not automatically preserved | Trusted reference artifact/CPU study with limitations or explicit unverified result |
 | P1 | What are defensible scientific outcome margins? | Convenient tolerances can manufacture equivalence | Domain/advisor input and preregistered estimands/power; remain inconclusive if unsupported |
-| P1 | Which GPU/PyTorch/CUDA versions work on the 12 GB host? | CPU lock does not validate CUDA | Separate explicit CUDA environment, native smoke, allocator/timing check; not done here |
+| P1 | How far does CUDA compatibility extend beyond the synthetic fixture? | A smoke/profile result is not general backend support |2.14.1+cu130 works on RTX3060 for the bounded fixture; validate target attention/data/precision paths separately |
 | P1 | Can TrainParity be compared without stack confounding? | Inspected metadata excludes Python 3.12/Torch 2.14 | Separate compatible Python 3.11/Torch environment or shared-trace capability analysis; do not force incompatible install |
 | P1 | Which WikiText terms apply to pinned bytes? | Card has conflicting3.0/GFDL versus4.0 metadata/prose | Resolve authoritative provenance/terms before data acquisition/redistribution; current plan conditional |
 | P1 | How much adapter authoring does a new workload require? | Access benefit can be lost to integration | Record adaptation effort on held-out workload; no user study here |

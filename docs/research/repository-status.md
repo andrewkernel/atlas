@@ -26,7 +26,13 @@ The final handoff commit also tightens the primary question and records this sta
 
 About30 minutes of logged work through the final validation checkpoint; the first recorded clock was2026-10-15 04:39:05 UTC and the completed cross-platform-validation check was05:08:45 UTC. Initial request reading preceded that clock; final publication follows it. **This was not five hours of research.**
 
-The complete initial blueprint is delivered. Confirmed novelty, exhaustive/forward literature review, independent expert labeling, actual CUDA measurements, physical hardware-tier comparisons, full-training equivalence, local-model benefit, energy and a validated hostile-code sandbox remain unfinished evidence tasks. Read depth is disclosed per paper/source. Dataset licensing/provenance and checker-version compatibility need resolution before the planned evaluation. No performance or scientific-conclusion preservation result is implied.
+The complete initial blueprint is delivered. Confirmed novelty, exhaustive/forward literature review, independent expert labeling, real-workload GPU evaluation, physical hardware-tier comparisons, full-training equivalence, local-model benefit, energy and a validated hostile-code sandbox remain unfinished evidence tasks. Read depth is disclosed per paper/source. Dataset licensing/provenance and checker-version compatibility need resolution before the planned evaluation. No scientific-conclusion preservation result is implied.
+
+## Continued research
+
+The owner subsequently requested continued investigation and audit. Checkpoint2d0aee8 adds closer prior art, the equivalence-power correction and original state/RNG controls;17 local tests pass and [cross-platform run38686356542](https://github.com/andrewkernel/atlas/actions/runs/38686356542) passed that checkpoint. The initial11-test capture is historical, not a current-suite count.
+
+The [synthetic CUDA fixture](experiments/cuda-memory-probe.md) now validates one separate Windows/CUDA environment on the physical12 GB RTX3060 and measures memory/time tradeoffs for four native configurations. This is new scoped resource evidence, not an implemented planner or the proposed primary study. The [amendment ledger](13-audit-and-amendments.md) and chronological log record changes without rewriting the initial duration into a five-hour claim.
 
 ## Next task
 

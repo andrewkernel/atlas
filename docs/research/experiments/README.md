@@ -53,4 +53,8 @@ The [equivalence-power calibration](equivalence-calibration.md) corrects the ini
 
 ## What was not established
 
-No optimizer or planner performance, full-training effect, GPU memory saving, GPU runtime, energy, consumer-tier comparison, external framework superiority, human-labeled classification accuracy, or LLM benefit was measured. No confidence interval over real training outcomes can be inferred from 40 generated partitions. This experiment supports failure-mode analysis and test design, not the primary research hypothesis.
+The original CPU experiments establish no optimizer/planner performance, full-training effect, energy, consumer-tier comparison, external framework superiority, human-labeled classification accuracy, or LLM benefit. No confidence interval over real training outcomes can be inferred from40 generated partitions.
+
+## Separate physical GPU fixture
+
+The continuation's [synthetic CUDA experiment](cuda-memory-probe.md) now records allocated/reserved peaks, synchronized update timing and first-update state comparisons for four native configurations with two fresh-process repetitions each on the physical12 GB RTX3060. The [raw evidence](cuda-memory-probe.json) and [separate environment](cuda-probe-environment.json) document its scope. This supersedes the initial absence of any CUDA measurement; it does not establish primary policy efficacy, real-workload OOM rescue or scientific outcomes.

@@ -43,7 +43,7 @@ Require an importable, registered `ExperimentAdapter` describing data/loss accou
 | Component | Decision | Verified here / remaining work |
 |---|---|---|
 | Python | 3.12 | Ran on 3.12.10; default host Python 3.14 is deliberately not used |
-| PyTorch 2.x | Native CPU first, CUDA optional | Installed and tested 2.14.1+cpu; no CUDA build validated |
+| PyTorch 2.x | Native CPU first, CUDA optional |2.14.1+cpu tested; separate2.14.1+cu130 passes smoke and bounded synthetic fixture on RTX3060; no full application support claim |
 | uv / locks | Lock research dependencies | uv 0.13.1; `uv.lock` resolved and synced; dependency hashes recorded |
 | NumPy/SciPy/pytest/Hypothesis/psutil | Scientific utilities and tests | Versions pinned in pyproject; executed semantic tests |
 | FastAPI/Pydantic | Typed local service after command-line prototype | Architecture retained; packages/API not implemented or integration-tested |

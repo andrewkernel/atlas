@@ -77,12 +77,16 @@ def main() -> int:
     for script, evidence in (
         ('equivalence_calibration.py', 'equivalence-calibration.json'),
         ('state_replay_probes.py', 'state-replay-probes.json'),
+        ('cuda_memory_probe.py', 'cuda-memory-probe.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
             failures.append(f'Recorded source hash no longer matches: {script}')
     if len(list((ROOT/'docs/research/papers').glob('*.md'))) < 25:
         failures.append('Paper notes/index missing')
+    cuda_environment=json.loads((ROOT/'docs/research/experiments/cuda-probe-environment.json').read_text(encoding='utf-8'))
+    if cuda_environment['requirements_sha256'] != hashlib.sha256((ROOT/'configs/cuda-probe-windows-py312-requirements.txt').read_bytes()).hexdigest():
+        failures.append('CUDA requirements identity does not match its environment record')
     print(json.dumps({'markdown_files':len(markdown),'local_links_checked':links,'unique_external_links_catalogued':len(external),'lock_package_count':len(lock['package']),'failures':failures},indent=2))
     return bool(failures)
 

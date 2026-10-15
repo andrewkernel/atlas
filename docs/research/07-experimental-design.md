@@ -1,6 +1,6 @@
 # Experimental design — proposed, not executed
 
-Only the [CPU semantic probes](experiments/README.md) have been executed. All resource, full-training, LLM and expert-labeling studies below are proposed. Freeze a protocol commit, manifest and analysis plan before confirmatory runs. Archive amendments with reasons; do not retroactively call exploratory decisions preregistered.
+The [experiment index](experiments/README.md) distinguishes executed CPU/statistical controls and a bounded synthetic CUDA fixture from the proposed studies. All real-workload selection, full-training, LLM and expert-labeling studies below are proposed. Freeze a protocol commit, manifest and analysis plan before confirmatory runs. Archive amendments with reasons; do not retroactively call exploratory decisions preregistered.
 
 ## Hypotheses and estimands
 
@@ -62,7 +62,7 @@ Also compare a fixed native strategy ordering and random ordering with fixed see
 
 ## Hardware tiers and measurement
 
-CPU-only is for correctness and integration. Physical 6–8 GB,12 GB,16 GB and 24 GB GPUs are proposed tiers. Only the host12 GB RTX 3060 was identified; no CUDA experiment was run here. Begin physical validation there after selecting a compatible CUDA build. Other tiers require borrowed hardware or explicitly optional resources. An allocator cap or reserved tensor on 12 GB hardware is an **emulated budget sensitivity study**, not an8 GB GPU benchmark: bandwidth, kernels, cache, compute and driver differ.
+CPU-only is for correctness and integration. Physical6–8 GB,12 GB,16 GB and24 GB GPUs are proposed tiers. The host12 GB RTX3060 now has [bounded synthetic CUDA evidence](experiments/cuda-memory-probe.md), separate from this planned real-workload study. Other tiers require borrowed hardware or explicitly optional resources. An allocator cap or reserved tensor on12 GB hardware is an **emulated budget sensitivity study**, not an8 GB GPU benchmark: bandwidth, kernels, cache, compute and driver differ.
 
 Run one workload at a time; record idle device use, temperature, power limits and background processes without changing user settings. Randomize policy order within workload/seed blocks. Record cold initialization separately; use5 warmup updates and 20 measured updates for initial profiling, extending only when timing precision warrants it. Capture at least one full initialization/first-optimizer-step peak and late/evaluation peaks. Synchronize CUDA around timing windows; keep instrumented diagnostic traces separate from low-overhead performance trials.
 

@@ -8,7 +8,7 @@ Start with the [executive assessment](docs/research/00-executive-assessment.md) 
 
 ## Evidence status
 
-Original offline CPU probes demonstrate loss-weighting, BatchNorm, RNG, checkpoint-state and update-timing failure modes. The expanded suite has17 passing tests, including40 generated accumulation cases, state-repair controls and a synthetic statistical-design calibration. **No GPU savings, full-training equivalence, LLM benefit or scientific-conclusion preservation was established.** The application has not been implemented. See [actual experiments](docs/research/experiments/README.md) and [open questions](docs/research/11-open-questions.md).
+Original offline CPU probes demonstrate loss-weighting, BatchNorm, RNG, checkpoint-state and update-timing failure modes. The expanded suite has17 passing tests, including40 generated accumulation cases, state-repair controls and a synthetic statistical-design calibration. [Eight synthetic GPU trials](docs/research/experiments/cuda-memory-probe.md) measure a memory/time tradeoff on the physical12 GB RTX3060. **No real-workload OOM rescue, full-training equivalence, LLM benefit or scientific-conclusion preservation was established.** The application has not been implemented. See [actual experiments](docs/research/experiments/README.md) and [open questions](docs/research/11-open-questions.md).
 
 ## Reproduce the bounded probes
 

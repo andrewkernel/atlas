@@ -1,0 +1,30 @@
+{
+  "recorded_utc": "2026-10-15T05:27:05.617943+00:00",
+  "scope": "Separate Windows Python3.12 CUDA fixture environment; does not alter CPU uv.lock",
+  "packages": [
+    "filelock==3.32.3",
+    "fsspec==2026.7.0",
+    "jinja2==3.1.6",
+    "markupsafe==3.0.3",
+    "mpmath==1.3.0",
+    "networkx==3.6.1",
+    "numpy==2.5.4",
+    "setuptools==78.1.0",
+    "sympy==1.14.0",
+    "torch==2.14.1+cu130",
+    "typing-extensions==4.16.0"
+  ],
+  "torch_wheel_url": "https://download-r2.pytorch.org/whl/cu130/torch-2.14.1%2Bcu130-cp312-cp312-win_amd64.whl",
+  "torch_wheel_advertised_sha256": "0a09031e93632d14ef49553acd6211ece3ae9cdc0969a369b8c24e3cc4d15be9",
+  "requirements_sha256": "c285e77f8e0f29a0c63d96cd8b1b0f3cb67fe15d6749c203b76c5695e1859405",
+  "post_run_device_telemetry_csv": "NVIDIA GeForce RTX 3060, 595.95, 12288 MiB, 1504 MiB, 52, 170.00 W",
+  "pre_run_device_telemetry_csv": "NVIDIA GeForce RTX 3060, 595.95, 12288 MiB, 1505 MiB, 51, 170.00 W",
+  "smoke_test": {
+    "cuda_available": true,
+    "tensor_add_result": [
+      2.0,
+      2.0
+    ]
+  },
+  "limitations": "No full system isolation, energy integration or control of desktop/background GPU use"
+}
