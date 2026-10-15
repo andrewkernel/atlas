@@ -19,6 +19,7 @@ The final handoff commit also tightens the primary question and records this sta
 - Local11-test CPU suite passes, including40 Hypothesis-generated partition cases; original and composed-update result files carry independent source hashes.
 - [Local validation capture](experiments/local-validation.json) records actual commands/outcomes and environment/lock digests.
 - [GitHub Actions run38685042339](https://github.com/andrewkernel/atlas/actions/runs/38685042339) passed the package at commit45477f4 on both Linux and Windows, including locked dependency sync, specification audit and CPU tests.
+- [Published-main run38685249751](https://github.com/andrewkernel/atlas/actions/runs/38685249751) also passed at9d5f687. Subsequent CI maintenance pins inspected Node24-based official action releases and an explicit Ubuntu image; current run status is available in the repository's Actions tab.
 - Documentation audit found no missing required files, broken relative links, invalid/nonfinite JSON, stale probe source hashes or placeholder markers. This does not establish citation completeness or scientific correctness of every statement.
 
 ## Duration and limits

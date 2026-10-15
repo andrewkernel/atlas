@@ -57,3 +57,8 @@ This is a bounded initial research/engineering investigation, not five hours of 
 - Tightened the primary question to an explicit safety/coverage comparison with native mechanisms plus existing checks under a fixed initial search budget. Added an expanded-access utility gate, while keeping full scientific-outcome claims separate.
 - Final recorded validation clock05:08:45 UTC, about30 minutes after the first04:39:05 clock. No five-hour duration claim. Handoff publication preserves the research branch and fast-forwards main; exact final revision is in Git history.
 - [Repository handoff](repository-status.md) records delivered files, evidence limits, CI link and immediate next coding task.
+
+## 2026-10-15 05:10 UTC — published-main validation and CI maintenance
+
+- Main and research branch were confirmed at9d5f687 with a clean local worktree. Main run38685249751 passed on both Linux and Windows.
+- CI emitted an actual Node20-action deprecation warning and an upcoming ubuntu-latest image migration notice. Inspected current official release metadata/action manifests; pinned checkout v7.0.1 and setup-python v7.0.0 by commit, both using Node24. Selected ubuntu-24.04 explicitly. This is CI maintenance, not additional scientific evidence.
