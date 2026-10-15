@@ -1,0 +1,583 @@
+{
+  "config": {
+    "atol": 1e-06,
+    "blocks": 4,
+    "bracket_budgets_mib": [
+      64,
+      128
+    ],
+    "budget_bytes": 16777216,
+    "graph_extractor": "rkgb_dynamo_with_named_x_wrapper",
+    "hidden": 128,
+    "input_shape": [
+      128,
+      64,
+      64
+    ],
+    "lr": 0.01,
+    "modes": [
+      "rotor_config",
+      "rockmate_config"
+    ],
+    "momentum": 0.9,
+    "rtol": 1e-05,
+    "seed": 1801,
+    "timeout_seconds": 180,
+    "updates": 8,
+    "warmup_updates": 3,
+    "width": 64
+  },
+  "environment_keys": [
+    "CUBLAS_WORKSPACE_CONFIG",
+    "MKL_NUM_THREADS",
+    "OMP_NUM_THREADS",
+    "PATH",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONHASHSEED",
+    "PYTHONNOUSERSITE",
+    "PYTHONPATH",
+    "SystemRoot",
+    "TEMP",
+    "TMP",
+    "TORCH_HOME",
+    "WINDIR"
+  ],
+  "review_sha256": "9148c94250b0e8337daf4133899ea7eed4a09d22c6f6431b9326ddcdc6f47486",
+  "scope": "Scoped compatibility/finite numerical control. No Atlas policy, whole-training equivalence, useful OOM rescue or general tool-performance claim.",
+  "source_sha256": "704a7364d394969dec94f631a9e0e639f8a4f2401450e89c11eda78c5967c0fa",
+  "started_utc": "20261015T064922Z",
+  "trials": [
+    {
+      "budget_mib": 64,
+      "candidate": {
+        "allocated_peak_bytes": 132923392,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.003577600000426173,
+        "reserved_peak_bytes": 236978176,
+        "update_seconds": [
+          0.0051185000338591635,
+          0.0034466999932192266,
+          0.0035955000203102827,
+          0.003562500001862645,
+          0.003599099989514798,
+          0.0035083999973721802,
+          0.003707899944856763,
+          0.003577600000426173
+        ]
+      },
+      "comparisons": {
+        "final_parameter": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_gradient": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_momentum": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_parameter": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        }
+      },
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "bracket_budgets_mib": [
+          64,
+          128
+        ],
+        "budget_bytes": 67108864,
+        "graph_extractor": "rkgb_dynamo_with_named_x_wrapper",
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "rotor_config",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "construction_seconds": 0.15598649997264147,
+      "constructor_parameter_max_abs_change": 0.0,
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "initial_state_sha256": "6f0833ac9df0d85fc6eaedd4a216dbb97806860771aca37f0ea84404babc54d1",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "legacy_sequential_initial_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "minor_parameter_node_count": 0,
+      "mode": "rotor_config",
+      "native_export_diagnostics": {
+        "direct_sequential_input": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [
+            "input_1 = input"
+          ],
+          "noncleanup_assignment_count": 17
+        },
+        "named_x_wrapper": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [],
+          "noncleanup_assignment_count": 16
+        }
+      },
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.0017672000103630126,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.11097310000332072,
+          0.008675999997649342,
+          0.002246699994429946,
+          0.002195199951529503,
+          0.0019426000071689487,
+          0.001760800019837916,
+          0.0017653999966569245,
+          0.0017672000103630126
+        ]
+      },
+      "outer_wall_seconds": 7.013370100001339,
+      "schedule_present": true,
+      "status": "completed",
+      "stderr_bytes": 737,
+      "stdout_bytes": 387
+    },
+    {
+      "budget_mib": 64,
+      "candidate": {
+        "allocated_peak_bytes": 132923392,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.00344480003695935,
+        "reserved_peak_bytes": 236978176,
+        "update_seconds": [
+          0.0052562999771907926,
+          0.0035121000255458057,
+          0.003564200014807284,
+          0.00344480003695935,
+          0.0032127000158652663,
+          0.0033920000423677266,
+          0.003568399988580495,
+          0.003653299994766712
+        ]
+      },
+      "comparisons": {
+        "final_parameter": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_gradient": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_momentum": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_parameter": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        }
+      },
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "bracket_budgets_mib": [
+          64,
+          128
+        ],
+        "budget_bytes": 67108864,
+        "graph_extractor": "rkgb_dynamo_with_named_x_wrapper",
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "rotor_config",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "construction_seconds": 0.15354819997446612,
+      "constructor_parameter_max_abs_change": 0.0,
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "initial_state_sha256": "6f0833ac9df0d85fc6eaedd4a216dbb97806860771aca37f0ea84404babc54d1",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "legacy_sequential_initial_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "minor_parameter_node_count": 0,
+      "mode": "rockmate_config",
+      "native_export_diagnostics": {
+        "direct_sequential_input": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [
+            "input_1 = input"
+          ],
+          "noncleanup_assignment_count": 17
+        },
+        "named_x_wrapper": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [],
+          "noncleanup_assignment_count": 16
+        }
+      },
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.00208910001674667,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.11465180001687258,
+          0.008076599973719567,
+          0.0017902999534271657,
+          0.00208910001674667,
+          0.00236909999512136,
+          0.0017807999975048006,
+          0.0017723999917507172,
+          0.0023711000103503466
+        ]
+      },
+      "outer_wall_seconds": 7.086412700009532,
+      "schedule_present": true,
+      "status": "completed",
+      "stderr_bytes": 737,
+      "stdout_bytes": 420
+    },
+    {
+      "budget_mib": 128,
+      "candidate": {
+        "allocated_peak_bytes": 132923392,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.0036514000385068357,
+        "reserved_peak_bytes": 236978176,
+        "update_seconds": [
+          0.005598700023256242,
+          0.004150699998717755,
+          0.0038730999804101884,
+          0.0034817999694496393,
+          0.0038563000271096826,
+          0.0036514000385068357,
+          0.0037317000096663833,
+          0.003604400029871613
+        ]
+      },
+      "comparisons": {
+        "final_parameter": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_gradient": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_momentum": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_parameter": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        }
+      },
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "bracket_budgets_mib": [
+          64,
+          128
+        ],
+        "budget_bytes": 134217728,
+        "graph_extractor": "rkgb_dynamo_with_named_x_wrapper",
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "rotor_config",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "construction_seconds": 0.15811960003338754,
+      "constructor_parameter_max_abs_change": 0.0,
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "initial_state_sha256": "6f0833ac9df0d85fc6eaedd4a216dbb97806860771aca37f0ea84404babc54d1",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "legacy_sequential_initial_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "minor_parameter_node_count": 0,
+      "mode": "rotor_config",
+      "native_export_diagnostics": {
+        "direct_sequential_input": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [
+            "input_1 = input"
+          ],
+          "noncleanup_assignment_count": 17
+        },
+        "named_x_wrapper": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [],
+          "noncleanup_assignment_count": 16
+        }
+      },
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.0019309999770484865,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.11450199998216704,
+          0.008825099968817085,
+          0.0021908999769948423,
+          0.0020755999721586704,
+          0.0017660000012256205,
+          0.0019309999770484865,
+          0.0017660000012256205,
+          0.0026985000004060566
+        ]
+      },
+      "outer_wall_seconds": 7.303831700002775,
+      "schedule_present": true,
+      "status": "completed",
+      "stderr_bytes": 737,
+      "stdout_bytes": 387
+    },
+    {
+      "budget_mib": 128,
+      "candidate": {
+        "allocated_peak_bytes": 132923392,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.0033262999495491385,
+        "reserved_peak_bytes": 236978176,
+        "update_seconds": [
+          0.005033399967942387,
+          0.0033074000384658575,
+          0.003564500017091632,
+          0.0034940000041387975,
+          0.0033262999495491385,
+          0.003086599987000227,
+          0.003108199976850301,
+          0.0035539999953471124
+        ]
+      },
+      "comparisons": {
+        "final_parameter": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_gradient": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_momentum": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        },
+        "first_parameter": {
+          "max_abs_error": 0.0,
+          "within_declared_tolerance": true
+        }
+      },
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "bracket_budgets_mib": [
+          64,
+          128
+        ],
+        "budget_bytes": 134217728,
+        "graph_extractor": "rkgb_dynamo_with_named_x_wrapper",
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "rotor_config",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "construction_seconds": 0.15206970000872388,
+      "constructor_parameter_max_abs_change": 0.0,
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "initial_state_sha256": "6f0833ac9df0d85fc6eaedd4a216dbb97806860771aca37f0ea84404babc54d1",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "legacy_sequential_initial_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "minor_parameter_node_count": 0,
+      "mode": "rockmate_config",
+      "native_export_diagnostics": {
+        "direct_sequential_input": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [
+            "input_1 = input"
+          ],
+          "noncleanup_assignment_count": 17
+        },
+        "named_x_wrapper": {
+          "call_function_node_count": 16,
+          "name_alias_assignments": [],
+          "noncleanup_assignment_count": 16
+        }
+      },
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.001941800001077354,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.11074389994610101,
+          0.008425500011071563,
+          0.002202100004069507,
+          0.001979900000151247,
+          0.0019539999775588512,
+          0.001941800001077354,
+          0.0017718999879434705,
+          0.001768200017977506
+        ]
+      },
+      "outer_wall_seconds": 7.0618747000116855,
+      "schedule_present": true,
+      "status": "completed",
+      "stderr_bytes": 737,
+      "stdout_bytes": 420
+    }
+  ]
+}
