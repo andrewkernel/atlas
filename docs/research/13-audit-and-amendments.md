@@ -45,3 +45,9 @@ For each substantive claim, distinguish paper-reported results, primary implemen
 Statistical calibration was checked through a separate mathematical integration and sampling route with boundary controls. These routes share a stated probability model; agreement does not validate that model for actual ML outcomes. The state probes include a negative control and a repaired positive control. Retain results that match unexpectedly, such as the single-dropout partition case, rather than selecting only counterexamples.
 
 The most important uncompleted audit remains the primary empirical comparison: native supported mechanisms plus existing state-aware checks versus Atlas under matched budgets. Until that is run, the selected contribution is provisional.
+
+A26: [Actual compatible-stack streaming integration](experiments/interop-controls.md) reuses existing snapshot/comparison code successfully and detects a deliberate perturbation. This closes a narrow execution gap and strengthens the baseline; it does not complete the held-out selection study.
+
+A27: [Comparison-policy controls](experiments/comparator-contract-control.md) show identical numerical tolerance parameters can denote different tensor/scalar predicates. Equality may also accept matching nonfinite values while health fails. Bind the exact formula and field policy; retain earlier implemented conventions.
+
+A28: [Gross-board replays](experiments/board-energy-control.md) now replace the earlier blanket absence of energy measurements. Complete same-seed workflows have higher gross counter readings for the combined plan, but counter/integrated-power disagreement prevents treating the APIs as interchangeable calibrated energy. Passive disagreement also persists, with cause unisolated.

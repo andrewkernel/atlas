@@ -36,3 +36,5 @@ The lock explicitly uses the official PyTorch CPU index; it does not validate CU
 Implement a trusted synthetic workload adapter and complete-update profiler with CPU fallback, explicit GPU-measurement availability and bounded worker lifecycle. The [first coding task](docs/roadmap/mvp-acceptance-criteria.md) names files, expected behavior and acceptance tests. FastAPI/MLflow, Ollama and the frontend follow only when their phase is justified.
 
 This repository was created separately from the read-only ChatGPT project mirror; synced references were preserved. The research log records actual work and unfinished evidence. Public licensing has not yet been selected by the owner.
+
+[Gross-board energy replays](docs/research/experiments/board-energy-control.md) now retain exact training replays and independently checked telemetry arithmetic. The combined plan has higher gross counter readings in all three same-seed pairs; substantial counter/power disagreement limits interpretation. These measurements establish neither energy savings nor calibrated process energy.

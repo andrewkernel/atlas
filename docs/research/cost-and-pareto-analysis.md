@@ -32,3 +32,7 @@ Evidence reuse is limited by its contract/code/data/environment scope. Do not am
 ## Implication for the optional LLM
 
 A fixed eight-plan registry bounds what ranking can discover. If every admissible candidate is exhaustively measured within the common wall/trial budget, reordering cannot improve the best observed feasible candidate; it can affect time to first useful plan, early stopping and explanation. An LLM must therefore demonstrate a benefit under those actual budget conditions after inference/unload/review costs. More fluent explanations or a newer model family do not by themselves justify a planning-performance claim.
+
+## Energy has its own measurement boundary
+
+The [same-seed board replays](experiments/board-energy-control.md) record higher gross counter energy in each combined-plan pair, with longer complete-workflow windows. Counter and integrated-power magnitudes disagree materially; preserve both and their units/windows. Shared background and repeated single-seed work prohibit process-attribution, population or calibrated energy claims. Memory reduction, time, energy and useful feasible completion remain separate objectives.

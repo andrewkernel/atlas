@@ -86,3 +86,5 @@ The [450 MiB allocator-cap control](cuda-budget-probe.md) records three OOMs and
 [Shared-stack integration](interop-controls.md) now runs the native checker, planned deferred checker, and a competent streaming adaptation using existing snapshot/comparison primitives in a mutually supported GPU stack. The latter passes initialized/post-update comparisons and detects a deliberate parameter change. The different control/process work is not a fair speedup benchmark.
 
 [Comparison-policy controls](comparator-contract-control.md) test exact tolerance conventions and nonfinite equality/health. Matching API parameter numbers do not define the full predicate, and existing comparison equality is not a healthy-reference certificate.
+
+[Gross-board energy replays](board-energy-control.md) preserve all six same-seed workflows, full counter/power traces, exact-rational arithmetic/replay checks and a passive discrepancy diagnostic. Counter/power disagreement remains unresolved; no energy savings, accuracy certificate or new independent training seeds are claimed.

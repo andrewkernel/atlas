@@ -14,7 +14,7 @@ The [machine-readable snapshot](dependency-snapshot.json) records exact installe
 | FastAPI |0.143.1 metadata only |>=3.10 | MIT; not installed or integration-tested |
 | Pydantic |2.14.1 metadata only |>=3.10 | MIT; not installed or integration-tested |
 | MLflow |3.17.1 metadata only |>=3.10 | Apache classifier/text; not installed or integration-tested |
-| nvidia-ml-py |13.615.71 metadata only |No requirement declared | BSD classifier; actual driver/API support and Python compatibility untested |
+| nvidia-ml-py |13.615.71 executed separately |No requirement declared | BSD metadata; read-only counter/power APIs run on Python 3.12.10 / RTX 3060 / driver 595.95; absolute accuracy unresolved |
 
 Python 3.12.10 is admitted by explicit requirements for the listed packages with requirements. **Missing** requirement metadata is unknown, not a compatibility guarantee. Successful environment resolution and CPU tests are stronger evidence for that narrow setup than metadata alone, but do not validate all combinations of optional components.
 
@@ -27,3 +27,5 @@ Model licenses were checked individually: Qwen3-4B and Qwen2.5-Coder-7B are tagg
 Fashion-MNIST declares MIT. WikiText's pinned card has inconsistent licensing metadata/prose; resolve before acquiring/redistributing planned inputs. SST-2 metadata says unknown and was not selected as the default. These findings are recorded so future sessions do not silently treat online availability as established reuse rights.
 
 A third [shared interop environment](experiments/interop-environment.json) pins Python 3.11.17/Torch 2.13.0+cu130/NumPy 2.4.6 within both inspected version ranges. Its official CUDA wheel/dependency hashes and actual finite controls are recorded separately; no historical environment or core lock was modified.
+
+[Read-only telemetry](experiments/board-energy-control.md) uses its own one-package [hash-pinned requirements](../../configs/telemetry-windows-py312-requirements.txt). The recorded installed binding source hash binds the finite availability/workload/passive captures; it does not establish general device support or calibration.

@@ -18,12 +18,12 @@ Priorities: **P0** changes the credibility of the research question; **P1** is r
 | P1 | Are advanced checkpoint/compile APIs stable enough for a baseline? | Internal knobs can change | Pin version/API and validate behavior; allow baseline incompatibility with an explicit explanation |
 | P2 | Does an LLM improve ranking in a finite registry? | It may only add overhead | Equal-budget held-out ablation; no models downloaded or benchmarked |
 | P2 | Are6–8/16/24 GB hardware tiers accessible? | Cannot generalize from one board | Obtain physical access; allocator caps remain emulation |
-| P2 | Does energy decrease? | VRAM/time are inadequate proxies | Supported board energy or whole-system meter; no energy measurement here |
+| P2 | Does energy decrease? | VRAM/time are inadequate proxies | [Gross-board replays](experiments/board-energy-control.md) increase in all three pairs; resolve counter/power disagreement and attribution before calibrated claims |
 | P2 | Can hostile GPU workloads be isolated safely? | Trusted processes/Docker are insufficient | Dedicated security work; trusted-code-only MVP remains |
 
 ## Evidence maturity
 
-The continuation [updated recommendation](14-updated-recommendation.md) incorporates deeper existing-checker coverage and Rockmate successors. A real-data CNN pilot now completes, but it fits without optimization and does not resolve the P0 expanded-access or strong-baseline questions. Emergent composition cases, independent labels and a clean existing-system execution remain missing. New data improve feasibility evidence without establishing novelty.
+The continuation [updated recommendation](14-updated-recommendation.md) incorporates deeper existing-checker coverage and Rockmate successors. A real-data CNN pilot now completes, but it fits without optimization and does not resolve the P0 expanded-access or strong-baseline questions. New emergent composition cases and independent labels remain missing. Existing checker/planner execution and a supported streaming capture adaptation now exist in narrow fixtures; no held-out selection comparison is complete. New data improve feasibility evidence without establishing novelty.
 
 The repository contains a complete **initial blueprint**, a source-backed scoping review and bounded semantic demonstrations. It does not contain an exhaustive literature review, implemented application, confirmed academic novelty, validated benchmark corpus or completed primary study. Many paper notes are abstract-level; their read depth is disclosed. The three reviewer perspectives are authored critiques, not independent expert reviews.
 

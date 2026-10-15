@@ -4,7 +4,7 @@
 
 **Trusted-code-only execution.** Static file inspection is allowed without import. Target imports, model construction, profiling, FX tracing, dependency builds and checkpoint loading can execute code. The initial system accepts only reviewed builtin adapters and explicitly registered trusted local workloads. It must refuse newly downloaded/untrusted programs by default. A user acknowledgment does not create strong isolation.
 
-During this research session, only original reviewed probe/training code was executed; third-party research repositories were inspected through documentation/source, not run. Official binary dependencies were installed into separate local CPU/CUDA environments. The real-data pilot loaded only pinned Fashion-MNIST data with byte hashes and the retained notice; no downloaded program/model code ran. No elevated privileges or remote installer scripts were used.
+The initial research executed original reviewed probes. Later controls additionally execute pinned, scoped-reviewed TrainParity and Rockmate/rkgb source on authored allowlisted cases, plus inspected read-only NVML wrappers. Review manifests and exact execution scopes are retained. No foreign fixture/model program, source build hook, external checkpoint or arbitrary workload was executed. Official binary dependencies were installed into separate local environments. The real-data pilot loaded pinned Fashion-MNIST data with byte hashes and its retained notice. No elevated privileges or remote installer scripts were used.
 
 ## Threats and controls
 

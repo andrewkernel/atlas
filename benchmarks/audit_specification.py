@@ -94,6 +94,10 @@ def main() -> int:
         ('planner_reuse_nonrecompute_control.py', 'planner-reuse-nonrecompute-control.json'),
         ('run_interop_controls.py', 'interop-controls.json'),
         ('comparator_contract_control.py', 'comparator-contract-control.json'),
+        ('nvml_availability_probe.py', 'nvml-availability.json'),
+        ('board_energy_control.py', 'board-energy-control.json'),
+        ('derive_board_energy.py', 'board-energy-derived.json'),
+        ('passive_energy_control.py', 'passive-energy-control.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
@@ -195,6 +199,27 @@ def main() -> int:
         failures.append('Comparator serialization helper identity is stale')
     if comparator['review_sha256'] != hashlib.sha256((ROOT/'docs/research/competitors/trainparity-execution-review.json').read_bytes()).hexdigest():
         failures.append('Comparator review identity is stale')
+    energy=json.loads((ROOT/'docs/research/experiments/board-energy-control.json').read_text(encoding='utf-8'))
+    availability=json.loads((ROOT/'docs/research/experiments/nvml-availability.json').read_text(encoding='utf-8'))
+    if energy['fixture_source_sha256'] != fashion_result['source_sha256'] or energy['binding_sha256'] != availability['binding_sha256']:
+        failures.append('Energy fixture/binding identity is stale')
+    if energy['constant_power_unit_control_j'] != 200:
+        failures.append('Energy integration unit control differs from 200 J')
+    intended=[(t['pair'],t['candidate']) for t in energy['order']]
+    observed=[(t['pair'],t['candidate']) for t in energy['trials']]
+    if observed != intended or set(observed) != {(p,a) for p in range(energy['config']['pairs']) for a in (False,True)} or len(set(observed)) != len(observed):
+        failures.append('Energy intended-run denominator is incomplete/duplicated')
+    canonical=lambda value:hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()
+    if energy['reference_canonical_json_sha256'] != canonical(fashion_result):
+        failures.append('Energy original-training record identity is stale')
+    energy_derived=json.loads((ROOT/'docs/research/experiments/board-energy-derived.json').read_text(encoding='utf-8'))
+    for name,expected_digest in energy_derived['input_canonical_json_sha256'].items():
+        value=json.loads((ROOT/'docs/research/experiments'/name).read_text(encoding='utf-8'))
+        if canonical(value) != expected_digest:
+            failures.append(f'Energy derivation input identity is stale: {name}')
+    passive=json.loads((ROOT/'docs/research/experiments/passive-energy-control.json').read_text(encoding='utf-8'))
+    if passive['helper_source_sha256'] != energy['source_sha256'] or passive['binding_sha256'] != availability['binding_sha256']:
+        failures.append('Passive telemetry source/binding identity is stale')
     for name,expected_digest in derived['input_canonical_json_sha256'].items():
         value=json.loads((ROOT/'docs/research/experiments'/name).read_text(encoding='utf-8'))
         actual=hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()

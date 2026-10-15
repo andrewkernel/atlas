@@ -41,3 +41,7 @@ The continuation also adds four published allocator-cap trials, statistical assu
 ## Next task
 
 Implement the trusted adapter/profiler vertical slice in [acceptance criteria](../roadmap/mvp-acceptance-criteria.md). Keep the required research question and composed native+checker baseline intact. Revisit the project if that comparison shows no incremental benefit.
+
+## Later execution and telemetry audit
+
+Reviewed TrainParity controls, adapted Rockmate-family planning, constructor-state/reuse controls and a shared supported-stack streaming capture baseline now execute. [Comparison-predicate controls](experiments/comparator-contract-control.md) and [gross-board telemetry](experiments/board-energy-control.md) refine interpretation. Earlier execution/energy absences above are historical checkpoints. The primary independently labeled selection study, genuine useful OOM rescue, local-model inference and full application remain unfinished. Cross-platform checkpoint 0966144 passed run 38701101879; consult Git history/Actions for the final published commit.
