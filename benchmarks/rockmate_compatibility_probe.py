@@ -20,6 +20,7 @@ CONFIG = {
     "input_shape": [128, 64, 64], "budget_bytes": 16 * 1024**2,
     "updates": 8, "warmup_updates": 3, "lr": 0.01, "momentum": 0.9,
     "modes": ["rotor_config", "rockmate_config"],
+    "graph_extractor": "rkgb_supported_jit_fallback",
     "timeout_seconds": 180, "rtol": 1e-5, "atol": 1e-6,
 }
 
@@ -115,21 +116,24 @@ def worker(mode: str, output: Path) -> None:
         phase = "planner_construction"
         started = time.perf_counter()
         common = {"gpu_optim": None, "cpu_optim": None, "minor_offload_size": 0}
-        if mode == "rotor_config":
-            config = rockmate.generate_config("rotor")
-            config.solver.top.rotor.force_python = True
-            config.partitioner.sequence.sub_partitioner = "base"
-            candidate = rockmate.from_config(model, x, CONFIG["budget_bytes"], config=config, **common)
-        elif mode == "rockmate_config":
-            config = rockmate.generate_config("rockmate")
-            config.solver.top.rotor.force_python = True
+        if mode not in CONFIG["modes"]:
+            raise ValueError(mode)
+        config = rockmate.generate_config("rotor" if mode == "rotor_config" else "rockmate")
+        config.solver.top.rotor.force_python = True
+        config.partitioner.sequence.sub_partitioner = "base"
+        if mode == "rockmate_config":
             config.solver.bottom.hilp.time_limit = 2
             config.solver.bottom.hilp.nb_bdg_save = 2
             config.solver.bottom.hilp.nb_bdg_peak = 2
             config.solver.bottom.hilp.nb_total_sched = 5
-            candidate = rockmate.from_config(model, x, CONFIG["budget_bytes"], config=config, **common)
-        else:
-            raise ValueError(mode)
+        import rkgb
+        phase = "planner_graph_jit_fallback"
+        graph = rkgb.Result(model, x, inspection_device=torch.device("cuda"),
+                            use_jit_instead_of_dynamo=True,
+                            partitioners=[rkgb.partitioned.PartitionerSequence(sub_partitioner="base")],
+                            print_time_in_each_stage=True)
+        phase = "planner_construction_from_jit_graph"
+        candidate = rockmate.from_config(model, x, CONFIG["budget_bytes"], config=config, rkgb_res=graph, **common)
         torch.cuda.synchronize()
         result["construction_seconds"] = time.perf_counter() - started
         result["schedule_present"] = candidate.op_sched is not None

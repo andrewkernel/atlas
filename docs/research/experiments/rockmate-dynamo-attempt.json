@@ -1,0 +1,184 @@
+{
+  "config": {
+    "atol": 1e-06,
+    "blocks": 4,
+    "budget_bytes": 16777216,
+    "hidden": 128,
+    "input_shape": [
+      128,
+      64,
+      64
+    ],
+    "lr": 0.01,
+    "modes": [
+      "rotor_config",
+      "rockmate_config"
+    ],
+    "momentum": 0.9,
+    "rtol": 1e-05,
+    "seed": 1801,
+    "timeout_seconds": 180,
+    "updates": 8,
+    "warmup_updates": 3,
+    "width": 64
+  },
+  "environment_keys": [
+    "CUBLAS_WORKSPACE_CONFIG",
+    "MKL_NUM_THREADS",
+    "OMP_NUM_THREADS",
+    "PATH",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONHASHSEED",
+    "PYTHONNOUSERSITE",
+    "PYTHONPATH",
+    "SystemRoot",
+    "TEMP",
+    "TMP",
+    "TORCH_HOME",
+    "WINDIR"
+  ],
+  "historical_source_commit": "d967b1d",
+  "interpretation": "Third attempt passes native export precision handling but both configured paths stop at rkgb RawGraph._init_using_dynamo assignment/node-count assertion. No candidate schedule/training or algorithm comparison. Native reference completes eight updates in each worker.",
+  "review_sha256": "9148c94250b0e8337daf4133899ea7eed4a09d22c6f6431b9326ddcdc6f47486",
+  "scope": "Scoped compatibility/finite numerical control. No Atlas policy, whole-training equivalence, useful OOM rescue or general tool-performance claim.",
+  "source_sha256": "86f2a7e64aeb29b413af656507e5db60681e6663347d3f5a75f3d13c9e151a83",
+  "started_utc": "20261015T064335Z",
+  "trials": [
+    {
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "budget_bytes": 16777216,
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "rotor_config",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "error_message": "",
+      "error_type": "AssertionError",
+      "failed_phase": "planner_construction",
+      "initial_state_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "mode": "rotor_config",
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.0019497000030241907,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.11125939997145906,
+          0.008038799976930022,
+          0.0018837000243365765,
+          0.0025808000355027616,
+          0.0019497000030241907,
+          0.0021621999912895262,
+          0.0018765000277198851,
+          0.0017657999997027218
+        ]
+      },
+      "outer_wall_seconds": 6.765721699979622,
+      "status": "error",
+      "stderr_bytes": 393,
+      "stdout_bytes": 151,
+      "traceback": "Traceback (most recent call last):\n  File \"<atlas>\\benchmarks\\rockmate_compatibility_probe.py\", line 122, in worker\n    candidate = rockmate.from_config(model, x, CONFIG[\"budget_bytes\"], config=config, **common)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rockmate\\src\\rockmate\\frontend.py\", line 139, in from_config\n    return Rockmate(model, model_inputs, budget, top_solvers=top_solvers, bottom_solvers=bottom_solvers,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rockmate\\src\\rockmate\\rockmate.py\", line 93, in __init__\n    self.get_rkgb_result(model_inputs, model_kwargs, minor_offload_size)\n  File \"<atlas>\\.tools\\rockmate-review\\rockmate\\src\\rockmate\\rockmate.py\", line 115, in get_rkgb_result\n    self.rkgb_res = rkgb.rkgb.Result(\n                    ^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\rkgb.py\", line 50, in __init__\n    if \"R\" in wanted_graphs: self.build_raw()\n                             ^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\rkgb.py\", line 81, in build_raw\n    self.raw_graph = RawGraph(\n                     ^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\core\\raw.py\", line 93, in __init__\n    self._init_using_dynamo(\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\core\\raw.py\", line 277, in _init_using_dynamo\n    assert(len(dynamo_assignment_nodes)==len(assignment_codes))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    },
+    {
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "budget_bytes": 16777216,
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "rotor_config",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "error_message": "",
+      "error_type": "AssertionError",
+      "failed_phase": "planner_construction",
+      "initial_state_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "mode": "rockmate_config",
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.0018278000061400235,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.11440729995956644,
+          0.008453400048892945,
+          0.002648400026373565,
+          0.0018278000061400235,
+          0.001747800037264824,
+          0.0020345000084489584,
+          0.001748699985910207,
+          0.002307399990968406
+        ]
+      },
+      "outer_wall_seconds": 6.891172600036953,
+      "status": "error",
+      "stderr_bytes": 393,
+      "stdout_bytes": 184,
+      "traceback": "Traceback (most recent call last):\n  File \"<atlas>\\benchmarks\\rockmate_compatibility_probe.py\", line 130, in worker\n    candidate = rockmate.from_config(model, x, CONFIG[\"budget_bytes\"], config=config, **common)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rockmate\\src\\rockmate\\frontend.py\", line 139, in from_config\n    return Rockmate(model, model_inputs, budget, top_solvers=top_solvers, bottom_solvers=bottom_solvers,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rockmate\\src\\rockmate\\rockmate.py\", line 93, in __init__\n    self.get_rkgb_result(model_inputs, model_kwargs, minor_offload_size)\n  File \"<atlas>\\.tools\\rockmate-review\\rockmate\\src\\rockmate\\rockmate.py\", line 115, in get_rkgb_result\n    self.rkgb_res = rkgb.rkgb.Result(\n                    ^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\rkgb.py\", line 50, in __init__\n    if \"R\" in wanted_graphs: self.build_raw()\n                             ^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\rkgb.py\", line 81, in build_raw\n    self.raw_graph = RawGraph(\n                     ^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\core\\raw.py\", line 93, in __init__\n    self._init_using_dynamo(\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\core\\raw.py\", line 277, in _init_using_dynamo\n    assert(len(dynamo_assignment_nodes)==len(assignment_codes))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    }
+  ]
+}
