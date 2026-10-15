@@ -1,0 +1,11 @@
+{
+  "project_id": "appgprj_6ad15203468c81919da383fd7193f77e",
+  "version_id": "appgprj_6ad15203468c81919da383fd7193f77e~appgver_cd9c894b88688191a56e7c22c5c39bb3",
+  "deployment_id": "appgdep_6ad155f50b7481918e056103cab0b810",
+  "site_source_commit": "882a90a381673e8be76505acc9383cec8cce4cd1",
+  "status": "succeeded",
+  "audience": "owner-private",
+  "url": "https://atlas-research-dashboard.andrewdang357.chatgpt.site",
+  "verified_utc": "2026-10-15T22:38:51.503166+00:00",
+  "verification": "Native owner-private save/deploy succeeded. Browser handoff reaches the expected ChatGPT sign-in gate. Dashboard behavior was verified against matching local assets."
+}

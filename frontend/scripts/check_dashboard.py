@@ -46,6 +46,10 @@ def check():
         failures.append('Resource configuration/update denominator changed.')
     if len(recorded['environments']) != 8 or sum(e['checkedSources'] for e in recorded['environments']) != 54:
         failures.append('Environment coverage changed.')
+    qa = json.loads((FRONTEND/'qa-record.json').read_text(encoding='utf-8'))
+    for name, expected in qa['source_sha256'].items():
+        if hashlib.sha256((FRONTEND/name).read_bytes()).hexdigest() != expected:
+            failures.append('Saved browser QA source identity is stale: '+name)
     result = {'first_load_source_bytes':total,'budget_bytes':128_000,'asset_bytes':sizes,
               'gzip_estimate_bytes':sum(len(gzip.compress((FRONTEND/name).read_bytes(),mtime=0)) for name in INITIAL),
               'scope':'Uncompressed local source bytes and gzip estimate; not observed network transfer, LCP or an internet-latency guarantee.', 'failures':failures}
