@@ -1,0 +1,179 @@
+{
+  "captured_utc": "2026-10-15T15:44:09.832140+00:00",
+  "fixture": [
+    {
+      "paragraphs": [
+        {
+          "qas": [
+            {
+              "answers": [
+                {
+                  "text": "Paris"
+                }
+              ],
+              "id": "a"
+            },
+            {
+              "answers": [
+                {
+                  "text": "blue"
+                }
+              ],
+              "id": "b"
+            },
+            {
+              "answers": [
+                {
+                  "text": "two"
+                }
+              ],
+              "id": "c"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "git_head_at_execution": "fab240a7c5defeb597606626060d084fb786c69f",
+  "python": "3.12.10",
+  "reviewed_metric_source_sha256": "710840ce2c2c61716334c056777032f24660b83eb9869a451036e6a24d8103c4",
+  "scope": "Invented three-question control of six reviewed v2 functions only. No official CLI, model/data scoring, v1.1 replication, field incidence or upstream defect claim. Fixed-ID guard is an Atlas research wrapper precondition; not a new metric.",
+  "selected_ast_sha256": "c66941ff77d200bf08e13efb827ff415baf5e14b7089591041c3de15549e9598",
+  "selected_functions": [
+    "normalize_answer",
+    "get_tokens",
+    "compute_exact",
+    "compute_f1",
+    "get_raw_scores",
+    "make_eval_dict"
+  ],
+  "source_sha256": "420407c0aee988ebc4bbe5be676f66aea1431f94cdbb6b2d47d01b3b59c66e22",
+  "trials": [
+    {
+      "aggregate_default": {
+        "exact": 33.333333333333336,
+        "f1": 33.333333333333336,
+        "total": 3
+      },
+      "aggregate_explicit_ids": {
+        "exact": 33.333333333333336,
+        "f1": 33.333333333333336,
+        "total": 3
+      },
+      "aggregation_error": null,
+      "case": "complete",
+      "coverage_guard": {
+        "missing": [],
+        "status": "complete",
+        "unexpected": []
+      },
+      "exact_by_id": {
+        "a": 1,
+        "b": 0,
+        "c": 0
+      },
+      "explicit_ids_error": null,
+      "f1_by_id": {
+        "a": 1.0,
+        "b": 0,
+        "c": 0
+      },
+      "predictions": {
+        "a": "Paris",
+        "b": "wrong",
+        "c": "wrong"
+      },
+      "warnings": ""
+    },
+    {
+      "aggregate_default": {
+        "exact": 50.0,
+        "f1": 50.0,
+        "total": 2
+      },
+      "aggregate_explicit_ids": null,
+      "aggregation_error": null,
+      "case": "missing_c",
+      "coverage_guard": {
+        "missing": [
+          "c"
+        ],
+        "status": "error",
+        "unexpected": []
+      },
+      "exact_by_id": {
+        "a": 1,
+        "b": 0
+      },
+      "explicit_ids_error": "KeyError",
+      "f1_by_id": {
+        "a": 1.0,
+        "b": 0
+      },
+      "predictions": {
+        "a": "Paris",
+        "b": "wrong"
+      },
+      "warnings": "Missing prediction for c\n"
+    },
+    {
+      "aggregate_default": {
+        "exact": 33.333333333333336,
+        "f1": 33.333333333333336,
+        "total": 3
+      },
+      "aggregate_explicit_ids": {
+        "exact": 33.333333333333336,
+        "f1": 33.333333333333336,
+        "total": 3
+      },
+      "aggregation_error": null,
+      "case": "unexpected_id",
+      "coverage_guard": {
+        "missing": [],
+        "status": "error",
+        "unexpected": [
+          "extra"
+        ]
+      },
+      "exact_by_id": {
+        "a": 1,
+        "b": 0,
+        "c": 0
+      },
+      "explicit_ids_error": null,
+      "f1_by_id": {
+        "a": 1.0,
+        "b": 0,
+        "c": 0
+      },
+      "predictions": {
+        "a": "Paris",
+        "b": "wrong",
+        "c": "wrong",
+        "extra": "ignored"
+      },
+      "warnings": ""
+    },
+    {
+      "aggregate_default": null,
+      "aggregate_explicit_ids": null,
+      "aggregation_error": "ZeroDivisionError",
+      "case": "all_missing",
+      "coverage_guard": {
+        "missing": [
+          "a",
+          "b",
+          "c"
+        ],
+        "status": "error",
+        "unexpected": []
+      },
+      "exact_by_id": {},
+      "explicit_ids_error": "KeyError",
+      "f1_by_id": {},
+      "predictions": {},
+      "warnings": "Missing prediction for a\nMissing prediction for b\nMissing prediction for c\n"
+    }
+  ]
+}

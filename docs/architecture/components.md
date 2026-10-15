@@ -49,7 +49,7 @@ The proposed planner includes identity, deduplicates candidates and rejects inco
 
 Checks consume named phase snapshots, not arbitrary logs or LLM prose. Compare baseline self-consistency first. A `CheckResult` contains predicate ID/version, dimension, outcome, status, scope, assumptions, evidence references, tolerance/test specification and failure location. The [claim-applicability refinement](claim-applicability.md) separates execution, observation, predicate result and claim assessment, including arithmetic/field precision and dependencies. “First observed divergence” is an observation, not a root-cause diagnosis.
 
-Aggregate eligibility requires all contract-required checks to pass and no incompatible preconditions. Unchecked statistical/conclusion dimensions remain explicitly unverified when not required by a short-probe contract. No process that generated a candidate may authorize a waiver.
+Aggregate eligibility requires every contract-required claim to be supported by applicable evidence, its required checks to pass, and no incompatible preconditions. A literal PASS with a missing reference/objective prerequisite cannot satisfy that claim. Unchecked statistical/conclusion dimensions remain explicitly unverified when not required by a short-probe contract. No process that generated a candidate may authorize a waiver.
 
 ## Tracking and persistence
 

@@ -37,6 +37,7 @@ def audit(root=ROOT):
         ('snapshot_post_continuation_environments.py', 'post-study-environments.json'),
         ('qa_default_attention_control.py', 'qa-default-attention-control.json'),
         ('qa_evaluation_source_screen.py', 'qa-evaluation-source-screen.json'),
+        ('qa_metric_coverage_control.py', 'qa-metric-coverage-control.json'),
     ):
         records[name] = load(name)
         if records[name]['source_sha256'] != digest('benchmarks/' + script):
@@ -50,6 +51,23 @@ def audit(root=ROOT):
         failures.append('QA evaluation decoder source identity inconsistent')
     if [entry['status'] for entry in evaluation['records']] != ['http_error', 'retrieved'] or evaluation['records'][0]['http_status'] != 404:
         failures.append('QA evaluation source retrieval/version boundary changed')
+    metric = records['qa-metric-coverage-control.json']
+    if metric['reviewed_metric_source_sha256'] != evaluation['records'][1]['sha256']:
+        failures.append('QA metric control reviewed source identity inconsistent')
+    metric_trials = metric['trials']
+    if [t['case'] for t in metric_trials] != ['complete', 'missing_c', 'unexpected_id', 'all_missing']:
+        failures.append('QA metric intended-case denominator inconsistent')
+    else:
+        if [t['coverage_guard']['status'] for t in metric_trials] != ['complete', 'error', 'error', 'error']:
+            failures.append('QA metric coverage guard control inconsistent')
+        for trial in metric_trials:
+            aggregate = trial['aggregate_default']
+            if aggregate is not None:
+                scores = trial['exact_by_id']
+                if aggregate['total'] != len(scores) or aggregate['exact'] != 100. * sum(scores.values()) / len(scores):
+                    failures.append('QA metric aggregate arithmetic inconsistent')
+        if metric_trials[1]['explicit_ids_error'] != 'KeyError' or metric_trials[3]['aggregation_error'] != 'ZeroDivisionError':
+            failures.append('QA metric missing-score exception control inconsistent')
     if assets['source_screen_sha256'] != digest('docs/research/workload-screen/qa-source-screen.json'):
         failures.append('QA acquisition source-screen identity stale')
     features = records['qa-feature-manifest.json']

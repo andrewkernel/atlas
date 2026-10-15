@@ -10,6 +10,8 @@ The inspected [official SQuAD v2 evaluator](https://github.com/rajpurkar/SQuAD-e
 
 The guessed v1.1 evaluator path returns 404 at this revision; the actual repository file is v2.0. [Capture and read scope](qa-evaluation-source-screen.json) preserve that distinction. Neither evaluator was imported or executed. Reusing selected answerable-question metric definitions would be an explicitly versioned Atlas evaluation recipe, not a replicated official v1.1 protocol. The [dataset site](https://rajpurkar.github.io/SQuAD-explorer/) distinguishes the answerable v1.1 task from the v2 no-answer task.
 
+Subsequent bounded follow-up: [four invented-data controls](qa-metric-coverage-control.md) now execute six fixed reviewed metric functions, confirming the coverage precondition. The complete foreign module/CLI is still not run, and no dataset/model quality score is produced. This updates the initial text-only read scope without relabeling it as full protocol replication.
+
 ## Freeze before acquisition or training
 
 1. Use the answerable v1.1 task initially. Record source revision/URL, license, byte digest, all question IDs and article membership for separately acquired training/development data. No development data has been acquired for the current segment studies. Check overlap/disjointness explicitly. A public development split can be an exploratory evaluation set but is not an untouched policy holdout after tuning on its scores.

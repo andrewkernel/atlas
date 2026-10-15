@@ -28,6 +28,10 @@ Use compare-and-set state transitions and idempotency keys to prevent duplicate 
 
 ## Artifact schema
 
+The [claim-applicability amendment](claim-applicability.md) separates an execution outcome, identity-bound observations, literal predicate evaluations and claim assessments. Persist their independent identities and dependency edges. A later evidence correction appends a superseding assessment with a reason; it does not edit a saved FAIL into PASS or erase historical observer defects. Hash the schema/conversion convention as well as the data values.
+
+Worker startup must establish a validated ownership boundary and actual interpreter identity before scientific execution. Record the fixed profile, runtime/backend/driver facts from that worker when available. The [Windows controls](../research/workload-screen/windows-job-control.md) validate a suspended-launch inheritance profile; an already-running-launcher assignment is retained as failed evidence. Linux needs separately tested ownership. An exit-zero record after group cancellation cannot satisfy completion without the ordered supervisor events, complete payload and required work counters. A post-study environment read is a separately dated artifact, not an update to an earlier run manifest.
+
 Each measurement stores name, value or null, units, scope/window, sampling interval, source and support/error reason. Each artifact stores relative logical URI, SHA256, byte length, media type and producer/run ID. Binary state may remain local; reports can point to keyed summaries and hashes. A hash proves identity of recorded bytes, not scientific correctness or that inputs were safe.
 
 Required phase observations: initialization; loss numerator/count; accumulated gradient; post-clip gradient if used; successful optimizer update; scheduler/scaler/EMA update; buffers; evaluation. Counters distinguish samples, valid targets, microsteps, attempted optimizer steps and successful updates. Timing uses a monotonic clock; timestamps use UTC plus client timezone metadata.
