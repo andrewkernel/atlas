@@ -1,0 +1,36 @@
+{
+  "captured_utc": "2026-10-15T22:37:31.154635+00:00",
+  "browser": "Codex in-app browser, local static preview",
+  "manual_checks": [
+    "attention and checkpoint filtering: two matching configurations",
+    "numeric memory sort: 1.86 GiB before 2.49 GiB",
+    "empty search and clear filters",
+    "mobile detail dialog opens and closes",
+    "six evidence entries and eight environment rows",
+    "memory and update-time chart switch",
+    "downloaded JSON parsed: eight configurations, frozen revision and scope",
+    "desktop and mobile document width matches viewport",
+    "browser error/warning log empty at initial verification"
+  ],
+  "observed_local_results_ready_ms": 58.3,
+  "observed_local_filter_dom_commit_ms": 1.3,
+  "latency_scope": "One local navigation and one filter sample. Not paint, INP, cold-cache, internet or hosted latency.",
+  "first_load_source_bytes": 115619,
+  "source_sha256": {
+    "index.html": "979d8ae617d82e2cb98fb90d33211a29c598f3bae6694a8adb0a75a7f3f1be6a",
+    "app.css": "b483ab7ffefe3170f8dbbd08f5d58fa7913591cefb1e6b52213e632179754068",
+    "app.js": "7b61a05d396f5a211375b0216434907b30712b4ab0f385ecd2861c94f1d4d0bc",
+    "data/snapshot.json": "89c2a26ad29e25ae5be9a0298da4aa116258acacd05b501cf8497bb0051084ba",
+    "assets/geist.woff2": "2ffebe993e969069a9789d15164b7715d42491b5835516c5e3b935d5f81b05f1"
+  },
+  "screenshots": [
+    "artifacts/dashboard/desktop.png",
+    "artifacts/dashboard/mobile.png"
+  ],
+  "other_checks": [
+    "node --check frontend/app.js",
+    "source-bound snapshot, font identity and 128000-byte budget",
+    "56 existing CPU/Windows lifecycle tests pass",
+    "specification/source/relative-link audit passes"
+  ]
+}

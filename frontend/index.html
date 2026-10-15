@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#faf8f5">
+  <meta name="description" content="Inspect Atlas's recorded training experiments, resource tradeoffs, and scoped fidelity evidence.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Experiments · Atlas</title>
+  <link rel="icon" href="assets/atlas.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/geist.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="app.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to results</a>
+  <aside class="sidebar" aria-label="Atlas navigation">
+    <a class="brand" href="#experiments"><img src="assets/atlas.svg" width="25" height="25" alt=""><span>Atlas</span></a>
+    <div class="project-name">Research workspace</div>
+    <nav>
+      <a href="#experiments" data-view="experiments" aria-current="page"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h5v5H3zm9 0h5v5h-5zM3 12h5v5H3zm9 0h5v5h-5z"/></svg>Experiments</a>
+      <a href="#evidence" data-view="evidence"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m10 2 6 2v5c0 4-6 8-6 8S4 13 4 9V4zM7 9l2 2 4-4"/></svg>Evidence</a>
+      <a href="#environment" data-view="environment"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="4" width="12" height="12" rx="1"/><path d="M7 1v3m6-3v3M7 16v3m6-3v3M1 7h3m-3 6h3M16 7h3m-3 6h3M7 7h6v6H7z"/></svg>Environments</a>
+    </nav>
+    <div class="sidebar-links"><a href="https://github.com/andrewkernel/atlas/tree/694bf49fd351f1315201f665414e021e224e03f5/docs/research" target="_blank" rel="noopener noreferrer">Research library <span aria-hidden="true">↗</span></a><a href="https://github.com/andrewkernel/atlas" target="_blank" rel="noopener noreferrer">Repository <span aria-hidden="true">↗</span></a></div>
+    <div class="machine"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="3" width="16" height="11" rx="1"/><path d="M7 18h6m-3-4v4"/></svg><div><strong>RTX 3060</strong><span>12 GB nominal · Windows</span></div></div>
+    <div class="snapshot-note">Saved research results<br>15 October 2026</div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar"><div class="breadcrumb"><span>Projects</span><span aria-hidden="true">/</span><span>Atlas</span><span aria-hidden="true">/</span><strong id="breadcrumb-view">Experiments</strong></div><a href="https://github.com/andrewkernel/atlas/blob/694bf49fd351f1315201f665414e021e224e03f5/docs/research/14-updated-recommendation.md" target="_blank" rel="noopener noreferrer">Research notes <span aria-hidden="true">↗</span></a></header>
+    <main id="main" tabindex="-1">
+      <div class="page-heading"><div><h1 id="page-title">Experiments</h1><p id="page-description">Native BERT QA · logical batch 32 · sequence length 384</p></div><button id="export" class="button" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3 13v4h14v-4"/></svg>Export results</button></div>
+      <div id="load-status" class="loading-state" role="status">Loading recorded results…</div>
+      <div id="content" hidden></div>
+      <noscript><p class="notice">JavaScript is needed to filter and inspect results. <a href="https://github.com/andrewkernel/atlas/tree/main/docs/research/workload-screen">Read the source records instead.</a></p></noscript>
+    </main>
+  </div>
+  <dialog id="mobile-inspector" aria-label="Experiment details"></dialog>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>

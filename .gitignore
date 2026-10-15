@@ -14,6 +14,8 @@ mlruns/
 mlartifacts/
 artifacts/
 data/
+!frontend/data/
+!frontend/data/snapshot.json
 weights/
 *.pt
 *.pth

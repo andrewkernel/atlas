@@ -22,6 +22,10 @@ Start with the [updated recommendation](docs/research/14-updated-recommendation.
 
 The [resource figure](docs/research/workload-screen/qa-resource-pilot.md), [workflow cost ledger](docs/research/workload-screen/qa-workflow-costs.md), [eight-environment reconciliation](docs/research/workload-screen/post-study-environments.md) and [claim-applicability design](docs/architecture/claim-applicability.md) separate measured quantities from claims they cannot establish. The cost ledger covers 25 worker windows/34 BERT model executions/144 updates, not the complete research or selection workflow.
 
+## Research dashboard
+
+The [private Atlas dashboard](https://atlas-research-dashboard.andrewdang357.chatgpt.site) provides a read-only experiment browser, resource comparison, scoped evidence inspector and environment inventory. It uses a small source-bound snapshot with browser-local filtering and export. This is the owner-requested inspection UI; the proposed training/optimization runner remains unbuilt. See [preview, refresh and publication instructions](frontend/README.md).
+
 ## Reproduce the bounded CPU checks
 
 With Python 3.12 and uv 0.13.1:

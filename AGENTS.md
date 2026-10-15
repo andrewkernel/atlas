@@ -14,7 +14,7 @@ The pinned built-in BERT constructor already defaults to SDPA. Do not credit Atl
 - `docs/research/`: evidence, paper notes, competitors, decisions and chronological log.
 - `docs/architecture/` and `docs/roadmap/`: implementation contracts and acceptance gates.
 - `src/atlas/`: future analysis, profiling, optimization, fidelity, experiments, inference and API modules.
-- `benchmarks/`: reviewed workload/probe code; `tests/`: meaningful positive/negative controls; `configs/`: versioned settings; `frontend/`: later inspection UI.
+- `benchmarks/`: reviewed workload/probe code; `tests/`: meaningful positive/negative controls; `configs/`: versioned settings; `frontend/`: implemented read-only, buildless research dashboard with source-bound snapshot. The live profiler/runner/API remains future work.
 
 ## Stack and conventions
 

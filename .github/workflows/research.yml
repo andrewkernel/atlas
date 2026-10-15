@@ -25,6 +25,8 @@ jobs:
         run: uv sync --locked
       - name: Validate specification links and manifests
         run: uv run --locked python benchmarks/audit_specification.py
+      - name: Validate dashboard source identities and first-load budget
+        run: uv run --locked python frontend/scripts/check_dashboard.py
       - name: Independently reconstruct saved energy arithmetic and replay identities
         run: uv run --locked python benchmarks/derive_board_energy.py
       - name: Check reconstructed evidence matches the published record
