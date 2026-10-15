@@ -102,8 +102,19 @@ def build_model(seed, attention, checkpointed, device):
     weights_path = ROOT / "weights/bert-base-uncased-pinned/model.safetensors"
     with safe_open(weights_path, framework="pt", device="cpu") as archive:
         keys = set(archive.keys())
-        supplied = {name: archive.get_tensor(name) for name in current if name in keys}
-        unused = sorted(keys - set(current))
+        mapping = {}
+        for original in keys:
+            name = original
+            if ".LayerNorm." in name:
+                if name.endswith(".gamma"):
+                    name = name[:-6] + ".weight"
+                elif name.endswith(".beta"):
+                    name = name[:-5] + ".bias"
+            assert name not in mapping, "Checkpoint key normalization collision"
+            mapping[name] = original
+        supplied = {name: archive.get_tensor(mapping[name]) for name in current if name in mapping}
+        unused = sorted(original for name, original in mapping.items() if name not in current)
+        loaded_key_renames = sum(name != mapping[name] for name in supplied)
         assert all(name.startswith(("cls.", "bert.pooler.")) for name in unused)
         result = model.load_state_dict(supplied, strict=False)
     assert sorted(result.missing_keys) == ["qa_outputs.bias", "qa_outputs.weight"]
@@ -120,6 +131,7 @@ def build_model(seed, attention, checkpointed, device):
     return model, {"initial_state_digest": initial,
                    "parameter_count": sum(p.numel() for p in model.parameters()),
                    "loaded_parameter_tensors": len(keys) - len(unused),
+                   "loaded_legacy_layernorm_key_renames": loaded_key_renames,
                    "unused_pretraining_keys": unused,
                    "initialized_qa_head_keys": sorted(result.missing_keys),
                    "attention_requested": attention, "checkpointed_layers": 12 if checkpointed else 0}

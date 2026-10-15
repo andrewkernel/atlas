@@ -1,0 +1,23 @@
+# Frozen native BERT QA resource-segment pilot
+
+This is a development resource screen on real QA inputs and pinned pretrained weights, not the primary independent-label selection study. The eight native configurations are eager/SDPA attention × microbatch 32/4 × checkpoint off/on. Run two same-seed fresh-process repetitions per configuration, randomized within repetition using seed 2502. Retain all sixteen intended OOM/error/timeout/unsupported outcomes; do not change model, data, logical batch or length in response to results.
+
+## Fixed recipe and observation scope
+
+Use the frozen 518-feature/512-question SQuAD training subset and its exact order, sequence length 384, logical batch 32, feature rows [0,256), model initialization seed 2501 and scientific-start Torch RNG seed 2503. Builtin BERT-base QA is FP32, uses the pinned encoder weights and a freshly initialized two-output head. No remote model/program, pickle checkpoint, evaluation set, model compile, mixed precision or offload runs. Explicit local loading checks all expected encoder keys; only the QA head remains initialized. The tiny compatibility smoke is a separate one-layer CPU case, not a profile of this model.
+
+Pre-execution header inspection finds legacy LayerNorm gamma/beta keys. Normalize only those suffixes to weight/bias, reject collisions, retain all encoder tensors without value changes, and require that precisely the two QA-head keys remain missing. Record the rename count and unused pretraining/pooler keys. This loading-format adaptation is fixed before resource measurements; no silently missing encoder weight is accepted.
+
+Optimizer is native AdamW: lr 3e-5, betas .9/.999, eps 1e-8, weight decay .01 except biases/LayerNorm weights, foreach/fused false. Clip the fully accumulated gradient once at norm 1, with nonfinite-norm checking. Constant learning rate applies only to this eight-update segment; no original TensorFlow optimizer/scheduler or complete-paper reproduction is claimed. Every feature has both endpoint labels in [0,383], so both per-head denominators are the number of feature examples. Weight each microbatch loss by its example count divided by 32.
+
+Perform one first update, two warmups and five measured complete updates. Capture initial model and scientific-start RNG identities; first post-update parameter/buffer, post-clip gradient and optimizer-state hashes; final model hash; loss, preclip norm and successful-update counts. First-microbatch log-softmax/gather independently checks the reported two-head loss value. Hash observations are descriptive, not tolerance/equivalence decisions. Dropout stays .1. Pathwise sameness is not assumed across microbatch shapes or attention kernels. TF32 is disabled; strict deterministic-algorithm mode is false and recorded.
+
+## Resource measurement
+
+Report first and later CUDA allocated/reserved peaks, prepared residency, synchronized complete-update times and outer owned-worker wall time. Update timing includes loss-health/scalar accounting, clipping, optimizer work and synchronization; atomic report writes and full-state hashing are outside those update windows but count in outer workflow time. Do not compare against historical timing. Five steps within a process and two repeated same-seed processes are not independent population samples.
+
+No artificial allocator cap is imposed. Torch allocated/reserved bytes are not board residency. Native Windows WDDM/shared-memory behavior remains a limitation; flag allocation peaks above nominal CUDA device bytes and do not infer exclusive VRAM fit from completion alone. Python SDPA labels do not identify actual kernels; a separately frozen dispatch diagnostic may be needed after these results.
+
+Use serial owned workers and the existing explicit minimal environment with offline model flags. Parent samples only its owned child's RSS/lifetime peak working set and system available memory every nominal 100 ms. Per-worker deadline is 180 s; sampled RSS above 8 GiB, system available memory below 4 GiB or logs above 16 MiB stops that owned child with an explicit reason. These are soft emergency guards, not hard isolation or GPU memory quotas. Preserve the last atomic partial worker result and all intended trials. No unrelated process or driver setting changes.
+
+Successful completion establishes only the stated 256-feature/eight-update segment under observed conditions. It does not complete SQuAD fine-tuning, demonstrate QA quality, certify full-run fidelity or satisfy the full useful-experiment access gate. If the native full-batch baseline fits, retain that negative result for the motivating memory gap. Any longer training requires a separately justified and frozen protocol.
