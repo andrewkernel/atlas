@@ -12,6 +12,14 @@ The inspected README permits Python>=3.11,<3.12 and PyTorch>=2.6,<2.14. That con
 
 Generic accumulation verification and abstention are not Atlas novelty. The candidate difference is contract-conditioned memory-plan selection and interactions with activation checkpointing; this must be demonstrated rather than inferred from missing marketing language. Review implementation/tests before claiming absent coverage. Do not confuse saved-checkpoint resume with activation recomputation checkpointing.
 
-## Next experiment
+## Deeper continuation inspection
+
+[Selected source/test identities](trainparity-source-inspection.json) now cover accumulation orchestration, its worker, snapshot capture, the accumulation test module and a fixture at the same pinned commit. No code was imported or executed.
+
+The worker explicitly captures named model buffers with parameters, keyed gradients including None, canonical optimizer state, scheduler/scaler state and loss numerator/denominator observations. The generic snapshot also supports RNG and extra state. Execution-plan fields include per-microbatch optimizer/scheduler stepping, partial-gradient clipping, omitted tails and AMP ordering faults. The inspected tests include clean/faulted fresh-process controls and explicit loss-accounting divergence; listing a fault field is not a runtime replication of every fault.
+
+This overlaps more of the proposed generic verifier than the original README-level review established. Buffer capture, abstention and state/update snapshots cannot be treated as Atlas distinctions. Its worker computes loss terms for all microbatches before their backwards; a different memory-conscious executor needs a fair adaptation/capability analysis, not an assumed drop-in equivalence. Do not infer unsupported full-training or checkpoint-composition guarantees from these bounded observations.
+
+## Remaining direct experiment
 
 Use shared authored loss/update cases and compare documented observation coverage in a compatible environment. Include native strategies plus this checker as a composed baseline; measure adaptation and orchestration costs. Current advertised validation numbers were not independently replicated here.

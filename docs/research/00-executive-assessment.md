@@ -2,6 +2,8 @@
 
 **Verdict: Proceed with modifications.** Atlas is credible as a small empirical systems project about constrained selection of memory-saving transformations. The original broad product is too ambitious for one undergraduate, and its broad novelty is contradicted by existing work. Do not describe Atlas as the first fidelity-aware optimizer or a verifier of scientific truth.
 
+The [updated recommendation](14-updated-recommendation.md) narrows this to a bounded benchmark/comparison pilot after deeper prior-art inspection and real-data training. Engineering feasibility improved; confidence in a distinct standalone optimizer/verifier contribution did not.
+
 ## What the evidence changes
 
 Automatic rematerialization is established in [Checkmate](https://arxiv.org/abs/1910.02653), [DTR](https://arxiv.org/abs/2006.09616), and [Rockmate](https://proceedings.mlr.press/v202/zhao23b.html). [DeepSpeed Autotuning](https://github.com/deepspeedai/DeepSpeed/blob/master/deepspeed/autotuning/README.md) already combines profiling, memory estimates and configuration search. Native PyTorch has [selective checkpointing and memory-budget-driven rematerialization](https://pytorch.org/blog/activation-checkpointing-techniques/). An integration of these features is useful engineering, but that alone is not a research contribution.
@@ -26,11 +28,13 @@ A Python 3.12 command-line library with a trusted adapter, CPU/CUDA profiler, fi
 
 ## Actual evidence from this session
 
-The [CPU probes](experiments/README.md) demonstrate unequal-loss weighting errors, BatchNorm sensitivity, checkpoint/dropout RNG effects, buffer changes despite matching gradients, and clipping/update-timing faults in a checkpoint-plus-accumulation composition. The continuation adds scoped state repair, RNG interleaving, unused-gradient/successful-update clocks and synthetic equivalence-power calibration;19 tests pass, including40 generated accumulation cases. These are bounded controls, not evidence for the primary selection hypothesis. No full training, LLM comparison, energy study, or human expert labeling was performed.
+The [CPU probes](experiments/README.md) demonstrate unequal-loss weighting errors, BatchNorm sensitivity, checkpoint/dropout RNG effects, buffer changes despite matching gradients, and clipping/update-timing faults in a checkpoint-plus-accumulation composition. The continuation adds scoped state repair, RNG interleaving, unused-gradient/successful-update clocks and statistical calibration;20 tests pass, including40 generated accumulation cases. These are bounded controls, not evidence for the primary selection hypothesis. No LLM comparison, energy study, or human expert labeling was performed.
 
 A separate CUDA environment now passes a native smoke test and [eight synthetic GPU trials](experiments/cuda-memory-probe.md) on the physical12 GB RTX3060. The combined plan lowers this fixture's allocated peak from about973 to378 MiB, with slower updates and small first-update numerical differences. No OOM real workload was rescued. No physical6–8,16 or24 GB tiers were tested, and no result supports a general24→8 GB reproduction claim. CPU CI and the original CPU lock remain separate.
 
 The [allocator-cap control](experiments/cuda-budget-probe.md) is explicitly emulated; two plans complete one update before failing later. The [composition audit](composition-evidence.md) also limits novelty: present controls do not yet demonstrate an emergent failure of individually valid transformations. Continue only to a bounded strong-baseline comparison before expanding the product.
+
+[Six real-data CNN pilots](experiments/fashion-pilot.md) now complete the frozen five-epoch protocol with three paired seeds. They show lower allocated memory, longer update time and small validation differences, with matching paired initialization/data order. This is exploratory training evidence; three pairs do not establish outcome equivalence or scientific-conclusion preservation.
 
 ## Three reasons to stop or pivot
 

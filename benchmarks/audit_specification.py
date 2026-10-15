@@ -99,6 +99,24 @@ def main() -> int:
     assumptions=json.loads((ROOT/'docs/research/experiments/statistical-assumption-audit.json').read_text(encoding='utf-8'))
     if assumptions['calibration_source_sha256'] != hashlib.sha256((ROOT/'benchmarks/equivalence_calibration.py').read_bytes()).hexdigest():
         failures.append('Statistical assumption audit calibration identity is stale')
+    fashion_manifest=json.loads((ROOT/'docs/research/experiments/fashion-data-manifest.json').read_text(encoding='utf-8'))
+    fashion_result=json.loads((ROOT/'docs/research/experiments/fashion-pilot.json').read_text(encoding='utf-8'))
+    if fashion_manifest['source_sha256'] != hashlib.sha256((ROOT/'benchmarks/prepare_fashion_data.py').read_bytes()).hexdigest():
+        failures.append('Fashion data preparation source identity is stale')
+    if fashion_result['source_sha256'] != hashlib.sha256((ROOT/'benchmarks/fashion_pilot.py').read_bytes()).hexdigest():
+        failures.append('Fashion pilot source identity is stale')
+    if fashion_result['dataset_manifest'] != fashion_manifest:
+        failures.append('Fashion pilot data manifest differs from acquisition record')
+    expected={(seed,arm) for seed in fashion_result['config']['seeds'] for arm in (False,True)}
+    observed={(trial['seed'],trial['candidate']) for trial in fashion_result['trials']}
+    if observed != expected or len(observed) != len(fashion_result['trials']):
+        failures.append('Fashion pilot intended-run denominator is incomplete/duplicated')
+    for seed in fashion_result['config']['seeds']:
+        pair=[trial for trial in fashion_result['trials'] if trial['seed']==seed]
+        if len(pair)==2 and all(trial['status']=='completed' for trial in pair):
+            for key in ('initial_state_digest','split_digest','sample_order_digest'):
+                if pair[0][key] != pair[1][key]:
+                    failures.append(f'Fashion paired identity mismatch: {seed}/{key}')
     print(json.dumps({'markdown_files':len(markdown),'local_links_checked':links,'unique_external_links_catalogued':len(external),'lock_package_count':len(lock['package']),'failures':failures},indent=2))
     return bool(failures)
 

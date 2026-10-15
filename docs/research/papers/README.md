@@ -6,7 +6,7 @@ These concise notes preserve metadata, the claim actually used, limitations and 
 |---|---|---|
 | [Checkmate: Breaking the Memory Wall with Optimal Tensor Rematerialization](checkmate.md) | 2020 (preprint 2019) | Paper formulation and evaluation setup inspected; not replicated. |
 | [Dynamic Tensor Rematerialization](dtr.md) | 2021 (preprint 2020) | Author abstract and project metadata inspected. |
-| [Rockmate: an Efficient, Fast, Automatic and Generic Tool for Re-materialization in PyTorch](rockmate.md) | 2023 | Proceedings abstract; repository metadata. |
+| [Rockmate: an Efficient, Fast, Automatic and Generic Tool for Re-materialization in PyTorch](rockmate.md) | 2023 |Selected graph/alias analysis and implementation/numerical appendix; pinned README; not replicated |
 | [EasyScale: Elastic Training with Consistent Accuracy and Improved Utilization on GPUs](easyscale.md) | 2023 (preprint 2022) | Design and consistency/overhead evaluation sections inspected. |
 | [Capuchin: Tensor-based GPU Memory Management for Deep Learning](capuchin.md) | 2020 | Author-hosted paper metadata and first-party overview. |
 | [ZeRO: Memory Optimizations Toward Training Trillion Parameter Models](zero.md) | 2019 preprint; 2020 published work | Abstract; DeepSpeed documentation inspected separately. |
@@ -33,3 +33,5 @@ These concise notes preserve metadata, the claim actually used, limitations and 
 | [PRAC: Principal-Random Subspace for LLM Activation Compression and Memory-Efficient Training](prac.md) |2026 |Abstract/metadata; estimator proof not audited |
 | [TorchProbe: Fuzzing Dynamic Deep Learning Compilers](torchprobe.md) |2023 |Abstract/metadata; no compiler execution |
 | [TensorFuzz: Debugging Neural Networks with Coverage-Guided Fuzzing](tensorfuzz.md) |2018 preprint |Specific preprint abstract/metadata; no execution |
+| [HiRemate: Hierarchical Approach for Efficient Re-materialization of Neural Networks](hiremate.md) |2025 |Proceedings abstract and pinned repository description; not replicated |
+| [OFFMATE: full fine-tuning of LLMs on a single GPU by re-materialization and offloading](offmate.md) |2024 preprint |Author-team report and pinned README; HAL paper page inaccessible |

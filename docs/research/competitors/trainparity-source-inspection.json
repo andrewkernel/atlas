@@ -1,0 +1,37 @@
+{
+  "retrieved_utc": "2026-10-15T05:49:37.524938+00:00",
+  "revision": "79a1fc23c36073f09b97aa99c2daad7e96e7bce4",
+  "files": [
+    {
+      "path": "src/trainparity/accumulation.py",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/accumulation.py",
+      "sha256": "36098d9fc15bedbaf9de4c17766222c7a36f4ad48b944d6519c7a404f558a2bf",
+      "lines": 370
+    },
+    {
+      "path": "src/trainparity/snapshot.py",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/snapshot.py",
+      "sha256": "6597b6c79e7aa98d549bb90c3bdd5dc2ee3ea1a4aeaadec38a2c8908a71dbdeb",
+      "lines": 168
+    },
+    {
+      "path": "tests/test_accumulation.py",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/tests/test_accumulation.py",
+      "sha256": "326f5af06cd55ec917a53ffc09ceaa168cfae58cf9fac871af0c8b663ca60025",
+      "lines": 188
+    },
+    {
+      "path": "tests/fixtures/accumulation_cases.py",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/tests/fixtures/accumulation_cases.py",
+      "sha256": "e98a635fab36404e653f58d7df99d61573bc826a97a49408762caf882c71ca9d",
+      "lines": 33
+    },
+    {
+      "path": "src/trainparity/accumulation_worker.py",
+      "url": "https://raw.githubusercontent.com/intelland/TrainParity/79a1fc23c36073f09b97aa99c2daad7e96e7bce4/src/trainparity/accumulation_worker.py",
+      "sha256": "b22fcdfb2525d180f3a1806ff6ecd726f6576119c08182d0bcd0cf2403cffb20",
+      "lines": 230
+    }
+  ],
+  "scope": "Selected source and test text inspected; no third-party code imported or executed"
+}

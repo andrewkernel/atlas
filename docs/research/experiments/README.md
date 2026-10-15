@@ -60,3 +60,9 @@ The original CPU experiments establish no optimizer/planner performance, full-tr
 The continuation's [synthetic CUDA experiment](cuda-memory-probe.md) now records allocated/reserved peaks, synchronized update timing and first-update state comparisons for four native configurations with two fresh-process repetitions each on the physical12 GB RTX3060. The [raw evidence](cuda-memory-probe.json) and [separate environment](cuda-probe-environment.json) document its scope. This supersedes the initial absence of any CUDA measurement; it does not establish primary policy efficacy, real-workload OOM rescue or scientific outcomes.
 
 The [450 MiB allocator-cap control](cuda-budget-probe.md) records three OOMs and one bounded completion, including completed-update counts and invalid driver-diagnostic flags. This is emulation on the12 GB board. The [CPU update-clock fixtures](update-clock-probes.md) record absent-versus-zero gradient behavior and a scaler-skip clock error;19 CPU tests now pass. Older test-count statements above refer to their dated checkpoints.
+
+## Real-data pilot and final calibration expansion
+
+[Six five-epoch Fashion-MNIST CNN pilots](fashion-pilot.md) now complete a protocol frozen before data acquisition/execution. Three paired pilot seeds show a32.7% allocated-memory reduction with slower updates and small differing validation endpoints; no conclusive equivalence or access claim. [Data manifest](fashion-data-manifest.json) records original training-file bytes; the canonical test set was untouched. This supersedes the initial absence of any real-data training, while retaining the limits of every earlier synthetic experiment.
+
+[Statistical assumption controls](statistical-assumption-audit.md) add model/SD/effect sensitivity and a rare-mixture counterexample; the current CPU suite has20 passing tests. Its constructed probabilities are not estimated ML failure frequencies.

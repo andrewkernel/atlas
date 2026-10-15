@@ -2,7 +2,7 @@
 
 ## Delivered
 
-Private GitHub repository: [andrewkernel/atlas](https://github.com/andrewkernel/atlas). The required research/architecture/roadmap documents,24 individual paper notes, detailed competitor comparison, six ADRs, root AGENTS.md, pinned CPU research environment, small original probes and CI workflow were created. Empty production module boundaries and a deferred frontend README deliberately avoid starting the full application.
+Private GitHub repository: [andrewkernel/atlas](https://github.com/andrewkernel/atlas). The required research/architecture/roadmap documents, individual paper notes, detailed competitor comparison, six ADRs, root AGENTS.md, pinned research environments, original bounded experiments and CI workflow were created. Empty production module boundaries and a deferred frontend README deliberately avoid starting the full application.
 
 Research was developed on `research/atlas-spec` with meaningful checkpoints. The completed package is published to main by a fast-forward, preserving the research branch and history. No existing repository work was overwritten or force-pushed; the surrounding read-only project mirror and `sources/` were preserved.
 
@@ -33,6 +33,8 @@ The complete initial blueprint is delivered. Confirmed novelty, exhaustive/forwa
 The owner subsequently requested continued investigation and audit. Checkpoint2d0aee8 adds closer prior art, the equivalence-power correction and original state/RNG controls;17 local tests pass and [cross-platform run38686356542](https://github.com/andrewkernel/atlas/actions/runs/38686356542) passed that checkpoint. The initial11-test capture is historical, not a current-suite count.
 
 The [synthetic CUDA fixture](experiments/cuda-memory-probe.md) now validates one separate Windows/CUDA environment on the physical12 GB RTX3060 and measures memory/time tradeoffs for four native configurations. This is new scoped resource evidence, not an implemented planner or the proposed primary study. The [amendment ledger](13-audit-and-amendments.md) and chronological log record changes without rewriting the initial duration into a five-hour claim.
+
+The continuation also adds four published allocator-cap trials, statistical assumption controls, current local-model metadata and [six five-epoch real-data CNN pilots](experiments/fashion-pilot.md). The pilot protocol/code was frozen in c406bef before acquisition/training; all six runs completed.20 CPU tests pass. [Updated recommendation](14-updated-recommendation.md): a bounded strong-baseline comparison before expanding the product. HiRemate/OffMate and deeper TrainParity coverage make a standalone novelty claim less secure.
 
 ## Next task
 

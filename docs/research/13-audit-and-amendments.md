@@ -19,6 +19,9 @@ The owner asked for continued research and simultaneous double-checking after th
 | A13 | Parameter label /4-bit floor adequately describes local-model capacity | **Expanded.**Inspect current model components, hybrid state, cache dtype/context and registry digests separately. | [Metadata/capacity audit](local-model-capacity.md); no weights downloaded or inference measured |
 | A14 | Correct normal-model power validates outcome inference | **Rejected implication.**Same population mean/variance can coexist with severe small-sample t-interval miscoverage under a constructed rare mixture. | [Assumption controls](experiments/statistical-assumption-audit.md), not observed ML failure prevalence |
 | A15 | Smaller memory means less compute or a universally best plan | **Rejected.**All measured synthetic plans form a memory/time tradeoff; startup/verification windows are material. | [Cost/Pareto analysis](cost-and-pareto-analysis.md); no primary-policy performance claim |
+| A16 | No real-data training has run | **Updated.**Six frozen five-epoch CNN pilot runs complete with paired initialization/order, lower memory and slower combined updates. | [Pilot results](experiments/fashion-pilot.md); three pairs are not conclusive equivalence |
+| A17 | Generic buffer/None-gradient/state capture might distinguish Atlas | **Weakened further.**Selected TrainParity worker/snapshot code explicitly provides these observations and related timing controls. | [Source inspection](competitors/trainparity.md); no runtime replication |
+| A18 | Original Rockmate captures the relevant family boundary | **Expanded.**HiRemate and OffMate are relevant successors; original paper also handles aliases and RNG. | [Family review](competitors/rockmate-family.md); no current compatibility/performance validation |
 
 ## Audit discipline
 

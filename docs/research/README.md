@@ -22,6 +22,7 @@ Started 2026-10-14 America/Chicago (2026-10-15 UTC). This is a bounded initial i
 | [11 Open questions](11-open-questions.md) | Unfinished evidence and stop/pivot requirements |
 | [12 Research log](12-research-log.md) | Observed chronology and execution limits |
 | [13 Audit and amendments](13-audit-and-amendments.md) | Corrections, new prior art and evidence audit |
+| [14 Updated recommendation](14-updated-recommendation.md) | Current decision after deeper comparison and real-data pilots |
 
 ## Supporting evidence and implementation
 
@@ -37,6 +38,6 @@ Started 2026-10-14 America/Chicago (2026-10-15 UTC). This is a bounded initial i
 
 ## What exists versus what is proposed
 
-Executed: original CPU semantic/composition/state/update-clock controls, synthetic equivalence-power/assumption calibration,20 pytest tests including40 generated accumulation partitions, eight synthetic CUDA trials plus four published allocator-cap trials on a physical12 GB RTX3060, dependency locking, source/repository inspection and documentation checks. Proposed: Atlas application, real-workload optimization selection, full-training equivalence, expert labels, other physical hardware tiers, energy study and LLM evaluation. The [real-data CNN pilot protocol](experiments/fashion-pilot-protocol.md) is frozen separately before its execution.
+Executed: original CPU semantic/composition/state/update-clock controls, statistical calibration,20 pytest tests including40 generated accumulation partitions, eight synthetic CUDA trials, four published allocator-cap trials and six five-epoch Fashion-MNIST CNN pilots on a physical12 GB RTX3060, dependency locking, source/repository inspection and documentation checks. Proposed: Atlas application, primary optimization-selection comparison, confirmatory full-training equivalence, expert labels, other physical hardware tiers, energy study and LLM evaluation. The [real-data pilot protocol](experiments/fashion-pilot-protocol.md) was frozen before execution; [results](experiments/fashion-pilot.md) remain exploratory.
 
 The strongest local observation is that checkpointing can match gradients while changing BatchNorm buffers/evaluation. That motivates evidence design; it does not validate the proposed planner or certify scientific conclusions.

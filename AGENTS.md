@@ -2,6 +2,8 @@
 
 Atlas studies whether explicit training contracts improve selection of memory-saving plans on local hardware. Read `docs/research/00-executive-assessment.md`, `04-scientific-fidelity.md`, `06-novelty-analysis.md`, architecture docs and ADRs before architectural changes. Broad novelty is not established; compare against native optimization plus existing checks.
 
+Read `docs/research/14-updated-recommendation.md` and the amendment ledger before expanding scope. Real-data GPU pilots now exist, but standalone optimizer/verifier novelty remains unconfirmed. Generic state/buffer/gradient checking substantially overlaps existing TrainParity; do not rebuild it under a novelty claim without the required comparison.
+
 ## Priorities and organization
 
 - Research specification and reproducible evaluation first. Do not implement the entire product at once.

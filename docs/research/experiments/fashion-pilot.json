@@ -1,0 +1,613 @@
+{
+  "schema_version": "1.0",
+  "started_utc": "2026-10-15T05:48:30.305715+00:00",
+  "source_sha256": "488d57f3f7e1746c6367f0384b6fb5c93b8d21b160c491c5bf75d1506cc6e12c",
+  "config": {
+    "seeds": [
+      1101,
+      1102,
+      1103
+    ],
+    "split_seed": 9001,
+    "epochs": 5,
+    "train_examples": 50000,
+    "validation_examples": 10000,
+    "logical_batch": 128,
+    "candidate_microbatch": 32,
+    "lr": 0.01,
+    "momentum": 0.9,
+    "weight_decay": 0.0
+  },
+  "dataset_manifest": {
+    "schema_version": "1.0",
+    "retrieved_utc": "2026-10-15T05:48:30.242273+00:00",
+    "source_revision": "b2617bb6d3ffa2e429640350f613e3291e10b141",
+    "source_sha256": "f55b6c53d17420fb69298f35e5e7459b788f757b1a684b89b9cf4a46529450fd",
+    "files": [
+      {
+        "name": "train-images-idx3-ubyte.gz",
+        "source_url": "https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/b2617bb6d3ffa2e429640350f613e3291e10b141/data/fashion/train-images-idx3-ubyte.gz",
+        "compressed_bytes": 26421880,
+        "compressed_sha256": "3aede38d61863908ad78613f6a32ed271626dd12800ba2636569512369268a84",
+        "expanded_bytes": 47040016,
+        "expanded_sha256": "c59f468a2f672dc815687fe0f83887768d799fd8a3f3276145d20f83aa44d888",
+        "magic": 2051,
+        "examples": 60000
+      },
+      {
+        "name": "train-labels-idx1-ubyte.gz",
+        "source_url": "https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/b2617bb6d3ffa2e429640350f613e3291e10b141/data/fashion/train-labels-idx1-ubyte.gz",
+        "compressed_bytes": 29515,
+        "compressed_sha256": "a04f17134ac03560a47e3764e11b92fc97de4d1bfaf8ba1a3aa29af54cc90845",
+        "expanded_bytes": 60008,
+        "expanded_sha256": "bad3541b69d912435c50bb6ba87bec294ff4f6a2e1246121d8633921760443d9",
+        "magic": 2049,
+        "examples": 60000
+      }
+    ],
+    "license_url": "https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/b2617bb6d3ffa2e429640350f613e3291e10b141/LICENSE",
+    "license_sha256": "13ef4788476d292858fa60eb9a5f74aeca5c65770bc885ccaa05823a17ef7be1",
+    "scope": "Official training partition only; canonical test data not downloaded. Dataset/code notice retained locally. No downloaded code executed."
+  },
+  "trials": [
+    {
+      "status": "completed",
+      "seed": 1102,
+      "candidate": false,
+      "microbatch": 128,
+      "checkpointed": false,
+      "environment": {
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "deterministic_algorithms": true,
+        "cudnn_benchmark": false,
+        "fp32_precision": "ieee"
+      },
+      "initial_state_digest": "777e149cc0d20c1201823eaffe6cebfe46e2720d56c426e57a2ec8bea4e521f0",
+      "split_digest": "3cd0eb46760d13241702dcbf86687f8f2557ce15934ca61701b69769fbabf436",
+      "sample_order_digest": "45a58ab80afcc711a0a3eb276774239a107d8250daab051d8e86a827fd88dac2",
+      "parameter_count": 110986,
+      "first_update_max_abs_errors": {
+        "parameter": 0.0,
+        "gradient": 0.0,
+        "momentum": 0.0
+      },
+      "first_update_peak": {
+        "allocated_bytes": 174443008,
+        "reserved_bytes": 216006656
+      },
+      "whole_training_and_validation_peak": {
+        "allocated_bytes": 174889984,
+        "reserved_bytes": 218103808
+      },
+      "preparation_seconds": 1.1994193000136875,
+      "reference_preparation_seconds_within_preparation": 0.2923517000162974,
+      "first_state_comparison_seconds": 0.0022369000362232327,
+      "summed_synchronized_update_seconds": 8.531459799676668,
+      "history": [
+        {
+          "epoch": 1,
+          "successful_updates": 391,
+          "train_loop_wall_seconds": 1.7208662999910302,
+          "validation_wall_seconds": 0.1288038999773562,
+          "validation_nll": 0.43498427991867067,
+          "validation_accuracy": 0.8413,
+          "validation_correct": 8413
+        },
+        {
+          "epoch": 2,
+          "successful_updates": 782,
+          "train_loop_wall_seconds": 1.7162745000096038,
+          "validation_wall_seconds": 0.1067756999982521,
+          "validation_nll": 0.37077970395088194,
+          "validation_accuracy": 0.8663,
+          "validation_correct": 8663
+        },
+        {
+          "epoch": 3,
+          "successful_updates": 1173,
+          "train_loop_wall_seconds": 1.705921600048896,
+          "validation_wall_seconds": 0.10586660000262782,
+          "validation_nll": 0.3430207119464874,
+          "validation_accuracy": 0.8794,
+          "validation_correct": 8794
+        },
+        {
+          "epoch": 4,
+          "successful_updates": 1564,
+          "train_loop_wall_seconds": 1.7132885999744758,
+          "validation_wall_seconds": 0.1093267000396736,
+          "validation_nll": 0.32757041177749635,
+          "validation_accuracy": 0.8847,
+          "validation_correct": 8847
+        },
+        {
+          "epoch": 5,
+          "successful_updates": 1955,
+          "train_loop_wall_seconds": 1.7150695999735035,
+          "validation_wall_seconds": 0.10666649998165667,
+          "validation_nll": 0.32654805784225466,
+          "validation_accuracy": 0.8833,
+          "validation_correct": 8833
+        }
+      ],
+      "successful_updates": 1955,
+      "samples_seen": 250000,
+      "final_state_digest": "60d6401e1595a2e07e96c73fa536425613eb703fc1ea50b84b5258bc5624f2b9",
+      "worker_wall_seconds": 10.355511300032958,
+      "returncode": 0,
+      "stderr": "",
+      "owned_child_wall_seconds": 12.047273600008339
+    },
+    {
+      "status": "completed",
+      "seed": 1103,
+      "candidate": false,
+      "microbatch": 128,
+      "checkpointed": false,
+      "environment": {
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "deterministic_algorithms": true,
+        "cudnn_benchmark": false,
+        "fp32_precision": "ieee"
+      },
+      "initial_state_digest": "c7a0246f15ea50f12ca6027acb9da1c01396728a38ee9862317e549d1b254adc",
+      "split_digest": "3cd0eb46760d13241702dcbf86687f8f2557ce15934ca61701b69769fbabf436",
+      "sample_order_digest": "4d220ab4dafb501361d90bf2bf8c20ba8953c1ae109063807867386cfb49d638",
+      "parameter_count": 110986,
+      "first_update_max_abs_errors": {
+        "parameter": 0.0,
+        "gradient": 0.0,
+        "momentum": 0.0
+      },
+      "first_update_peak": {
+        "allocated_bytes": 174443008,
+        "reserved_bytes": 216006656
+      },
+      "whole_training_and_validation_peak": {
+        "allocated_bytes": 174889984,
+        "reserved_bytes": 218103808
+      },
+      "preparation_seconds": 1.1956122999545187,
+      "reference_preparation_seconds_within_preparation": 0.27950169995892793,
+      "first_state_comparison_seconds": 0.002221600036136806,
+      "summed_synchronized_update_seconds": 8.57533539988799,
+      "history": [
+        {
+          "epoch": 1,
+          "successful_updates": 391,
+          "train_loop_wall_seconds": 1.7178833999787457,
+          "validation_wall_seconds": 0.12999789998866618,
+          "validation_nll": 0.4171272976398468,
+          "validation_accuracy": 0.8562,
+          "validation_correct": 8562
+        },
+        {
+          "epoch": 2,
+          "successful_updates": 782,
+          "train_loop_wall_seconds": 1.7115839999751188,
+          "validation_wall_seconds": 0.10674390004714951,
+          "validation_nll": 0.3861188575744629,
+          "validation_accuracy": 0.8676,
+          "validation_correct": 8676
+        },
+        {
+          "epoch": 3,
+          "successful_updates": 1173,
+          "train_loop_wall_seconds": 1.7071188999689184,
+          "validation_wall_seconds": 0.10782190004829317,
+          "validation_nll": 0.36626650042533876,
+          "validation_accuracy": 0.8681,
+          "validation_correct": 8681
+        },
+        {
+          "epoch": 4,
+          "successful_updates": 1564,
+          "train_loop_wall_seconds": 1.7407707999809645,
+          "validation_wall_seconds": 0.1131166000268422,
+          "validation_nll": 0.3317052736282349,
+          "validation_accuracy": 0.8813,
+          "validation_correct": 8813
+        },
+        {
+          "epoch": 5,
+          "successful_updates": 1955,
+          "train_loop_wall_seconds": 1.7427310000057332,
+          "validation_wall_seconds": 0.1127633000141941,
+          "validation_nll": 0.32323533177375796,
+          "validation_accuracy": 0.8845,
+          "validation_correct": 8845
+        }
+      ],
+      "successful_updates": 1955,
+      "samples_seen": 250000,
+      "final_state_digest": "3c40c1c7f1d479cc2cbfca5eae9e373a5adaf12f31d15e3a84153eae75e1094c",
+      "worker_wall_seconds": 10.41442389995791,
+      "returncode": 0,
+      "stderr": "",
+      "owned_child_wall_seconds": 12.159965600003488
+    },
+    {
+      "status": "completed",
+      "seed": 1103,
+      "candidate": true,
+      "microbatch": 32,
+      "checkpointed": true,
+      "environment": {
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "deterministic_algorithms": true,
+        "cudnn_benchmark": false,
+        "fp32_precision": "ieee"
+      },
+      "initial_state_digest": "c7a0246f15ea50f12ca6027acb9da1c01396728a38ee9862317e549d1b254adc",
+      "split_digest": "3cd0eb46760d13241702dcbf86687f8f2557ce15934ca61701b69769fbabf436",
+      "sample_order_digest": "4d220ab4dafb501361d90bf2bf8c20ba8953c1ae109063807867386cfb49d638",
+      "parameter_count": 110986,
+      "first_update_max_abs_errors": {
+        "parameter": 3.725290298461914e-09,
+        "gradient": 4.284083843231201e-08,
+        "momentum": 4.284083843231201e-08
+      },
+      "first_update_peak": {
+        "allocated_bytes": 95435776,
+        "reserved_bytes": 106954752
+      },
+      "whole_training_and_validation_peak": {
+        "allocated_bytes": 117677056,
+        "reserved_bytes": 146800640
+      },
+      "preparation_seconds": 1.2272906999569386,
+      "reference_preparation_seconds_within_preparation": 0.28580289997626096,
+      "first_state_comparison_seconds": 0.002774299995508045,
+      "summed_synchronized_update_seconds": 14.365074700210243,
+      "history": [
+        {
+          "epoch": 1,
+          "successful_updates": 391,
+          "train_loop_wall_seconds": 3.0264519000193104,
+          "validation_wall_seconds": 0.12633790000109002,
+          "validation_nll": 0.4171578483104706,
+          "validation_accuracy": 0.856,
+          "validation_correct": 8560
+        },
+        {
+          "epoch": 2,
+          "successful_updates": 782,
+          "train_loop_wall_seconds": 2.89681250002468,
+          "validation_wall_seconds": 0.11158440000144765,
+          "validation_nll": 0.3873043475627899,
+          "validation_accuracy": 0.8676,
+          "validation_correct": 8676
+        },
+        {
+          "epoch": 3,
+          "successful_updates": 1173,
+          "train_loop_wall_seconds": 2.7724137000041083,
+          "validation_wall_seconds": 0.10930549999466166,
+          "validation_nll": 0.3658813201904297,
+          "validation_accuracy": 0.8688,
+          "validation_correct": 8688
+        },
+        {
+          "epoch": 4,
+          "successful_updates": 1564,
+          "train_loop_wall_seconds": 2.7584007999976166,
+          "validation_wall_seconds": 0.10619439999572933,
+          "validation_nll": 0.3319083031177521,
+          "validation_accuracy": 0.8812,
+          "validation_correct": 8812
+        },
+        {
+          "epoch": 5,
+          "successful_updates": 1955,
+          "train_loop_wall_seconds": 2.9444766000378877,
+          "validation_wall_seconds": 0.11081679997732863,
+          "validation_nll": 0.3228999361038208,
+          "validation_accuracy": 0.885,
+          "validation_correct": 8850
+        }
+      ],
+      "successful_updates": 1955,
+      "samples_seen": 250000,
+      "final_state_digest": "fa3c8e716316e4f9e423726e560b4c63cd9ab2a5935bf5b38664dc505afaa250",
+      "worker_wall_seconds": 16.217919999966398,
+      "returncode": 0,
+      "stderr": "",
+      "owned_child_wall_seconds": 17.900468899984844
+    },
+    {
+      "status": "completed",
+      "seed": 1102,
+      "candidate": true,
+      "microbatch": 32,
+      "checkpointed": true,
+      "environment": {
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "deterministic_algorithms": true,
+        "cudnn_benchmark": false,
+        "fp32_precision": "ieee"
+      },
+      "initial_state_digest": "777e149cc0d20c1201823eaffe6cebfe46e2720d56c426e57a2ec8bea4e521f0",
+      "split_digest": "3cd0eb46760d13241702dcbf86687f8f2557ce15934ca61701b69769fbabf436",
+      "sample_order_digest": "45a58ab80afcc711a0a3eb276774239a107d8250daab051d8e86a827fd88dac2",
+      "parameter_count": 110986,
+      "first_update_max_abs_errors": {
+        "parameter": 7.450580596923828e-09,
+        "gradient": 4.284083843231201e-08,
+        "momentum": 4.284083843231201e-08
+      },
+      "first_update_peak": {
+        "allocated_bytes": 95435776,
+        "reserved_bytes": 106954752
+      },
+      "whole_training_and_validation_peak": {
+        "allocated_bytes": 117677056,
+        "reserved_bytes": 146800640
+      },
+      "preparation_seconds": 1.1929279000032693,
+      "reference_preparation_seconds_within_preparation": 0.28243850002763793,
+      "first_state_comparison_seconds": 0.0020942999981343746,
+      "summed_synchronized_update_seconds": 14.20327549893409,
+      "history": [
+        {
+          "epoch": 1,
+          "successful_updates": 391,
+          "train_loop_wall_seconds": 3.0129486999940127,
+          "validation_wall_seconds": 0.1267313999705948,
+          "validation_nll": 0.43544783782958985,
+          "validation_accuracy": 0.8411,
+          "validation_correct": 8411
+        },
+        {
+          "epoch": 2,
+          "successful_updates": 782,
+          "train_loop_wall_seconds": 2.7799242000328377,
+          "validation_wall_seconds": 0.10694109997712076,
+          "validation_nll": 0.37029465155601504,
+          "validation_accuracy": 0.867,
+          "validation_correct": 8670
+        },
+        {
+          "epoch": 3,
+          "successful_updates": 1173,
+          "train_loop_wall_seconds": 2.762627499992959,
+          "validation_wall_seconds": 0.10744859999977052,
+          "validation_nll": 0.3416306245803833,
+          "validation_accuracy": 0.8802,
+          "validation_correct": 8802
+        },
+        {
+          "epoch": 4,
+          "successful_updates": 1564,
+          "train_loop_wall_seconds": 2.7421070000273176,
+          "validation_wall_seconds": 0.10954089998267591,
+          "validation_nll": 0.3277406301498413,
+          "validation_accuracy": 0.8848,
+          "validation_correct": 8848
+        },
+        {
+          "epoch": 5,
+          "successful_updates": 1955,
+          "train_loop_wall_seconds": 2.938238300033845,
+          "validation_wall_seconds": 0.1087726000114344,
+          "validation_nll": 0.3284417540550232,
+          "validation_accuracy": 0.8812,
+          "validation_correct": 8812
+        }
+      ],
+      "successful_updates": 1955,
+      "samples_seen": 250000,
+      "final_state_digest": "615d345066db3534d2db8aa7038e67358d8943b941d5322343e02bb6469d92df",
+      "worker_wall_seconds": 16.01499860000331,
+      "returncode": 0,
+      "stderr": "",
+      "owned_child_wall_seconds": 17.698120799963363
+    },
+    {
+      "status": "completed",
+      "seed": 1101,
+      "candidate": false,
+      "microbatch": 128,
+      "checkpointed": false,
+      "environment": {
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "deterministic_algorithms": true,
+        "cudnn_benchmark": false,
+        "fp32_precision": "ieee"
+      },
+      "initial_state_digest": "1b4e46ca14d70c41f23e713acad8fd6c3de9eb637fcc2a3a22399ae29cbd67e6",
+      "split_digest": "3cd0eb46760d13241702dcbf86687f8f2557ce15934ca61701b69769fbabf436",
+      "sample_order_digest": "0d61040e397ce09162e3f5d7b7abffa608fbccf82de31bcbcba15f930f458aca",
+      "parameter_count": 110986,
+      "first_update_max_abs_errors": {
+        "parameter": 0.0,
+        "gradient": 0.0,
+        "momentum": 0.0
+      },
+      "first_update_peak": {
+        "allocated_bytes": 174443008,
+        "reserved_bytes": 216006656
+      },
+      "whole_training_and_validation_peak": {
+        "allocated_bytes": 174889984,
+        "reserved_bytes": 218103808
+      },
+      "preparation_seconds": 1.2009754000464454,
+      "reference_preparation_seconds_within_preparation": 0.2867096999543719,
+      "first_state_comparison_seconds": 0.002535399980843067,
+      "summed_synchronized_update_seconds": 8.561317901592702,
+      "history": [
+        {
+          "epoch": 1,
+          "successful_updates": 391,
+          "train_loop_wall_seconds": 1.7336459000362083,
+          "validation_wall_seconds": 0.13004239997826517,
+          "validation_nll": 0.4466284863471985,
+          "validation_accuracy": 0.8357,
+          "validation_correct": 8357
+        },
+        {
+          "epoch": 2,
+          "successful_updates": 782,
+          "train_loop_wall_seconds": 1.7132778000086546,
+          "validation_wall_seconds": 0.10944759997073561,
+          "validation_nll": 0.36085839185714724,
+          "validation_accuracy": 0.8688,
+          "validation_correct": 8688
+        },
+        {
+          "epoch": 3,
+          "successful_updates": 1173,
+          "train_loop_wall_seconds": 1.71957019995898,
+          "validation_wall_seconds": 0.10919700004160404,
+          "validation_nll": 0.34669130210876464,
+          "validation_accuracy": 0.875,
+          "validation_correct": 8750
+        },
+        {
+          "epoch": 4,
+          "successful_updates": 1564,
+          "train_loop_wall_seconds": 1.7128035999485292,
+          "validation_wall_seconds": 0.11086080002132803,
+          "validation_nll": 0.31943652667999267,
+          "validation_accuracy": 0.8877,
+          "validation_correct": 8877
+        },
+        {
+          "epoch": 5,
+          "successful_updates": 1955,
+          "train_loop_wall_seconds": 1.7228619999950752,
+          "validation_wall_seconds": 0.1061222999705933,
+          "validation_nll": 0.3061892877578735,
+          "validation_accuracy": 0.8922,
+          "validation_correct": 8922
+        }
+      ],
+      "successful_updates": 1955,
+      "samples_seen": 250000,
+      "final_state_digest": "048b540f4c426de24229db6bc822b499cec3ed3e35a4f64444b8e125715dff00",
+      "worker_wall_seconds": 10.395310699997935,
+      "returncode": 0,
+      "stderr": "",
+      "owned_child_wall_seconds": 12.102972099964973
+    },
+    {
+      "status": "completed",
+      "seed": 1101,
+      "candidate": true,
+      "microbatch": 32,
+      "checkpointed": true,
+      "environment": {
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "torch": "2.14.1+cu130",
+        "cuda_runtime": "13.0",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "device_total_bytes": 12603752448,
+        "deterministic_algorithms": true,
+        "cudnn_benchmark": false,
+        "fp32_precision": "ieee"
+      },
+      "initial_state_digest": "1b4e46ca14d70c41f23e713acad8fd6c3de9eb637fcc2a3a22399ae29cbd67e6",
+      "split_digest": "3cd0eb46760d13241702dcbf86687f8f2557ce15934ca61701b69769fbabf436",
+      "sample_order_digest": "0d61040e397ce09162e3f5d7b7abffa608fbccf82de31bcbcba15f930f458aca",
+      "parameter_count": 110986,
+      "first_update_max_abs_errors": {
+        "parameter": 3.725290298461914e-09,
+        "gradient": 7.264316082000732e-08,
+        "momentum": 7.264316082000732e-08
+      },
+      "first_update_peak": {
+        "allocated_bytes": 95435776,
+        "reserved_bytes": 106954752
+      },
+      "whole_training_and_validation_peak": {
+        "allocated_bytes": 117677056,
+        "reserved_bytes": 146800640
+      },
+      "preparation_seconds": 1.202160199987702,
+      "reference_preparation_seconds_within_preparation": 0.2801241999841295,
+      "first_state_comparison_seconds": 0.002237799984868616,
+      "summed_synchronized_update_seconds": 14.153275900171138,
+      "history": [
+        {
+          "epoch": 1,
+          "successful_updates": 391,
+          "train_loop_wall_seconds": 2.991632999968715,
+          "validation_wall_seconds": 0.12346079997951165,
+          "validation_nll": 0.44676726570129394,
+          "validation_accuracy": 0.8357,
+          "validation_correct": 8357
+        },
+        {
+          "epoch": 2,
+          "successful_updates": 782,
+          "train_loop_wall_seconds": 2.771426000050269,
+          "validation_wall_seconds": 0.10603580001043156,
+          "validation_nll": 0.36004699935913087,
+          "validation_accuracy": 0.8694,
+          "validation_correct": 8694
+        },
+        {
+          "epoch": 3,
+          "successful_updates": 1173,
+          "train_loop_wall_seconds": 2.745238800009247,
+          "validation_wall_seconds": 0.10763039998710155,
+          "validation_nll": 0.34710061225891115,
+          "validation_accuracy": 0.8749,
+          "validation_correct": 8749
+        },
+        {
+          "epoch": 4,
+          "successful_updates": 1564,
+          "train_loop_wall_seconds": 2.7420716999913566,
+          "validation_wall_seconds": 0.1065692999982275,
+          "validation_nll": 0.323575990486145,
+          "validation_accuracy": 0.8837,
+          "validation_correct": 8837
+        },
+        {
+          "epoch": 5,
+          "successful_updates": 1955,
+          "train_loop_wall_seconds": 2.9354346999898553,
+          "validation_wall_seconds": 0.10350309999193996,
+          "validation_nll": 0.30585954236984253,
+          "validation_accuracy": 0.8926,
+          "validation_correct": 8926
+        }
+      ],
+      "successful_updates": 1955,
+      "samples_seen": 250000,
+      "final_state_digest": "a5d835df3dc942190ad3609694e45edcab24935c27935c0f9e8da3638e4eaa46",
+      "worker_wall_seconds": 15.962296499987133,
+      "returncode": 0,
+      "stderr": "",
+      "owned_child_wall_seconds": 17.66501799999969
+    }
+  ],
+  "limitation": "Three exploratory pilot seeds, no confirmatory equivalence inference, scientific conclusion, planner comparison, physical OOM rescue or canonical test-set evaluation."
+}

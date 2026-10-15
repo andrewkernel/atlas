@@ -4,7 +4,7 @@
 
 **Trusted-code-only execution.** Static file inspection is allowed without import. Target imports, model construction, profiling, FX tracing, dependency builds and checkpoint loading can execute code. The initial system accepts only reviewed builtin adapters and explicitly registered trusted local workloads. It must refuse newly downloaded/untrusted programs by default. A user acknowledgment does not create strong isolation.
 
-During this research session, only original small probe code was executed; third-party research repositories were inspected through documentation and metadata, not run. Official binary dependencies were installed into a local environment; no elevated privileges, remote installer scripts or downloaded model code were used.
+During this research session, only original reviewed probe/training code was executed; third-party research repositories were inspected through documentation/source, not run. Official binary dependencies were installed into separate local CPU/CUDA environments. The real-data pilot loaded only pinned Fashion-MNIST data with byte hashes and the retained notice; no downloaded program/model code ran. No elevated privileges or remote installer scripts were used.
 
 ## Threats and controls
 

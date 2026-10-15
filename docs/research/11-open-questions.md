@@ -23,6 +23,8 @@ Priorities: **P0** changes the credibility of the research question; **P1** is r
 
 ## Evidence maturity
 
+The continuation [updated recommendation](14-updated-recommendation.md) incorporates deeper existing-checker coverage and Rockmate successors. A real-data CNN pilot now completes, but it fits without optimization and does not resolve the P0 expanded-access or strong-baseline questions. Emergent composition cases, independent labels and a clean existing-system execution remain missing. New data improve feasibility evidence without establishing novelty.
+
 The repository contains a complete **initial blueprint**, a source-backed scoping review and bounded semantic demonstrations. It does not contain an exhaustive literature review, implemented application, confirmed academic novelty, validated benchmark corpus or completed primary study. Many paper notes are abstract-level; their read depth is disclosed. The three reviewer perspectives are authored critiques, not independent expert reviews.
 
 Do not describe the required future evaluation as a missing positive result that can be filled with estimates. Negative and inconclusive results are valid outcomes. No task should silently turn an unknown into a preserved-science badge.

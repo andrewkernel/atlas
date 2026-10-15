@@ -49,6 +49,8 @@ Times are observed UTC times unless stated otherwise; local date at session star
 
 ## Limits and unfinished research
 
+This paragraph records the **initial** investigation's limits. Later continuation sections and [updated recommendation](14-updated-recommendation.md) supersede its execution/read-depth inventory; the original chronology is preserved.
+
 This is a bounded initial research/engineering investigation, not five hours of research. Read depth varies:24 individual paper notes include many abstract-level notes and selected deeper reads of the closest systems. There was no systematic forward-citation review, independent expert review/labeling, competing-system execution, native CUDA study, full-training equivalence study, LLM inference comparison or energy measurement. The scoped specification is complete as an initial blueprint; these evidence gaps remain explicitly open in `11-open-questions.md`.
 
 ## 2026-10-15 05:08 UTC — validation and handoff
@@ -95,3 +97,11 @@ This is a bounded initial research/engineering investigation, not five hours of 
 - Derived the measured four-plan Pareto tradeoff and workflow-cost limits from raw CUDA records. Summed eight child walls39.22 seconds versus6.86 seconds in80 timed update windows; no production planner-cost claim.
 - Extended statistical calibration with SD/nonzero-effect sensitivity and a constructed rare-mixture counterexample. Equal population mean/variance do not ensure valid small-sample t-interval inference. The mixture's1% event probability is invented, not estimated from training.20 local tests passed.
 - Cross-platform run38687801756 passed checkpointa965bed. Research-only original Fashion-MNIST preparation/training code and a fixed exploratory protocol are now prepared for commit **before** data acquisition/training. Three pilot seeds, five epochs, paired full versus combined native plans; canonical test partition remains untouched. This is not confirmatory equivalence or an application implementation.
+
+## 2026-10-15 05:48–06:00 UTC — frozen real-data pilot and deeper comparator audit
+
+- Committed/pushed protocol and unchanged original training/preparation code in c406bef before data acquisition. Downloaded26,451,395 bytes of official Fashion-MNIST training gzip files from a pinned repository revision; retained MIT notice and compressed/expanded hashes. Canonical test partition was not downloaded.
+- At05:48:30 UTC began six randomized-order fresh-process runs: three paired pilot seeds, five epochs each,1955 updates and250,000 sample exposures per run. All completed with matching paired initialization/split/order digests and empty stderr. Combined native plan peaks112.23 versus166.79 MiB allocated; mean update windows14.24 versus8.56 seconds. Paired final validation differences range-.21 to+.05 percentage points. No equivalence test or scientific margin was selected; no physical OOM rescue occurred.
+- Deeper pinned TrainParity worker/snapshot/test inspection confirms buffers, keyed/None gradients, optimizer/scheduler/scaler state and multiple accumulation fault controls. No third-party research program ran. This narrows the generic-verifier distinction further.
+- Read selected Rockmate graph/alias and implementation/numerical appendix sections, plus pinned current README. Added HiRemate ICML2025 and OffMate preprint context; HAL returned anti-bot content, so OffMate's limited summary uses the first-party team report/README, not inaccessible paper text.
+- Published an updated recommendation: continue only to a bounded independently adjudicated strong-baseline comparison. Current evidence improves engineering feasibility, not established novelty or primary-policy efficacy.20 local tests and the offline identity/link audit pass; c406bef's cross-platform run38688775079 passed before the new result checkpoint.

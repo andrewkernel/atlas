@@ -1,6 +1,8 @@
 # Experimental design — proposed, not executed
 
-The [experiment index](experiments/README.md) distinguishes executed CPU/statistical controls and a bounded synthetic CUDA fixture from the proposed studies. All real-workload selection, full-training, LLM and expert-labeling studies below are proposed. Freeze a protocol commit, manifest and analysis plan before confirmatory runs. Archive amendments with reasons; do not retroactively call exploratory decisions preregistered.
+The [experiment index](experiments/README.md) distinguishes executed CPU/statistical controls and bounded GPU pilots from the proposed studies. The primary selection comparison, confirmatory full-outcome equivalence, LLM and expert-labeling studies below remain proposed. Freeze a protocol commit, manifest and analysis plan before confirmatory runs. Archive amendments with reasons; do not retroactively call exploratory decisions preregistered.
+
+Continuation update: the [frozen real-data CNN pilot](experiments/fashion-pilot.md) now completes the W1 five-epoch control with three exploratory pairs. It is a pilot of fixed native plans, not the primary selection study or confirmatory outcome-equivalence study. W2/W3 and independent labeling remain unexecuted.
 
 ## Hypotheses and estimands
 
@@ -39,6 +41,8 @@ Exact source/dataset/model revisions are in [asset snapshot](asset-snapshot.json
 
 The WikiText card is internally inconsistent: metadata lists CC BY-SA3.0/GFDL while licensing prose links CC BY-SA4.0. Resolve provenance and applicable terms before downloading/redistributing benchmark inputs; do not assert a settled license from one field. Until resolved, W2/W3 are **conditional planned workloads**. [SST-2](https://huggingface.co/datasets/stanfordnlp/sst2) was considered but has unknown license metadata, so it is not the default fine-tuning dataset. Dataset/model availability has not been validated by downloading them here.
 
+Fashion-MNIST W1 is now acquired from its pinned official repository with byte hashes and retained MIT notice; only its training partition was used. That acquisition does not resolve the unrelated WikiText/SST-2/model prerequisites above.
+
 Freeze architecture/tokenization details in code, optimizer parameter groups, validation frequency, clipping policy, dropout, warmup and data-order manifest. Suggested initial policy: no clipping, no scheduler/warmup in the simplest positive control; separate condition cases add each. A token-weighted loss uses the total valid-target count, including partial windows. Do not alter context, epochs or trainable parameter set to make a strict candidate fit.
 
 ## Candidate search and equal budgets
@@ -59,6 +63,8 @@ For a pilot, cap search at 8 candidate trials and 30 minutes per workload-policy
 | D | Atlas deterministic planner with contract checks |
 | E | D plus local-LLM ranking, equal resource/search budget |
 | F | Same Atlas enumeration and profiling with fidelity filters disabled; unsafe candidates retained in evidence, not treated as scientifically valid |
+
+For C2, inspect the relevant current [Rockmate/HiRemate/OffMate member](competitors/rockmate-family.md), not only the original2023 algorithm. OffMate enters an offload-extension comparison, not the initial strict two-transform candidate registry. Deeper [TrainParity worker/snapshot inspection](competitors/trainparity.md) confirms many state/clock controls already exist; C3 must receive a competent configuration and equal adapter facts.
 
 Also compare a fixed native strategy ordering and random ordering with fixed seeds. Otherwise the comparison may only show that using any optimizer is better than doing nothing. If a framework cannot run in the same software stack, compare detection on shared traces/fixtures where valid and do not present its different-version runtime as a clean policy comparison.
 
