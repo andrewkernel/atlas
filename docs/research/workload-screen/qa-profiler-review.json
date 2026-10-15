@@ -1,0 +1,30 @@
+{
+  "captured_utc": "2026-10-15T14:22:48.021037+00:00",
+  "files": [
+    {
+      "bytes": 1786,
+      "matches_unsigned_installed_record": true,
+      "path": "torch/profiler/__init__.py",
+      "sha256": "1fac2fc1a1d129f44b5f843a1a9da44562179bf2d80ab9399173047a7285e7b7"
+    },
+    {
+      "bytes": 66436,
+      "matches_unsigned_installed_record": true,
+      "path": "torch/profiler/profiler.py",
+      "sha256": "c978bd297b55afbb2e5282cb68c5ea04ee2c722a335cdc719ed82d17a176258d"
+    },
+    {
+      "bytes": 57243,
+      "matches_unsigned_installed_record": true,
+      "path": "torch/autograd/profiler.py",
+      "sha256": "3162a323c1b52bf1a4b9939f80d184d78bcf0f8d65e4150f1ef1135c4d51ae7e"
+    }
+  ],
+  "observations": [
+    "Supported-activities documentation distinguishes CUDA timing from CUPTI device tracing when CUPTI is unavailable.",
+    "Use builtin profile context with CPU and supported CUDA activities; no custom callbacks, stacks, shapes, tensor values or trace export.",
+    "events() is queried only after context exit; retain unavailable CUDA event capture rather than inventing a kernel identity."
+  ],
+  "scope": "Selected builtin profiler source identities and API excerpts (profile start/stop, events and supported activities); not a whole-module/native-library/driver audit or signed provenance.",
+  "torch": "2.13.0+cu130"
+}
