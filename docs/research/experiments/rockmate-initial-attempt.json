@@ -1,0 +1,185 @@
+{
+  "config": {
+    "atol": 1e-06,
+    "blocks": 4,
+    "budget_bytes": 16777216,
+    "hidden": 128,
+    "input_shape": [
+      128,
+      64,
+      64
+    ],
+    "lr": 0.01,
+    "modes": [
+      "pure_rotor",
+      "rockmate_config"
+    ],
+    "momentum": 0.9,
+    "rtol": 1e-05,
+    "seed": 1801,
+    "timeout_seconds": 180,
+    "updates": 8,
+    "warmup_updates": 3,
+    "width": 64
+  },
+  "environment_keys": [
+    "CUBLAS_WORKSPACE_CONFIG",
+    "MKL_NUM_THREADS",
+    "OMP_NUM_THREADS",
+    "PATH",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONHASHSEED",
+    "PYTHONNOUSERSITE",
+    "PYTHONPATH",
+    "SystemRoot",
+    "TEMP",
+    "TMP",
+    "TORCH_HOME",
+    "WINDIR"
+  ],
+  "historical_source_commit": "cc04359",
+  "interpretation": "Initial attempt retained: direct PureRotor factory passes a Partitioner instance to a string-only selector and raises NameError in its warning path; configured Rockmate reaches export but harness precision settings conflict with a global cuDNN query. Neither attempts a schedule or candidate training. Native reference completed eight updates in both workers.",
+  "portability_sanitization": "Machine profile prefix in traceback replaced with <profile>; numerical/error content otherwise retained.",
+  "review_sha256": "9148c94250b0e8337daf4133899ea7eed4a09d22c6f6431b9326ddcdc6f47486",
+  "scope": "Scoped compatibility/finite numerical control. No Atlas policy, whole-training equivalence, useful OOM rescue or general tool-performance claim.",
+  "source_sha256": "b531d2215077222ac08a7b4e49f49148ea57d83dce1a0af7e22d94e17941f117",
+  "started_utc": "20261015T064014Z",
+  "trials": [
+    {
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "budget_bytes": 16777216,
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "pure_rotor",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "error_message": "name 'self' is not defined",
+      "error_type": "NameError",
+      "failed_phase": "planner_construction",
+      "initial_state_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "mode": "pure_rotor",
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.00178089999826625,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.133496800030116,
+          0.0096361999749206,
+          0.0017825000104494393,
+          0.0019396999850869179,
+          0.00178089999826625,
+          0.001926700002513826,
+          0.0017688999650999904,
+          0.0017642999882809818
+        ]
+      },
+      "outer_wall_seconds": 6.3141259999829344,
+      "status": "error",
+      "stderr_bytes": 248,
+      "stdout_bytes": 112,
+      "traceback": "Traceback (most recent call last):\n  File \"<atlas>\\benchmarks\\rockmate_compatibility_probe.py\", line 116, in worker\n    candidate = rockmate.PureRotor(model, x, CONFIG[\"budget_bytes\"],\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rockmate\\src\\rockmate\\frontend.py\", line 157, in __init__\n    partitioners=[self.partitioner()],\n                  ^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rockmate\\src\\rockmate\\frontend.py\", line 149, in partitioner\n    return partitioned.PartitionerSequence(sub_partitioner=partitioned.Partitioner())\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\core\\partitioned.py\", line 1387, in __init__\n    self.sub_partitioner = make_partitioner(self.config.sub_partitioner)\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\core\\partitioned.py\", line 978, in make_partitioner\n    print(\"[Warning] make_partitioner: unknown sub_partitioner\", self.config.sub_partitioner,\n                                                                 ^^^^\nNameError: name 'self' is not defined\n"
+    },
+    {
+      "config": {
+        "atol": 1e-06,
+        "blocks": 4,
+        "budget_bytes": 16777216,
+        "hidden": 128,
+        "input_shape": [
+          128,
+          64,
+          64
+        ],
+        "lr": 0.01,
+        "modes": [
+          "pure_rotor",
+          "rockmate_config"
+        ],
+        "momentum": 0.9,
+        "rtol": 1e-05,
+        "seed": 1801,
+        "timeout_seconds": 180,
+        "updates": 8,
+        "warmup_updates": 3,
+        "width": 64
+      },
+      "environment": {
+        "cuda": "13.0",
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "python": "3.12.10",
+        "torch": "2.14.1+cu130"
+      },
+      "error_message": "PyTorch is checking whether allow_tf32 is enabled for cuDNN without a specific operator name,but the current flag(s) indicate that cuDNN conv and cuDNN RNN have different TF32 flags.This combination indicates that you have used a mix of the legacy and new APIs to set the TF32 flags. We suggest only using the new API to set the TF32 flag(s). See also: https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices",
+      "error_type": "RuntimeError",
+      "failed_phase": "planner_construction",
+      "initial_state_sha256": "e6d7dbe6ca05e5a0787612fb3e64e93897b9ed33f5d021bf880789adaa62f7d5",
+      "input_target_sha256": "332bae9e5613f5bdaedc5d7760ce27f2266d8789ce9fb8cef791c103a7e65eaf",
+      "mode": "rockmate_config",
+      "native_reference": {
+        "allocated_peak_bytes": 107788288,
+        "completed_updates": 8,
+        "losses": [
+          1.0031439065933228,
+          1.0031423568725586,
+          1.0031394958496094,
+          1.0031354427337646,
+          1.0031301975250244,
+          1.0031239986419678,
+          1.0031170845031738,
+          1.003109097480774
+        ],
+        "median_later_update_seconds": 0.0017789999837987125,
+        "reserved_peak_bytes": 111149056,
+        "update_seconds": [
+          0.14890019997255877,
+          0.017037499987054616,
+          0.002736199996434152,
+          0.0017694999696686864,
+          0.0024705000105313957,
+          0.0017871999880298972,
+          0.0017637000419199467,
+          0.0017789999837987125
+        ]
+      },
+      "outer_wall_seconds": 6.844003000005614,
+      "status": "error",
+      "stderr_bytes": 393,
+      "stdout_bytes": 184,
+      "traceback": "dget, top_solvers=top_solvers, bottom_solvers=bottom_solvers,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rockmate\\src\\rockmate\\rockmate.py\", line 93, in __init__\n    self.get_rkgb_result(model_inputs, model_kwargs, minor_offload_size)\n  File \"<atlas>\\.tools\\rockmate-review\\rockmate\\src\\rockmate\\rockmate.py\", line 115, in get_rkgb_result\n    self.rkgb_res = rkgb.rkgb.Result(\n                    ^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\rkgb.py\", line 50, in __init__\n    if \"R\" in wanted_graphs: self.build_raw()\n                             ^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\rkgb.py\", line 81, in build_raw\n    self.raw_graph = RawGraph(\n                     ^^^^^^^^^\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\core\\raw.py\", line 93, in __init__\n    self._init_using_dynamo(\n  File \"<atlas>\\.tools\\rockmate-review\\rkgb\\src\\rkgb\\core\\raw.py\", line 150, in _init_using_dynamo\n    dynamo_result : torch.export.ExportedProgram = torch.export.export(\n                                                   ^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\export\\__init__.py\", line 260, in export\n    raise e\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\export\\__init__.py\", line 226, in export\n    return _export(\n           ^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\export\\_trace.py\", line 1519, in wrapper\n    raise e\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\export\\_trace.py\", line 1485, in wrapper\n    ep = fn(*args, **kwargs)\n         ^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\export\\exported_program.py\", line 124, in wrapper\n    return fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\_utils_internal.py\", line 114, in wrapper_function\n    return function(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\export\\_trace.py\", line 2699, in _export\n    ep = _export_for_training(\n         ^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\export\\_trace.py\", line 1519, in wrapper\n    raise e\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\export\\_trace.py\", line 1485, in wrapper\n    ep = fn(*args, **kwargs)\n         ^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\export\\exported_program.py\", line 124, in wrapper\n    return fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\export\\_trace.py\", line 2482, in _export_for_training\n    export_artifact = export_func(\n                      ^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\export\\_trace.py\", line 2406, in _non_strict_export\n    aten_export_artifact = _to_aten_func(\n                           ^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\export\\_trace.py\", line 2181, in _export_to_aten_ir_make_fx\n    stack.enter_context(_ignore_backend_decomps())\n  File \"<profile>\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 526, in enter_context\n    result = _enter(cm)\n             ^^^^^^^^^^\n  File \"<profile>\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py\", line 137, in __enter__\n    return next(self.gen)\n           ^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\export\\_trace.py\", line 201, in _ignore_backend_decomps\n    orig_cudnn_flag = torch.backends.cudnn.set_flags(False)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<atlas>\\.tools\\planner-env\\Lib\\site-packages\\torch\\backends\\cudnn\\__init__.py\", line 168, in set_flags\n    torch._C._get_cudnn_allow_tf32(),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: PyTorch is checking whether allow_tf32 is enabled for cuDNN without a specific operator name,but the current flag(s) indicate that cuDNN conv and cuDNN RNN have different TF32 flags.This combination indicates that you have used a mix of the legacy and new APIs to set the TF32 flags. We suggest only using the new API to set the TF32 flag(s). See also: https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices\n"
+    }
+  ]
+}

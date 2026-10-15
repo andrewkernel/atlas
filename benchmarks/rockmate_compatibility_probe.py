@@ -19,7 +19,7 @@ CONFIG = {
     "seed": 1801, "blocks": 4, "width": 64, "hidden": 128,
     "input_shape": [128, 64, 64], "budget_bytes": 16 * 1024**2,
     "updates": 8, "warmup_updates": 3, "lr": 0.01, "momentum": 0.9,
-    "modes": ["pure_rotor", "rockmate_config"],
+    "modes": ["rotor_config", "rockmate_config"],
     "timeout_seconds": 180, "rtol": 1e-5, "atol": 1e-6,
 }
 
@@ -41,8 +41,9 @@ def worker(mode: str, output: Path) -> None:
         torch.set_num_threads(1)
         torch.manual_seed(CONFIG["seed"])
         torch.use_deterministic_algorithms(True)
+        torch.backends.fp32_precision = "ieee"
         torch.backends.cuda.matmul.fp32_precision = "ieee"
-        torch.backends.cudnn.conv.fp32_precision = "ieee"
+        torch.backends.cudnn.fp32_precision = "ieee"
         result["environment"] = {"python": platform.python_version(), "torch": torch.__version__,
                                  "cuda": torch.version.cuda, "gpu": torch.cuda.get_device_name(0)}
         phase = "original_fixture"
@@ -112,9 +113,11 @@ def worker(mode: str, output: Path) -> None:
         phase = "planner_construction"
         started = time.perf_counter()
         common = {"gpu_optim": None, "cpu_optim": None, "minor_offload_size": 0}
-        if mode == "pure_rotor":
-            candidate = rockmate.PureRotor(model, x, CONFIG["budget_bytes"],
-                                          rotor_solve_with_python=True, bottom_solvers=[], **common)
+        if mode == "rotor_config":
+            config = rockmate.generate_config("rotor")
+            config.solver.top.rotor.force_python = True
+            config.partitioner.sequence.sub_partitioner = "base"
+            candidate = rockmate.from_config(model, x, CONFIG["budget_bytes"], config=config, **common)
         elif mode == "rockmate_config":
             config = rockmate.generate_config("rockmate")
             config.solver.top.rotor.force_python = True
@@ -214,7 +217,7 @@ def main() -> None:
         row["outer_wall_seconds"] = time.perf_counter() - started
         for key in ("error_message", "traceback"):
             if key in row:
-                row[key] = row[key].replace(str(ROOT), "<atlas>").replace(str(directory), "<artifact>")
+                row[key] = row[key].replace(str(ROOT), "<atlas>").replace(str(directory), "<artifact>").replace(str(Path.home()), "<profile>")
         row["stdout_bytes"] = (directory / (mode + ".stdout.txt")).stat().st_size
         row["stderr_bytes"] = (directory / (mode + ".stderr.txt")).stat().st_size
         rows.append(row)
