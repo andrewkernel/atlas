@@ -1,0 +1,91 @@
+{
+  "captured_utc": "2026-10-15T14:02:44.675805+00:00",
+  "environment_helper_sha256": "85b03be5771a63d1d163e7b0f567e204d0284b3e526ae4056942d9d0d14f02aa",
+  "job_helper_sha256": "8be53367c1515c7b5cf96f71b35bcb7ecf78ed1f646f1b0b52d83a79d7ad73a7",
+  "ownership_helper_sha256": "0a193bded06c214b0cba9213b0958955ddce61d3af72d86aa3f3ae8c7782eda8",
+  "scope": "Trusted bounded local lifecycle control; no hard memory limit, training, hostile-code isolation or all-failure-path guarantee.",
+  "source_sha256": "c41c0b929542a26709541406404fc3ef635af36554ab9053aedce591a3f00042",
+  "trials": [
+    {
+      "actual_interpreter_inherited_job": true,
+      "actual_interpreter_is_launcher": false,
+      "actual_interpreter_rss_bytes": 86790144,
+      "allocated_bytes": 67108864,
+      "cleanup_retained_identities_still_alive": 0,
+      "job_accounting": {
+        "configured_limit_flags": 8192,
+        "hard_job_memory_limit_bytes": null,
+        "hard_process_memory_limit_bytes": null,
+        "peak_job_commit_bytes": 79327232,
+        "peak_process_commit_bytes": 78544896
+      },
+      "job_members_after_exit": 0,
+      "job_members_before_acknowledgment": 2,
+      "job_members_before_launcher_resume": 1,
+      "launcher_previous_suspend_count": 1,
+      "launcher_rss_bytes": 4755456,
+      "mode": "natural",
+      "phase": "query_members",
+      "retained_identities_still_alive": 0,
+      "returncode": 0,
+      "status": "completed",
+      "use_after_close_rejected": true,
+      "wall_seconds": 0.3440000000409782,
+      "wrong_creation_identity_rejected": true
+    },
+    {
+      "actual_interpreter_inherited_job": true,
+      "actual_interpreter_is_launcher": false,
+      "actual_interpreter_rss_bytes": 86761472,
+      "allocated_bytes": 67108864,
+      "cleanup_retained_identities_still_alive": 0,
+      "job_accounting": {
+        "configured_limit_flags": 8192,
+        "hard_job_memory_limit_bytes": null,
+        "hard_process_memory_limit_bytes": null,
+        "peak_job_commit_bytes": 79347712,
+        "peak_process_commit_bytes": 78581760
+      },
+      "job_members_after_exit": 0,
+      "job_members_before_acknowledgment": 2,
+      "job_members_before_launcher_resume": 1,
+      "launcher_previous_suspend_count": 1,
+      "launcher_rss_bytes": 4743168,
+      "mode": "terminate_job",
+      "phase": "query_members",
+      "retained_identities_still_alive": 0,
+      "returncode": 42,
+      "status": "completed",
+      "use_after_close_rejected": true,
+      "wall_seconds": 0.10899999999674037,
+      "wrong_creation_identity_rejected": true
+    },
+    {
+      "actual_interpreter_inherited_job": true,
+      "actual_interpreter_is_launcher": false,
+      "actual_interpreter_rss_bytes": 86753280,
+      "allocated_bytes": 67108864,
+      "cleanup_retained_identities_still_alive": 0,
+      "job_accounting": {
+        "configured_limit_flags": 8192,
+        "hard_job_memory_limit_bytes": null,
+        "hard_process_memory_limit_bytes": null,
+        "peak_job_commit_bytes": 79323136,
+        "peak_process_commit_bytes": 78553088
+      },
+      "job_members_after_exit": null,
+      "job_members_before_acknowledgment": 2,
+      "job_members_before_launcher_resume": 1,
+      "launcher_previous_suspend_count": 1,
+      "launcher_rss_bytes": 4743168,
+      "mode": "close_job",
+      "phase": "query_members",
+      "retained_identities_still_alive": 0,
+      "returncode": 0,
+      "status": "completed",
+      "use_after_close_rejected": true,
+      "wall_seconds": 0.09399999998277053,
+      "wrong_creation_identity_rejected": true
+    }
+  ]
+}

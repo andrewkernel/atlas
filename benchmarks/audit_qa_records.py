@@ -25,6 +25,8 @@ def audit(root=ROOT):
         ('qa_resource_pilot.py', 'qa-resource-pilot.json'),
         ('worker_ownership_control.py', 'worker-ownership-control.json'),
         ('derive_qa_resource.py', 'qa-resource-derived.json'),
+        ('windows_job_control.py', 'windows-job-control.json'),
+        ('qa_numerical_control.py', 'qa-numerical-control.json'),
     ):
         records[name] = load(name)
         if records[name]['source_sha256'] != digest('benchmarks/' + script):
@@ -76,6 +78,45 @@ def audit(root=ROOT):
                 failures.append('QA derived arithmetic/validity differs: ' + key)
     except (AssertionError, KeyError, ValueError, TypeError) as error:
         failures.append('QA raw/derived consistency failed: ' + type(error).__name__)
+    job = records['windows-job-control.json']
+    for key, name in (('job_helper_sha256', 'windows_job_scope.py'),
+                      ('ownership_helper_sha256', 'worker_ownership_control.py'),
+                      ('environment_helper_sha256', 'board_energy_control.py')):
+        if job[key] != digest('benchmarks/' + name):
+            failures.append('Windows job helper identity stale: ' + name)
+    if [t['mode'] for t in job['trials']] != ['natural', 'terminate_job', 'close_job']:
+        failures.append('Windows job lifecycle denominator incomplete')
+    for trial in job['trials']:
+        if trial['status'] != 'completed' or trial['retained_identities_still_alive'] or trial['cleanup_retained_identities_still_alive']:
+            failures.append('Windows job lifecycle completion/cleanup inconsistent')
+        if not trial['actual_interpreter_inherited_job'] or not trial['wrong_creation_identity_rejected'] or not trial['use_after_close_rejected']:
+            failures.append('Windows job lifecycle identity/control inconsistent')
+    numerical = records['qa-numerical-control.json']
+    for name, expected in numerical['helper_sha256'].items():
+        if expected != digest('benchmarks/' + name):
+            failures.append('QA numerical helper identity stale: ' + name)
+    if numerical['checker_review_sha256'] != digest('docs/research/competitors/trainparity-execution-review.json'):
+        failures.append('QA numerical checker review identity stale')
+    if [t['dropout'] for t in numerical['trials']] != numerical['intended_dropout_workers'] or len(numerical['trials']) != 2:
+        failures.append('QA numerical worker denominator inconsistent')
+    for trial in numerical['trials']:
+        worker = trial['worker_result']
+        if trial['status'] != 'completed' or trial['retained_identities_still_alive'] or trial['job_members_after_cleanup']:
+            failures.append('QA numerical worker completion/cleanup inconsistent')
+        if worker['runtime_identities'] != runtime or worker['feature_manifest_canonical_sha256'] != canonical(features):
+            failures.append('QA numerical runtime/input identity inconsistent')
+        if worker['source_sha256'] != numerical['source_sha256']:
+            failures.append('QA numerical worker source identity inconsistent')
+        if [a['name'] for a in worker['arms']] != ['reference', 'repeat', 'checkpoint', 'microbatch', 'microbatch_checkpoint']:
+            failures.append('QA numerical execution denominator inconsistent')
+        if len({a['model_preparation']['initial_state_digest'] for a in worker['arms']}) != 1:
+            failures.append('QA numerical initial states differ')
+        if len({canonical(a['scientific_start_rng']) for a in worker['arms']}) != 1:
+            failures.append('QA numerical scientific-start RNG identities differ')
+        if any(a['successful_updates'] != 1 or a['capture_outcome'] != 'PASS' for a in worker['arms']):
+            failures.append('QA numerical update/capture incomplete')
+        if worker['negative_comparison_to_unperturbed_candidate']['outcome'] != 'FAIL':
+            failures.append('QA numerical perturbation control not detected')
     return failures
 
 
