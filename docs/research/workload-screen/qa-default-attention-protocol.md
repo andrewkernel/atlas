@@ -1,0 +1,5 @@
+# Frozen constructor-default baseline check
+
+The resource grid explicitly requests eager or SDPA attention. Verify the installed library's default before calling eager the ordinary/default baseline. In the existing QA stack construct builtin BertForQuestionAnswering on CPU using the pinned full BertConfig, with no attention override, seed 2701 and fresh random parameters. Validate existing runtime/source/config identities first; do not load weights, run a forward, move the model to CUDA or execute an optimizer. Record attention setting before/after construction, parameter count and actual parameter devices. This follows the CPU-construction stage used by the resource helper, but is not a device-kernel probe or pretrained training result.
+
+Use the tested suspended-launch owned job with a 30 s deadline and cleanup verification. The code and this protocol are fixed before the query. Preserve any constructor/default result rather than requiring a preferred backend. Do not attribute an already-default native mechanism to Atlas or relabel an explicitly requested eager condition as the unmodified library default. No scientific-equivalence claim follows.
