@@ -18,4 +18,6 @@ Predictions: clean balanced/unequal accumulation and balanced accumulation witho
 
 ## Interpretation
 
+Adapter amendment after frozen checkpoint `c5a0c93`: the first attempt supplied case instances instead of the required zero-argument class names. Ten controls returned case-import ERROR and the invalid-plan control returned validation ERROR; no accumulation workers ran. The complete attempted-run record remains in [setup errors](trainparity-setup-errors.json). The case definitions, prediction meanings, seed, tolerances and plans are unchanged; only the config import targets were corrected to class names and unused instance declarations removed before the second attempt. This correction is an observed setup repair, not a hidden discarded tool result.
+
 Record exact reported outcomes, first differing phase/path, all report differences, wall time, source/config/review identities and package versions. Preserve warnings and all failures. Predictions are authored labels, not independent adjudication, sensitivity/specificity estimates or a random workload sample. No GPU allocation, full-training quality, sample-coverage API, resume behavior, activation-checkpoint transformation selection or Atlas application is measured here. Success primarily strengthens the obligation to reuse and compare competent existing checks.

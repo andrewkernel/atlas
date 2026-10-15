@@ -1,0 +1,470 @@
+{
+  "case_source_sha256": "709bad41af6734fc20891de4cd11e8f2d8e7c5e18fd9118733aebb995e90abaa",
+  "claims": "Investigator-authored bounded controls; not an Atlas policy comparison, independent benchmark, full-training equivalence, or cross-environment timing comparison.",
+  "config": {
+    "atol": 1e-12,
+    "controls": [
+      {
+        "case": "balanced_case",
+        "name": "balanced_positive",
+        "plan": {
+          "microbatch_count": 2
+        },
+        "predicted_outcome": "pass"
+      },
+      {
+        "case": "linear_case",
+        "name": "unequal_positive",
+        "plan": {
+          "microbatch_count": 2
+        },
+        "predicted_outcome": "pass"
+      },
+      {
+        "case": "no_accounting_case",
+        "name": "balanced_no_accounting",
+        "plan": {
+          "microbatch_count": 2
+        },
+        "predicted_outcome": "pass"
+      },
+      {
+        "case": "linear_case",
+        "name": "unequal_wrong_mean",
+        "plan": {
+          "microbatch_count": 2,
+          "use_explicit_loss_accounting": false
+        },
+        "predicted_outcome": "fail"
+      },
+      {
+        "case": "linear_case",
+        "name": "partial_clipping",
+        "plan": {
+          "clip_grad_norm": 0.2,
+          "clip_per_microbatch": true,
+          "microbatch_count": 2
+        },
+        "predicted_outcome": "fail"
+      },
+      {
+        "case": "linear_case",
+        "name": "step_per_microbatch",
+        "plan": {
+          "microbatch_count": 2,
+          "optimizer_step_per_microbatch": true
+        },
+        "predicted_outcome": "fail"
+      },
+      {
+        "case": "linear_case",
+        "name": "scheduler_per_microbatch",
+        "plan": {
+          "microbatch_count": 2,
+          "scheduler_step_per_microbatch": true
+        },
+        "predicted_outcome": "fail"
+      },
+      {
+        "case": "linear_case",
+        "name": "omitted_tail",
+        "plan": {
+          "microbatch_count": 2,
+          "omit_final_microbatch": true
+        },
+        "predicted_outcome": "fail"
+      },
+      {
+        "case": "linear_case",
+        "name": "erased_gradient_observation",
+        "plan": {
+          "microbatch_count": 2,
+          "zero_grad_before_gradient_observation": true
+        },
+        "predicted_outcome": "fail"
+      },
+      {
+        "case": "metadata_case",
+        "name": "unsupported_metadata",
+        "plan": {
+          "microbatch_count": 2
+        },
+        "predicted_outcome": "abstain"
+      },
+      {
+        "case": "linear_case",
+        "name": "invalid_plan",
+        "plan": {
+          "microbatch_count": 0
+        },
+        "predicted_outcome": "error"
+      }
+    ],
+    "revision": "79a1fc23c36073f09b97aa99c2daad7e96e7bce4",
+    "rtol": 1e-10,
+    "seed": 1701,
+    "worker_timeout_seconds": 30
+  },
+  "config_sha256": "ff937da08e289a7c5de8bf42c7aed0c91818fe018b23c1d4a5adabc141b7582a",
+  "environment_keys": [
+    "MKL_NUM_THREADS",
+    "OMP_NUM_THREADS",
+    "PATH",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONHASHSEED",
+    "PYTHONNOUSERSITE",
+    "PYTHONPATH",
+    "SystemRoot",
+    "TEMP",
+    "TMP",
+    "WINDIR"
+  ],
+  "historical_source_commit": "c5a0c93",
+  "interpretation": "First attempted run: adapter supplied instances instead of required zero-argument classes. Ten controls fail during case import; invalid plan fails validation. No accumulation workers ran. Retained setup failure, not a tool accuracy result.",
+  "review_sha256": "fb582db3dec0a7c46091bcf3249bb57725acba9f8747a78cad94a0cc8a2a2733",
+  "source_sha256": "b7cb47da0ef3bf477469e40d0e9b254f166c7da3097a4a540c67544257f06273",
+  "started_utc": "20261015T062512Z",
+  "trials": [
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "balanced_positive",
+      "outer_wall_seconds": 2.1943638999946415,
+      "predicted_outcome": "pass",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:balanced_case",
+        "comparison_policy": "exact",
+        "equivalence": "",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "case setup failed: CaseImportError: case target 'trainparity_cases:balanced_case' must be a class",
+        "outcome": "ERROR",
+        "peak_temporary_directory_bytes": 0,
+        "persisted_artifact_bytes": 562,
+        "primary_difference": null,
+        "process_ids": [],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 0.0010367999784648418
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "unequal_positive",
+      "outer_wall_seconds": 2.07924940000521,
+      "predicted_outcome": "pass",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:linear_case",
+        "comparison_policy": "exact",
+        "equivalence": "",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "case setup failed: CaseImportError: case target 'trainparity_cases:linear_case' must be a class",
+        "outcome": "ERROR",
+        "peak_temporary_directory_bytes": 0,
+        "persisted_artifact_bytes": 558,
+        "primary_difference": null,
+        "process_ids": [],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 0.0010491000139154494
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "balanced_no_accounting",
+      "outer_wall_seconds": 2.114709799992852,
+      "predicted_outcome": "pass",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:no_accounting_case",
+        "comparison_policy": "exact",
+        "equivalence": "",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "case setup failed: CaseImportError: case target 'trainparity_cases:no_accounting_case' must be a class",
+        "outcome": "ERROR",
+        "peak_temporary_directory_bytes": 0,
+        "persisted_artifact_bytes": 572,
+        "primary_difference": null,
+        "process_ids": [],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 0.0012792999623343349
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "unequal_wrong_mean",
+      "outer_wall_seconds": 2.1048585000098683,
+      "predicted_outcome": "fail",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:linear_case",
+        "comparison_policy": "exact",
+        "equivalence": "",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "case setup failed: CaseImportError: case target 'trainparity_cases:linear_case' must be a class",
+        "outcome": "ERROR",
+        "peak_temporary_directory_bytes": 0,
+        "persisted_artifact_bytes": 558,
+        "primary_difference": null,
+        "process_ids": [],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 0.001229399989824742
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "partial_clipping",
+      "outer_wall_seconds": 2.124691699980758,
+      "predicted_outcome": "fail",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:linear_case",
+        "comparison_policy": "exact",
+        "equivalence": "",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "case setup failed: CaseImportError: case target 'trainparity_cases:linear_case' must be a class",
+        "outcome": "ERROR",
+        "peak_temporary_directory_bytes": 0,
+        "persisted_artifact_bytes": 558,
+        "primary_difference": null,
+        "process_ids": [],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 0.0010798000148497522
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "step_per_microbatch",
+      "outer_wall_seconds": 2.1398125999839976,
+      "predicted_outcome": "fail",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:linear_case",
+        "comparison_policy": "exact",
+        "equivalence": "",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "case setup failed: CaseImportError: case target 'trainparity_cases:linear_case' must be a class",
+        "outcome": "ERROR",
+        "peak_temporary_directory_bytes": 0,
+        "persisted_artifact_bytes": 558,
+        "primary_difference": null,
+        "process_ids": [],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 0.0010540999937802553
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "scheduler_per_microbatch",
+      "outer_wall_seconds": 2.128896399983205,
+      "predicted_outcome": "fail",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:linear_case",
+        "comparison_policy": "exact",
+        "equivalence": "",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "case setup failed: CaseImportError: case target 'trainparity_cases:linear_case' must be a class",
+        "outcome": "ERROR",
+        "peak_temporary_directory_bytes": 0,
+        "persisted_artifact_bytes": 558,
+        "primary_difference": null,
+        "process_ids": [],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 0.0011511999764479697
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "omitted_tail",
+      "outer_wall_seconds": 2.123352699971292,
+      "predicted_outcome": "fail",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:linear_case",
+        "comparison_policy": "exact",
+        "equivalence": "",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "case setup failed: CaseImportError: case target 'trainparity_cases:linear_case' must be a class",
+        "outcome": "ERROR",
+        "peak_temporary_directory_bytes": 0,
+        "persisted_artifact_bytes": 558,
+        "primary_difference": null,
+        "process_ids": [],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 0.0010532999876886606
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "erased_gradient_observation",
+      "outer_wall_seconds": 2.151212700002361,
+      "predicted_outcome": "fail",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:linear_case",
+        "comparison_policy": "exact",
+        "equivalence": "",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "case setup failed: CaseImportError: case target 'trainparity_cases:linear_case' must be a class",
+        "outcome": "ERROR",
+        "peak_temporary_directory_bytes": 0,
+        "persisted_artifact_bytes": 558,
+        "primary_difference": null,
+        "process_ids": [],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 0.0014756000018678606
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "unsupported_metadata",
+      "outer_wall_seconds": 2.106955500028562,
+      "predicted_outcome": "abstain",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:metadata_case",
+        "comparison_policy": "exact",
+        "equivalence": "",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "case setup failed: CaseImportError: case target 'trainparity_cases:metadata_case' must be a class",
+        "outcome": "ERROR",
+        "peak_temporary_directory_bytes": 0,
+        "persisted_artifact_bytes": 562,
+        "primary_difference": null,
+        "process_ids": [],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 0.001084199990145862
+    },
+    {
+      "environment": {
+        "device": "cpu",
+        "numpy": "2.4.6",
+        "python": "3.11.17",
+        "torch": "2.13.0+cpu",
+        "trainparity": "0.1.1.dev0"
+      },
+      "name": "invalid_plan",
+      "outer_wall_seconds": 2.138335699972231,
+      "predicted_outcome": "error",
+      "result": {
+        "all_differences": [],
+        "case": "trainparity_cases:linear_case",
+        "comparison_policy": "exact",
+        "equivalence": "",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "case setup failed: ValueError: microbatch_count must be positive",
+        "outcome": "ERROR",
+        "peak_temporary_directory_bytes": 0,
+        "persisted_artifact_bytes": 527,
+        "primary_difference": null,
+        "process_ids": [],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "stderr_nonempty": false,
+      "wall_seconds": 0.0006051000091247261
+    }
+  ]
+}

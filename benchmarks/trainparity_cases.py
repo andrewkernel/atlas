@@ -58,8 +58,3 @@ class MetadataCase(LinearCase):
         assert isinstance(batch, dict)
         return {**batch, "metadata": "unsupported string leaf"}
 
-
-linear_case = LinearCase()
-balanced_case = BalancedCase()
-no_accounting_case = NoAccountingCase()
-metadata_case = MetadataCase()
