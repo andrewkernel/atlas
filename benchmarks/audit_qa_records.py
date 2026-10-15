@@ -28,6 +28,7 @@ def audit(root=ROOT):
         ('windows_job_control.py', 'windows-job-control.json'),
         ('qa_numerical_control.py', 'qa-numerical-control.json'),
         ('qa_dispatch_control.py', 'qa-dispatch-control.json'),
+        ('qa_adam_sensitivity_control.py', 'qa-adam-sensitivity-control.json'),
     ):
         records[name] = load(name)
         if records[name]['source_sha256'] != digest('benchmarks/' + script):
@@ -138,6 +139,26 @@ def audit(root=ROOT):
             failures.append('QA dispatch gradient health/coverage inconsistent')
         if sum(worker['cuda_event_names_and_counts'].values()) != worker['cuda_event_count'] and not worker['cuda_event_names_truncated']:
             failures.append('QA dispatch device-event count inconsistent')
+    sensitivity = records['qa-adam-sensitivity-control.json']
+    for name, expected in sensitivity['helper_sha256'].items():
+        if expected != digest('benchmarks/' + name):
+            failures.append('QA sensitivity helper identity stale: ' + name)
+    if sensitivity['optimizer_review_sha256'] != digest('docs/research/workload-screen/qa-optimizer-review.json'):
+        failures.append('QA sensitivity optimizer review identity stale')
+    original = (root / 'benchmarks/qa_owned_worker.py').read_text(encoding='utf-8')
+    expected = original.replace("ALLOWED = {'qa_numerical_control.py', 'qa_dispatch_control.py'}", "ALLOWED = {'qa_adam_sensitivity_control.py'}")
+    if (root / 'benchmarks/qa_sensitivity_supervisor.py').read_text(encoding='utf-8') != expected:
+        failures.append('QA sensitivity supervisor differs beyond declared registry change')
+    trial = sensitivity['trial']
+    worker = trial['worker_result']
+    if trial['status'] != 'completed' or trial['retained_identities_still_alive'] or trial['job_members_after_cleanup']:
+        failures.append('QA sensitivity completion/cleanup inconsistent')
+    if worker['runtime_identities'] != runtime or worker['source_sha256'] != sensitivity['source_sha256']:
+        failures.append('QA sensitivity runtime/source identity inconsistent')
+    if [x['name'] for x in worker['executions']] != ['reference', 'microbatch'] or len(worker['selected_components']) != 10:
+        failures.append('QA sensitivity execution/selection denominator inconsistent')
+    if any(not x['equal_gradient_positive_exact'] for x in worker['replays']):
+        failures.append('QA sensitivity equal-gradient control failed')
     return failures
 
 
