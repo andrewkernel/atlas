@@ -1,0 +1,47 @@
+{
+  "binding_sha256": "2828e66b483bec218f461314f6da96c1e56330ed4b297a20b3444b4c43cdd14e",
+  "captured_utc": "2026-10-15T07:51:09.206180+00:00",
+  "device_count": 1,
+  "driver": "595.95",
+  "gpu": "NVIDIA GeForce RTX 3060",
+  "nvidia_ml_py": "13.615.71",
+  "python": "3.12.10",
+  "samples": [
+    {
+      "elapsed_ns": 900,
+      "energy_mj": {
+        "status": "available",
+        "value": 21708090482
+      },
+      "power_mw": {
+        "status": "available",
+        "value": 44343
+      }
+    },
+    {
+      "elapsed_ns": 254890400,
+      "energy_mj": {
+        "status": "available",
+        "value": 21708103424
+      },
+      "power_mw": {
+        "status": "available",
+        "value": 44359
+      }
+    },
+    {
+      "elapsed_ns": 511397500,
+      "energy_mj": {
+        "status": "available",
+        "value": 21708112112
+      },
+      "power_mw": {
+        "status": "available",
+        "value": 44375
+      }
+    }
+  ],
+  "scope": "Read-only uncontrolled board telemetry availability, not an idle calibration, workload energy measurement or per-process/whole-host energy estimate.",
+  "source_sha256": "67ab218b208702c47b4cfef53ce2d3e6abe825888fc0ee3179edbe00173a8bea",
+  "status": "initialized"
+}
