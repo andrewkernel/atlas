@@ -45,3 +45,7 @@ Implement the trusted adapter/profiler vertical slice in [acceptance criteria](.
 ## Later execution and telemetry audit
 
 Reviewed TrainParity controls, adapted Rockmate-family planning, constructor-state/reuse controls and a shared supported-stack streaming capture baseline now execute. [Comparison-predicate controls](experiments/comparator-contract-control.md) and [gross-board telemetry](experiments/board-energy-control.md) refine interpretation. Earlier execution/energy absences above are historical checkpoints. The primary independently labeled selection study, genuine useful OOM rescue, local-model inference and full application remain unfinished. Cross-platform checkpoint 0966144 passed run 38701101879; consult Git history/Actions for the final published commit.
+
+## Final continuation checks
+
+[Final local validation](experiments/local-validation-final.json) records source compilation, 20 passing CPU tests, the complete link/manifest audit, whitespace checks, tracked UTF-8 readability and file-size inspection after the latest controls. [Environment reconciliation](experiments/final-environment-audit.md) retains its exact selected scope. Native selective-checkpoint and token-reference controls are published separately with all attempts. The initial blueprint is complete; the primary research program remains gated by independent labels and meaningful held-out workload/policy evidence.

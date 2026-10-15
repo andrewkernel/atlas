@@ -1,0 +1,36 @@
+{
+  "audit_source_sha256": "eb6a95d216505fbc606b7df24e9d1a38276c2ae7705edc588a03215447ace54d",
+  "checks": [
+    {
+      "command": "python -m compileall -q benchmarks tests",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": "python benchmarks/audit_specification.py",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"markdown_files\": 125,\n  \"local_links_checked\": 596,\n  \"unique_external_links_catalogued\": 120,\n  \"lock_package_count\": 22,\n  \"failures\": []\n}\n"
+    },
+    {
+      "command": "python -m pytest -q",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "....................                                                     [100%]\n20 passed in 2.97s\n"
+    },
+    {
+      "command": "git diff --check",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "git_head_before_capture": "f7ab8cc50121092fc027299c764505b4c8f4f8fb",
+  "lock_sha256": "1c255d3e0c9de05dd4d55870f931be4461232cf9b51f0e7772b386d13d2520f7",
+  "recorded_utc": "2026-10-15T08:26:06.078144+00:00",
+  "scope": "Current local consistency/CPU controls after reviewed existing-tool, native selective, token-reference and telemetry studies. Earlier scientific results are hash-checked rather than rerun. No primary study, independent labels or validated sandbox.",
+  "tracked_file_count": 247,
+  "tracked_files_above_2MB": [],
+  "tracked_text_utf8_failures": []
+}
