@@ -60,9 +60,21 @@ def main():
         try:
             with (scratch / 'stdout.txt').open('w') as stdout, (scratch / 'stderr.txt').open('w') as stderr:
                 launch = subprocess.Popen([str(interpreter), str(Path(__file__).resolve()), '--child', str(scratch), '--nonce', nonce],
-                                          cwd=ROOT, env=child_environment(interpreter, scratch), stdout=stdout, stderr=stderr)
+                                          cwd=ROOT, env=child_environment(interpreter, scratch), stdout=stdout, stderr=stderr,
+                                          creationflags=0x00000004)  # CREATE_SUSPENDED, before venv redirector executes.
                 root = psutil.Process(launch.pid)
                 retained.append(root)
+                row['phase'] = 'verify_and_assign_suspended_launcher'
+                try:
+                    job.assign_owned(root.pid, root.create_time() + 1)
+                except ValueError:
+                    row['wrong_creation_identity_rejected'] = True
+                else:
+                    raise RuntimeError('Wrong process identity was accepted')
+                job.assign_owned(root.pid, root.create_time())
+                row['job_members_before_launcher_resume'] = len(job.members())
+                row['launcher_previous_suspend_count'] = job.resume_owned_single_thread(root)
+                row['phase'] = 'await_worker_rendezvous'
                 while not (scratch / 'ready.json').exists() and time.monotonic() - started < 5 and launch.poll() is None:
                     time.sleep(.01)
                 if not (scratch / 'ready.json').exists():
@@ -73,19 +85,11 @@ def main():
                 if len(matches) != 1 or ready['nonce'] != nonce or matches[0].ppid() != ready['ppid']:
                     raise RuntimeError('Unverified actual interpreter identity')
                 actual = matches[0]
-                try:
-                    job.assign_owned(actual.pid, actual.create_time() + 1)
-                except ValueError:
-                    row['wrong_creation_identity_rejected'] = True
-                else:
-                    raise RuntimeError('Wrong process identity was accepted')
-                for process in retained:
-                    row['phase'] = 'assign_launcher' if process.pid == launch.pid else 'assign_actual_interpreter'
-                    job.assign_owned(process.pid, process.create_time())
                 row['phase'] = 'query_members'
                 members = job.members()
                 if set(members) != {p.pid for p in retained}:
                     raise RuntimeError('Job inventory differs from retained owned identities')
+                row['actual_interpreter_inherited_job'] = actual.pid in members
                 row['job_members_before_acknowledgment'] = len(members)
                 row['actual_interpreter_is_launcher'] = actual.pid == launch.pid
                 save(scratch / 'ack.json', {'mode': mode, 'nonce': nonce})

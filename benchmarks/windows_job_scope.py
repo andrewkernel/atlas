@@ -31,6 +31,9 @@ class WindowsJobScope:
             'SetInformationJobObject': ([W.HANDLE, ctypes.c_int, ctypes.c_void_p, W.DWORD], W.BOOL),
             'QueryInformationJobObject': ([W.HANDLE, ctypes.c_int, ctypes.c_void_p, W.DWORD, ctypes.c_void_p], W.BOOL),
             'OpenProcess': ([W.DWORD, W.BOOL, W.DWORD], W.HANDLE),
+            'OpenThread': ([W.DWORD, W.BOOL, W.DWORD], W.HANDLE),
+            'GetProcessIdOfThread': ([W.HANDLE], W.DWORD),
+            'ResumeThread': ([W.HANDLE], W.DWORD),
             'GetProcessTimes': ([W.HANDLE] + [ctypes.POINTER(W.FILETIME)] * 4, W.BOOL),
             'AssignProcessToJobObject': ([W.HANDLE, W.HANDLE], W.BOOL),
             'TerminateJobObject': ([W.HANDLE, W.UINT], W.BOOL),
@@ -88,6 +91,26 @@ class WindowsJobScope:
             if ctypes.get_last_error() != 234:  # ERROR_MORE_DATA
                 self._check(False)
         raise RuntimeError('Job process inventory exceeds trusted diagnostic bound')
+
+    def resume_owned_single_thread(self, process):
+        """Resume only the owned CREATE_SUSPENDED launcher's sole verified primary thread."""
+        if process.pid not in self.members():
+            raise ValueError('Suspended launcher is not in this job')
+        threads = process.threads()
+        if len(threads) != 1:
+            raise RuntimeError('Expected exactly one thread before launcher resume')
+        thread = self._check(self.api.OpenThread(0x0002 | 0x0800, False, threads[0].id))
+        try:
+            if self.api.GetProcessIdOfThread(thread) != process.pid:
+                raise ValueError('Opened thread does not belong to owned launcher')
+            previous = self.api.ResumeThread(thread)
+            if previous == 0xFFFFFFFF:
+                self._check(False)
+            if previous != 1:
+                raise RuntimeError('Unexpected previous primary-thread suspend count')
+            return previous
+        finally:
+            self._check(self.api.CloseHandle(thread))
 
     def memory_accounting(self):
         values = ExtendedLimits()
