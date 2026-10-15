@@ -11,13 +11,13 @@
       "command": "python benchmarks/audit_specification.py",
       "returncode": 0,
       "stderr": "",
-      "stdout": "{\n  \"markdown_files\": 125,\n  \"local_links_checked\": 596,\n  \"unique_external_links_catalogued\": 120,\n  \"lock_package_count\": 22,\n  \"failures\": []\n}\n"
+      "stdout": "{\n  \"markdown_files\": 125,\n  \"local_links_checked\": 605,\n  \"unique_external_links_catalogued\": 120,\n  \"lock_package_count\": 22,\n  \"failures\": []\n}\n"
     },
     {
       "command": "python -m pytest -q",
       "returncode": 0,
       "stderr": "",
-      "stdout": "....................                                                     [100%]\n20 passed in 2.97s\n"
+      "stdout": "....................                                                     [100%]\n20 passed in 3.01s\n"
     },
     {
       "command": "git diff --check",
@@ -26,11 +26,12 @@
       "stdout": ""
     }
   ],
-  "git_head_before_capture": "f7ab8cc50121092fc027299c764505b4c8f4f8fb",
-  "lock_sha256": "1c255d3e0c9de05dd4d55870f931be4461232cf9b51f0e7772b386d13d2520f7",
-  "recorded_utc": "2026-10-15T08:26:06.078144+00:00",
-  "scope": "Current local consistency/CPU controls after reviewed existing-tool, native selective, token-reference and telemetry studies. Earlier scientific results are hash-checked rather than rerun. No primary study, independent labels or validated sandbox.",
-  "tracked_file_count": 247,
+  "committed_and_working_lock_bytes_equal": true,
+  "git_head_before_capture": "48841b87dd6ee0d719a9afc5576971d4d1c15feb",
+  "lock_sha256": "cb35b0c33e15910803e16bbebfc4ba6cf5f1a53f42e70cc8020baee2de98bcd9",
+  "recorded_utc": "2026-10-15T08:30:24.297582+00:00",
+  "scope": "Closing local consistency/CPU validation after explicit LF lockfile portability repair. Supersedes earlier rolling capture retained in commit 942e565. No scientific experiment rerun, independent labels, primary study or hostile-code validation.",
+  "tracked_file_count": 248,
   "tracked_files_above_2MB": [],
   "tracked_text_utf8_failures": []
 }

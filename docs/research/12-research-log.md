@@ -205,3 +205,9 @@ This is a bounded initial research/engineering investigation, not five hours of 
 - Read distribution metadata without importing ML packages across six separate environments. All 31 selected Torch/NVML Python-source files match installed RECORD hashes; earlier CUDA/checker/planner/interop versions agree after canonical package-name comparison. This is neither a whole-package integrity check nor a trusted signature.
 - An initial investigator normalizer omitted dots, falsely distinguishing ruamel.yaml from ruamel-yaml. Retain that attempted inventory, correct to the packaging specification, and rerun. No package mutation is inferred. Requirements use byte hashes, earlier JSON records use canonical hashes, and telemetry requirement line endings are normalized before hashing.
 - No matching owned training/planner/telemetry child remains. The primary policy, external-label and useful expanded-access gates remain unfinished.
+
+## 2026-10-15 08:30 UTC — closing consistency and publication gate
+
+- Linux CI 38705602573 caught a newline-dependent new core-lock byte fingerprint despite a local pass. Explicit LF for uv.lock fixes portable checkout identity; committed and working bytes now match. Installed packages and dependency contents are unchanged. Retained the issue/amendment and recaptured current environment identities.
+- Closing local compilation, 20 CPU tests, link/source/manifest checks, whitespace, tracked UTF-8 and file-size checks pass; exact outputs are in local-validation-final.json. Earlier raw scientific results and frozen source remain unchanged. Linux/Windows CI remains the gate before advancing main to the final checkpoint.
+- Initial logged work began 04:39 UTC; elapsed through this entry is 3.86 hours, not five. Do not reinterpret all quota-window resets as research time. No reset credit was used. The primary independently labeled selection study, useful real OOM rescue, other hardware and local-model inference remain unfinished.
