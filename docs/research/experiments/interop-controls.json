@@ -1,0 +1,136 @@
+{
+  "captured_utc": "2026-10-15T07:33:45.157688+00:00",
+  "case_source_sha256": "94017a87a10c497c7629881b1e03e93c697d6cff473f5796fd751f134a673be2",
+  "helper_source_sha256": "9e3fa58afffb618c7ec4c8c6bba5099610732f161d491e6d55b034c77b48fd75",
+  "modes": [
+    "native_accumulation_runner",
+    "planned_accumulation_runner",
+    "planned_streaming_capture"
+  ],
+  "review_sha256": {
+    "rockmate-execution-review.json": "9148c94250b0e8337daf4133899ea7eed4a09d22c6f6431b9326ddcdc6f47486",
+    "trainparity-execution-review.json": "fb582db3dec0a7c46091bcf3249bb57725acba9f8747a78cad94a0cc8a2a2733"
+  },
+  "scope": "Declared-compatible shared GPU stack; selected accumulation runner and existing capture/comparison primitives with an authored streaming executor. No Atlas policy, historical paper reproduction or field reliability claim.",
+  "source_sha256": "5490125db5df9eea69ced2b77dae519f8a676d974e8f693e9d8d1044b76cfc1c",
+  "trials": [
+    {
+      "atol": 1e-07,
+      "environment": {
+        "cuda": "13.0",
+        "torch": "2.13.0+cu130",
+        "trainparity": "0.1.1.dev0"
+      },
+      "mode": "native_accumulation_runner",
+      "nonfinite_scalar_fields": [],
+      "outer_wall_seconds": 16.76799339998979,
+      "result": {
+        "all_differences": [],
+        "case": "interop_cases:NativeCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "One fixed logical-256 FP32 MSE/SGD update, explicit denominator and named state",
+        "first_observed_phase": null,
+        "loss_normalization_captured": true,
+        "message": "declared executions are equivalent for one optimizer-update boundary",
+        "outcome": "PASS",
+        "peak_temporary_directory_bytes": 4468208,
+        "persisted_artifact_bytes": 0,
+        "primary_difference": null,
+        "process_ids": [
+          17724,
+          18276,
+          9652
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": true
+      },
+      "rtol": 1e-05,
+      "seed": 2001,
+      "status": "reported",
+      "wall_seconds": 14.410836900002323
+    },
+    {
+      "atol": 1e-07,
+      "environment": {
+        "cuda": "13.0",
+        "torch": "2.13.0+cu130",
+        "trainparity": "0.1.1.dev0"
+      },
+      "mode": "planned_accumulation_runner",
+      "nonfinite_scalar_fields": [],
+      "outer_wall_seconds": 19.641123900015373,
+      "result": {
+        "all_differences": [],
+        "case": "interop_cases:PlannedCase",
+        "comparison_policy": "explicit_tolerance",
+        "equivalence": "One fixed logical-256 FP32 MSE/SGD update, explicit denominator and named state",
+        "first_observed_phase": null,
+        "loss_normalization_captured": false,
+        "message": "worker failed: RuntimeError: invalid gradient at index 0 - got [0] but expected shape compatible with [128, 64, 64]",
+        "outcome": "ERROR",
+        "peak_temporary_directory_bytes": 2979820,
+        "persisted_artifact_bytes": 0,
+        "primary_difference": null,
+        "process_ids": [
+          14504,
+          18452,
+          14736
+        ],
+        "schema_version": 2,
+        "trainparity_version": "0.1.1.dev0",
+        "verified_equal_initial_state": false
+      },
+      "rtol": 1e-05,
+      "seed": 2001,
+      "status": "reported",
+      "wall_seconds": 17.364550099999178
+    },
+    {
+      "atol": 1e-07,
+      "capture_outcomes": {
+        "initial_candidate": "PASS",
+        "initial_reference": "PASS",
+        "post_candidate": "PASS",
+        "post_reference": "PASS"
+      },
+      "data_sha256": "c6d2921274de446b920d509e67c3d2cbff739de0878d479826adaa1032419821",
+      "environment": {
+        "cuda": "13.0",
+        "torch": "2.13.0+cu130",
+        "trainparity": "0.1.1.dev0"
+      },
+      "initial_comparison": {
+        "first_difference": null,
+        "message": "snapshots are equivalent under policy",
+        "outcome": "PASS"
+      },
+      "mode": "planned_streaming_capture",
+      "negative_capture_outcome": "PASS",
+      "negative_comparison": {
+        "first_difference": {
+          "baseline": "tensor(shape=(128, 64), dtype=torch.float32, device=cuda:0, values=[0.07104110717773438, 0.11013036966323853, 0.0588742159307003, 0.0776064395904541])",
+          "candidate": "tensor(shape=(128, 64), dtype=torch.float32, device=cuda:0, values=[0.08104110509157181, 0.11013036966323853, 0.0588742159307003, 0.0776064395904541])",
+          "max_abs_error": 0.009999997913837433,
+          "max_rel_error": 0.14076354256161736,
+          "path": "model.core.layers[\"0\"].weight",
+          "reason": "tensor_value"
+        },
+        "message": "first observed divergence at model.core.layers[\"0\"].weight: tensor_value",
+        "outcome": "FAIL"
+      },
+      "nonfinite_scalar_fields": [],
+      "outer_wall_seconds": 5.947886299982201,
+      "post_comparison": {
+        "first_difference": null,
+        "message": "snapshots are equivalent under policy",
+        "outcome": "PASS"
+      },
+      "rng_scope": "Pure fixed-input comparison; post-state snapshots deliberately exclude RNG. Construction uses the scoped Torch guard, not a generic state restoration claim.",
+      "rtol": 1e-05,
+      "seed": 2001,
+      "status": "completed",
+      "wall_seconds": 3.215651999984402
+    }
+  ]
+}

@@ -25,3 +25,5 @@ Separate [checker](experiments/checker-environment.json) and [planner](experimen
 Model licenses were checked individually: Qwen3-4B and Qwen2.5-Coder-7B are tagged Apache-2.0; Phi-4-mini MIT; Qwen2.5-Coder-3B has distinct research terms and is excluded as the default. Quantized distributions need separate provenance/digest/terms verification. No weights were downloaded.
 
 Fashion-MNIST declares MIT. WikiText's pinned card has inconsistent licensing metadata/prose; resolve before acquiring/redistributing planned inputs. SST-2 metadata says unknown and was not selected as the default. These findings are recorded so future sessions do not silently treat online availability as established reuse rights.
+
+A third [shared interop environment](experiments/interop-environment.json) pins Python 3.11.17/Torch 2.13.0+cu130/NumPy 2.4.6 within both inspected version ranges. Its official CUDA wheel/dependency hashes and actual finite controls are recorded separately; no historical environment or core lock was modified.

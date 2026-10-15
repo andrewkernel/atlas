@@ -92,6 +92,7 @@ def main() -> int:
         ('planner_reuse_control.py', 'planner-reuse-control.json'),
         ('planner_reuse_retention_control.py', 'planner-reuse-retention-control.json'),
         ('planner_reuse_nonrecompute_control.py', 'planner-reuse-nonrecompute-control.json'),
+        ('run_interop_controls.py', 'interop-controls.json'),
     ):
         recorded=json.loads((ROOT/'docs/research/experiments'/evidence).read_text(encoding='utf-8'))
         if recorded['source_sha256'] != hashlib.sha256((ROOT/'benchmarks'/script).read_bytes()).hexdigest():
@@ -176,6 +177,18 @@ def main() -> int:
             failures.append(f'Reuse-control review identity is stale: {name}')
         if 'fixture_source_sha256' in record and record['fixture_source_sha256'] != hashlib.sha256((ROOT/'benchmarks/planner_reuse_control.py').read_bytes()).hexdigest():
             failures.append(f'Reuse-control fixture identity is stale: {name}')
+    interop=json.loads((ROOT/'docs/research/experiments/interop-controls.json').read_text(encoding='utf-8'))
+    for key,path in (('case_source_sha256','benchmarks/interop_cases.py'),('helper_source_sha256','benchmarks/planner_reuse_control.py')):
+        if interop[key] != hashlib.sha256((ROOT/path).read_bytes()).hexdigest():
+            failures.append(f'Interop source identity is stale: {path}')
+    if [trial['mode'] for trial in interop['trials']] != interop['modes']:
+        failures.append('Interop intended-run denominator is incomplete')
+    for name,expected_hash in interop['review_sha256'].items():
+        if expected_hash != hashlib.sha256((ROOT/'docs/research/competitors'/name).read_bytes()).hexdigest():
+            failures.append(f'Interop review identity is stale: {name}')
+    interop_environment=json.loads((ROOT/'docs/research/experiments/interop-environment.json').read_text(encoding='utf-8'))
+    if interop_environment['requirements_sha256'] != hashlib.sha256((ROOT/interop_environment['requirements_file']).read_bytes()).hexdigest():
+        failures.append('Interop requirements identity is stale')
     for name,expected_digest in derived['input_canonical_json_sha256'].items():
         value=json.loads((ROOT/'docs/research/experiments'/name).read_text(encoding='utf-8'))
         actual=hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()

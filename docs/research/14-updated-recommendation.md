@@ -30,7 +30,7 @@ Use the [precise units and denominators](evaluation-estimands.md), shared adapte
 
 Before adding more mechanisms, an LLM or a frontend:
 
-1. The basic compatible external-checker execution gate is now met for original small CPU cases. Extend that reviewed adapter to the actual selected resource workload; the held-out selection comparison is still required.
+1. The basic executable-baseline gate now covers CPU controls, adapted GPU planner cases and a shared supported-stack integration. Existing capture/comparison primitives can verify the known streaming relation. Extend this to a meaningful selected resource workload; the independently labeled held-out selection comparison is still required.
 2. Obtain independent labels on a small positive/invalid/indeterminate corpus and identify whether any actual combined-case coverage is missing. If all value reduces to known rules, pivot to benchmark consolidation/upstream contributions or explicitly call the project engineering.
 3. Select a meaningful memory-bound workload with justified dimensions and frozen input/protocol, then measure a genuine useful completion under a declared budget. Do not enlarge a toy solely to manufacture an impressive access claim.
 4. Compare decisions and total workflow cost with the strong baseline. Freeze practical decision criteria after a disjoint pilot; record no-plan, unsupported, failure and uncertainty outcomes.
