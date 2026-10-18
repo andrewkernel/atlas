@@ -6,7 +6,7 @@ const studyLabels={...labels,hybrid50:'Hybrid · 256-token GPU window'};
 Object.assign(colors,{shift:'#bc8b48',ring:'#326b49'});
 Object.assign(labels,{shift:'Shift cache',ring:'Ring cache'});
 const displayLabel=(r,doc=state.doc)=>doc?.config?.kind==='research'&&['repeated','pressure','pilot'].includes(doc.config.suite)&&r.plan==='hybrid50'?`Hybrid · ${doc.config.window||256}-token GPU window`:r.label;
-const state={token:'',runs:[],doc:null,selected:null,kind:'benchmark',view:'experiments',hidden:new Set(),sort:'context',ascending:true,active:null};
+const state={token:'',runs:[],doc:null,selected:null,kind:'benchmark',view:'experiments',hidden:new Set(),sort:'context',ascending:true,active:null,referenceRuns:new Set()};
 const planLabel=p=>{const row=state.doc?.rows?.find(r=>r.plan===p);return row?displayLabel(row):labels[p]||p};
 const fmt=(n,d=2)=>n==null?'—':Number(n).toLocaleString(undefined,{minimumFractionDigits:d,maximumFractionDigits:d});
 const date=x=>x?new Date(x).toLocaleString(undefined,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'';
@@ -21,14 +21,15 @@ function clearNotice(){$('#message').hidden=true}
 function pill(status){return `<span class="pill ${['failed','timed_out'].includes(status)?'fail':['running','queued','cancelled'].includes(status)?'warn':''}">${esc(status)}</span>`}
 
 async function refresh(prefer){
-  const [session,runs]=await Promise.all([api('/api/session'),api('/api/runs')]);
+  const [session,runs,reference]=await Promise.all([api('/api/session'),api('/api/runs'),api('/data/reference-history.json').catch(()=>({runs:[]}))]);
+  state.referenceRuns=new Set(reference.runs||[]);
   state.token=session.token;state.runs=runs;state.active=session.active_run;
   $('#run-model').disabled=!session.model_ready||!!state.active;
   $('#new-run').disabled=!!state.active;
   const filtered=runs.filter(r=>r.config?.kind===state.kind);
   const selection=prefer||state.selected;
   state.selected=filtered.some(r=>r.id===selection)?selection:(filtered.find(r=>r.status==='completed')||filtered[0])?.id;
-  $('#run-select').innerHTML=filtered.map(r=>`<option value="${esc(r.id)}">${esc(date(r.created_at))} · ${esc(r.config.suite||r.config.profile||'model')} · ${esc(r.id.slice(-6))} · ${esc(r.status)}</option>`).join('');
+  $('#run-select').innerHTML=filtered.map(r=>`<option value="${esc(r.id)}">${state.referenceRuns.has(r.id)?'Reference study':'Local run'} · ${esc(date(r.created_at))} · ${esc(r.config.suite||r.config.profile||'model')} · ${esc(r.id.slice(-6))} · ${esc(r.status)}</option>`).join('');
   $('#run-select').value=state.selected||'';
   $('#active-job').hidden=!state.active;
   const active=runs.find(r=>r.id===state.active);
@@ -55,6 +56,7 @@ async function loadRun(id){
   $('#scope-detail').textContent=doc.config.kind==='long-validation'?`${doc.config.context.toLocaleString()} tokens · FP32 · ${doc.config.cohort}`:doc.config.kind==='research'?`${doc.config.dtype||'float32'} · ${doc.config.suite} · block ${doc.config.block??'pilot'}`:doc.config.kind==='model'?`${doc.protocol?.decode_steps} decoding steps · float32`:`12 heads × 64 dimensions · float32`;
   $('#run-state').outerHTML=`<span id="run-state" class="pill ${doc.status==='completed'?'':doc.status==='failed'?'fail':'warn'}">${esc(doc.status)}</span>`;
   $('#run-date').textContent=date(doc.created_at);
+  $('#scope-detail').textContent+=state.referenceRuns.has(doc.id)?' · reference record':' · local run';
   const ids=[...new Set(rows.map(r=>r.plan))];
   const prior=$('#plan-filter').value;
   $('#plan-filter').innerHTML='<option value="all">All execution plans</option>'+ids.map(p=>`<option value="${p}">${esc(planLabel(p))}</option>`).join('');
@@ -182,7 +184,7 @@ async function loadValidation(){
       const ready=kit.all_cases_recorded&&kit.protocol_sha256===summary.protocol_sha256&&kit.recorded_cases===summary.planned_cases;
       $('#validation-kit').hidden=!ready;
       $('#validation-kit-status').textContent=ready?`Complete local kit · ${fmt(kit.bytes/2**20,0)} MiB · ${kit.files} files · ZIP SHA-256: ${kit.sha256}. External reproduction has not been established.`:'The researcher bundle does not match this study.';
-    }catch{$('#validation-kit').hidden=true;$('#validation-kit-status').textContent='All registered outcomes are collected. The complete researcher download is being prepared and checked.'}
+    }catch{$('#validation-kit').hidden=true;$('#validation-kit-status').textContent='Use the included reproduction guide to verify the local evidence or run a fresh replication. A download appears here when an archive is generated.'}
   }
   const prior=$('#validation-case').value;
   $('#validation-case').innerHTML=protocol.cases.map(c=>`<option value="${esc(c.case_id)}">${esc(c.case_id)} · ${c.context.toLocaleString()} tokens · ${c.book_id?'PG-19 book '+esc(c.book_id):'earlier WikiText input '+c.block}</option>`).join('');
@@ -197,7 +199,7 @@ async function loadValidation(){
   try{
     const isolated=await api('/data/isolation-summary.json');
     if(isolated.all_cases_recorded&&isolated.base_protocol_sha256===summary?.protocol_sha256){
-      $('#isolation-results').innerHTML=`<div class="table-wrap"><table><thead><tr><th>Context</th><th>Arm</th><th>Outcome</th><th>Numerics</th><th>Generation</th></tr></thead><tbody>${isolated.cases.map(r=>`<tr><td>${r.context.toLocaleString()}</td><td>${esc(r.method==='hybrid50'?'Hybrid / 256 GPU tokens':r.method)}</td><td>${esc(r.arm_status)}</td><td>${r.passed===true?(r.eligible?'Within bounds':'Within bounds · blocked'):r.passed===false?'Outside bounds':'Unknown'}</td><td>${fmt(r.generation_ms==null?null:r.generation_ms/1000,1)} s</td></tr>`).join('')}</tbody></table></div><p class="fine-print">${esc(isolated.verification)} The case was chosen after its original failures; this is a post-hoc diagnostic.</p>`;
+      $('#isolation-results').innerHTML=`<div class="table-wrap"><table><thead><tr><th>Context</th><th>Arm</th><th>Outcome</th><th>Numerics</th><th>Generation</th><th>Host pool after cleanup</th></tr></thead><tbody>${isolated.cases.map(r=>{const host=r.host_allocator?.after_generation_cleanup?.['allocated_bytes.current'];return `<tr><td>${r.context.toLocaleString()}</td><td>${esc(r.method==='hybrid50'?'Hybrid / 256 GPU tokens':r.method)}</td><td>${esc(r.arm_status)}</td><td>${r.passed===true?(r.eligible?'Within bounds':'Within bounds · blocked'):r.passed===false?'Outside bounds':'Unknown'}</td><td>${fmt(r.generation_ms==null?null:r.generation_ms/1000,1)} s</td><td>${fmt(host==null?null:host/2**30,2)} GiB</td></tr>`}).join('')}</tbody></table></div><p class="fine-print">${esc(isolated.verification)} The case was chosen after its original failures; this is a post-hoc diagnostic. Host pool means allocator-owned pinned memory, including cached blocks; it is not process RSS or an exclusive physical-memory measurement.</p>`;
     }
   }catch{/* Verified follow-up data is published only after its complete analysis. */}
 }

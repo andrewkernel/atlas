@@ -4,6 +4,11 @@ This is a separately registered extension of v2, not a rewrite of its unknown
 pressure results. Self-produced artifacts and local repeats do not establish
 external reproduction. Read protocol.json, execution.json and every failure.
 
+On Windows extract the researcher ZIP to a short directory. The source snapshots
+have nested paths; deeply nested project folders can exceed legacy path limits.
+Use a location outside an unrelated Git checkout. Archive execution is identified
+by source hashes; Git discovery in an ancestor can otherwise report its metadata.
+
 ## Tested environment and pinned inputs
 
 The tested profile is Windows, Python 3.12.10, RTX 3060 12 GB, 32 GB RAM,

@@ -34,6 +34,12 @@ defines the registered cases, original bounds, inputs and source identities.
 The execution ledger retains every attempted case. Do not infer correctness
 from execution completion or silently discard failed/unknown cases.
 
+Extract to a short directory on Windows: deeply nested project folders can
+exceed legacy path limits for the retained source snapshots. A location outside
+unrelated Git checkouts also avoids attributing their Git metadata to this kit.
+The full papers open from their original sources in the research library;
+local paper caches are not redistributed in this archive.
+
 To check the bundle bytes using only Python:
 
     python benchmarks/verify_researcher_bundle.py .
@@ -75,7 +81,8 @@ def inventory(root, protocol):
     except (OSError,subprocess.SubprocessError):names=[]
     if not names and (root/'bundle-manifest.json').exists():names=list(read_json(root/'bundle-manifest.json')['files_sha256'])
     for name in names:
-        if name and name!='README.md':
+        excluded={'README.md','docs/research/attention-v3/bundle-receipt.json','docs/research/attention-v3/handoff-verification.json'}
+        if name and name not in excluded and not name.startswith('lab-ui/downloads/'):
             path=artifact_path(root,name)
             if path.is_file():selected.add(path)
     selected |= {root/'src/atlas/__init__.py', root/'Start-Atlas.ps1', root/'Stop-Atlas.ps1',
@@ -84,6 +91,7 @@ def inventory(root, protocol):
                  root/'benchmarks/report_attention_v3.py',
                  root/'benchmarks/finalize_attention_v3.py',
                  root/'benchmarks/attention_isolation.py',root/'benchmarks/verify_attention_isolation.py',
+                 root/'benchmarks/prepare_attention_history.py',
                  root/'docs/attention-lab.md', root/'docs/architecture/hybrid-attention-lab.md',
                  root/'.gitattributes'}
     for relative in ('lab-ui','frontend'):
@@ -97,6 +105,7 @@ def inventory(root, protocol):
             selected.add(path)
     selected.add(root/'docs/research/papers/cxl-context.md')
     selected.add(root/'lab-ui/data/isolation-summary.json')
+    selected.add(root/'lab-ui/data/reference-history.json')
     for path in (root/'docs/research/attention-isolation').rglob('*'):
         if path.is_file() and '__pycache__' not in path.parts:selected.add(path)
     for path in (root/'docs/research/attention-v2').glob('*'):
@@ -126,6 +135,8 @@ def package():
         raise ValueError('Isolated diagnostic and final report do not match')
     write_json(ROOT/'lab-ui/data/isolation-summary.json',{**isolation,
                'base_protocol_sha256':read_json(ROOT/'docs/research/attention-isolation/protocol.json')['base_protocol_sha256']})
+    from prepare_attention_history import prepare
+    prepare(ROOT)
     protocol = read_json(STUDY/'protocol.json')
     files = inventory(ROOT,protocol)
     for required in ('benchmarks/verify_researcher_bundle.py','src/atlas/__init__.py'):

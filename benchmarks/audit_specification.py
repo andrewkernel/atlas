@@ -32,7 +32,10 @@ def main() -> int:
         if not target.is_file() or target.stat().st_size == 0:
             failures.append(f'Missing/empty required file: {name}')
 
-    markdown = [p for p in ROOT.rglob('*.md') if not any(x in p.parts for x in ('.venv','.git','.tools','.pytest_cache','.hypothesis'))]
+    # Generated caches and extracted kits are separate artifacts, not source
+    # documentation. A deliberately retained partial extraction may be incomplete.
+    generated={'.venv','.git','.tools','.pytest_cache','.hypothesis','artifacts','weights','data'}
+    markdown = [p for p in ROOT.rglob('*.md') if p.relative_to(ROOT).parts[0] not in generated]
     links=0
     external=set()
     for path in markdown:

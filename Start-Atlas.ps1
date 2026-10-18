@@ -12,6 +12,8 @@ try {
     $atlasRunning = [bool]$atlasSession.token
 } catch { }
 if (-not $atlasRunning) {
+    & $atlasPython (Join-Path $atlasRoot 'benchmarks/prepare_attention_history.py')
+    if ($LASTEXITCODE -ne 0) { throw 'Reference history preparation failed; original evidence was not changed.' }
     $atlasLogs = Join-Path $atlasRoot 'artifacts/attention-lab-server'
     New-Item -ItemType Directory -Force -Path $atlasLogs | Out-Null
     $atlasProcess = Start-Process -FilePath $atlasPython -ArgumentList @('lab.py', 'serve', '--port', "$Port") -WorkingDirectory $atlasRoot -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $atlasLogs 'stdout.log') -RedirectStandardError (Join-Path $atlasLogs 'stderr.log')

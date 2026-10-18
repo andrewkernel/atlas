@@ -37,6 +37,10 @@ the objective with a test count or a polished dashboard.
 8. Deliver a concise researcher-facing claim card: what works, where it loses,
    what is unproved and what another researcher should attempt to falsify. CXL,
    DSA, broad language quality, novelty and exclusive VRAM remain separate claims.
+9. Complete the separately frozen [isolated-arm diagnostic](isolation-diagnostic.md)
+   before final handoff. This was added when actual v3 outcomes exposed the
+   within-process OOM concern. Preserve the original evidence and distinguish
+   this post-hoc countercheck from the original registered study.
 
 ## Pre-implementation review
 
@@ -66,3 +70,8 @@ and the self-produced bundle cannot certify independent execution or zero bias.
   Partial summaries cannot establish the result of the remaining four cases.
   The full researcher archive, extracted-kit replay, final report and complete
   product acceptance audit remain pending while the study continues.
+- Primary collection is complete: all 18 cases were independently reconstructed
+  from full arrays. Four hybrid numerical failures and seven OOM control arms
+  remain recorded. The separately registered six-case isolated-process diagnostic
+  is running; final packaging, fresh environment reconstruction and browser replay
+  remain acceptance gates, not completed claims.

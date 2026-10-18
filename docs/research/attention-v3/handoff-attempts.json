@@ -1,0 +1,12 @@
+{
+  "attempts": [
+    {
+      "recorded_at": "2026-10-18T08:15:55.609865+00:00",
+      "stage": "first deep-directory extraction",
+      "archive_sha256": "ef0be9dd24f994db5101524083ef4a40132c4131e323eb37eeb31ec2862a4d53",
+      "status": "failed",
+      "error": "FileNotFoundError on nested source snapshot path beyond legacy Windows path length",
+      "disposition": "Preserve partial extraction and recorded failure; rebuild with short-directory extraction guard. No scientific cases rerun or changed."
+    }
+  ]
+}

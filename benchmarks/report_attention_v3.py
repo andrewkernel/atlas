@@ -95,15 +95,15 @@ def render(summary):
             'device cache is not a proof that all host/framework state was reset.',
             'Balanced arm order does not establish per-arm process isolation. These',
             'OOMs therefore do not prove that an arm cannot run in a fresh process.',
-            'Raw OOM exception strings also contain implausibly large per-process',
+            'Recorded OOM exception prefixes also contain implausibly large per-process',
             'memory numbers. Those vendor/framework diagnostics are preserved as',
             'text, not accepted as measured memory. NVIDIA documents per-process',
             'usedGpuMemory as unavailable under WDDM; an unavailable diagnostic is',
             'consistent with these values, but the exact formatting cause was not',
             'independently traced. See the [NVML reference](https://docs.nvidia.com/deploy/nvml-api/latest/api/structnvmlProcessInfo__t.html).',
-            'Desktop/UI work and a partial read-only analysis occurred during the',
-            'shared study session; the partial analysis was scheduled during native',
-            'reference preparation, outside the recorded generation windows. There',
+            'Desktop/UI work and read-only analyses occurred during the shared',
+            'study session. Full-array reconstruction was scheduled in native',
+            'reference/validation phases, outside timed generation windows. There',
             'is no exclusive resource reservation or calibrated power measurement.',
             'The 32-position relation is not broad language quality, truth, training',
             'fidelity or scientific-conclusion preservation. No zero-bias or universal',
@@ -143,6 +143,12 @@ def main():
         for row in isolation['cases']:
             relation='pass' if row['passed'] is True else 'fail' if row['passed'] is False else 'unknown'
             content+=f'| {row["context"]:,} | {row["method"]} | {row["arm_status"]} | {relation} | {number(row.get("generation_ms",0)/1000) if row.get("generation_ms") is not None else "—"} |\n'
+        content+='\nPinned host allocator observations after generation cleanup:\n\n| Context | Arm | Allocator-owned (GiB) | Active (GiB) |\n| ---: | --- | ---: | ---: |\n'
+        for row in isolation['cases']:
+            stats=row.get('host_allocator',{}).get('after_generation_cleanup',{})
+            owned=stats.get('allocated_bytes.current');active=stats.get('active_bytes.current')
+            content+=f'| {row["context"]:,} | {row["method"]} | {number(owned/2**30,6) if isinstance(owned,(int,float)) else "—"} | {number(active/2**30,6) if isinstance(active,(int,float)) else "—"} |\n'
+        content+='\nThese are runtime allocator counters, not physical-RAM or exclusive-residency measurements. The [PyTorch 2.14 API](https://docs.pytorch.org/docs/2.14/generated/torch.cuda.memory.host_memory_stats.html) distinguishes allocator-owned blocks from active requests and describes block-size rounding. Missing observations remain unknown. Retained inactive blocks would support a process-history concern, without proving which original OOM they caused.\n'
         content+='\nAll original v3 failures remain unchanged. Disappearing OOMs would be a counterexample to a hard feasibility interpretation, not proof of a particular allocator cause. Host allocator observations are retained, not inferred from RSS. Numerical failures still block eligibility. See [diagnostic evidence](../attention-isolation/summary.json) and its separately frozen protocol.\n'
     (STUDY/'report.md').write_bytes(content.encode('utf-8'))
     receipt={

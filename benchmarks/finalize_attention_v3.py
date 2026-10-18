@@ -7,11 +7,12 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime,timezone
+import os
 from pathlib import Path,PurePosixPath
 import subprocess
 import sys
+import tempfile
 import time
-import uuid
 import zipfile
 
 import psutil
@@ -27,6 +28,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--driver-pid',type=int)
     parser.add_argument('--driver-created-at',type=float)
+    parser.add_argument('--extract-root',type=Path,help='Optional short parent directory for the isolated extraction test')
     args=parser.parse_args()
     if bool(args.driver_pid)!=(args.driver_created_at is not None):
         raise ValueError('A waiting controller needs both PID and creation time')
@@ -56,9 +58,13 @@ def main():
     receipt=read_json(STUDY/'bundle-receipt.json')
     archive=ROOT/'lab-ui/downloads'/receipt['filename']
     if file_digest(archive)!=receipt['sha256']:raise ValueError('Archive changed before extracted-kit check')
-    destination=ROOT/'artifacts/attention-v3-handoff'/('extract-'+uuid.uuid4().hex[:12])
-    destination.mkdir(parents=True)
+    # Source snapshots have nested paths. The default temporary location also
+    # keeps a later model replay outside the original ancestor Git checkout.
+    if args.extract_root:args.extract_root.mkdir(parents=True,exist_ok=True)
+    destination=Path(tempfile.mkdtemp(prefix='atlas-',dir=args.extract_root))
     with zipfile.ZipFile(archive) as bundle:
+        if os.name=='nt' and max(len(str(destination/member.filename)) for member in bundle.infolist())>=250:
+            raise ValueError('Extraction path is too long for legacy Windows APIs; choose a shorter --extract-root')
         for member in bundle.infolist():
             name=PurePosixPath(member.filename)
             if name.is_absolute() or '..' in name.parts or '\\' in member.filename or ':' in member.filename:
@@ -72,13 +78,16 @@ def main():
     subprocess.run([sys.executable,str(extracted/'benchmarks/verify_attention_isolation.py'),
                     '--study',str(extracted/'docs/research/attention-isolation'),'--source-root',str(extracted)],cwd=extracted,check=True)
     verified={'created_at':datetime.now(timezone.utc).isoformat(), 'archive_sha256':receipt['sha256'],
-              'extracted_directory':extracted.relative_to(ROOT).as_posix(), 'shipped_bytes_verified':True,
+              'extraction_location':'Short test directory; actual local path kept in the ignored handoff-location artifact',
+              'outside_source_checkout':not extracted.resolve().is_relative_to(ROOT.resolve()),
+              'shipped_bytes_verified':True,
               'full_array_verification_from_extracted_source':True,
               'isolated_diagnostic_from_extracted_source':True,
               'cold_environment_install':False, 'fresh_model_execution':False,
               'external_reproduction':False,
               'scope':'Local extraction and independent arithmetic using the existing pinned Python environment. Fresh execution and browser flow remain separate gates.'}
     write_json(STUDY/'handoff-verification.json',verified)
+    write_json(ROOT/'artifacts/attention-v3-handoff-location.json',{'archive_sha256':receipt['sha256'],'directory':str(extracted)})
     print(verified,flush=True)
 
 
