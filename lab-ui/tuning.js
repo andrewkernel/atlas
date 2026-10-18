@@ -1,7 +1,7 @@
 const $=s=>document.querySelector(s);
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(x,d=1)=>x==null?'—':Number(x).toLocaleString(undefined,{maximumFractionDigits:d});
-const terminal=new Set(['completed','failed','cancelled','timed_out','resource_limited','interrupted','abstained']);
+const terminal=new Set(['completed','failed','cancelled','timed_out','resource_limited','interrupted','abstained','unknown_owner']);
 const words=x=>String(x||'').replaceAll('_',' ');
 
 export function initTuning(api){
@@ -30,13 +30,15 @@ export function initTuning(api){
     $('#tune-progress').hidden=terminal.has(s.status);$('#tune-progress').max=s.progress?.total||1;$('#tune-progress').value=s.progress?.done||0;
     $('#tune-export').hidden=s.status!=='completed';$('#tune-export').href=`/api/tuning/campaigns/${selected}/export`;
     const d=v?.decision;
-    $('#tune-decision').innerHTML=d?`<h3>${esc(words(d.outcome))}</h3><p>${esc(d.reason)}</p><p class="fine-print">Total tuning cost: ${num(s.tuning_cost_s)} s. ${s.speed_break_even_requests?`Descriptive speed break-even: ${num(s.speed_break_even_requests,0)} compatible requests.`:'No measured speed break-even.'} Warm generation timings exclude startup and checking. ${esc(s.activation_conflict||'')}</p>`:n?`<p>Nominee: ${esc(n.profile||'none')}. ${esc(n.reason)}.</p>`:'<p class="fine-print">A result can be slower, inconclusive, or leave settings unchanged. No change is applied before full verification.</p>';
+    $('#tune-decision').innerHTML=d?`<h3>${esc(words(d.outcome))}</h3><p>${esc(d.reason)}</p><p class="fine-print">Total tuning cost: ${num(s.tuning_cost_s)} s. ${s.speed_break_even_requests?`Generation-only break-even: ${num(s.speed_break_even_requests,0)} compatible requests.`:'No measured speed break-even.'} Warm generation timings exclude startup and checking. ${esc(s.activation_conflict||'')}</p>`:n?`<p>Nominee: ${esc(n.profile||'none')}. ${esc(n.reason)}.</p>`:'<p class="fine-print">A result can be slower, inconclusive, or leave settings unchanged. No change is applied before full verification.</p>';
     const saved=s.profile&&overview.profiles.find(x=>x.id===s.profile);
-    $('#tune-profile').innerHTML=saved?`<p><strong>Active setting:</strong> ${esc(a?.profile===s.profile?saved.execution.id:a?.profile||'Default native')}</p><p class="fine-print">Saved: ${esc(saved.execution.id)} · ${esc(saved.id)}. Changes affect compatible future Atlas requests.</p><div class="tune-actions"><button id="tune-apply" class="button small" ${a?.profile===s.profile?'disabled':''}>Apply saved setting</button><button id="tune-revert" class="button small" ${!a?.revision?'disabled':''}>Revert last change</button></div>`:'';
+    const active=overview.profiles.find(x=>x.id===a?.profile);
+    const activeName=active?.execution.id||(p?.settings.goal==='budget'?'None (request will abstain)':'Default native');
+    $('#tune-profile').innerHTML=p?`<p><strong>Active setting:</strong> ${esc(activeName)}</p>${saved?`<p class="fine-print">Saved: ${esc(saved.execution.id)} · ${esc(saved.id)}. ${current.source_compatible?'Changes affect compatible future Atlas requests.':'Historical source differs from the current runtime; a fresh campaign is required.'}</p>`:''}<div class="tune-actions">${saved?`<button id="tune-apply" class="button small" ${a?.profile===s.profile||!current.source_compatible?'disabled':''}>Apply saved setting</button>`:''}<button id="tune-revert" class="button small" ${!a?.revision?'disabled':''}>Revert last change</button></div>`:'';
     if(saved){
       $('#tune-apply').onclick=()=>change(`/api/tuning/profiles/${s.profile}/apply`,a,'Saved setting applied.');
-      $('#tune-revert').onclick=()=>change(`/api/tuning/domains/${saved.domain}/revert`,a,'Previous setting restored.');
     }
+    if(p)$('#tune-revert').onclick=()=>change(`/api/tuning/domains/${current.domain}/revert`,a,'Previous setting restored.');
     const rows=v?.calibration||n?.calibration;
     $('#tune-measurements').hidden=!rows;
     if(rows)$('#tune-rows').innerHTML=rows.map(r=>`<tr><td>${esc(r.profile.id)}</td><td>${num(r.generation_geomean_ms)} ms</td><td>${num(r.peak_allocated_mib)} MiB</td><td>${r.passed_windows} / ${r.planned_windows} ${r.numerical?'within bounds':'blocked or failed'}</td><td>${r.eligible?'Yes':'No'}</td></tr>`).join('');

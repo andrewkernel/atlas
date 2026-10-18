@@ -333,6 +333,18 @@ def test_public_export_never_traverses_private_requests(authored_campaign, monke
         assert manifest['evidence_sha256'] == verify.build(folder)['evidence_sha256']
 
 
+def test_stale_status_never_proves_owner_liveness(monkeypatch, tmp_path):
+    pytest.importorskip('fastapi')
+    from atlas.tuning import service
+    monkeypatch.setattr(service.jobs, 'active', None)
+    folder = tmp_path / 'authored-stale'
+    common.write_json(folder / 'status.json', {'status': 'running'})
+    assert service.observed_status(folder)['status'] == 'unknown_owner'
+    common.write_json(folder / 'status.json', {'status': 'running', 'controller_process':
+                      {'pid': 99999999, 'created_at': 1}})
+    assert service.observed_status(folder)['status'] == 'interrupted'
+
+
 def test_import_of_arithmetic_verifier_does_not_load_torch():
     import subprocess
     result = subprocess.run([sys.executable, '-c',

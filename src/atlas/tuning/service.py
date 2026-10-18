@@ -6,13 +6,15 @@ import asyncio
 import threading
 import time
 import uuid
+import hashlib
+import subprocess
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 
 from atlas.attention import server as old
-from .common import STORE, campaign_dir, domain, identifier, public_error, read_json, utc, write_json
+from .common import STORE, campaign_dir, domain, identifier, public_error, read_json, utc, write_json, source_map, snapshot
 from .controller import OwnedChild
 from .registry import settings
 from . import profiles
@@ -50,7 +52,8 @@ def observed_status(folder, kind='campaign'):
                 pass
         doc['external_controller_alive'] = alive
         if not alive:
-            doc.update(status='interrupted', error='No matching live owner exists; this partial run cannot activate settings')
+            doc.update(status='interrupted' if process else 'unknown_owner',
+                       error='No matching live service owner can be confirmed; partial evidence cannot activate settings')
     return doc
 
 
@@ -64,6 +67,12 @@ class Jobs:
         with self.lock, old.jobs.lock:
             if self.active or old.jobs.active:
                 raise HTTPException(409, 'A workspace GPU job is already active')
+            from filelock import FileLock, Timeout
+            try:
+                with FileLock(str(old.RUNS / '.gpu.lock'), timeout=0):
+                    pass
+            except Timeout as exc:
+                raise HTTPException(409, 'The workspace GPU lock is held by another local job') from exc
             ident = ('tune-' if kind == 'campaign' else 'generate-') + uuid.uuid4().hex[:12]
             folder = campaign_dir(ident) if kind == 'campaign' else STORE / 'private-inference' / ident
             folder.mkdir(parents=True)
@@ -71,6 +80,17 @@ class Jobs:
             state_path = folder / ('status.json' if kind == 'campaign' else 'result.json')
             write_json(state_path, {'id': ident, 'status': 'queued', 'created_at': utc(), 'settings': config})
             try:
+                provenance = {'captured_at': utc(), 'scope': 'Before owned service launch', 'execution_sources': source_map()}
+                try:
+                    provenance['git_head'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=old.ROOT,
+                        stderr=subprocess.DEVNULL, creationflags=0x08000000, timeout=5).decode().strip()
+                    provenance['git_diff_sha256'] = hashlib.sha256(subprocess.check_output(
+                        ['git', 'diff', 'HEAD', '--binary'], cwd=old.ROOT, stderr=subprocess.DEVNULL,
+                        creationflags=0x08000000, timeout=5)).hexdigest()
+                except (OSError, subprocess.SubprocessError):
+                    provenance.update(git_head=None, git_diff_sha256=None)
+                snapshot(folder, provenance['execution_sources'])
+                write_json(folder / 'repository.json', provenance)
                 child = OwnedChild(['controller' if kind == 'campaign' else 'inference-worker', ident], folder / 'controller.log')
             except Exception as exc:
                 write_json(state_path, {'id': ident, 'status': 'failed', 'error': public_error(exc)})
@@ -181,9 +201,15 @@ def campaign(ident: str):
     def read(name):
         return read_json(folder / name) if (folder / name).is_file() else None
     protocol = read('protocol.json')
+    try:
+        compatible = bool(protocol and protocol['sources'] == source_map())
+    except (OSError, ValueError):
+        compatible = False
     return {'status': observed_status(folder), 'protocol': protocol,
             'nomination': read('nomination.json'), 'verified': read('verified.json'),
-            'execution': read('execution.json'), 'active_state': profiles.state(domain(protocol['settings'])) if protocol else None}
+            'execution': read('execution.json'), 'source_compatible': compatible,
+            'domain': domain(protocol['settings']) if protocol else None,
+            'active_state': profiles.state(domain(protocol['settings'])) if protocol else None}
 
 
 @app.post('/api/tuning/jobs/{ident}/cancel')

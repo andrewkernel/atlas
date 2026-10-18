@@ -17,6 +17,21 @@ Use the existing pinned CUDA environment and public assets from the
 **Tune performance**. An idle older service from this exact checkout upgrades
 automatically; another application's listener or an active older job is refused.
 
+For a new machine, use an existing official `uv` installation and the newer v2
+package profile required by this adapter:
+
+```powershell
+uv venv .tools/attention-env --python 3.12
+uv pip install --python .tools/attention-env/Scripts/python.exe --require-hashes -r configs/attention-v2-windows-py312-requirements.txt
+.tools/attention-env/Scripts/python.exe lab.py prepare-research --model qwen3-0.6b
+.tools/attention-env/Scripts/python.exe lab.py prepare-research --model corpus
+./Start-Atlas.ps1
+```
+
+Asset preparation downloads the allowlisted pinned public files. Model requests
+then run offline. A supplied result bundle is historical reference evidence;
+generation on a different machine needs a fresh local campaign and profile.
+
 1. Choose the exact prompt length, output length, precision and objective.
 2. Start measurement. Keep competing work off the shared GPU/CPU when practical.
    The finite grid includes native execution, a resident cache, Transformers'
