@@ -97,6 +97,7 @@ class Jobs:
                 raise HTTPException(500,"Worker startup failed; see saved run") from exc
             finally:log.close()
             deadline=min(self.wall_timeout_s,420) if config['kind']=='research' else self.wall_timeout_s
+            if config['kind']=='long-validation':deadline=1200
             threading.Thread(target=self.watch,args=(ident,process,scope,deadline),daemon=True).start()
             return ident
 
@@ -240,6 +241,43 @@ def export_study():
     path=ROOT/'docs/research/attention-v2/summary.json'
     if not path.exists():raise HTTPException(404,'Study analysis is not ready')
     return FileResponse(path,media_type='application/json',filename='atlas-attention-v2-summary.json')
+
+
+@app.get('/api/validation')
+def validation_study():
+    from .long_protocol import DIRECTORY,PROTOCOL
+    def read(path):return json.loads(path.read_text(encoding='utf-8')) if path.exists() else None
+    return {'protocol':read(PROTOCOL), 'execution':read(DIRECTORY/'execution.json'),
+            'summary':read(DIRECTORY/'summary.json')}
+
+
+class LongCase(BaseModel):
+    model_config=ConfigDict(extra='forbid')
+    case_id:str=Field(pattern=r'^long-[0-9]{3}$')
+
+
+@app.post('/api/validation/repeat',status_code=202)
+def repeat_validation(request:LongCase):
+    from .long_protocol import PROTOCOL,verify
+    if not PROTOCOL.exists():raise HTTPException(409,'No frozen long-context protocol')
+    protocol=json.loads(PROTOCOL.read_text(encoding='utf-8'))
+    case=next((c for c in protocol['cases'] if c['case_id']==request.case_id),None)
+    if case is None:raise HTTPException(404,'Unregistered long-context case')
+    try:verify(case)
+    except (OSError,ValueError) as exc:raise HTTPException(409,'Source/assets do not match frozen study: '+str(exc)) from exc
+    from filelock import FileLock,Timeout
+    try:
+        with FileLock(str(RUNS/'.gpu.lock'),timeout=0):pass
+    except Timeout:raise HTTPException(409,'The GPU is busy with another worker')
+    return {'id':jobs.start(case)}
+
+
+@app.get('/api/validation/export')
+def export_validation():
+    from .long_protocol import DIRECTORY
+    path=DIRECTORY/'summary.json'
+    if not path.exists():raise HTTPException(404,'Long-context analysis is not ready')
+    return FileResponse(path,media_type='application/json',filename='atlas-long-context-summary.json')
 
 
 @app.get("/papers/{ident}")

@@ -13,6 +13,8 @@ node_modules/
 mlruns/
 mlartifacts/
 artifacts/
+lab-ui/downloads/
+docs/research/attention-v3/runs/
 data/
 !frontend/data/
 !frontend/data/snapshot.json

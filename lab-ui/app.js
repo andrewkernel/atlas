@@ -32,7 +32,7 @@ async function refresh(prefer){
   $('#run-select').value=state.selected||'';
   $('#active-job').hidden=!state.active;
   const active=runs.find(r=>r.id===state.active);
-  if(active){$('#job-title').textContent=active.config.kind==='model'?'Model comparison':'Attention sweep';$('#job-detail').textContent=active.progress?.message||'Preparing';$('#job-progress').max=active.progress?.total||1;$('#job-progress').value=active.progress?.done||0}
+  if(active){$('#job-title').textContent=active.config.kind==='long-validation'?'Long-context validation':active.config.kind==='model'?'Model comparison':'Attention sweep';$('#job-detail').textContent=active.progress?.message||'Preparing';$('#job-progress').max=active.progress?.total||1;$('#job-progress').value=active.progress?.done||0}
   if(state.selected){await loadRun(state.selected)}else{state.doc=null;$('#results').hidden=true;$('#empty').hidden=false}
   const modelRun=runs.find(r=>r.config?.kind==='model'&&r.status==='completed');
   if(modelRun){const modelDoc=state.doc?.id===modelRun.id?state.doc:await api(`/api/runs/${modelRun.id}`);renderModel(modelDoc)}
@@ -51,8 +51,8 @@ async function loadRun(id){
   const passed=rows.filter(r=>r.correctness?.passed).length;
   $('#checks').textContent=`${passed} / ${rows.length} passed`;
   $('#checks').classList.toggle('numerics',passed===rows.length);
-  $('#scope').textContent=doc.config.kind==='research'&&doc.model?'Qwen3 · 0.6B':doc.config.kind==='model'?'GPT-2 · 124M':`${new Set(rows.map(r=>r.context)).size} context lengths`;
-  $('#scope-detail').textContent=doc.config.kind==='research'?`${doc.config.dtype||'float32'} · ${doc.config.suite} · block ${doc.config.block??'pilot'}`:doc.config.kind==='model'?`${doc.protocol?.decode_steps} decoding steps · float32`:`12 heads × 64 dimensions · float32`;
+  $('#scope').textContent=['research','long-validation'].includes(doc.config.kind)&&doc.model?'Qwen3 · 0.6B':doc.config.kind==='model'?'GPT-2 · 124M':`${new Set(rows.map(r=>r.context)).size} context lengths`;
+  $('#scope-detail').textContent=doc.config.kind==='long-validation'?`${doc.config.context.toLocaleString()} tokens · FP32 · ${doc.config.cohort}`:doc.config.kind==='research'?`${doc.config.dtype||'float32'} · ${doc.config.suite} · block ${doc.config.block??'pilot'}`:doc.config.kind==='model'?`${doc.protocol?.decode_steps} decoding steps · float32`:`12 heads × 64 dimensions · float32`;
   $('#run-state').outerHTML=`<span id="run-state" class="pill ${doc.status==='completed'?'':doc.status==='failed'?'fail':'warn'}">${esc(doc.status)}</span>`;
   $('#run-date').textContent=date(doc.created_at);
   const ids=[...new Set(rows.map(r=>r.plan))];
@@ -85,9 +85,9 @@ function renderTable(){
 function renderChart(){
   if(!state.doc)return;
   const all=state.doc.rows,rows=all.filter(r=>!state.hidden.has(r.plan)&&r.median_ms!=null);
-  const model=state.doc.config.kind==='model'||['repeated','pressure','pilot'].includes(state.doc.config.suite);
+  const model=['model','long-validation'].includes(state.doc.config.kind)||['repeated','pressure','pilot'].includes(state.doc.config.suite);
   $('#chart-title').textContent=model?'Full-model decode latency':'Latency across context lengths';
-  $('#chart-note').textContent=state.doc.config.suite==='cache'?'Complete append, eviction, transfers and attention · setup separate':state.doc.config.kind==='research'&&model?'Free greedy timing · separate corpus validation · cache updates included':model?'Teacher-forced native token history · cache updates included':'Calibration points ● · held-out lengths ◇';
+  $('#chart-note').textContent=state.doc.config.suite==='cache'?'Complete append, eviction, transfers and attention · setup separate':['research','long-validation'].includes(state.doc.config.kind)&&model?'Free greedy timing · separate corpus validation · cache updates included':model?'Teacher-forced native token history · cache updates included':'Calibration points ● · held-out lengths ◇';
   const W=Math.max(260,$('#chart').clientWidth),H=$('#chart').clientHeight||265,L=45,R=12,T=15,B=model?58:33,cw=W-L-R,ch=H-T-B;
   let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="plot-title plot-desc"><title id="plot-title">${model?'Model decode latency':'Attention latency by context length'}</title><desc id="plot-desc">Synchronized wall time in milliseconds. Exact values are available in the measurements table.</desc>`;
   if(!rows.length){$('#chart').innerHTML=svg+'<text x="400" y="120">Select an execution plan in the legend.</text></svg>';return}
@@ -131,13 +131,15 @@ async function start(config){
 
 function view(){
   const requested=location.hash.slice(1)||'experiments';
-  state.view=['experiments','study','model','architecture','research'].includes(requested)?requested:'experiments';
+  state.view=['experiments','study','validation','model','architecture','research'].includes(requested)?requested:'experiments';
   $$('.view').forEach(el=>el.hidden=el.id!==`view-${state.view}`);
   $$('nav a').forEach(a=>{a.classList.toggle('active',a.dataset.view===state.view);a.setAttribute('aria-current',a.dataset.view===state.view?'page':'false')});
   const titles={experiments:['Find the crossover.','Explore where attention belongs: GPU, CPU, or somewhere between.'],model:['Follow every token.','Run a pretrained model through the same execution paths.'],architecture:['Built to be inspected.','The runtime, the evidence, and the decisions connecting them.'],research:['Start with the papers.','Source material, connections, and the boundaries of this study.']};
   titles.study=['Test the claim.','Frozen cases, independent process blocks, and honest boundaries.'];
+  titles.validation=['Show the evidence.','Long-context memory tradeoffs, full-model checks, and a path to reproduce them.'];
   $('#page-title').textContent=titles[state.view][0];$('#page-subtitle').textContent=titles[state.view][1];$('#breadcrumb').textContent=state.view==='model'?'Model playground':state.view==='architecture'?'Architecture':state.view==='research'?'Research library':'Attention Lab';
   if(state.view==='study')loadStudy().catch(e=>notice(e.message));
+  if(state.view==='validation')loadValidation().catch(e=>notice(e.message));
   window.scrollTo(0,0);
 }
 
@@ -165,6 +167,44 @@ function renderStudy(){
 $('#research-dtype').onchange=renderStudy;$('#research-context').onchange=renderStudy;
 $('#repeat-case').onclick=async()=>{const b=$('#repeat-case');b.disabled=true;try{const result=await api('/api/study/repeat',{method:'POST',body:JSON.stringify({case_id:$('#research-case').value})});$('#research-job').textContent=`Started ${result.id}. Inspect progress and raw evidence in Research runs.`;state.kind='research';$$('.segmented button').forEach(x=>x.classList.toggle('active',x.dataset.kind==='research'));await refresh(result.id)}catch(e){$('#research-job').textContent=e.message}finally{b.disabled=false}};
 
+function numericalState(arm){return !arm?'Pending':arm.status==='oom'?'Out of memory':arm.passed===true?(arm.eligible?'Within bounds':'Within bounds · blocked'):arm.passed===false?'Outside bounds':'Unknown'}
+async function loadValidation(){
+  const {protocol,execution,summary}=await api('/api/validation');
+  if(!protocol){$('#validation-progress').textContent='The long-context protocol has not been frozen on this machine.';$('#validation-repeat').disabled=true;return}
+  const entries=execution?.cases||[],terminal=entries.filter(e=>e.status!=='running'),pending=entries.find(e=>e.status==='running');
+  let activeMessage='';
+  if(pending){try{const live=await api(`/api/runs/${pending.run_id}`);activeMessage=` ${pending.case_id}: ${live.progress?.message||live.status}.`}catch{activeMessage=' Worker progress is unavailable; the recorded attempt remains pending.'}}
+  $('#validation-progress').textContent=`${terminal.length} / ${protocol.cases.length} registered outcomes collected.${activeMessage} ${summary?`${summary.recorded_cases} outcomes independently checked against saved arrays.`:'Full-array verification is pending.'} Execution completion alone does not qualify a result.`;
+  $('#validation-export').hidden=!summary;
+  if(summary?.all_cases_recorded){
+    try{
+      const kit=await api('/downloads/manifest.json');
+      const ready=kit.all_cases_recorded&&kit.protocol_sha256===summary.protocol_sha256&&kit.recorded_cases===summary.planned_cases;
+      $('#validation-kit').hidden=!ready;
+      $('#validation-kit-status').textContent=ready?`Complete local kit · ${fmt(kit.bytes/2**20,0)} MiB · ${kit.files} files · ZIP SHA-256: ${kit.sha256}. External reproduction has not been established.`:'The researcher bundle does not match this study.';
+    }catch{$('#validation-kit').hidden=true;$('#validation-kit-status').textContent='All registered outcomes are collected. The complete researcher download is being prepared and checked.'}
+  }
+  const prior=$('#validation-case').value;
+  $('#validation-case').innerHTML=protocol.cases.map(c=>`<option value="${esc(c.case_id)}">${esc(c.case_id)} · ${c.context.toLocaleString()} tokens · ${c.book_id?'PG-19 book '+esc(c.book_id):'earlier WikiText input '+c.block}</option>`).join('');
+  if(prior)$('#validation-case').value=prior;
+  $('#validation-repeat').disabled=!!pending||!!state.active;
+  $('#validation-rows').innerHTML=protocol.cases.map(c=>{
+    const entry=entries.find(e=>e.case_id===c.case_id),verified=summary?.cases.find(r=>r.case_id===c.case_id),arm=p=>verified?.arms.find(a=>a.plan===p);
+    return `<tr><td>${esc(c.case_id)}</td><td>${c.book_id?'PG-19 / '+esc(c.book_id):'WikiText replay / '+c.block}</td><td>${c.context.toLocaleString()}</td><td>${entry?pill(entry.status):'Not run'}</td>${['native','resident','hybrid50'].map(p=>`<td class="${arm(p)?.passed===false?'fail':''}">${numericalState(arm(p))}</td>`).join('')}<td>${entry?`<a href="/api/runs/${esc(entry.run_id)}/export" target="_blank" rel="noopener">Raw JSON ↗</a>`:'—'}</td></tr>`;
+  }).join('');
+  $('#validation-comparisons').innerHTML=summary?`<div class="table-wrap"><table><thead><tr><th>Input cohort</th><th>Context</th><th>Qualified pairs</th><th>Generation ratio</th><th>Allocator reduction</th></tr></thead><tbody>${summary.comparisons.map(c=>`<tr><td>${c.cohort==='v2-replay'?'Earlier inputs · retrospective':'Six separate books'}</td><td>${c.context.toLocaleString()}</td><td>${c.eligible_pairs} / ${c.planned}</td><td>${fmt(c.eligible_ratio_median,3)}×</td><td>${c.eligible_allocator_reduction_percent.length?fmt(c.eligible_allocator_reduction_percent.reduce((a,b)=>a+b,0)/c.eligible_allocator_reduction_percent.length,1)+'% mean':'—'}</td></tr>`).join('')}</tbody></table></div><p class="fine-print">These are descriptive paired measurements. A partial set of qualifying pairs cannot establish a benefit across all registered inputs. Allocator measurements do not establish physical GPU residency or an out-of-memory rescue.</p>`:'<p>No correctness-qualified long-context claim yet. The earlier 32k/40k memory measurements remain feasibility evidence while this study runs.</p>';
+  $('#validation-protocol').textContent=JSON.stringify({protocol,execution,verification:summary?.verification},null,2);
+}
+$('#validation-repeat').onclick=async()=>{
+  const button=$('#validation-repeat');button.disabled=true;
+  try{
+    const result=await api('/api/validation/repeat',{method:'POST',body:JSON.stringify({case_id:$('#validation-case').value})});
+    $('#validation-job').textContent=`Started ${result.id}. Live progress and Cancel appear above. This fresh repeat does not alter the registered study ledger.`;
+    state.kind='long-validation';$$('.segmented button').forEach(x=>x.classList.toggle('active',x.dataset.kind===state.kind));
+    await refresh(result.id);
+  }catch(e){$('#validation-job').textContent=e.message}finally{await loadValidation()}
+};
+
 $('#new-run').onclick=()=>$('#new-dialog').showModal();$('#empty-run').onclick=()=>$('#new-dialog').showModal();
 $$('.close-dialog').forEach(b=>b.onclick=()=>$('#new-dialog').close());$('.close-inspector').onclick=()=>$('#inspector').close();
 $('#experiment-form').onsubmit=async e=>{e.preventDefault();const button=e.submitter;button.disabled=true;try{await start({kind:'benchmark',profile:$('#study-profile').value,threads:+$('#study-threads').value,repeats:+$('#study-repeats').value,kv_budget_mib:+$('#study-budget').value});$('#new-dialog').close();location.hash='experiments'}catch(e){notice(e.message)}finally{button.disabled=false}};
@@ -183,5 +223,6 @@ view();
 await Promise.all([refresh().catch(e=>notice(`Could not connect to the local workspace: ${e.message}`)),api('/api/architecture').then(d=>$('#architecture-text').textContent=d.markdown).catch(e=>notice(e.message))]);
 setInterval(()=>{if(state.active)refresh().catch(e=>notice(`Connection interrupted: ${e.message}`))},1500);
 setInterval(()=>{if(state.view==='study')loadStudy().catch(e=>notice(e.message))},5000);
+setInterval(()=>{if(state.view==='validation')loadValidation().catch(e=>notice(e.message))},5000);
 
 window.addEventListener('resize',()=>{if(state.doc)renderChart()});

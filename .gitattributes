@@ -16,4 +16,6 @@ docs/research/workload-screen/qa-resource-figure.svg -text -whitespace
 docs/research/attention-lab/runs/*.json -text -eol
 docs/research/attention-v2/*.json -text -eol
 docs/research/attention-v2/runs/*.json -text -eol
+# v3 binds the measured Windows environment export's original CRLF bytes.
+configs/attention-v2-windows-py312-freeze.txt -text -eol
 uv.lock text eol=lf

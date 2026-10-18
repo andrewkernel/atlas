@@ -65,6 +65,9 @@ def main():
             elif config['kind']=='research':
                 from atlas.attention.research import run_research
                 run_research(rec)
+            elif config['kind']=='long-validation':
+                from atlas.attention.long_validation import run_validation
+                run_validation(rec)
             else:raise ValueError("Unregistered experiment")
         rec.finish()
         print(json.dumps({"run":directory.name,"status":"completed","rows":len(rec.doc['rows'])}))
