@@ -9,6 +9,8 @@ from pathlib import Path, PurePosixPath
 GENERATED_PREFIXES=('.tools/','.venv/','weights/','data/',
                     'artifacts/attention-lab/','artifacts/attention-lab-server/',
                     'artifacts/attention-v3-replications/','artifacts/attention-v3-audits/')
+GENERATED_PREFIXES+=('artifacts/attention-isolation-replications/',)
+GENERATED_PREFIXES+=('lab-ui/downloads/',)
 
 
 def verify(root):

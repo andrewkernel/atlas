@@ -38,8 +38,12 @@ def main():
         except psutil.NoSuchProcess:alive=False
         ledger=read_json(STUDY/'execution.json')
         terminal=sum(e['status']!='running' for e in ledger['cases'])
-        if terminal!=last:
-            print({'terminal_cases':terminal,'controller_live':alive},flush=True);last=terminal
+        isolated_path=ROOT/'docs/research/attention-isolation/execution.json'
+        isolated=read_json(isolated_path) if isolated_path.exists() else {'cases':[]}
+        isolated_terminal=sum(e['status'] not in ('starting','running') for e in isolated['cases'])
+        state=(terminal,isolated_terminal)
+        if state!=last:
+            print({'terminal_cases':terminal,'isolated_terminal':isolated_terminal,'controller_live':alive},flush=True);last=state
         if not alive:break
         if time.monotonic()-began>7200:raise TimeoutError('Controller observation limit; no run was restarted or killed')
         time.sleep(1)
@@ -65,9 +69,12 @@ def main():
     subprocess.run([sys.executable,str(extracted/'benchmarks/verify_researcher_bundle.py'),str(extracted)],cwd=extracted,check=True)
     subprocess.run([sys.executable,str(extracted/'benchmarks/verify_attention_v3.py'),
                     '--study',str(extracted/'docs/research/attention-v3'),'--source-root',str(extracted)],cwd=extracted,check=True)
+    subprocess.run([sys.executable,str(extracted/'benchmarks/verify_attention_isolation.py'),
+                    '--study',str(extracted/'docs/research/attention-isolation'),'--source-root',str(extracted)],cwd=extracted,check=True)
     verified={'created_at':datetime.now(timezone.utc).isoformat(), 'archive_sha256':receipt['sha256'],
               'extracted_directory':extracted.relative_to(ROOT).as_posix(), 'shipped_bytes_verified':True,
               'full_array_verification_from_extracted_source':True,
+              'isolated_diagnostic_from_extracted_source':True,
               'cold_environment_install':False, 'fresh_model_execution':False,
               'external_reproduction':False,
               'scope':'Local extraction and independent arithmetic using the existing pinned Python environment. Fresh execution and browser flow remain separate gates.'}

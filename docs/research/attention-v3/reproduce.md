@@ -67,6 +67,14 @@ performs no upload. The archive includes all full arrays, source snapshots,
 negative outcomes, pinned setup and the independent standard-library integrity
 checker. Verify an extracted kit before attempting fresh execution.
 
+The [isolated-process follow-up](../attention-isolation/reproduce.md) is part of
+the final handoff. It separately tests a known failure pair with one arm per
+process. Once both studies finish, run `benchmarks/report_attention_v3.py` before
+packaging. That report and its receipt bind both verified summaries. The
+extracted kit includes the tracked project and tests, registered source, full
+arrays and both independent verifiers; it excludes environments, weights and
+original corpus text. Full papers open from their original source links.
+
 ## Interpretation and bias
 
 The first six cases revisit overlapping WikiText inputs used in v2 and are

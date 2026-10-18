@@ -194,6 +194,12 @@ async function loadValidation(){
   }).join('');
   $('#validation-comparisons').innerHTML=summary?`<div class="table-wrap"><table><thead><tr><th>Input cohort</th><th>Context</th><th>Qualified pairs</th><th>Generation ratio</th><th>Allocator reduction</th></tr></thead><tbody>${summary.comparisons.map(c=>`<tr><td>${c.cohort==='v2-replay'?'Earlier inputs · retrospective':'Six separate books'}</td><td>${c.context.toLocaleString()}</td><td>${c.eligible_pairs} / ${c.planned}</td><td>${fmt(c.eligible_ratio_median,3)}×</td><td>${c.eligible_allocator_reduction_percent.length?fmt(c.eligible_allocator_reduction_percent.reduce((a,b)=>a+b,0)/c.eligible_allocator_reduction_percent.length,1)+'% mean':'—'}</td></tr>`).join('')}</tbody></table></div><p class="fine-print">These are descriptive paired measurements. A partial set of qualifying pairs cannot establish a benefit across all registered inputs. Allocator measurements do not establish physical GPU residency or an out-of-memory rescue.</p>`:'<p>No correctness-qualified long-context claim yet. The earlier 32k/40k memory measurements remain feasibility evidence while this study runs.</p>';
   $('#validation-protocol').textContent=JSON.stringify({protocol,execution,verification:summary?.verification},null,2);
+  try{
+    const isolated=await api('/data/isolation-summary.json');
+    if(isolated.all_cases_recorded&&isolated.base_protocol_sha256===summary?.protocol_sha256){
+      $('#isolation-results').innerHTML=`<div class="table-wrap"><table><thead><tr><th>Context</th><th>Arm</th><th>Outcome</th><th>Numerics</th><th>Generation</th></tr></thead><tbody>${isolated.cases.map(r=>`<tr><td>${r.context.toLocaleString()}</td><td>${esc(r.method==='hybrid50'?'Hybrid / 256 GPU tokens':r.method)}</td><td>${esc(r.arm_status)}</td><td>${r.passed===true?(r.eligible?'Within bounds':'Within bounds · blocked'):r.passed===false?'Outside bounds':'Unknown'}</td><td>${fmt(r.generation_ms==null?null:r.generation_ms/1000,1)} s</td></tr>`).join('')}</tbody></table></div><p class="fine-print">${esc(isolated.verification)} The case was chosen after its original failures; this is a post-hoc diagnostic.</p>`;
+    }
+  }catch{/* Verified follow-up data is published only after its complete analysis. */}
 }
 $('#validation-repeat').onclick=async()=>{
   const button=$('#validation-repeat');button.disabled=true;

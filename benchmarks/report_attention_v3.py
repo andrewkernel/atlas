@@ -122,16 +122,37 @@ def render(summary):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.parse_args()
+    isolation=None;isolation_path=ROOT/'docs/research/attention-isolation'
+    if (ROOT/'docs/roadmap/isolation-diagnostic.md').exists() and not (isolation_path/'protocol.json').exists():
+        raise ValueError('Isolated-arm diagnostic must be frozen and completed before final handoff')
+    if (isolation_path/'protocol.json').exists():
+        ledger=read_json(isolation_path/'execution.json') if (isolation_path/'execution.json').exists() else {}
+        if not ledger.get('finished_at'):raise ValueError('Isolated-arm diagnostic must finish before final handoff')
+        from verify_attention_isolation import build as build_isolation
+        isolation=build_isolation(isolation_path,ROOT)
+        if not isolation['all_cases_recorded']:raise ValueError('Isolated-arm diagnostic is incomplete')
+        write_json(isolation_path/'summary.json',isolation)
     summary=build(STUDY,ROOT)
     if not summary['all_cases_recorded']:raise ValueError('Final report requires all registered outcomes')
     write_json(STUDY/'summary.json',summary)
-    (STUDY/'report.md').write_bytes(render(summary).encode('utf-8'))
-    write_json(STUDY/'report-receipt.json',{
+    content=render(summary)
+    if isolation:
+        content+='\n## Isolated-process follow-up (post-hoc diagnostic)\n\n'
+        content+='Book 2383 was selected after its v3 numerical failure and control OOMs. Each arm/context now uses a fresh process, the same short warmup, and generation before reference preparation. This is a diagnostic of the known failure pair, not an unseen confirmation cohort.\n\n'
+        content+='| Context | Arm | Outcome | Literal relation | Generation (s) |\n| ---: | --- | --- | --- | ---: |\n'
+        for row in isolation['cases']:
+            relation='pass' if row['passed'] is True else 'fail' if row['passed'] is False else 'unknown'
+            content+=f'| {row["context"]:,} | {row["method"]} | {row["arm_status"]} | {relation} | {number(row.get("generation_ms",0)/1000) if row.get("generation_ms") is not None else "—"} |\n'
+        content+='\nAll original v3 failures remain unchanged. Disappearing OOMs would be a counterexample to a hard feasibility interpretation, not proof of a particular allocator cause. Host allocator observations are retained, not inferred from RSS. Numerical failures still block eligibility. See [diagnostic evidence](../attention-isolation/summary.json) and its separately frozen protocol.\n'
+    (STUDY/'report.md').write_bytes(content.encode('utf-8'))
+    receipt={
         'protocol_sha256':summary['protocol_sha256'], 'all_cases_recorded':True,
         'execution_sha256':file_digest(STUDY/'execution.json'),
         'summary_sha256':file_digest(STUDY/'summary.json'),
         'report_sha256':file_digest(STUDY/'report.md'),
-        'analysis_source_sha256':file_digest(Path(__file__))})
+        'analysis_source_sha256':file_digest(Path(__file__))}
+    if isolation:receipt['isolation_summary_sha256']=file_digest(isolation_path/'summary.json')
+    write_json(STUDY/'report-receipt.json',receipt)
     print({'report':'docs/research/attention-v3/report.md','cases':summary['recorded_cases']})
 
 

@@ -11,10 +11,11 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+import subprocess
 import zipfile
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
-from atlas.attention.portable import canonical_bytes, file_digest, read_json, write_json
+from atlas.attention.portable import artifact_path, canonical_bytes, file_digest, read_json, write_json
 from verify_attention_v3 import build
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -66,11 +67,23 @@ those new files.
 
 def inventory(root, protocol):
     selected = {root/relative for relative in protocol['sources']}
+    # Ship the actual tracked project, including tests and referenced prior-study
+    # tools. Never recurse through untracked environments, data, weights or secrets.
+    try:
+        top=Path(subprocess.check_output(['git','rev-parse','--show-toplevel'],cwd=root,stderr=subprocess.DEVNULL,text=True).strip())
+        names=subprocess.check_output(['git','ls-files','-z'],cwd=root).decode('utf-8').split('\0') if top.resolve()==root.resolve() else []
+    except (OSError,subprocess.SubprocessError):names=[]
+    if not names and (root/'bundle-manifest.json').exists():names=list(read_json(root/'bundle-manifest.json')['files_sha256'])
+    for name in names:
+        if name and name!='README.md':
+            path=artifact_path(root,name)
+            if path.is_file():selected.add(path)
     selected |= {root/'src/atlas/__init__.py', root/'Start-Atlas.ps1', root/'Stop-Atlas.ps1',
                  root/'benchmarks/package_attention_v3.py', root/'benchmarks/verify_researcher_bundle.py',
                  root/'benchmarks/attention_v3_progress.py',
                  root/'benchmarks/report_attention_v3.py',
                  root/'benchmarks/finalize_attention_v3.py',
+                 root/'benchmarks/attention_isolation.py',root/'benchmarks/verify_attention_isolation.py',
                  root/'docs/attention-lab.md', root/'docs/architecture/hybrid-attention-lab.md',
                  root/'.gitattributes'}
     for relative in ('lab-ui','frontend'):
@@ -83,6 +96,9 @@ def inventory(root, protocol):
         if path.is_file() and path.name not in ('bundle-receipt.json','handoff-verification.json') and '__pycache__' not in path.parts:
             selected.add(path)
     selected.add(root/'docs/research/papers/cxl-context.md')
+    selected.add(root/'lab-ui/data/isolation-summary.json')
+    for path in (root/'docs/research/attention-isolation').rglob('*'):
+        if path.is_file() and '__pycache__' not in path.parts:selected.add(path)
     for path in (root/'docs/research/attention-v2').glob('*'):
         if path.is_file() and path.suffix in ('.md','.json'):
             selected.add(path)
@@ -103,6 +119,13 @@ def package():
         path=STUDY/(name+('.md' if name=='report' else '.json'))
         if file_digest(path)!=receipt[name+'_sha256']:
             raise ValueError('Final report is stale: '+name)
+    from verify_attention_isolation import build as build_isolation
+    isolation=build_isolation(ROOT/'docs/research/attention-isolation',ROOT)
+    if not isolation['all_cases_recorded']:raise ValueError('Isolated diagnostic remains incomplete')
+    if receipt.get('isolation_summary_sha256')!=file_digest(ROOT/'docs/research/attention-isolation/summary.json'):
+        raise ValueError('Isolated diagnostic and final report do not match')
+    write_json(ROOT/'lab-ui/data/isolation-summary.json',{**isolation,
+               'base_protocol_sha256':read_json(ROOT/'docs/research/attention-isolation/protocol.json')['base_protocol_sha256']})
     protocol = read_json(STUDY/'protocol.json')
     files = inventory(ROOT,protocol)
     for required in ('benchmarks/verify_researcher_bundle.py','src/atlas/__init__.py'):
@@ -135,8 +158,11 @@ def package():
                    'filename':archive.name, 'sha256':file_digest(archive), 'bytes':archive.stat().st_size,
                    'protocol_sha256':result['protocol_sha256'], 'all_cases_recorded':True,
                    'recorded_cases':result['recorded_cases'], 'planned_cases':result['planned_cases'],
+                   'isolated_cases':isolation['recorded_cases'],
                    'files':len(manifest['files_sha256']), 'external_reproduction':False}
     write_json(DOWNLOADS/'manifest.json',publication)
+    write_json(DOWNLOADS/'isolation-summary.json',{**isolation,
+               'base_protocol_sha256':read_json(ROOT/'docs/research/attention-isolation/protocol.json')['base_protocol_sha256']})
     write_json(STUDY/'bundle-receipt.json',publication)
     return publication
 

@@ -1,12 +1,16 @@
 # Atlas
 
-**Long-context validation is running.** The separate [v3 protocol and reproduction
+**Researcher handoff is in progress.** All 18 primary v3 cases have finished
+execution. A separately registered [six-case isolated-process diagnostic](docs/research/attention-isolation/reproduce.md)
+is checking process-history effects before the final report and extracted-kit
+replay. The [v3 protocol and reproduction
 instructions](docs/research/attention-v3/reproduce.md) add full saved model-logit
 arrays, an unchanged native repeat, a native-cache control, six separate long
 books and balanced method order. The local app's **Long-context evidence** page
 shows every registered outcome and independently verified partial results.
 Failures and out-of-memory controls block eligibility. No complete v3 outcome,
-universal speed benefit or external reproduction is implied while cases remain.
+universal speed benefit or external reproduction is implied while verification
+and the diagnostic remain unfinished.
 
 ## System architecture
 

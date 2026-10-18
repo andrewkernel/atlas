@@ -15,6 +15,7 @@ mlartifacts/
 artifacts/
 lab-ui/downloads/
 docs/research/attention-v3/runs/
+docs/research/attention-isolation/runs/
 data/
 !frontend/data/
 !frontend/data/snapshot.json
