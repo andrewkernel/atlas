@@ -1,16 +1,23 @@
 # Atlas
 
-**Researcher handoff is in progress.** All 18 primary v3 cases have finished
-execution. A separately registered [six-case isolated-process diagnostic](docs/research/attention-isolation/reproduce.md)
-is checking process-history effects before the final report and extracted-kit
-replay. The [v3 protocol and reproduction
-instructions](docs/research/attention-v3/reproduce.md) add full saved model-logit
-arrays, an unchanged native repeat, a native-cache control, six separate long
-books and balanced method order. The local app's **Long-context evidence** page
-shows every registered outcome and independently verified partial results.
-Failures and out-of-memory controls block eligibility. No complete v3 outcome,
-universal speed benefit or external reproduction is implied while verification
-and the diagnostic remain unfinished.
+**Atlas is a local research workspace for measuring CPU/GPU attention memory
+tradeoffs and checking the resulting model calculations.** The completed
+[18-case report](docs/research/attention-v3/report.md) retains four hybrid
+numerical failures and seven unavailable OOM control arms. Qualifying pairs
+reduce measured GPU allocator peaks by about 64–66%, with slower generation.
+The separately frozen [six-case isolated-process diagnostic](docs/research/attention-isolation/reproduce.md)
+completed without OOMs and retained its 32k hybrid numerical failure. These are
+scoped observations, not universal feasibility or a proof of an allocator cause.
+
+The [reproduction guide](docs/research/attention-v3/reproduce.md) covers pinned
+inputs, full saved arrays and independent verification. The local app's
+**Long-context evidence** page shows every registered outcome; failed or unknown
+controls block eligibility. New local runs remain distinct from recorded
+reference results. The local researcher ZIP includes source, full arrays,
+negative outcomes and setup instructions. Its
+[handoff receipt](docs/research/attention-v3/handoff-verification.json) separately
+states which extracted-copy and fresh-execution checks have actually completed.
+External reproduction, zero bias and a universal speed benefit are unestablished.
 
 ## System architecture
 
@@ -36,7 +43,7 @@ The worker executes reviewed builtin adapters using local safetensors. The backe
 
 The [v2 research study](docs/research/attention-v2/report.md) adds a single-storage ring cache, GQA, a separate NumPy float64 oracle, pinned Qwen3/public-text workloads, matched FP32/FP16/BF16 comparisons, independent process blocks, full-generation timings, real 32k/40k memory-pressure cases and explicit rejection/abstention. Its dashboard distinguishes execution status from numerical eligibility and shows process-level uncertainty. The [frozen protocol](docs/research/attention-v2/protocol-amendment-1.json), [work ledger](docs/roadmap/research-v2-plan.md) and [reproduction kit](docs/research/attention-v2/reproduce.md) record measured scope and remaining limits. The report states whether all planned cases have finished.
 
-**These benchmarks cannot be described as 100% accurate or unbiased.** Failed logit checks remain failures; full-pressure numerical quality is unknown. Public-text selection, small process counts, shared Windows hardware and one modern model family limit generalization. There is no measured CXL/DSA execution, external independent replication or established policy superiority.
+**These benchmarks cannot be described as 100% accurate or unbiased.** Failed logit checks remain failures; the older v2 pressure rows retain unknown numerical quality. The separately registered v3 checks do not rewrite them. Public-text selection, small process counts, shared Windows hardware and one modern model family limit generalization. There is no measured CXL/DSA execution, external independent replication or established policy superiority.
 
 **New: [Attention Lab](docs/attention-lab.md)** is an executable local CPU-GPU attention workspace, with real CUDA benchmarks, a pretrained GPT-2 integration, persistent KV caches, and an interactive dashboard. Launch with `./Start-Atlas.ps1`. Its [architecture and review](docs/architecture/hybrid-attention-lab.md) distinguish this owner-authorized engineering track from the historical training proposal below. This is dense attention, not a CXL implementation or a reproduction of HGCA/BEYOND's sparse runtime.
 

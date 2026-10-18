@@ -29,8 +29,9 @@ async function refresh(prefer){
   const filtered=runs.filter(r=>r.config?.kind===state.kind);
   const selection=prefer||state.selected;
   state.selected=filtered.some(r=>r.id===selection)?selection:(filtered.find(r=>r.status==='completed')||filtered[0])?.id;
-  $('#run-select').innerHTML=filtered.map(r=>`<option value="${esc(r.id)}">${state.referenceRuns.has(r.id)?'Reference study':'Local run'} · ${esc(date(r.created_at))} · ${esc(r.config.suite||r.config.profile||'model')} · ${esc(r.id.slice(-6))} · ${esc(r.status)}</option>`).join('');
+  $('#run-select').innerHTML=filtered.map(r=>`<option value="${esc(r.id)}">${state.referenceRuns.has(r.id)?'Reference study':'Local run'} · ${esc(date(r.created_at))} · ${esc(r.config.kind==='long-validation'?`${r.config.case_id} / ${r.config.context.toLocaleString()} tokens`:r.config.suite||r.config.profile||'model')} · ${esc(r.id.slice(-6))} · ${esc(r.status)}</option>`).join('');
   $('#run-select').value=state.selected||'';
+  $('#export').hidden=!state.selected;
   $('#active-job').hidden=!state.active;
   const active=runs.find(r=>r.id===state.active);
   if(active){$('#job-title').textContent=active.config.kind==='long-validation'?'Long-context validation':active.config.kind==='model'?'Model comparison':'Attention sweep';$('#job-detail').textContent=active.progress?.message||'Preparing';$('#job-progress').max=active.progress?.total||1;$('#job-progress').value=active.progress?.done||0}
@@ -43,12 +44,15 @@ async function loadRun(id){
   const previous=state.doc?.id;state.selected=id;state.doc=await api(`/api/runs/${id}`);
   if(previous!==id){clearNotice();state.hidden.clear();$('#phase-filter').value='all';$('#plan-filter').value='all'}
   const doc=state.doc,rows=doc.rows||[];
+  $('#export').href=`/api/runs/${encodeURIComponent(id)}/export`;$('#export').download=id+'.json';
   $('#empty').hidden=rows.length>0||state.active===doc.id;$('#results').hidden=!rows.length;
   if(doc.error)notice(`${doc.status}: ${doc.error}`);
   if(!rows.length)return;
-  const eligible=rows.filter(r=>r.correctness?.passed===true&&r.eligibility?.eligible!==false&&r.median_ms!=null);
-  const fastest=eligible.length?eligible.reduce((a,b)=>a.median_ms<b.median_ms?a:b):null;
-  $('#fastest').textContent=(fastest?displayLabel(fastest):null)||'No eligible result';$('#fastest-detail').textContent=fastest?`${fmt(fastest.median_ms)} ms at ${fastest.context.toLocaleString()} tokens`:'Failed and unknown checks block recommendation';
+  const timeKey=doc.config.kind==='long-validation'?'generation_ms':'median_ms';
+  const eligible=rows.filter(r=>r.correctness?.passed===true&&r.eligibility?.eligible!==false&&r[timeKey]!=null);
+  const fastest=eligible.length?eligible.reduce((a,b)=>a[timeKey]<b[timeKey]?a:b):null;
+  $('#fastest-label').textContent=doc.config.kind==='long-validation'?'LOWEST ELIGIBLE GENERATION TIME':'LOWEST ELIGIBLE LATENCY';
+  $('#fastest').textContent=(fastest?displayLabel(fastest):null)||'No eligible result';$('#fastest-detail').textContent=fastest?`${fmt(fastest[timeKey])} ms at ${fastest.context.toLocaleString()} tokens`:'Failed and unknown checks block recommendation';
   const passed=rows.filter(r=>r.correctness?.passed).length;
   $('#checks').textContent=`${passed} / ${rows.length} passed`;
   $('#checks').classList.toggle('numerics',passed===rows.length);
@@ -77,10 +81,14 @@ function renderPolicy(){
 
 function renderTable(){
   if(!state.doc)return;
+  const long=state.doc.config.kind==='long-validation';
+  $('#time-sort').textContent=long?'Generation total ↕':'Median ↕';$('#time-sort').dataset.sort=long?'generation_ms':'median_ms';
+  $('#secondary-time-heading').textContent=long?'Decode median':'p90';$('#memory-heading').textContent=long?'GPU allocated peak':'GPU KV';
+  if(long&&state.sort==='median_ms')state.sort='generation_ms';else if(!long&&state.sort==='generation_ms')state.sort='median_ms';
   const phase=$('#phase-filter').value,plan=$('#plan-filter').value;
   const rows=state.doc.rows.map((r,i)=>({...r,index:i})).filter(r=>(phase==='all'||r.phase===phase)&&(plan==='all'||r.plan===plan)).sort((a,b)=>(a[state.sort]-b[state.sort])*(state.ascending?1:-1));
   $('#row-count').textContent=rows.length;
-  $('#measurements').innerHTML=rows.map(r=>`<tr data-row="${r.index}"><td>${r.context.toLocaleString()}</td><td><span class="plan-name"><svg width="8" height="8" aria-hidden="true"><circle cx="4" cy="4" r="3.5" fill="${colors[r.plan]||'#777'}"/></svg>${esc(displayLabel(r))}</span></td><td class="phase">${r.phase==='validation'?'Held out':esc(r.phase)}</td><td>${fmt(r.median_ms)} <span class="muted">ms</span></td><td>${fmt(r.p90_ms)} <span class="muted">ms</span></td><td>${fmt(r.gpu_kv_mib,1)} <span class="muted">MiB</span></td><td class="numerics ${r.correctness?.passed?'':'fail'}">${r.correctness?.passed===true?'✓ Within bounds':r.correctness?.passed===false?'× Outside bounds':'? Unknown'}</td><td><button class="inspect-row" aria-label="Inspect ${esc(displayLabel(r))}, ${r.context} tokens">↗</button></td></tr>`).join('');
+  $('#measurements').innerHTML=rows.map(r=>`<tr data-row="${r.index}"><td>${r.context.toLocaleString()}</td><td><span class="plan-name"><svg width="8" height="8" aria-hidden="true"><circle cx="4" cy="4" r="3.5" fill="${colors[r.plan]||'#777'}"/></svg>${esc(displayLabel(r))}</span></td><td class="phase">${r.phase==='validation'?'Held out':esc(r.phase)}</td><td>${fmt(long?r.generation_ms:r.median_ms)} <span class="muted">ms</span></td><td>${fmt(long?r.median_ms:r.p90_ms)} <span class="muted">ms</span></td><td>${fmt(long?r.allocated_peak_mib:r.gpu_kv_mib,1)} <span class="muted">MiB</span></td><td class="numerics ${r.correctness?.passed?'':'fail'}">${r.correctness?.passed===true?'✓ Within bounds':r.correctness?.passed===false?'× Outside bounds':'? Unknown'}</td><td><button class="inspect-row" aria-label="Inspect ${esc(displayLabel(r))}, ${r.context} tokens">↗</button></td></tr>`).join('');
   $$('#measurements tr').forEach(tr=>{tr.onclick=()=>inspect(state.doc.rows[Number(tr.dataset.row)]);tr.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tr.click()}}});
 }
 
@@ -89,6 +97,7 @@ function renderChart(){
   const all=state.doc.rows,rows=all.filter(r=>!state.hidden.has(r.plan)&&r.median_ms!=null);
   const model=['model','long-validation'].includes(state.doc.config.kind)||['repeated','pressure','pilot'].includes(state.doc.config.suite);
   $('#chart-title').textContent=model?'Full-model decode latency':'Latency across context lengths';
+  $('#chart-subtitle').textContent=state.doc.config.kind==='long-validation'?`Median of ${state.doc.config.generation_tokens-1} decode forwards from one generation window · total generation in the table`:'Median synchronized wall time · lower is faster';
   $('#chart-note').textContent=state.doc.config.suite==='cache'?'Complete append, eviction, transfers and attention · setup separate':['research','long-validation'].includes(state.doc.config.kind)&&model?'Free greedy timing · separate corpus validation · cache updates included':model?'Teacher-forced native token history · cache updates included':'Calibration points ● · held-out lengths ◇';
   const W=Math.max(260,$('#chart').clientWidth),H=$('#chart').clientHeight||265,L=45,R=12,T=15,B=model?58:33,cw=W-L-R,ch=H-T-B;
   let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="plot-title plot-desc"><title id="plot-title">${model?'Model decode latency':'Attention latency by context length'}</title><desc id="plot-desc">Synchronized wall time in milliseconds. Exact values are available in the measurements table.</desc>`;
@@ -171,7 +180,8 @@ $('#repeat-case').onclick=async()=>{const b=$('#repeat-case');b.disabled=true;tr
 
 function numericalState(arm){return !arm?'Pending':arm.status==='oom'?'Out of memory':arm.passed===true?(arm.eligible?'Within bounds':'Within bounds · blocked'):arm.passed===false?'Outside bounds':'Unknown'}
 async function loadValidation(){
-  const {protocol,execution,summary}=await api('/api/validation');
+  const [{protocol,execution,summary},reference]=await Promise.all([api('/api/validation'),api('/data/reference-history.json').catch(()=>null)]);
+  const unavailable=new Set(reference?.unavailable_runs||[]);
   if(!protocol){$('#validation-progress').textContent='The long-context protocol has not been frozen on this machine.';$('#validation-repeat').disabled=true;return}
   const entries=execution?.cases||[],terminal=entries.filter(e=>e.status!=='running'),pending=entries.find(e=>e.status==='running');
   let activeMessage='';
@@ -192,7 +202,7 @@ async function loadValidation(){
   $('#validation-repeat').disabled=!!pending||!!state.active;
   $('#validation-rows').innerHTML=protocol.cases.map(c=>{
     const entry=entries.find(e=>e.case_id===c.case_id),verified=summary?.cases.find(r=>r.case_id===c.case_id),arm=p=>verified?.arms.find(a=>a.plan===p);
-    return `<tr><td>${esc(c.case_id)}</td><td>${c.book_id?'PG-19 / '+esc(c.book_id):'WikiText replay / '+c.block}</td><td>${c.context.toLocaleString()}</td><td>${entry?pill(entry.status):'Not run'}</td>${['native','resident','hybrid50'].map(p=>`<td class="${arm(p)?.passed===false?'fail':''}">${numericalState(arm(p))}</td>`).join('')}<td>${entry?`<a href="/api/runs/${esc(entry.run_id)}/export" target="_blank" rel="noopener">Raw JSON ↗</a>`:'—'}</td></tr>`;
+    return `<tr><td>${esc(c.case_id)}</td><td>${c.book_id?'PG-19 / '+esc(c.book_id):'WikiText replay / '+c.block}</td><td>${c.context.toLocaleString()}</td><td>${entry?pill(entry.status):'Not run'}</td>${['native','resident','hybrid50'].map(p=>`<td class="${arm(p)?.passed===false?'fail':''}">${numericalState(arm(p))}</td>`).join('')}<td>${entry?(unavailable.has(entry.run_id)?'Full evidence kit required':`<a href="/api/runs/${esc(entry.run_id)}/export" target="_blank" rel="noopener">Raw JSON ↗</a>`):'—'}</td></tr>`;
   }).join('');
   $('#validation-comparisons').innerHTML=summary?`<div class="table-wrap"><table><thead><tr><th>Input cohort</th><th>Context</th><th>Qualified pairs</th><th>Generation ratio</th><th>Allocator reduction</th></tr></thead><tbody>${summary.comparisons.map(c=>`<tr><td>${c.cohort==='v2-replay'?'Earlier inputs · retrospective':'Six separate books'}</td><td>${c.context.toLocaleString()}</td><td>${c.eligible_pairs} / ${c.planned}</td><td>${fmt(c.eligible_ratio_median,3)}×</td><td>${c.eligible_allocator_reduction_percent.length?fmt(c.eligible_allocator_reduction_percent.reduce((a,b)=>a+b,0)/c.eligible_allocator_reduction_percent.length,1)+'% mean':'—'}</td></tr>`).join('')}</tbody></table></div><p class="fine-print">These are descriptive paired measurements. A partial set of qualifying pairs cannot establish a benefit across all registered inputs. Allocator measurements do not establish physical GPU residency or an out-of-memory rescue.</p>`:'<p>No correctness-qualified long-context claim yet. The earlier 32k/40k memory measurements remain feasibility evidence while this study runs.</p>';
   $('#validation-protocol').textContent=JSON.stringify({protocol,execution,verification:summary?.verification},null,2);
@@ -223,7 +233,7 @@ $('#run-select').onchange=e=>loadRun(e.target.value).catch(e=>notice(e.message))
 $$('.segmented button').forEach(b=>b.onclick=()=>{state.kind=b.dataset.kind;state.selected=null;$$('.segmented button').forEach(x=>x.classList.toggle('active',x===b));refresh().catch(e=>notice(e.message))});
 $('#phase-filter').onchange=renderTable;$('#plan-filter').onchange=renderTable;$('#log-scale').onchange=renderChart;
 $$('[data-sort]').forEach(b=>b.onclick=()=>{state.ascending=state.sort===b.dataset.sort?!state.ascending:true;state.sort=b.dataset.sort;renderTable()});
-$('#export').onclick=()=>{if(state.selected){const a=document.createElement('a');a.href=`/api/runs/${state.selected}/export`;a.download=state.selected+'.json';a.click()}};
+$('#export').onclick=e=>{if(!state.selected)e.preventDefault()};
 window.addEventListener('hashchange',view);
 const papers=[['hgca','HGCA: Hybrid GPU-CPU Attention for Long Context LLM Inference','2025 · arXiv · 14 pages','Recent KV entries on the GPU, selected older entries processed on the CPU. The closest starting point for this runtime.'],['beyond','Scaling Attention Beyond GPUs for LLM Inference','HPDC 2026 · 12 pages','BEYOND combines KV management and hybrid attention into an inference runtime. Atlas starts with dense attention to isolate execution costs.'],['nomad','NOMAD: Non-Exclusive Memory Tiering via Transactional Page Migration','OSDI 2024 · 18 pages','Transactional migration and shadow copies motivate measuring the cost of moving data, alongside placement.'],['miku','Architectural and System Implications of CXL-enabled Tiered Memory','2025 preprint · 14 pages','MIKU studies interference between CXL requests and local DDR. This PC does not supply a CXL validation environment.'],['dsa','DSA-2LM: A CPU-Free Tiered Memory Architecture with Intel DSA','USENIX ATC 2025 · 10 pages','Accelerated page migration highlights how copying overhead changes the value of tiering decisions.']];
 const paperSources={hgca:'https://arxiv.org/pdf/2507.03153',beyond:'https://huilucs.github.io/pubs/hpdc2026.pdf',nomad:'https://www.usenix.org/system/files/osdi24-xiang.pdf',miku:'https://arxiv.org/pdf/2503.17864v2',dsa:'https://ranger.uta.edu/~jrao/papers/atc25.pdf'};

@@ -34,6 +34,11 @@ defines the registered cases, original bounds, inputs and source identities.
 The execution ledger retains every attempted case. Do not infer correctness
 from execution completion or silently discard failed/unknown cases.
 
+docs/research/attention-v3/handoff-audit.md maps the acceptance gates to evidence.
+The separate handoff-replay directory retains one known-case fresh local replay,
+its environment inventory and an intentionally cancelled workflow control.
+These are not pooled with the primary 18 cases or six post-hoc diagnostic cases.
+
 Extract to a short directory on Windows: deeply nested project folders can
 exceed legacy path limits for the retained source snapshots. A location outside
 unrelated Git checkouts also avoids attributing their Git metadata to this kit.

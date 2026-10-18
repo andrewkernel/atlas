@@ -7,6 +7,13 @@
       "status": "failed",
       "error": "FileNotFoundError on nested source snapshot path beyond legacy Windows path length",
       "disposition": "Preserve partial extraction and recorded failure; rebuild with short-directory extraction guard. No scientific cases rerun or changed."
+    },
+    {
+      "recorded_at": "2026-10-18T08:44:09.420216+00:00",
+      "stage": "offline pinned-environment installation",
+      "status": "failed",
+      "error": "The direct official CUDA torch wheel was not available in the local uv offline cache.",
+      "disposition": "Retained the failure; installed the same hash-pinned requirements online into the new empty environment using --no-cache. No model result was discarded or retried."
     }
   ]
 }

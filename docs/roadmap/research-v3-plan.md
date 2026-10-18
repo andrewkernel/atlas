@@ -75,3 +75,19 @@ and the self-produced bundle cannot certify independent execution or zero bias.
   remain recorded. The separately registered six-case isolated-process diagnostic
   is running; final packaging, fresh environment reconstruction and browser replay
   remain acceptance gates, not completed claims.
+- Subsequent checkpoint: all six isolated-arm cases completed and their full
+  arrays were independently reconstructed. No diagnostic arm OOMed; the 32k
+  hybrid failed 50 literal elements. The 40k qualified hybrid remained slower.
+  A short-directory extracted kit passed shipped-byte and both numerical
+  verifiers. A newly created environment matched all 51 frozen package versions,
+  restored the exact assets and passed preflight. Its browser started an actual
+  local long-000 worker; collection and workflow checks remain separate from
+  independent external reproduction.
+- Final local workflow: the newly installed, extracted app completed long-000
+  in 821.1s. Full-array reconstruction passed all three arms; the resident timing
+  was substantially slower than its original run and is retained separately.
+  A deliberate Cancel check retained an unknown/cancelled record, terminated
+  both observed owned processes and cleared the active job. The browser checked
+  export equality, real failed/OOM-blocked records and readable timing/memory
+  quantities. See the [acceptance audit](../research/attention-v3/handoff-audit.md)
+  for scope, evidence and remaining external-replication limits.

@@ -37,6 +37,20 @@ wall bound, execute offline builtin Qwen3 code and are serialized on the GPU.
 No remote model/dataset Python or pickle weights are executed. The original
 study remains unchanged. A completed failed case is not silently retried.
 
+For the browser workflow, run `./Start-Atlas.ps1` after asset preflight. Startup
+checks and projects the shipped reference evidence into read-only history; it
+does not execute those experiments again. The reference table remains fixed.
+New runs appear as **Local run** in Experiments. The **Run selected case** button
+starts a fresh registered worker; its progress banner supplies **Cancel**.
+JSON export includes the raw decisions; independent numerical verification still
+requires the referenced full arrays. A Git-only checkout without the ignored
+arrays cannot substitute for the complete evidence kit.
+
+Installation and pinned asset restoration require network access unless the
+exact official wheels and data are already available in local caches. Reusing
+an asset cache is not a cold-data test. Allow space for the archive, extracted
+arrays, the CUDA environment, model downloads and installer temporary files.
+
 `prepare` restores exactly the frozen original-bucket PG-19 subset using pinned
 object generations and byte hashes. It does not reselect books on a new machine.
 Manifests are compared semantically, so Windows/Linux JSON line endings cannot
