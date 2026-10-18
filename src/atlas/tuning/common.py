@@ -81,7 +81,27 @@ def runtime_identity():
 
 
 def domain(settings):
-    return digest({k: settings[k] for k in ('model', 'dtype', 'context', 'generation_tokens')})
+    return digest({k: settings[k] for k in ('model', 'dtype', 'context', 'generation_tokens', 'goal', 'budget_mib')})
+
+
+def observation():
+    """Shared-device and host observations, strictly outside scored model spans."""
+    import psutil
+    memory = psutil.Process().memory_info()
+    value = {'observed_at': utc(), 'process_rss_bytes': memory.rss,
+             'process_private_or_vms_bytes': memory.vms,
+             'available_system_ram_bytes': psutil.virtual_memory().available,
+             'device_scope': 'Driver-wide shared desktop reading, not process residency or a quota'}
+    try:
+        row = next(csv.reader(subprocess.check_output(['nvidia-smi', '--id=0',
+            '--query-gpu=memory.used,utilization.gpu,temperature.gpu,clocks.sm,power.draw',
+            '--format=csv,noheader,nounits'], text=True, timeout=5, creationflags=0x08000000).strip().splitlines()))
+        value['device'] = {key: float(item.strip()) if item.strip().replace('.', '', 1).isdigit() else None
+                           for key, item in zip(('used_mib', 'utilization_percent', 'temperature_c', 'sm_clock_mhz', 'power_w'), row, strict=True)}
+    except (OSError, subprocess.SubprocessError, ValueError) as exc:
+        value['device'] = None
+        value['device_error'] = public_error(exc)
+    return value
 
 
 def save_array(folder, values):
@@ -98,9 +118,24 @@ def save_array(folder, values):
         if file_digest(path) != sha:
             raise ValueError('Existing content-addressed artifact is corrupt')
     else:
-        temporary = path.with_suffix('.tmp')
-        temporary.write_bytes(payload)
-        os.replace(temporary, path)
+        # New trials still execute. Reuse identical, verified PUBLIC bytes only.
+        # Hard links save physical space without deleting or rewriting prior evidence.
+        linked = False
+        if folder.resolve().is_relative_to(STORE.resolve()):
+            for previous in (STORE / 'campaigns').glob('*/blobs/' + sha + '.npy'):
+                if previous == path or not previous.resolve().is_relative_to(STORE.resolve()):
+                    continue
+                if file_digest(previous) == sha:
+                    try:
+                        os.link(previous, path)
+                        linked = True
+                        break
+                    except OSError:
+                        pass
+        if not linked:
+            temporary = path.with_suffix('.tmp')
+            temporary.write_bytes(payload)
+            os.replace(temporary, path)
     return {'path': path.relative_to(folder).as_posix(), 'sha256': sha,
             'shape': list(array.shape), 'dtype': str(array.dtype)}
 

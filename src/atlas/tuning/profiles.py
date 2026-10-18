@@ -5,6 +5,7 @@ import sqlite3
 
 from .common import (ROOT, STORE, campaign_dir, check_sources, digest, domain, frozen_json,
                      identifier, read_json, runtime_identity, utc)
+from .registry import assets
 
 
 class Conflict(RuntimeError):
@@ -61,6 +62,7 @@ def save(folder, verified, home=STORE):
     profile = {'schema_version': 1, 'campaign': folder.name, 'domain': domain(protocol['settings']),
                'settings': protocol['settings'], 'identity': protocol['identity'],
                'sources': protocol['sources'], 'protocol_sha256': verified['protocol_sha256'],
+               'assets': protocol['assets'],
                'evidence_sha256': verified['evidence_sha256'], 'decision': verified['decision'],
                'execution': next(p for p in protocol['profiles'] if p['id'] == chosen)}
     ident = 'profile-' + digest(profile)[:24]
@@ -82,6 +84,8 @@ def validate(ident, home=STORE, root=ROOT, current_identity=True):
     check_sources(profile['sources'], root)
     if current_identity and profile['identity'] != runtime_identity():
         raise ValueError('Profile is incompatible with the current hardware, driver or packages')
+    if current_identity and profile['assets'] != assets(root):
+        raise ValueError('Profile model, tokenizer or corpus bytes are incompatible')
     folder = campaign_dir(profile['campaign'], home)
     verified = build(folder, root)
     protocol = read_json(folder / 'protocol.json')
@@ -89,6 +93,7 @@ def validate(ident, home=STORE, root=ROOT, current_identity=True):
             profile['evidence_sha256'] != verified['evidence_sha256'] or
             profile['decision'] != verified['decision'] or
             profile['settings'] != protocol['settings'] or profile['identity'] != protocol['identity'] or
+            profile['assets'] != protocol['assets'] or
             profile['domain'] != domain(protocol['settings']) or
             profile['execution'] != next(p for p in protocol['profiles'] if p['id'] == verified['decision']['profile'])):
         raise ValueError('Profile does not match independently reconstructed campaign evidence')

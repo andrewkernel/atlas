@@ -172,7 +172,7 @@ def test_wrapper_origin_auth_schema_and_conflicts(monkeypatch):
 def authored_campaign(tmp_path, monkeypatch):
     """Tiny invented vocabulary exercises reconstruction without publishing fake ML runs."""
     folder = tmp_path / 'authored-fixture'; folder.mkdir()
-    p = {**protocol(), 'identity': {'authored': True}, 'sources': {}, 'vocabulary_size': 5,
+    p = {**protocol(), 'identity': {'authored': True}, 'sources': {}, 'assets': {}, 'vocabulary_size': 5,
          'inputs': [], 'contract': {'positions': 32, 'atol': 1e-4, 'rtol': 1e-4}}
     for prefix in ('cal', 'hold'):
         for n in range(2):
@@ -196,6 +196,7 @@ def authored_campaign(tmp_path, monkeypatch):
                                   'tf32': False, 'matmul_precision': 'highest'},
                    'input_artifact': next(i['artifact'] for i in p['inputs'] if i['id'] == c['input']),
                    'execution_process': proc}
+            raw['model'] = {'class': 'Qwen3ForCausalLM', 'parameter_count': 596049920, 'parameter_dtypes': ['torch.float32']}
             if c['stage'] == 'reference':
                 raw['artifacts'] = {'reference_logits': logits}
             else:
@@ -269,6 +270,7 @@ def test_profile_reconstructs_evidence_and_rejects_drift(authored_campaign, monk
     ident = profiles.save(destination, verified, home)
     monkeypatch.setattr(profiles, 'check_sources', lambda *a: None)
     monkeypatch.setattr(profiles, 'runtime_identity', lambda: {'authored': True})
+    monkeypatch.setattr(profiles, 'assets', lambda *a: {})
     saved = profiles.validate(ident, home)
     expected = profiles.state(saved['domain'], home)
     applied = profiles.activate(ident, expected, home)
@@ -277,6 +279,58 @@ def test_profile_reconstructs_evidence_and_rejects_drift(authored_campaign, monk
     monkeypatch.setattr(profiles, 'runtime_identity', lambda: {'authored': 'drift'})
     with pytest.raises(ValueError, match='incompatible'):
         profiles.activate(ident, profiles.state(saved['domain'], home), home)
+
+
+def test_objectives_have_separate_active_domains():
+    fastest = registry.settings({})
+    budget = registry.settings({'goal': 'budget', 'budget_mib': 2560})
+    lower_budget = registry.settings({'goal': 'budget', 'budget_mib': 2400})
+    assert len({common.domain(c) for c in (fastest, budget, lower_budget)}) == 3
+
+
+def test_asset_drift_rejects_a_valid_saved_profile(authored_campaign, monkeypatch, tmp_path):
+    folder, _ = authored_campaign
+    ident = profiles.save(folder, verify.build(folder), tmp_path)
+    monkeypatch.setattr(profiles, 'check_sources', lambda *a: None)
+    monkeypatch.setattr(profiles, 'runtime_identity', lambda: {'authored': True})
+    monkeypatch.setattr(profiles, 'assets', lambda *a: {'authored': 'changed asset'})
+    with pytest.raises(ValueError, match='bytes are incompatible'):
+        profiles.validate(ident, tmp_path)
+
+
+def test_verified_public_array_sharing_preserves_previous_bytes(tmp_path, monkeypatch):
+    monkeypatch.setattr(common, 'STORE', tmp_path)
+    first = tmp_path / 'campaigns/first'
+    second = tmp_path / 'campaigns/second'
+    value = np.arange(100, dtype=np.float32)
+    a = common.save_array(first, value); b = common.save_array(second, value)
+    assert np.array_equal(common.load_array(first, a), common.load_array(second, b))
+    assert a == b
+    assert (first / a['path']).samefile(second / b['path'])
+    before = (first / a['path']).read_bytes()
+    def unavailable(*args):
+        raise OSError('Authored hard-link unsupported control')
+    monkeypatch.setattr(common.os, 'link', unavailable)
+    third = tmp_path / 'campaigns/third'
+    c = common.save_array(third, value)
+    assert (third / c['path']).read_bytes() == before == (first / a['path']).read_bytes()
+
+
+def test_public_export_never_traverses_private_requests(authored_campaign, monkeypatch, tmp_path):
+    from atlas.tuning import bundle
+    import shutil, zipfile, json
+    original, _ = authored_campaign
+    home = tmp_path / 'local-store'
+    folder = home / 'campaigns' / original.name
+    shutil.copytree(original, folder)
+    common.write_json(home / 'private-inference/do-not-export/request.json', {'prompt': 'authored private sentinel'})
+    monkeypatch.setattr(bundle, 'ROOT', tmp_path)
+    path = bundle.export(folder.name, home)
+    with zipfile.ZipFile(path) as archive:
+        manifest = json.loads(archive.read('bundle-manifest.json'))
+        assert all('private-inference' not in name for name in archive.namelist())
+        assert all(b'authored private sentinel' not in archive.read(name) for name in archive.namelist())
+        assert manifest['evidence_sha256'] == verify.build(folder)['evidence_sha256']
 
 
 def test_import_of_arithmetic_verifier_does_not_load_torch():

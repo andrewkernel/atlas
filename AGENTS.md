@@ -1,5 +1,19 @@
 # Working on Atlas
 
+## Runtime tuning track (owner requested 2026-10-18)
+
+`tune.py`, `src/atlas/tuning/`, and the local app's Tune performance page add
+finite CPU/cache tuning with separate selection/confirmation, full-output NumPy
+verification, reversible profiles and actual inference. Read
+`docs/runtime-tuning.md`, `docs/research/autotuning/research-and-design.md`, the
+architecture contract and acceptance gates before changing execution. Campaign
+protocols freeze old and new execution source identities; preserve all completed,
+failed and cancelled evidence. Change execution only under a new campaign/source
+identity, then rerun affected acceptance cases. Memory fit, measured speed,
+profile evidence and a fresh request check remain separate claims. Runtime
+settings affect Atlas, not the OS or another application. Private inference
+records must remain excluded from public research bundles.
+
 ## Implemented Attention Lab track (owner requested 2026-10-17)
 
 The owner explicitly authorized an end-to-end consumer CPU-GPU attention application, architecture review, real benchmarks and an interactive dashboard. Read `docs/attention-lab.md`, `docs/architecture/hybrid-attention-lab.md` and `docs/research/attention-lab/report.md` for this implemented engineering track. `lab.py`, `src/atlas/attention/` and `lab-ui/` implement it. `Start-Atlas.ps1` starts the local app. Its CUDA worker uses the separate hash-pinned attention environment; the historical CPU lock remains separate. Preserve measured negative results, failed model-logit predicates and early pilot records. This dense runtime is not CXL implementation or a reproduction of HGCA/BEYOND sparsification. The training research scope below remains distinct.

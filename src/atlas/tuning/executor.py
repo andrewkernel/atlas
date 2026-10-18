@@ -7,7 +7,7 @@ import os
 import time
 
 from .common import (ROOT, check_sources, file_digest, load_array, public_error,
-                     read_json, runtime_identity, save_array, utc, write_json)
+                     read_json, runtime_identity, save_array, utc, write_json, observation)
 
 
 class Cancelled(RuntimeError):
@@ -123,6 +123,9 @@ def run_worker(folder, case_id):
     try:
         protocol = read_json(folder / 'protocol.json')
         check_sources(protocol['sources'])
+        from .registry import assets
+        if assets() != protocol['assets']:
+            raise ValueError('Pinned model, tokenizer or public text bytes changed')
         identity = runtime_identity()
         if identity != protocol['identity']:
             raise RuntimeError('Hardware, driver or package identity changed')
@@ -137,7 +140,10 @@ def run_worker(folder, case_id):
         loaded = time.perf_counter()
         model, _ = load_model(protocol['settings']['dtype'])
         doc['model_load_s'] = time.perf_counter()-loaded
+        doc['model'] = {'class': type(model).__name__, 'parameter_count': sum(p.numel() for p in model.parameters()),
+                        'parameter_dtypes': sorted({str(p.dtype) for p in model.parameters()})}
         doc['phase_times'] = {}
+        doc['observations'] = {'before_execution': observation()}
         save()
         if config['stage'] == 'reference':
             _, logits = replay(model, ids[:length], 32, config['profile'], check,
@@ -145,19 +151,23 @@ def run_worker(folder, case_id):
             if not np.isfinite(logits).all():
                 raise ValueError('Native reference contains nonfinite logits')
             doc['artifacts']['reference_logits'] = save_array(folder, logits)
+            doc['observations']['after_reference'] = observation()
         else:
             phases = doc['phase_times']
             phases['warm_start'] = time.perf_counter()-start
             doc['warmup'], _ = replay(model, ids[:length], steps, config['profile'], check)
             phases['warm_end'] = time.perf_counter()-start
+            doc['observations']['after_warmup'] = observation()
             save()
             phases['measure_start'] = time.perf_counter()-start
             doc['measurement'], _ = replay(model, ids[:length], steps, config['profile'], check)
             phases['measure_end'] = time.perf_counter()-start
+            doc['observations']['after_measurement'] = observation()
             phases['validation_start'] = time.perf_counter()-start
             _, logits = replay(model, ids[:length], 32, config['profile'], check,
                                teacher=ids[length:], capture=True)
             phases['validation_end'] = time.perf_counter()-start
+            doc['observations']['after_validation'] = observation()
             doc['artifacts']['candidate_logits'] = save_array(folder, logits)
             ref_path = folder / 'runs' / ('ref-' + config['input']) / 'result.json'
             reference = read_json(ref_path)

@@ -47,6 +47,8 @@ def run(ident, home=STORE):
                 doc.update(status='abstained', error='No compatible verified profile qualifies for this allocation target')
                 return doc
             chosen = profile['execution'] if profile else {'id': 'native-t4', 'method': 'native', 'threads': 4, 'window': 0}
+            from .registry import assets
+            assets()  # Also reject changed assets for the explicit native fallback.
             doc.update(applied_profile=active['profile'] if profile else None, execution=chosen,
                        native_fallback=profile is None)
             doc['configured'] = configure(chosen, config['dtype'])

@@ -6,6 +6,13 @@ from .common import ROOT, STORE, campaign_dir, file_digest, frozen_json, read_js
 
 
 def export(ident, home=STORE):
+    from filelock import FileLock
+    (home / 'exports').mkdir(parents=True, exist_ok=True)
+    with FileLock(str(home / 'exports' / (ident + '.lock')), timeout=120):
+        return _export(ident, home)
+
+
+def _export(ident, home):
     from .verify import build
     folder = campaign_dir(ident, home)
     verified = build(folder)
@@ -18,13 +25,16 @@ def export(ident, home=STORE):
     for name in ('src/atlas/__init__.py', 'src/atlas/attention/__init__.py',
                  'docs/research/autotuning/research-and-design.md', 'docs/architecture/runtime-autotuner.md',
                  'docs/roadmap/autotuning-acceptance.md', 'configs/attention-v2-windows-py312-requirements.txt',
-                 'src/atlas/tuning/bundle.py'):
+                 'src/atlas/tuning/bundle.py', 'docs/runtime-tuning.md', 'benchmarks/verify_runtime_bundle.py'):
         if (ROOT / name).is_file():
             files[name] = ROOT / name
+    for path in (home / 'profiles').glob('*.json'):
+        if read_json(path).get('campaign') == ident:
+            files[path.relative_to(ROOT).as_posix()] = path
     inventory = {name: file_digest(path) for name, path in files.items()}
     temporary = out.with_suffix('.tmp')
     import json
-    with zipfile.ZipFile(temporary, 'w', compression=zipfile.ZIP_STORED) as archive:
+    with zipfile.ZipFile(temporary, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=1) as archive:
         for name, path in sorted(files.items()):
             archive.write(path, name)
         archive.writestr('bundle-manifest.json', json.dumps({'campaign': ident,

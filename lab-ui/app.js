@@ -13,6 +13,11 @@ const fmt=(n,d=2)=>n==null?'—':Number(n).toLocaleString(undefined,{minimumFrac
 const date=x=>x?new Date(x).toLocaleString(undefined,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'';
 
 async function api(path,options={}){
+  if(options.method&&options.method!=='GET'&&!state.token){
+    const session=await fetch('/api/session');
+    if(!session.ok)throw new Error('Could not establish the local session');
+    state.token=(await session.json()).token;
+  }
   const response=await fetch(path,{...options,headers:{'Content-Type':'application/json','X-Atlas-Token':state.token,...options.headers}});
   if(!response.ok){let message;try{message=(await response.json()).detail}catch{message=response.statusText}throw new Error(typeof message==='string'?message:JSON.stringify(message))}
   return response.json();

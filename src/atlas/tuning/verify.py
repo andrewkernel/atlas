@@ -136,6 +136,9 @@ def inspect(folder, root=ROOT):
         result = {'config': case, 'status': raw['status'], 'passed': None, 'generation_ms': None,
                   'peak_allocated_mib': None, 'error': raw.get('error')}
         if raw['status'] == 'completed':
+            if raw['model'] != {'class': 'Qwen3ForCausalLM', 'parameter_count': 596049920,
+                               'parameter_dtypes': ['torch.' + protocol['settings']['dtype']]}:
+                raise ValueError('Loaded model/precision differs from the registered adapter')
             source_input = next(i for i in protocol['inputs'] if i['id'] == case['input'])
             if raw['input_artifact'] != source_input['artifact']:
                 raise ValueError('Actual input identity differs')
