@@ -1,0 +1,883 @@
+{
+  "schema_version": 2,
+  "created_at": "2026-10-18T03:55:08.631386+00:00",
+  "id": "atlas-attention-v2-93517",
+  "contracts": {
+    "float32": {
+      "atol": 0.0001,
+      "rtol": 0.0001
+    },
+    "float16": {
+      "atol": 0.02,
+      "rtol": 0.02
+    },
+    "bfloat16": {
+      "atol": 0.15,
+      "rtol": 0.05
+    }
+  },
+  "code_sha256": {
+    "runtime.py": "ea75ae8cc1b2037929f46d4609d6c7003008d8cec8099e7310362dd369ad3cf3",
+    "oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+    "research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+    "qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+    "validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+    "assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+    "protocol.py": "34e7a4d402a8c2ae12a78245709e9fed3ae6b778d968f32ffe4c31b1109c6525",
+    "telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599"
+  },
+  "model_manifest_sha256": "b0b80203cf6508c854bbd6dc6f54e16a4688018322fde2c052c14622e317cdc8",
+  "corpus_manifest_sha256": "b92fc0ab63837a199bf85f4441be63962a7c9f362be24c5e429de89a10309e04",
+  "cases": [
+    {
+      "kind": "research",
+      "suite": "layer",
+      "block": 0,
+      "dtype": "float32",
+      "threads": 4,
+      "seed": 93517,
+      "repeats": 9,
+      "case_id": "case-000"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 0,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 512,
+      "split": "test",
+      "offset": 137,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-001"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 0,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 2048,
+      "split": "test",
+      "offset": 137,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-002"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 0,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 8192,
+      "split": "test",
+      "offset": 137,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-003"
+    },
+    {
+      "kind": "research",
+      "suite": "layer",
+      "block": 0,
+      "dtype": "float16",
+      "threads": 4,
+      "seed": 93517,
+      "repeats": 9,
+      "case_id": "case-004"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 0,
+      "dtype": "float16",
+      "threads": 4,
+      "context": 512,
+      "split": "test",
+      "offset": 137,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-005"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 0,
+      "dtype": "float16",
+      "threads": 4,
+      "context": 2048,
+      "split": "test",
+      "offset": 137,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-006"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 0,
+      "dtype": "float16",
+      "threads": 4,
+      "context": 8192,
+      "split": "test",
+      "offset": 137,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-007"
+    },
+    {
+      "kind": "research",
+      "suite": "layer",
+      "block": 0,
+      "dtype": "bfloat16",
+      "threads": 4,
+      "seed": 93517,
+      "repeats": 9,
+      "case_id": "case-008"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 0,
+      "dtype": "bfloat16",
+      "threads": 4,
+      "context": 512,
+      "split": "test",
+      "offset": 137,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-009"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 0,
+      "dtype": "bfloat16",
+      "threads": 4,
+      "context": 2048,
+      "split": "test",
+      "offset": 137,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-010"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 0,
+      "dtype": "bfloat16",
+      "threads": 4,
+      "context": 8192,
+      "split": "test",
+      "offset": 137,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-011"
+    },
+    {
+      "kind": "research",
+      "suite": "cache",
+      "block": 0,
+      "threads": 4,
+      "case_id": "case-012"
+    },
+    {
+      "kind": "research",
+      "suite": "pressure",
+      "block": 0,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 32768,
+      "split": "test",
+      "offset": 137,
+      "new_tokens": 4,
+      "window": 256,
+      "methods": [
+        "native"
+      ],
+      "pressure": true,
+      "case_id": "case-013"
+    },
+    {
+      "kind": "research",
+      "suite": "pressure",
+      "block": 0,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 32768,
+      "split": "test",
+      "offset": 137,
+      "new_tokens": 4,
+      "window": 256,
+      "methods": [
+        "hybrid50"
+      ],
+      "pressure": true,
+      "case_id": "case-014"
+    },
+    {
+      "kind": "research",
+      "suite": "pressure",
+      "block": 0,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 40000,
+      "split": "test",
+      "offset": 137,
+      "new_tokens": 4,
+      "window": 256,
+      "methods": [
+        "native"
+      ],
+      "pressure": true,
+      "case_id": "case-015"
+    },
+    {
+      "kind": "research",
+      "suite": "pressure",
+      "block": 0,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 40000,
+      "split": "test",
+      "offset": 137,
+      "new_tokens": 4,
+      "window": 256,
+      "methods": [
+        "hybrid50"
+      ],
+      "pressure": true,
+      "case_id": "case-016"
+    },
+    {
+      "kind": "research",
+      "suite": "layer",
+      "block": 1,
+      "dtype": "float32",
+      "threads": 4,
+      "seed": 93518,
+      "repeats": 9,
+      "case_id": "case-017"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 1,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 512,
+      "split": "test",
+      "offset": 1134,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-018"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 1,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 2048,
+      "split": "test",
+      "offset": 1134,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-019"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 1,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 8192,
+      "split": "test",
+      "offset": 1134,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-020"
+    },
+    {
+      "kind": "research",
+      "suite": "layer",
+      "block": 1,
+      "dtype": "float16",
+      "threads": 4,
+      "seed": 93518,
+      "repeats": 9,
+      "case_id": "case-021"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 1,
+      "dtype": "float16",
+      "threads": 4,
+      "context": 512,
+      "split": "test",
+      "offset": 1134,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-022"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 1,
+      "dtype": "float16",
+      "threads": 4,
+      "context": 2048,
+      "split": "test",
+      "offset": 1134,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-023"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 1,
+      "dtype": "float16",
+      "threads": 4,
+      "context": 8192,
+      "split": "test",
+      "offset": 1134,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-024"
+    },
+    {
+      "kind": "research",
+      "suite": "layer",
+      "block": 1,
+      "dtype": "bfloat16",
+      "threads": 4,
+      "seed": 93518,
+      "repeats": 9,
+      "case_id": "case-025"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 1,
+      "dtype": "bfloat16",
+      "threads": 4,
+      "context": 512,
+      "split": "test",
+      "offset": 1134,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-026"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 1,
+      "dtype": "bfloat16",
+      "threads": 4,
+      "context": 2048,
+      "split": "test",
+      "offset": 1134,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-027"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 1,
+      "dtype": "bfloat16",
+      "threads": 4,
+      "context": 8192,
+      "split": "test",
+      "offset": 1134,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-028"
+    },
+    {
+      "kind": "research",
+      "suite": "cache",
+      "block": 1,
+      "threads": 4,
+      "case_id": "case-029"
+    },
+    {
+      "kind": "research",
+      "suite": "pressure",
+      "block": 1,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 32768,
+      "split": "test",
+      "offset": 1134,
+      "new_tokens": 4,
+      "window": 256,
+      "methods": [
+        "native"
+      ],
+      "pressure": true,
+      "case_id": "case-030"
+    },
+    {
+      "kind": "research",
+      "suite": "pressure",
+      "block": 1,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 32768,
+      "split": "test",
+      "offset": 1134,
+      "new_tokens": 4,
+      "window": 256,
+      "methods": [
+        "hybrid50"
+      ],
+      "pressure": true,
+      "case_id": "case-031"
+    },
+    {
+      "kind": "research",
+      "suite": "pressure",
+      "block": 1,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 40000,
+      "split": "test",
+      "offset": 1134,
+      "new_tokens": 4,
+      "window": 256,
+      "methods": [
+        "native"
+      ],
+      "pressure": true,
+      "case_id": "case-032"
+    },
+    {
+      "kind": "research",
+      "suite": "pressure",
+      "block": 1,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 40000,
+      "split": "test",
+      "offset": 1134,
+      "new_tokens": 4,
+      "window": 256,
+      "methods": [
+        "hybrid50"
+      ],
+      "pressure": true,
+      "case_id": "case-033"
+    },
+    {
+      "kind": "research",
+      "suite": "layer",
+      "block": 2,
+      "dtype": "float32",
+      "threads": 4,
+      "seed": 93519,
+      "repeats": 9,
+      "case_id": "case-034"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 2,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 512,
+      "split": "test",
+      "offset": 2131,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-035"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 2,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 2048,
+      "split": "test",
+      "offset": 2131,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-036"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 2,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 8192,
+      "split": "test",
+      "offset": 2131,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-037"
+    },
+    {
+      "kind": "research",
+      "suite": "layer",
+      "block": 2,
+      "dtype": "float16",
+      "threads": 4,
+      "seed": 93519,
+      "repeats": 9,
+      "case_id": "case-038"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 2,
+      "dtype": "float16",
+      "threads": 4,
+      "context": 512,
+      "split": "test",
+      "offset": 2131,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-039"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 2,
+      "dtype": "float16",
+      "threads": 4,
+      "context": 2048,
+      "split": "test",
+      "offset": 2131,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-040"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 2,
+      "dtype": "float16",
+      "threads": 4,
+      "context": 8192,
+      "split": "test",
+      "offset": 2131,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-041"
+    },
+    {
+      "kind": "research",
+      "suite": "layer",
+      "block": 2,
+      "dtype": "bfloat16",
+      "threads": 4,
+      "seed": 93519,
+      "repeats": 9,
+      "case_id": "case-042"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 2,
+      "dtype": "bfloat16",
+      "threads": 4,
+      "context": 512,
+      "split": "test",
+      "offset": 2131,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-043"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 2,
+      "dtype": "bfloat16",
+      "threads": 4,
+      "context": 2048,
+      "split": "test",
+      "offset": 2131,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-044"
+    },
+    {
+      "kind": "research",
+      "suite": "repeated",
+      "block": 2,
+      "dtype": "bfloat16",
+      "threads": 4,
+      "context": 8192,
+      "split": "test",
+      "offset": 2131,
+      "new_tokens": 8,
+      "window": 256,
+      "methods": [
+        "native",
+        "resident",
+        "gpu_dense",
+        "hybrid50"
+      ],
+      "case_id": "case-045"
+    },
+    {
+      "kind": "research",
+      "suite": "cache",
+      "block": 2,
+      "threads": 4,
+      "case_id": "case-046"
+    },
+    {
+      "kind": "research",
+      "suite": "pressure",
+      "block": 2,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 32768,
+      "split": "test",
+      "offset": 2131,
+      "new_tokens": 4,
+      "window": 256,
+      "methods": [
+        "native"
+      ],
+      "pressure": true,
+      "case_id": "case-047"
+    },
+    {
+      "kind": "research",
+      "suite": "pressure",
+      "block": 2,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 32768,
+      "split": "test",
+      "offset": 2131,
+      "new_tokens": 4,
+      "window": 256,
+      "methods": [
+        "hybrid50"
+      ],
+      "pressure": true,
+      "case_id": "case-048"
+    },
+    {
+      "kind": "research",
+      "suite": "pressure",
+      "block": 2,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 40000,
+      "split": "test",
+      "offset": 2131,
+      "new_tokens": 4,
+      "window": 256,
+      "methods": [
+        "native"
+      ],
+      "pressure": true,
+      "case_id": "case-049"
+    },
+    {
+      "kind": "research",
+      "suite": "pressure",
+      "block": 2,
+      "dtype": "float32",
+      "threads": 4,
+      "context": 40000,
+      "split": "test",
+      "offset": 2131,
+      "new_tokens": 4,
+      "window": 256,
+      "methods": [
+        "hybrid50"
+      ],
+      "pressure": true,
+      "case_id": "case-050"
+    }
+  ],
+  "analysis": {
+    "unit": "independent worker process, paired block",
+    "blocks": 3,
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 93517,
+    "estimator": "Median of paired per-process generation ratios, percentile block bootstrap 95% CI",
+    "small_n_warning": "Three blocks give limited uncertainty resolution; no p-values or population generalization",
+    "failures": "All planned cases retained. Missing/OOM/timed-out arms preclude speedup comparison and remain in feasibility denominators.",
+    "eligibility": "Measured case numerical pass required. Unknown/failed rows blocked. Layer evidence never certifies full model.",
+    "selector": "Calibration-only interpolation; budget rule; calibration-selected fixed; evaluation oracle is retrospective only.",
+    "primary": "Full generation latency versus matched native at each dtype/context; no pooling precision or context.",
+    "secondary": "Prefill/decode, NLL diagnostics, cache ablation, layer selector regret; exploratory labels retained."
+  },
+  "development": "Legacy GPT-2 plus WikiText train-only pilot. Test cases unseen before freeze.",
+  "hardware_limits": "32GB RAM, RTX3060 12GB shared Windows WDDM. Qwen4B download failed due disk space; Qwen0.6B FP32 32k/40k KV study is predeclared instead.",
+  "prohibited_claims": [
+    "100% unbiased or accurate",
+    "actual CXL/DSA evidence",
+    "external independent reproduction",
+    "broad downstream language equivalence",
+    "novel algorithm established"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "attempts": [
+    {
+      "run_id": "research-b3b7a103745f",
+      "sha256": "a0745a4920fce5fab927be1ce7526f39caf5b214b7bd338ac4c2e227ed88bbd9",
+      "annotation": "Failed generic CUDA device identity check"
+    },
+    {
+      "run_id": "research-dc3db1bde1f8",
+      "sha256": "dbf87d593b407138f8448522ebfab8b090a9098146e04d404d893c057cbb9b04",
+      "annotation": "Interrupted before analysis when first protocol attempt was stopped"
+    }
+  ],
+  "note": "Preserved raw records. The interrupted record may retain running status because parent interruption stopped the owned worker before finalization; annotation records the actual stop."
+}

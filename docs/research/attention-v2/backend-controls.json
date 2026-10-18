@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-18T04:12:17.797689+00:00",
+  "torch": "2.14.1+cu130",
+  "cuda_build": "13.0",
+  "flash_attention_build_available": false,
+  "flash_dispatch_flag": true,
+  "efficient_dispatch_flag": true,
+  "interpretation": "Enablement flags are not executed backend identity. Primary run CPU profiler operations record actual native SDPA dispatch for each dtype. Flash is unavailable in this installed build; no Flash baseline speed is claimed.",
+  "shared_session_driver_observation_at": "2026-10-18T04:18:26.964661+00:00",
+  "shared_session_driver_csv": "NVIDIA GeForce RTX 3060, 595.95, 12288",
+  "driver_scope": "External shared-session observation; in-worker telemetry was unavailable. Layer decisions are evaluated within their own process; whole-model routing abstains."
+}

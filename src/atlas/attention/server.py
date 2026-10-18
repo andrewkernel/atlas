@@ -65,7 +65,7 @@ class Jobs:
             directory.mkdir(parents=True)
             atomic_json(directory/"config.json",config)
             atomic_json(directory/"result.json",{"schema_version":1,"id":ident,"created_at":utc(),"status":"queued","config":config,"rows":[],"progress":{"done":0,"total":1,"message":"Starting owned worker"}})
-            env={k:v for k,v in os.environ.items() if k.upper() in {"PATH","SYSTEMROOT","WINDIR","TEMP","TMP","USERPROFILE","LOCALAPPDATA","APPDATA","COMSPEC"}}
+            env={k:v for k,v in os.environ.items() if k.upper() in {"PATH","SYSTEMROOT","WINDIR","TEMP","TMP","USERPROFILE","LOCALAPPDATA","APPDATA","COMSPEC","PROGRAMFILES","PROGRAMW6432"}}
             env.update(HF_HUB_OFFLINE="1",TRANSFORMERS_OFFLINE="1",TOKENIZERS_PARALLELISM="false",PYTHONUNBUFFERED="1")
             log=open(directory/"worker.log","wb")
             process=None;scope=None
@@ -96,7 +96,8 @@ class Jobs:
                 atomic_json(directory/"result.json",doc)
                 raise HTTPException(500,"Worker startup failed; see saved run") from exc
             finally:log.close()
-            threading.Thread(target=self.watch,args=(ident,process,scope),daemon=True).start()
+            deadline=min(self.wall_timeout_s,420) if config['kind']=='research' else self.wall_timeout_s
+            threading.Thread(target=self.watch,args=(ident,process,scope,deadline),daemon=True).start()
             return ident
 
     def terminate(self,process,scope):
@@ -105,12 +106,12 @@ class Jobs:
             elif os.name!="nt":os.killpg(process.pid,signal.SIGKILL)
             else:process.kill()
 
-    def watch(self,ident,process,scope):
+    def watch(self,ident,process,scope,deadline=None):
         began=time.monotonic()
         forced=None
         try:
             while process.poll() is None:
-                if time.monotonic()-began>self.wall_timeout_s:
+                if time.monotonic()-began>(self.wall_timeout_s if deadline is None else deadline):
                     forced="timed_out";self.terminate(process,scope);break
                 if self.cancel_at and time.monotonic()-self.cancel_at>self.cancel_grace_s:
                     forced="cancelled";self.terminate(process,scope);break
@@ -206,6 +207,39 @@ def export(ident:str,format:Literal["json","csv"]="json"):
 
 @app.get("/api/architecture")
 def architecture():return {"markdown":(ROOT/"docs/architecture/hybrid-attention-lab.md").read_text(encoding="utf-8")}
+
+
+@app.get('/api/study')
+def study():
+    from .protocol import DIRECTORY,PROTOCOL_PATH,EXECUTION_PATH
+    def read(path):return json.loads(path.read_text()) if path.exists() else None
+    return {'protocol':read(PROTOCOL_PATH),'execution':read(EXECUTION_PATH),'summary':read(DIRECTORY/'summary.json')}
+
+
+class ResearchCase(BaseModel):
+    model_config=ConfigDict(extra='forbid')
+    case_id:str=Field(pattern=r'^case-[0-9]{3}$')
+
+
+@app.post('/api/study/repeat',status_code=202)
+def repeat_case(request:ResearchCase):
+    from .protocol import PROTOCOL_PATH
+    if not PROTOCOL_PATH.exists():raise HTTPException(409,'No frozen protocol')
+    doc=json.loads(PROTOCOL_PATH.read_text())
+    case=next((c for c in doc['cases'] if c['case_id']==request.case_id),None)
+    if case is None:raise HTTPException(404,'Unregistered case')
+    from filelock import FileLock,Timeout
+    try:
+        with FileLock(str(RUNS/'.gpu.lock'),timeout=0):pass
+    except Timeout:raise HTTPException(409,'The GPU is busy with another research worker')
+    return {'id':jobs.start({**case,'protocol_id':doc['id']})}
+
+
+@app.get('/api/study/export')
+def export_study():
+    path=ROOT/'docs/research/attention-v2/summary.json'
+    if not path.exists():raise HTTPException(404,'Study analysis is not ready')
+    return FileResponse(path,media_type='application/json',filename='atlas-attention-v2-summary.json')
 
 
 @app.get("/papers/{ident}")

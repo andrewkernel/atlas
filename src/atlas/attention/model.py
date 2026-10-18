@@ -18,14 +18,14 @@ from .evidence import ROOT,Recorder,atomic_json,sha
 from .runtime import PLANS,DecodeCache,error_metrics,CalibratedPolicy
 
 MODEL_ID="openai-community/gpt2"
+MODEL_REVISION="607a30d783dfa663caf39e06633721c8d4cfcd7e"
 MODEL_DIR=ROOT/"weights"/"gpt2-attention-lab"
 DEFAULT_PROMPT="Memory systems connect processors to the data they need. A useful experiment measures both the cost of moving data and the time spent computing with it. The results suggest that"
 
 
 def prepare_model():
-    from huggingface_hub import HfApi,snapshot_download
-    info=HfApi().model_info(MODEL_ID)
-    revision=info.sha
+    from huggingface_hub import snapshot_download
+    revision=MODEL_REVISION
     snapshot_download(MODEL_ID,revision=revision,local_dir=MODEL_DIR,
         allow_patterns=["config.json","generation_config.json","model.safetensors","tokenizer.json","tokenizer_config.json","vocab.json","merges.txt","README.md"])
     files={p.name:sha(p.read_bytes()) for p in MODEL_DIR.iterdir() if p.is_file()}
@@ -113,10 +113,9 @@ def run_model(rec:Recorder):
         _,doc,path=max(candidates,key=lambda x:x[0])
         calibration=doc["rows"]
         rec.doc["policy_source"]={"id":doc["id"],"sha256":sha(path.read_bytes())}
-    # Model is 12 heads x64, matching the authored synthetic suite. No hidden profiling.
-    if calibration:
-        decision=CalibratedPolicy(calibration).choose(tokens.shape[1],12,64,config.get("kv_budget_mib",2048))
-        rec.doc["adaptive_decision"]=decision
+    # Kernel timing cannot certify a whole-model decision, even at equal heads.
+    rec.doc['adaptive_decision']={'plan':None,'abstained':True,'reason':'Layer-only calibration does not cover model execution or logit validity'}
+    calibration=[]
     methods=["native","resident","gpu_dense","copy","cpu","hybrid25","hybrid50","hybrid75"]
     if calibration:methods.append("adaptive")
     reference_logits=[];continuation=[]
@@ -179,6 +178,8 @@ def run_model(rec:Recorder):
                     "cpu_kv_mib":sum(c.cpu_kv_bytes for c in adapter.caches.values())/2**20 if adapter else None,
                     "gpu_window_tokens":next(iter(adapter.caches.values())).window if adapter else None}
                 rec.doc["rows"].append(row)
+                from .validity import eligibility
+                row['eligibility']=eligibility(checks)
                 rec.save()
             finally:
                 if adapter:adapter.__exit__()

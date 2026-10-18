@@ -14,4 +14,6 @@ frontend/assets/OFL.txt -text -whitespace
 docs/research/workload-screen/qa-resource-figure.svg -text -whitespace
 # These are byte-identical measured records bound by their SHA-256 manifest.
 docs/research/attention-lab/runs/*.json -text -eol
+docs/research/attention-v2/*.json -text -eol
+docs/research/attention-v2/runs/*.json -text -eol
 uv.lock text eol=lf

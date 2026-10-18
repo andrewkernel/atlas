@@ -1,0 +1,4270 @@
+{
+  "schema_version": 1,
+  "id": "research-7dffa33b06a7",
+  "created_at": "2026-10-18T04:05:14.687590+00:00",
+  "status": "completed",
+  "config": {
+    "kind": "research",
+    "suite": "layer",
+    "block": 1,
+    "dtype": "float32",
+    "threads": 4,
+    "seed": 93519,
+    "repeats": 9,
+    "case_id": "case-017",
+    "protocol_id": "atlas-attention-v2-93518-a1"
+  },
+  "environment": {
+    "git_head": "f1a6995495e0dad2eb8e77979e623bde2613a09f",
+    "dirty_diff_sha256": "9f0477c1f92d17e2b851f26640ca6276e7711a2d7ad6563f7ff281985bb903fb",
+    "source_sha256": {
+      "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+      "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+      "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+      "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+      "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+      "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+      "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+      "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+      "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+      "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+      "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+      "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+      "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+      "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+      "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+    },
+    "packages": {
+      "torch": "2.14.1+cu130",
+      "transformers": "5.19.0",
+      "numpy": "2.5.4",
+      "fastapi": "0.143.3",
+      "psutil": "7.2.2"
+    },
+    "python": "3.12.10",
+    "platform": "Windows",
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "gpu_total_mib": 12019.875,
+    "cuda": "13.0",
+    "cpu": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "cpu_logical_count": 12,
+    "tf32": false,
+    "gpu_telemetry_start_csv": null
+  },
+  "rows": [
+    {
+      "phase": "calibration",
+      "context": 768,
+      "plan": "hybrid25",
+      "label": "Hybrid \u00b7 25% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "d6253470426e0188155ce4876022aed295d04a3911862d03b118343b9ba9baf1",
+      "samples_ms": [
+        0.9174000006169081,
+        0.8799000061117113,
+        0.8882999973138794,
+        0.8808999991742894,
+        0.8828999998513609,
+        0.957300013396889,
+        1.1768999975174665,
+        0.891200004843995,
+        1.1211999953957275
+      ],
+      "median_ms": 0.891200004843995,
+      "p90_ms": 1.1323399958200753,
+      "gpu_kv_mib": 1.5,
+      "cpu_kv_mib": 4.5,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0009064497049768375,
+        "max_abs": 9.941404845170698e-08,
+        "relative_l2": 3.2134345001566054e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 768,
+      "plan": "gpu_dense",
+      "label": "GPU dense reference",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "d6253470426e0188155ce4876022aed295d04a3911862d03b118343b9ba9baf1",
+      "samples_ms": [
+        0.2803999959724024,
+        0.2808999997796491,
+        0.2595999976620078,
+        0.2646999928401783,
+        0.2702999918255955,
+        0.27990000671707094,
+        0.28979999478906393,
+        0.2705999941099435,
+        0.2710000117076561
+      ],
+      "median_ms": 0.2710000117076561,
+      "p90_ms": 0.28267999878153205,
+      "gpu_kv_mib": 6.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.000976786723916752,
+        "max_abs": 9.889161960152659e-08,
+        "relative_l2": 3.2201393661351464e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 768,
+      "plan": "cpu",
+      "label": "CPU attention",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "d6253470426e0188155ce4876022aed295d04a3911862d03b118343b9ba9baf1",
+      "samples_ms": [
+        0.6897000130265951,
+        0.6895999977132306,
+        0.6787999882362783,
+        0.6772999913664535,
+        0.6849000055808574,
+        0.6888000061735511,
+        0.6926000060047954,
+        0.702600009390153,
+        0.6919000006746501
+      ],
+      "median_ms": 0.6895999977132306,
+      "p90_ms": 0.6946000066818669,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 6.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0007006103164232766,
+        "max_abs": 7.428204223947077e-08,
+        "relative_l2": 2.55623469503937e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 768,
+      "plan": "hybrid50",
+      "label": "Hybrid \u00b7 50% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "d6253470426e0188155ce4876022aed295d04a3911862d03b118343b9ba9baf1",
+      "samples_ms": [
+        0.7385999924736097,
+        0.745099998312071,
+        0.7555000047432259,
+        0.7923999946797267,
+        0.8870000019669533,
+        0.8591000078013167,
+        1.1728000099537894,
+        1.178800011985004,
+        1.2391000054776669
+      ],
+      "median_ms": 0.8591000078013167,
+      "p90_ms": 1.1908600106835365,
+      "gpu_kv_mib": 3.0,
+      "cpu_kv_mib": 3.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0009745293064508088,
+        "max_abs": 1.0146580509129421e-07,
+        "relative_l2": 3.4239375864323974e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 768,
+      "plan": "hybrid75",
+      "label": "Hybrid \u00b7 75% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "d6253470426e0188155ce4876022aed295d04a3911862d03b118343b9ba9baf1",
+      "samples_ms": [
+        0.8865999989211559,
+        0.6377999961841851,
+        0.5946000019321218,
+        0.5978999979561195,
+        0.596199999563396,
+        0.5777000042144209,
+        0.7075000030454248,
+        0.5907000013394281,
+        0.5767000111518428
+      ],
+      "median_ms": 0.596199999563396,
+      "p90_ms": 0.743320002220571,
+      "gpu_kv_mib": 4.5,
+      "cpu_kv_mib": 1.5,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.000879085398325268,
+        "max_abs": 9.741466540369448e-08,
+        "relative_l2": 3.5279613671379106e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 768,
+      "plan": "resident",
+      "label": "Native GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "d6253470426e0188155ce4876022aed295d04a3911862d03b118343b9ba9baf1",
+      "samples_ms": [
+        0.3073999978369102,
+        0.2697000018088147,
+        0.2604000037536025,
+        0.28560000646393746,
+        0.26620000426191837,
+        0.24929999199230224,
+        0.2449000021442771,
+        0.24449999909847975,
+        0.24290000146720558
+      ],
+      "median_ms": 0.2604000037536025,
+      "p90_ms": 0.289960004738532,
+      "gpu_kv_mib": 6.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0015833582106727702,
+        "max_abs": 1.795204741528167e-07,
+        "relative_l2": 8.287937723589708e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 768,
+      "plan": "copy",
+      "label": "Transfer to GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "d6253470426e0188155ce4876022aed295d04a3911862d03b118343b9ba9baf1",
+      "samples_ms": [
+        0.494399995659478,
+        0.4901000065729022,
+        0.49020000733435154,
+        0.5271999980323017,
+        0.494699997943826,
+        0.4887999966740608,
+        0.48750000132713467,
+        0.4879999905824661,
+        0.487600002088584
+      ],
+      "median_ms": 0.4901000065729022,
+      "p90_ms": 0.5011999979615211,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 6.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0015833582106727702,
+        "max_abs": 1.795204741528167e-07,
+        "relative_l2": 8.287937723589708e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 3072,
+      "plan": "gpu_dense",
+      "label": "GPU dense reference",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "6440ffa45ac500b46821f2ba701a41b4eef917a95a03f3f02e41182d0d36bdce",
+      "samples_ms": [
+        0.647900000330992,
+        0.6331999902613461,
+        0.63929999305401,
+        0.6132999988039955,
+        0.6341000116663054,
+        0.6473000103142112,
+        0.6367000023601577,
+        0.6117999873822555,
+        0.6098000012570992
+      ],
+      "median_ms": 0.6341000116663054,
+      "p90_ms": 0.6474200083175674,
+      "gpu_kv_mib": 24.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.001061636296399237,
+        "max_abs": 1.0997083539632246e-07,
+        "relative_l2": 8.075963448555167e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 3072,
+      "plan": "copy",
+      "label": "Transfer to GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "6440ffa45ac500b46821f2ba701a41b4eef917a95a03f3f02e41182d0d36bdce",
+      "samples_ms": [
+        1.7990000051213428,
+        1.7809999990276992,
+        1.7819999920902774,
+        1.7862000095192343,
+        1.779099999112077,
+        1.773899988620542,
+        1.7772999999579042,
+        1.7726999940350652,
+        2.2105000098235905
+      ],
+      "median_ms": 1.7809999990276992,
+      "p90_ms": 1.8813000060617924,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 24.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0013476146168073687,
+        "max_abs": 1.4879233622977495e-07,
+        "relative_l2": 9.472410923849165e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 3072,
+      "plan": "hybrid25",
+      "label": "Hybrid \u00b7 25% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "6440ffa45ac500b46821f2ba701a41b4eef917a95a03f3f02e41182d0d36bdce",
+      "samples_ms": [
+        3.766399997402914,
+        3.6419999960344285,
+        2.8141999937361106,
+        3.533199997036718,
+        3.1766000029165298,
+        3.290499997092411,
+        3.704900009324774,
+        4.102300008526072,
+        3.913799999281764
+      ],
+      "median_ms": 3.6419999960344285,
+      "p90_ms": 3.9515000011306256,
+      "gpu_kv_mib": 6.0,
+      "cpu_kv_mib": 18.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0007627232286401938,
+        "max_abs": 8.29615590808297e-08,
+        "relative_l2": 4.961981930598032e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 3072,
+      "plan": "hybrid75",
+      "label": "Hybrid \u00b7 75% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "6440ffa45ac500b46821f2ba701a41b4eef917a95a03f3f02e41182d0d36bdce",
+      "samples_ms": [
+        1.4855999907013029,
+        1.2305999989621341,
+        1.0675999947125092,
+        1.052100007655099,
+        1.0383000044384971,
+        1.280700002098456,
+        1.2668999988818541,
+        1.2740000092890114,
+        1.4012999890837818
+      ],
+      "median_ms": 1.2668999988818541,
+      "p90_ms": 1.418159989407286,
+      "gpu_kv_mib": 18.0,
+      "cpu_kv_mib": 6.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0011628653767832358,
+        "max_abs": 1.234760508075916e-07,
+        "relative_l2": 7.456785674765586e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 3072,
+      "plan": "resident",
+      "label": "Native GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "6440ffa45ac500b46821f2ba701a41b4eef917a95a03f3f02e41182d0d36bdce",
+      "samples_ms": [
+        0.8306999952765182,
+        0.8194999973056838,
+        0.8224999910453334,
+        0.8248000085586682,
+        0.8221000025514513,
+        0.8170999935828149,
+        0.8195999980671331,
+        0.8165000035660341,
+        0.8118999976431951
+      ],
+      "median_ms": 0.8195999980671331,
+      "p90_ms": 0.8259800059022382,
+      "gpu_kv_mib": 24.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0013476146168073687,
+        "max_abs": 1.4879233622977495e-07,
+        "relative_l2": 9.472410923849165e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 3072,
+      "plan": "cpu",
+      "label": "CPU attention",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "6440ffa45ac500b46821f2ba701a41b4eef917a95a03f3f02e41182d0d36bdce",
+      "samples_ms": [
+        4.908499991870485,
+        4.643899999791756,
+        5.495999997947365,
+        5.169399999431334,
+        4.804299998795614,
+        5.077999987406656,
+        5.542200000490993,
+        5.343099997844547,
+        5.84270000399556
+      ],
+      "median_ms": 5.169399999431334,
+      "p90_ms": 5.602300001191907,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 24.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0007671358672196472,
+        "max_abs": 8.314971002010285e-08,
+        "relative_l2": 4.076057065062105e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 3072,
+      "plan": "hybrid50",
+      "label": "Hybrid \u00b7 50% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "6440ffa45ac500b46821f2ba701a41b4eef917a95a03f3f02e41182d0d36bdce",
+      "samples_ms": [
+        1.5368000022135675,
+        1.5759999951114878,
+        1.6156000056071207,
+        2.237499997136183,
+        2.138999989256263,
+        2.1678000048268586,
+        2.1438000112539157,
+        2.437700008158572,
+        2.2997000050963834
+      ],
+      "median_ms": 2.1438000112539157,
+      "p90_ms": 2.327300005708821,
+      "gpu_kv_mib": 12.0,
+      "cpu_kv_mib": 12.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0005456425158274192,
+        "max_abs": 5.780766081098232e-08,
+        "relative_l2": 4.61378351515753e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 12288,
+      "plan": "resident",
+      "label": "Native GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "e0c728580df7ed76e8f1a8d27574ea89a0a3e5af3a47c61705554699a78f254e",
+      "samples_ms": [
+        3.088400000706315,
+        3.050500003155321,
+        3.0475999956252053,
+        3.048099999432452,
+        3.059199996641837,
+        3.712899997481145,
+        3.0666999955428764,
+        3.0639000033261254,
+        3.0698999908054247
+      ],
+      "median_ms": 3.0639000033261254,
+      "p90_ms": 3.213300000061281,
+      "gpu_kv_mib": 96.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0007407263712882643,
+        "max_abs": 7.668261141346999e-08,
+        "relative_l2": 1.041807580997274e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 12288,
+      "plan": "copy",
+      "label": "Transfer to GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "e0c728580df7ed76e8f1a8d27574ea89a0a3e5af3a47c61705554699a78f254e",
+      "samples_ms": [
+        7.736799991107546,
+        6.9555999943986535,
+        7.252099996549077,
+        7.345999998506159,
+        7.209800009150058,
+        6.953599993721582,
+        6.946399997104891,
+        6.887100011226721,
+        6.9586999888997525
+      ],
+      "median_ms": 6.9586999888997525,
+      "p90_ms": 7.424159997026436,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 96.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0007407263712882643,
+        "max_abs": 7.668261141346999e-08,
+        "relative_l2": 1.041807580997274e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 12288,
+      "plan": "hybrid25",
+      "label": "Hybrid \u00b7 25% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "e0c728580df7ed76e8f1a8d27574ea89a0a3e5af3a47c61705554699a78f254e",
+      "samples_ms": [
+        20.08620000560768,
+        20.022400000016205,
+        23.125200008507818,
+        19.444099991233088,
+        21.247399999992922,
+        22.242200007895008,
+        20.618199996533804,
+        20.691800003987737,
+        19.209200007026084
+      ],
+      "median_ms": 20.618199996533804,
+      "p90_ms": 22.41880000801757,
+      "gpu_kv_mib": 24.0,
+      "cpu_kv_mib": 72.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0005704721523909921,
+        "max_abs": 5.944869500146277e-08,
+        "relative_l2": 8.077341551012923e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 12288,
+      "plan": "hybrid50",
+      "label": "Hybrid \u00b7 50% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "e0c728580df7ed76e8f1a8d27574ea89a0a3e5af3a47c61705554699a78f254e",
+      "samples_ms": [
+        13.865999993868172,
+        14.02349999989383,
+        14.247600003727712,
+        14.12269999855198,
+        14.181799997459166,
+        13.188700002501719,
+        14.124599998467602,
+        14.602199997170828,
+        12.844099997892044
+      ],
+      "median_ms": 14.12269999855198,
+      "p90_ms": 14.318520002416335,
+      "gpu_kv_mib": 48.0,
+      "cpu_kv_mib": 48.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0009516794555199377,
+        "max_abs": 9.521472996187105e-08,
+        "relative_l2": 9.718067481464034e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 12288,
+      "plan": "hybrid75",
+      "label": "Hybrid \u00b7 75% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "e0c728580df7ed76e8f1a8d27574ea89a0a3e5af3a47c61705554699a78f254e",
+      "samples_ms": [
+        7.132699989597313,
+        6.763800003682263,
+        6.332999997539446,
+        6.716000003507361,
+        7.830699993064627,
+        6.7276000045239925,
+        6.843800001661293,
+        7.844100007787347,
+        7.351200008997694
+      ],
+      "median_ms": 6.843800001661293,
+      "p90_ms": 7.833379996009171,
+      "gpu_kv_mib": 72.0,
+      "cpu_kv_mib": 24.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0010359890109694215,
+        "max_abs": 1.0453145907196593e-07,
+        "relative_l2": 1.2098958309229707e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 12288,
+      "plan": "cpu",
+      "label": "CPU attention",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "e0c728580df7ed76e8f1a8d27574ea89a0a3e5af3a47c61705554699a78f254e",
+      "samples_ms": [
+        28.324900005827658,
+        26.96089999517426,
+        24.723800001083873,
+        27.086600006441586,
+        26.44799998961389,
+        28.792500001145527,
+        26.67490000021644,
+        28.54519999527838,
+        27.91639999486506
+      ],
+      "median_ms": 27.086600006441586,
+      "p90_ms": 28.59465999645181,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 96.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0007690808699888452,
+        "max_abs": 7.956653301499639e-08,
+        "relative_l2": 7.577136644427387e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 12288,
+      "plan": "gpu_dense",
+      "label": "GPU dense reference",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "e0c728580df7ed76e8f1a8d27574ea89a0a3e5af3a47c61705554699a78f254e",
+      "samples_ms": [
+        2.3163000005297363,
+        2.292799996212125,
+        2.2723000001860783,
+        2.2841000027256086,
+        2.29350000154227,
+        2.2873999987496063,
+        2.312199998414144,
+        2.324500004760921,
+        2.293400000780821
+      ],
+      "median_ms": 2.293400000780821,
+      "p90_ms": 2.3179400013759732,
+      "gpu_kv_mib": 96.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0011645255105949374,
+        "max_abs": 1.1866402927288022e-07,
+        "relative_l2": 1.506078908348546e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 32768,
+      "plan": "cpu",
+      "label": "CPU attention",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "45c3068d7cb09a559e5dc70933ad60b100321723d8d31e6cbbb5984532fc8793",
+      "samples_ms": [
+        91.36059999582358,
+        94.35230000235606,
+        95.90790000220295,
+        88.65720000176225,
+        100.73950000514742,
+        98.66070000862237,
+        85.65350000571925,
+        91.87309999833815,
+        82.18520000809804
+      ],
+      "median_ms": 91.87309999833815,
+      "p90_ms": 99.07646000792738,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 256.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0006259940162072538,
+        "max_abs": 6.38460816541897e-08,
+        "relative_l2": 1.2055357835875067e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 32768,
+      "plan": "resident",
+      "label": "Native GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "45c3068d7cb09a559e5dc70933ad60b100321723d8d31e6cbbb5984532fc8793",
+      "samples_ms": [
+        8.870200006640516,
+        8.04440000501927,
+        8.024399998248555,
+        8.023600006708875,
+        8.839000001898967,
+        8.035299993935041,
+        8.026600000448525,
+        8.018200009246357,
+        8.818200003588572
+      ],
+      "median_ms": 8.035299993935041,
+      "p90_ms": 8.845240002847277,
+      "gpu_kv_mib": 256.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0006306729196669601,
+        "max_abs": 6.444722194104413e-08,
+        "relative_l2": 1.2679647570904575e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 32768,
+      "plan": "hybrid25",
+      "label": "Hybrid \u00b7 25% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "45c3068d7cb09a559e5dc70933ad60b100321723d8d31e6cbbb5984532fc8793",
+      "samples_ms": [
+        60.18509999557864,
+        72.62770000670571,
+        63.23759999941103,
+        56.08959999517538,
+        68.12019999779295,
+        69.967400006135,
+        63.75349999871105,
+        69.5384999999078,
+        65.90760000108276
+      ],
+      "median_ms": 65.90760000108276,
+      "p90_ms": 70.49946000624914,
+      "gpu_kv_mib": 64.0,
+      "cpu_kv_mib": 192.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.00048692788166030407,
+        "max_abs": 4.9756382285159884e-08,
+        "relative_l2": 1.1740120270611388e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 32768,
+      "plan": "copy",
+      "label": "Transfer to GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "45c3068d7cb09a559e5dc70933ad60b100321723d8d31e6cbbb5984532fc8793",
+      "samples_ms": [
+        18.20229999430012,
+        18.186100001912564,
+        18.145199996070005,
+        18.15939998778049,
+        19.029300005058758,
+        19.90289999230299,
+        19.109800006845035,
+        19.885000001522712,
+        19.219399997382425
+      ],
+      "median_ms": 19.029300005058758,
+      "p90_ms": 19.888579999678768,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 256.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0006306729196669601,
+        "max_abs": 6.444722194104413e-08,
+        "relative_l2": 1.2679647570904575e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 32768,
+      "plan": "hybrid50",
+      "label": "Hybrid \u00b7 50% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "45c3068d7cb09a559e5dc70933ad60b100321723d8d31e6cbbb5984532fc8793",
+      "samples_ms": [
+        38.004000001819804,
+        49.370000007911585,
+        41.737699997611344,
+        42.504299999563955,
+        42.96720000274945,
+        43.2509999955073,
+        49.97639999783132,
+        47.178699998767115,
+        40.21250001096632
+      ],
+      "median_ms": 42.96720000274945,
+      "p90_ms": 49.49128000589553,
+      "gpu_kv_mib": 128.0,
+      "cpu_kv_mib": 128.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0006543814206451884,
+        "max_abs": 6.660259093196896e-08,
+        "relative_l2": 1.3562994332260352e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 32768,
+      "plan": "gpu_dense",
+      "label": "GPU dense reference",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "45c3068d7cb09a559e5dc70933ad60b100321723d8d31e6cbbb5984532fc8793",
+      "samples_ms": [
+        13.085400001727976,
+        12.204900005599484,
+        12.200700002722442,
+        13.053299990133382,
+        12.228099993080832,
+        13.078000003588386,
+        12.241400007042103,
+        12.21419998910278,
+        13.038500008406118
+      ],
+      "median_ms": 12.241400007042103,
+      "p90_ms": 13.079480003216304,
+      "gpu_kv_mib": 256.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0010813674124997366,
+        "max_abs": 1.0879639301530214e-07,
+        "relative_l2": 2.338020387397973e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "calibration",
+      "context": 32768,
+      "plan": "hybrid75",
+      "label": "Hybrid \u00b7 75% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "45c3068d7cb09a559e5dc70933ad60b100321723d8d31e6cbbb5984532fc8793",
+      "samples_ms": [
+        24.52560000529047,
+        26.151199999731034,
+        24.781999993138015,
+        25.5615000060061,
+        30.016999997314997,
+        23.64510000916198,
+        24.04180000303313,
+        26.41760000551585,
+        24.483300003339536
+      ],
+      "median_ms": 24.781999993138015,
+      "p90_ms": 27.13748000387568,
+      "gpu_kv_mib": 192.0,
+      "cpu_kv_mib": 64.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0009676988764889141,
+        "max_abs": 9.811147713527368e-08,
+        "relative_l2": 1.8141478396208033e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 1792,
+      "plan": "hybrid75",
+      "label": "Hybrid \u00b7 75% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "f578450b8209a40efd38a5952d192806119690ab7b2a8ec698c5ca8f0e658cbe",
+      "samples_ms": [
+        0.8834000036586076,
+        0.8794000023044646,
+        0.8665999921504408,
+        0.8501999982399866,
+        0.8662000036565587,
+        0.7673999934922904,
+        0.9223999950336292,
+        0.7697999972151592,
+        0.7284000021172687
+      ],
+      "median_ms": 0.8662000036565587,
+      "p90_ms": 0.8912000019336119,
+      "gpu_kv_mib": 10.5,
+      "cpu_kv_mib": 3.5,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0007315682423908949,
+        "max_abs": 7.482332122291102e-08,
+        "relative_l2": 4.3377909042895034e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 1792,
+      "plan": "copy",
+      "label": "Transfer to GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "f578450b8209a40efd38a5952d192806119690ab7b2a8ec698c5ca8f0e658cbe",
+      "samples_ms": [
+        1.080199988791719,
+        1.0934000019915402,
+        1.364099996862933,
+        1.295800000661984,
+        1.0704999876907095,
+        1.0621999972499907,
+        1.0810999956447631,
+        1.0609000019030645,
+        1.062900002580136
+      ],
+      "median_ms": 1.080199988791719,
+      "p90_ms": 1.3094599999021739,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 14.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0012538837868322598,
+        "max_abs": 1.367621756398485e-07,
+        "relative_l2": 8.934528765807262e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 1792,
+      "plan": "cpu",
+      "label": "CPU attention",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "f578450b8209a40efd38a5952d192806119690ab7b2a8ec698c5ca8f0e658cbe",
+      "samples_ms": [
+        1.0137999925063923,
+        1.0027999960584566,
+        0.9577000018907711,
+        1.1993000080110505,
+        1.0631000041030347,
+        1.1797000042861328,
+        1.9403000042075291,
+        1.6499999910593033,
+        1.6740999999456108
+      ],
+      "median_ms": 1.1797000042861328,
+      "p90_ms": 1.7273400007979944,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 14.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0008777431478630448,
+        "max_abs": 9.330208410041063e-08,
+        "relative_l2": 3.4137642701346757e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 1792,
+      "plan": "gpu_dense",
+      "label": "GPU dense reference",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "f578450b8209a40efd38a5952d192806119690ab7b2a8ec698c5ca8f0e658cbe",
+      "samples_ms": [
+        0.4191000043647364,
+        0.4194000066490844,
+        0.4165999998804182,
+        0.42389999725855887,
+        0.39929999911691993,
+        0.44260000868234783,
+        0.42389999725855887,
+        0.4028999974252656,
+        0.3997000021627173
+      ],
+      "median_ms": 0.4191000043647364,
+      "p90_ms": 0.42763999954331666,
+      "gpu_kv_mib": 14.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0005680197493396771,
+        "max_abs": 5.985195319913039e-08,
+        "relative_l2": 3.5945613516121544e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 1792,
+      "plan": "hybrid25",
+      "label": "Hybrid \u00b7 25% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "f578450b8209a40efd38a5952d192806119690ab7b2a8ec698c5ca8f0e658cbe",
+      "samples_ms": [
+        1.2705999979516491,
+        1.5275999903678894,
+        1.7881999956443906,
+        1.5884000022197142,
+        1.5657999902032316,
+        1.6241999983321875,
+        1.7697000002954155,
+        1.684300004853867,
+        1.5825999871594831
+      ],
+      "median_ms": 1.5884000022197142,
+      "p90_ms": 1.7733999993652105,
+      "gpu_kv_mib": 3.5,
+      "cpu_kv_mib": 10.5,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0007265471154751431,
+        "max_abs": 7.861718145929508e-08,
+        "relative_l2": 4.046386265199456e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 1792,
+      "plan": "hybrid50",
+      "label": "Hybrid \u00b7 50% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "f578450b8209a40efd38a5952d192806119690ab7b2a8ec698c5ca8f0e658cbe",
+      "samples_ms": [
+        1.0839000024134293,
+        1.0494999878574163,
+        1.0642999986885116,
+        1.1125000019092113,
+        1.2025000032735988,
+        1.3756999978795648,
+        8.107599991490133,
+        1.358899986371398,
+        1.0825000063050538
+      ],
+      "median_ms": 1.1125000019092113,
+      "p90_ms": 2.7220799966016793,
+      "gpu_kv_mib": 7.0,
+      "cpu_kv_mib": 7.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.000635949513778806,
+        "max_abs": 7.040755790888031e-08,
+        "relative_l2": 3.934859041982202e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 1792,
+      "plan": "resident",
+      "label": "Native GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "f578450b8209a40efd38a5952d192806119690ab7b2a8ec698c5ca8f0e658cbe",
+      "samples_ms": [
+        0.5357999907573685,
+        0.50230001215823,
+        0.49760000547394156,
+        0.49229999422095716,
+        0.4923999949824065,
+        0.4920000064885244,
+        0.4959999932907522,
+        0.49310000031255186,
+        0.4994000046281144
+      ],
+      "median_ms": 0.4959999932907522,
+      "p90_ms": 0.5090000078780577,
+      "gpu_kv_mib": 14.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0012538837868322598,
+        "max_abs": 1.367621756398485e-07,
+        "relative_l2": 8.934528765807262e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 7168,
+      "plan": "hybrid50",
+      "label": "Hybrid \u00b7 50% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "acdce236602943c783619b3809b2fb40b425dd6029419fcb007b0cee9a9b8b5d",
+      "samples_ms": [
+        7.747600000584498,
+        7.758600011584349,
+        7.715999992797151,
+        7.468600000720471,
+        7.9993999970611185,
+        7.435100007569417,
+        7.103399999323301,
+        7.31320001068525,
+        7.757600003969856
+      ],
+      "median_ms": 7.715999992797151,
+      "p90_ms": 7.806760008679703,
+      "gpu_kv_mib": 28.0,
+      "cpu_kv_mib": 28.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0009474781909047567,
+        "max_abs": 9.648863487712878e-08,
+        "relative_l2": 8.252873957243453e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 7168,
+      "plan": "gpu_dense",
+      "label": "GPU dense reference",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "acdce236602943c783619b3809b2fb40b425dd6029419fcb007b0cee9a9b8b5d",
+      "samples_ms": [
+        1.3559000071836635,
+        1.329899998381734,
+        1.3276000099722296,
+        1.313600005232729,
+        1.3269000046420842,
+        1.3663999998243526,
+        1.3249000039650127,
+        1.3263000000733882,
+        1.3261999993119389
+      ],
+      "median_ms": 1.3269000046420842,
+      "p90_ms": 1.3580000057118014,
+      "gpu_kv_mib": 56.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0009752418123966894,
+        "max_abs": 9.905779278437943e-08,
+        "relative_l2": 1.1580029164466502e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 7168,
+      "plan": "cpu",
+      "label": "CPU attention",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "acdce236602943c783619b3809b2fb40b425dd6029419fcb007b0cee9a9b8b5d",
+      "samples_ms": [
+        15.981000004103407,
+        14.189800000167452,
+        14.897000000928529,
+        15.919699988444336,
+        14.197999989846721,
+        14.7714999911841,
+        15.1657999958843,
+        14.4226999982493,
+        14.447800000198185
+      ],
+      "median_ms": 14.7714999911841,
+      "p90_ms": 15.93195999157615,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 56.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0006286490516343793,
+        "max_abs": 6.476331209509523e-08,
+        "relative_l2": 6.068553454156055e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 7168,
+      "plan": "resident",
+      "label": "Native GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "acdce236602943c783619b3809b2fb40b425dd6029419fcb007b0cee9a9b8b5d",
+      "samples_ms": [
+        1.8641999922692776,
+        1.856000002590008,
+        1.8353000050410628,
+        1.856600007158704,
+        1.8628999969223514,
+        2.5385000044479966,
+        1.8410999909974635,
+        1.8565000063972548,
+        1.8388000025879592
+      ],
+      "median_ms": 1.8565000063972548,
+      "p90_ms": 1.9990599947050214,
+      "gpu_kv_mib": 56.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0008359265867900556,
+        "max_abs": 8.722493684276689e-08,
+        "relative_l2": 9.99072952163919e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 7168,
+      "plan": "hybrid75",
+      "label": "Hybrid \u00b7 75% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "acdce236602943c783619b3809b2fb40b425dd6029419fcb007b0cee9a9b8b5d",
+      "samples_ms": [
+        2.905300003476441,
+        3.0234000005293638,
+        2.814899999066256,
+        2.83060000219848,
+        2.9437000048346817,
+        2.8943999932380393,
+        2.5364000030094758,
+        3.057900001294911,
+        3.685899995616637
+      ],
+      "median_ms": 2.905300003476441,
+      "p90_ms": 3.183500000159256,
+      "gpu_kv_mib": 42.0,
+      "cpu_kv_mib": 14.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.001123453840535679,
+        "max_abs": 1.1642644786452605e-07,
+        "relative_l2": 9.768767004816777e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 7168,
+      "plan": "hybrid25",
+      "label": "Hybrid \u00b7 25% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "acdce236602943c783619b3809b2fb40b425dd6029419fcb007b0cee9a9b8b5d",
+      "samples_ms": [
+        21.36489999247715,
+        14.80999999330379,
+        12.155900010839105,
+        11.244299996178597,
+        13.097500006551854,
+        11.80180000665132,
+        9.73040000826586,
+        11.213999998290092,
+        11.56240000273101
+      ],
+      "median_ms": 11.80180000665132,
+      "p90_ms": 16.120979993138462,
+      "gpu_kv_mib": 14.0,
+      "cpu_kv_mib": 42.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.000516742375263256,
+        "max_abs": 5.3320123490074867e-08,
+        "relative_l2": 5.678003609832918e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 7168,
+      "plan": "copy",
+      "label": "Transfer to GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "acdce236602943c783619b3809b2fb40b425dd6029419fcb007b0cee9a9b8b5d",
+      "samples_ms": [
+        4.0391000075032935,
+        4.015999991679564,
+        4.018499996163882,
+        4.0176000038627535,
+        4.010400007246062,
+        4.00179999996908,
+        4.496400011703372,
+        4.102100007003173,
+        4.011299999547191
+      ],
+      "median_ms": 4.0176000038627535,
+      "p90_ms": 4.180960007943213,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 56.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0008359265867900556,
+        "max_abs": 8.722493684276689e-08,
+        "relative_l2": 9.99072952163919e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 20480,
+      "plan": "hybrid25",
+      "label": "Hybrid \u00b7 25% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "17fd18490dc29b9934d77072b5e2d2977cda5478fa27a9aeb04bd299cecd050f",
+      "samples_ms": [
+        38.12330000801012,
+        39.315000001806766,
+        32.825099988258444,
+        35.97260000242386,
+        33.62850000848994,
+        36.9046999985585,
+        37.22290000587236,
+        35.33289999177214,
+        38.39699999662116
+      ],
+      "median_ms": 36.9046999985585,
+      "p90_ms": 38.58059999765828,
+      "gpu_kv_mib": 40.0,
+      "cpu_kv_mib": 120.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0005001827947720152,
+        "max_abs": 5.133421204436828e-08,
+        "relative_l2": 9.362373889681757e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 20480,
+      "plan": "cpu",
+      "label": "CPU attention",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "17fd18490dc29b9934d77072b5e2d2977cda5478fa27a9aeb04bd299cecd050f",
+      "samples_ms": [
+        48.423900007037446,
+        56.48369999835268,
+        52.8245000023162,
+        46.4810999983456,
+        48.8718999986304,
+        48.139399994397536,
+        52.80689999926835,
+        48.00960001011845,
+        47.246300004189834
+      ],
+      "median_ms": 48.423900007037446,
+      "p90_ms": 53.556340001523495,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 160.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0006290837103834361,
+        "max_abs": 6.462978113450091e-08,
+        "relative_l2": 9.535214417804e-07,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 20480,
+      "plan": "resident",
+      "label": "Native GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "17fd18490dc29b9934d77072b5e2d2977cda5478fa27a9aeb04bd299cecd050f",
+      "samples_ms": [
+        5.091900005936623,
+        5.0617000088095665,
+        5.054599998402409,
+        5.8862000005319715,
+        5.067200007033534,
+        5.044400008046068,
+        5.048499995609745,
+        5.047600003308617,
+        5.040599993662909
+      ],
+      "median_ms": 5.054599998402409,
+      "p90_ms": 5.250760004855692,
+      "gpu_kv_mib": 160.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0007087665135077115,
+        "max_abs": 7.320894287315971e-08,
+        "relative_l2": 1.2377615069814833e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 20480,
+      "plan": "hybrid75",
+      "label": "Hybrid \u00b7 75% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "17fd18490dc29b9934d77072b5e2d2977cda5478fa27a9aeb04bd299cecd050f",
+      "samples_ms": [
+        13.89299999573268,
+        14.100100001087412,
+        14.443699998082593,
+        14.066100004129112,
+        13.308800000231713,
+        13.818999999784864,
+        13.14249999995809,
+        11.811799995484762,
+        13.544300003559329
+      ],
+      "median_ms": 13.818999999784864,
+      "p90_ms": 14.168820000486448,
+      "gpu_kv_mib": 120.0,
+      "cpu_kv_mib": 40.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0009119780549486546,
+        "max_abs": 9.19345206698563e-08,
+        "relative_l2": 1.3855230927178418e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 20480,
+      "plan": "copy",
+      "label": "Transfer to GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "17fd18490dc29b9934d77072b5e2d2977cda5478fa27a9aeb04bd299cecd050f",
+      "samples_ms": [
+        11.353999987477437,
+        11.394000001018867,
+        11.33290000143461,
+        11.32250000955537,
+        11.384099998394959,
+        11.320199992042035,
+        11.320499994326383,
+        11.409500002628192,
+        11.31639999221079
+      ],
+      "median_ms": 11.33290000143461,
+      "p90_ms": 11.397100001340732,
+      "gpu_kv_mib": 0.0,
+      "cpu_kv_mib": 160.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0007087665135077115,
+        "max_abs": 7.320894287315971e-08,
+        "relative_l2": 1.2377615069814833e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 20480,
+      "plan": "hybrid50",
+      "label": "Hybrid \u00b7 50% GPU",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "17fd18490dc29b9934d77072b5e2d2977cda5478fa27a9aeb04bd299cecd050f",
+      "samples_ms": [
+        22.238400008063763,
+        24.299600001540966,
+        25.240099988877773,
+        23.704200008069165,
+        23.72559999639634,
+        28.156100001069717,
+        22.410699995816685,
+        23.60400000179652,
+        25.426500011235476
+      ],
+      "median_ms": 23.72559999639634,
+      "p90_ms": 25.972420009202324,
+      "gpu_kv_mib": 80.0,
+      "cpu_kv_mib": 80.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0006059788537016553,
+        "max_abs": 6.20141340362812e-08,
+        "relative_l2": 1.151786356409441e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    },
+    {
+      "phase": "validation",
+      "context": 20480,
+      "plan": "gpu_dense",
+      "label": "GPU dense reference",
+      "identity": {
+        "gpu": "NVIDIA GeForce RTX 3060",
+        "cuda": "13.0",
+        "packages": {
+          "torch": "2.14.1+cu130",
+          "transformers": "5.19.0",
+          "numpy": "2.5.4",
+          "fastapi": "0.143.3",
+          "psutil": "7.2.2"
+        },
+        "source_sha256": {
+          "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+          "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+          "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+          "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+          "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+          "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+          "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+          "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+          "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+          "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+          "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+          "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+          "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+          "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+          "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+        },
+        "dtype": "float32",
+        "threads": 4,
+        "heads": 16,
+        "kv_heads": 8,
+        "dim": 128,
+        "batch": 1,
+        "query": 1,
+        "scope": "layer-attend-only",
+        "implementation": "ring-gqa-fp32-math-v2"
+      },
+      "dtype": "float32",
+      "block": 1,
+      "input_sha256": "17fd18490dc29b9934d77072b5e2d2977cda5478fa27a9aeb04bd299cecd050f",
+      "samples_ms": [
+        5.536700002267025,
+        5.532800001674332,
+        5.515699987881817,
+        6.387500005075708,
+        5.547399996430613,
+        5.514000004041009,
+        5.516999997780658,
+        5.520000006072223,
+        5.509100010385737
+      ],
+      "median_ms": 5.520000006072223,
+      "p90_ms": 5.715419998159632,
+      "gpu_kv_mib": 160.0,
+      "cpu_kv_mib": 0.0,
+      "correctness": {
+        "passed": true,
+        "finite": true,
+        "element_count": 2048,
+        "violating_elements": 0,
+        "max_normalized_error": 0.0011078130837448626,
+        "max_abs": 1.1223252129217987e-07,
+        "relative_l2": 1.8715942849488586e-06,
+        "atol": 0.0001,
+        "rtol": 0.0001
+      },
+      "eligibility": {
+        "eligible": true,
+        "reason": "Passed the declared finite relation in this measured case"
+      }
+    }
+  ],
+  "progress": {
+    "done": 48,
+    "total": 49,
+    "message": "validation / float32 / 20480 / gpu_dense"
+  },
+  "limitations": [
+    "Single consumer PC with shared desktop GPU; no CXL hardware.",
+    "Float32 dense attention retains all entries; this is not a reproduction of sparse HGCA/BEYOND.",
+    "GPU allocation is a PyTorch allocator observation, not exclusive physical VRAM residency.",
+    "Finite numerical agreement does not establish downstream language quality."
+  ],
+  "elapsed_s": 15.430787999997847,
+  "identity": {
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "cuda": "13.0",
+    "packages": {
+      "torch": "2.14.1+cu130",
+      "transformers": "5.19.0",
+      "numpy": "2.5.4",
+      "fastapi": "0.143.3",
+      "psutil": "7.2.2"
+    },
+    "source_sha256": {
+      "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+      "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+      "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+      "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+      "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+      "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+      "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+      "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+      "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+      "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+      "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+      "src/atlas/attention/server.py": "1d2525c9df5f8964613b5c7d7e2a08e196a34cde90e5f35d2e854b04af1f1194",
+      "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+      "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+      "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+    },
+    "dtype": "float32",
+    "threads": 4,
+    "heads": 16,
+    "kv_heads": 8,
+    "dim": 128,
+    "batch": 1,
+    "query": 1,
+    "scope": "layer-attend-only",
+    "implementation": "ring-gqa-fp32-math-v2"
+  },
+  "calibration_cost_s": 7.815008699995815,
+  "policy_decisions": [
+    {
+      "context": 1792,
+      "budget_mib": 48,
+      "selected": {
+        "plan": "gpu_dense",
+        "predicted_ms": 0.43237778946705574,
+        "estimated_kv_mib": 14.0,
+        "abstained": false,
+        "policy": "domain-bound-linear-v2",
+        "predictions": [
+          {
+            "plan": "copy",
+            "predicted_ms": 1.0638333365528119,
+            "estimated_kv_mib": 0.0
+          },
+          {
+            "plan": "cpu",
+            "predicted_ms": 2.680622220699054,
+            "estimated_kv_mib": 0.0
+          },
+          {
+            "plan": "gpu_dense",
+            "predicted_ms": 0.43237778946705574,
+            "estimated_kv_mib": 14.0
+          },
+          {
+            "plan": "hybrid25",
+            "predicted_ms": 2.11377777870641,
+            "estimated_kv_mib": 3.5
+          },
+          {
+            "plan": "hybrid50",
+            "predicted_ms": 1.4300777871135828,
+            "estimated_kv_mib": 7.0
+          },
+          {
+            "plan": "hybrid75",
+            "predicted_ms": 0.8942888881493773,
+            "estimated_kv_mib": 10.5
+          },
+          {
+            "plan": "resident",
+            "predicted_ms": 0.5089333345596161,
+            "estimated_kv_mib": 14.0
+          }
+        ]
+      },
+      "rule": {
+        "plan": "resident",
+        "predicted_ms": 0.5089333345596161,
+        "estimated_kv_mib": 14.0,
+        "abstained": false,
+        "policy": "budget-aware-rule-v1"
+      }
+    },
+    {
+      "context": 1792,
+      "budget_mib": 2048,
+      "selected": {
+        "plan": "gpu_dense",
+        "predicted_ms": 0.43237778946705574,
+        "estimated_kv_mib": 14.0,
+        "abstained": false,
+        "policy": "domain-bound-linear-v2",
+        "predictions": [
+          {
+            "plan": "copy",
+            "predicted_ms": 1.0638333365528119,
+            "estimated_kv_mib": 0.0
+          },
+          {
+            "plan": "cpu",
+            "predicted_ms": 2.680622220699054,
+            "estimated_kv_mib": 0.0
+          },
+          {
+            "plan": "gpu_dense",
+            "predicted_ms": 0.43237778946705574,
+            "estimated_kv_mib": 14.0
+          },
+          {
+            "plan": "hybrid25",
+            "predicted_ms": 2.11377777870641,
+            "estimated_kv_mib": 3.5
+          },
+          {
+            "plan": "hybrid50",
+            "predicted_ms": 1.4300777871135828,
+            "estimated_kv_mib": 7.0
+          },
+          {
+            "plan": "hybrid75",
+            "predicted_ms": 0.8942888881493773,
+            "estimated_kv_mib": 10.5
+          },
+          {
+            "plan": "resident",
+            "predicted_ms": 0.5089333345596161,
+            "estimated_kv_mib": 14.0
+          }
+        ]
+      },
+      "rule": {
+        "plan": "resident",
+        "predicted_ms": 0.5089333345596161,
+        "estimated_kv_mib": 14.0,
+        "abstained": false,
+        "policy": "budget-aware-rule-v1"
+      }
+    },
+    {
+      "context": 7168,
+      "budget_mib": 48,
+      "selected": {
+        "plan": "hybrid75",
+        "predicted_ms": 3.7455222223393827,
+        "estimated_kv_mib": 42.0,
+        "abstained": false,
+        "policy": "domain-bound-linear-v2",
+        "predictions": [
+          {
+            "plan": "copy",
+            "predicted_ms": 4.082199994526389,
+            "estimated_kv_mib": 0.0
+          },
+          {
+            "plan": "cpu",
+            "predicted_ms": 14.91037778032478,
+            "estimated_kv_mib": 0.0
+          },
+          {
+            "plan": "hybrid25",
+            "predicted_ms": 11.186977774034151,
+            "estimated_kv_mib": 14.0
+          },
+          {
+            "plan": "hybrid50",
+            "predicted_ms": 7.467755561164166,
+            "estimated_kv_mib": 28.0
+          },
+          {
+            "plan": "hybrid75",
+            "predicted_ms": 3.7455222223393827,
+            "estimated_kv_mib": 42.0
+          }
+        ]
+      },
+      "rule": {
+        "plan": "hybrid75",
+        "predicted_ms": 3.7455222223393827,
+        "estimated_kv_mib": 42.0,
+        "abstained": false,
+        "policy": "budget-aware-rule-v1"
+      }
+    },
+    {
+      "context": 7168,
+      "budget_mib": 2048,
+      "selected": {
+        "plan": "gpu_dense",
+        "predicted_ms": 1.371566673494979,
+        "estimated_kv_mib": 56.0,
+        "abstained": false,
+        "policy": "domain-bound-linear-v2",
+        "predictions": [
+          {
+            "plan": "copy",
+            "predicted_ms": 4.082199994526389,
+            "estimated_kv_mib": 0.0
+          },
+          {
+            "plan": "cpu",
+            "predicted_ms": 14.91037778032478,
+            "estimated_kv_mib": 0.0
+          },
+          {
+            "plan": "gpu_dense",
+            "predicted_ms": 1.371566673494979,
+            "estimated_kv_mib": 56.0
+          },
+          {
+            "plan": "hybrid25",
+            "predicted_ms": 11.186977774034151,
+            "estimated_kv_mib": 14.0
+          },
+          {
+            "plan": "hybrid50",
+            "predicted_ms": 7.467755561164166,
+            "estimated_kv_mib": 28.0
+          },
+          {
+            "plan": "hybrid75",
+            "predicted_ms": 3.7455222223393827,
+            "estimated_kv_mib": 42.0
+          },
+          {
+            "plan": "resident",
+            "predicted_ms": 1.8170666670711295,
+            "estimated_kv_mib": 56.0
+          }
+        ]
+      },
+      "rule": {
+        "plan": "resident",
+        "predicted_ms": 1.8170666670711295,
+        "estimated_kv_mib": 56.0,
+        "abstained": false,
+        "policy": "budget-aware-rule-v1"
+      }
+    },
+    {
+      "context": 20480,
+      "budget_mib": 48,
+      "selected": {
+        "plan": "copy",
+        "predicted_ms": 11.786939995363355,
+        "estimated_kv_mib": 0.0,
+        "abstained": false,
+        "policy": "domain-bound-linear-v2",
+        "predictions": [
+          {
+            "plan": "copy",
+            "predicted_ms": 11.786939995363355,
+            "estimated_kv_mib": 0.0
+          },
+          {
+            "plan": "cpu",
+            "predicted_ms": 53.00120000320021,
+            "estimated_kv_mib": 0.0
+          },
+          {
+            "plan": "hybrid25",
+            "predicted_ms": 38.733959998353384,
+            "estimated_kv_mib": 40.0
+          }
+        ]
+      },
+      "rule": {
+        "plan": "hybrid25",
+        "predicted_ms": 38.733959998353384,
+        "estimated_kv_mib": 40.0,
+        "abstained": false,
+        "policy": "budget-aware-rule-v1"
+      }
+    },
+    {
+      "context": 20480,
+      "budget_mib": 2048,
+      "selected": {
+        "plan": "resident",
+        "predicted_ms": 5.052459999569692,
+        "estimated_kv_mib": 160.0,
+        "abstained": false,
+        "policy": "domain-bound-linear-v2",
+        "predictions": [
+          {
+            "plan": "copy",
+            "predicted_ms": 11.786939995363355,
+            "estimated_kv_mib": 0.0
+          },
+          {
+            "plan": "cpu",
+            "predicted_ms": 53.00120000320021,
+            "estimated_kv_mib": 0.0
+          },
+          {
+            "plan": "gpu_dense",
+            "predicted_ms": 6.2726000032853335,
+            "estimated_kv_mib": 160.0
+          },
+          {
+            "plan": "hybrid25",
+            "predicted_ms": 38.733959998353384,
+            "estimated_kv_mib": 40.0
+          },
+          {
+            "plan": "hybrid50",
+            "predicted_ms": 25.660500000230968,
+            "estimated_kv_mib": 80.0
+          },
+          {
+            "plan": "hybrid75",
+            "predicted_ms": 14.019079998251982,
+            "estimated_kv_mib": 120.0
+          },
+          {
+            "plan": "resident",
+            "predicted_ms": 5.052459999569692,
+            "estimated_kv_mib": 160.0
+          }
+        ]
+      },
+      "rule": {
+        "plan": "resident",
+        "predicted_ms": 5.052459999569692,
+        "estimated_kv_mib": 160.0,
+        "abstained": false,
+        "policy": "budget-aware-rule-v1"
+      }
+    }
+  ],
+  "evaluation": [
+    {
+      "context": 1792,
+      "budget_mib": 48,
+      "oracle_plan": "gpu_dense",
+      "fixed_plan": "copy",
+      "selected": {
+        "plan": "gpu_dense",
+        "eligible": true,
+        "regret_percent": 0.0,
+        "measured_ms": 0.4191000043647364,
+        "prediction_error_ms": -0.013277785102319362
+      },
+      "rule": {
+        "plan": "resident",
+        "eligible": true,
+        "regret_percent": 18.348839924871708,
+        "measured_ms": 0.4959999932907522,
+        "prediction_error_ms": -0.012933341268863918
+      },
+      "fixed_ms": 1.080199988791719
+    },
+    {
+      "context": 1792,
+      "budget_mib": 2048,
+      "oracle_plan": "gpu_dense",
+      "fixed_plan": "gpu_dense",
+      "selected": {
+        "plan": "gpu_dense",
+        "eligible": true,
+        "regret_percent": 0.0,
+        "measured_ms": 0.4191000043647364,
+        "prediction_error_ms": -0.013277785102319362
+      },
+      "rule": {
+        "plan": "resident",
+        "eligible": true,
+        "regret_percent": 18.348839924871708,
+        "measured_ms": 0.4959999932907522,
+        "prediction_error_ms": -0.012933341268863918
+      },
+      "fixed_ms": 0.4191000043647364
+    },
+    {
+      "context": 7168,
+      "budget_mib": 48,
+      "oracle_plan": "hybrid75",
+      "fixed_plan": "copy",
+      "selected": {
+        "plan": "hybrid75",
+        "eligible": true,
+        "regret_percent": 0.0,
+        "measured_ms": 2.905300003476441,
+        "prediction_error_ms": -0.8402222188629418
+      },
+      "rule": {
+        "plan": "hybrid75",
+        "eligible": true,
+        "regret_percent": 0.0,
+        "measured_ms": 2.905300003476441,
+        "prediction_error_ms": -0.8402222188629418
+      },
+      "fixed_ms": 4.0176000038627535
+    },
+    {
+      "context": 7168,
+      "budget_mib": 2048,
+      "oracle_plan": "gpu_dense",
+      "fixed_plan": "gpu_dense",
+      "selected": {
+        "plan": "gpu_dense",
+        "eligible": true,
+        "regret_percent": 0.0,
+        "measured_ms": 1.3269000046420842,
+        "prediction_error_ms": -0.04466666885289472
+      },
+      "rule": {
+        "plan": "resident",
+        "eligible": true,
+        "regret_percent": 39.91257818240976,
+        "measured_ms": 1.8565000063972548,
+        "prediction_error_ms": 0.03943333932612525
+      },
+      "fixed_ms": 1.3269000046420842
+    },
+    {
+      "context": 20480,
+      "budget_mib": 48,
+      "oracle_plan": "copy",
+      "fixed_plan": "copy",
+      "selected": {
+        "plan": "copy",
+        "eligible": true,
+        "regret_percent": 0.0,
+        "measured_ms": 11.33290000143461,
+        "prediction_error_ms": -0.4540399939287454
+      },
+      "rule": {
+        "plan": "hybrid25",
+        "eligible": true,
+        "regret_percent": 225.64215685205733,
+        "measured_ms": 36.9046999985585,
+        "prediction_error_ms": -1.8292599997948855
+      },
+      "fixed_ms": 11.33290000143461
+    },
+    {
+      "context": 20480,
+      "budget_mib": 2048,
+      "oracle_plan": "resident",
+      "fixed_plan": "gpu_dense",
+      "selected": {
+        "plan": "resident",
+        "eligible": true,
+        "regret_percent": 0.0,
+        "measured_ms": 5.054599998402409,
+        "prediction_error_ms": 0.002139998832717538
+      },
+      "rule": {
+        "plan": "resident",
+        "eligible": true,
+        "regret_percent": 0.0,
+        "measured_ms": 5.054599998402409,
+        "prediction_error_ms": 0.002139998832717538
+      },
+      "fixed_ms": 5.520000006072223
+    }
+  ],
+  "native_sdpa_operations": [
+    "aten::scaled_dot_product_attention",
+    "aten::_scaled_dot_product_efficient_attention",
+    "aten::_efficient_attention_forward"
+  ],
+  "fixed_plans": {
+    "48": "copy",
+    "2048": "gpu_dense"
+  },
+  "finished_at": "2026-10-18T04:05:30.118120+00:00"
+}

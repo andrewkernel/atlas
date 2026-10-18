@@ -1,0 +1,8 @@
+{
+  "created_at": "2026-10-18T04:02:35.451130+00:00",
+  "id": "execution-kv-accounting-a2",
+  "reason": "Before reading held-out selector outcomes, account for GPU copy-to-GPU materialization and explicit low-precision KV promotion. Preserve original v2 decisions as historical persistent-cache observations. Recompute choices from calibration only under this predeclared rule; no claim of new prospective timing trials or adaptive superiority.",
+  "source_sha256": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+  "method": "Interpolation, rank rule, calibration-only normalized fixed plan, retrospective oracle for regret only. Exclude rejected or unknown numerical plans. Same predeclared block analysis.",
+  "budget_scope": "Execution KV only; weights/query/output/scores/workspace and physical-residency guarantees excluded."
+}

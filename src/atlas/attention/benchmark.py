@@ -7,6 +7,7 @@ import time
 import torch
 from .evidence import Recorder, sha
 from .runtime import PLANS, DecodeCache, CalibratedPolicy, error_metrics, partial_attention
+from .oracle import attention_oracle
 
 
 def synchronize():
@@ -55,7 +56,7 @@ def run_benchmark(rec:Recorder):
             q=torch.randn(1,heads,1,dim,generator=gen)
             k=torch.randn(1,heads,length,dim,generator=gen)
             v=torch.randn(1,heads,length,dim,generator=gen)
-            reference=partial_attention(q.double(),k.double(),v.double())[0]
+            reference=torch.from_numpy(attention_oracle(q.numpy(),k.numpy(),v.numpy()))
             input_hash=sha(q.numpy().tobytes()+k.numpy().tobytes()+v.numpy().tobytes())
             order=list(PLANS)
             random.Random(config.get("seed",2026)+length).shuffle(order)

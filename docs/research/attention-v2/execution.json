@@ -1,0 +1,14 @@
+{
+  "protocol_id": "atlas-attention-v2-93517",
+  "started_at": "2026-10-18T03:55:10.306794+00:00",
+  "cases": [
+    {
+      "case_id": "case-000",
+      "run_id": "research-b3b7a103745f",
+      "status": "failed",
+      "sha256": "a0745a4920fce5fab927be1ce7526f39caf5b214b7bd338ac4c2e227ed88bbd9",
+      "elapsed_s": 2.3058716999948956,
+      "error": "ValueError: Incompatible single-query attention"
+    }
+  ]
+}

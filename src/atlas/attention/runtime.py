@@ -1,7 +1,7 @@
 """Persistent decode KV storage and numerically stable, exact partition fusion.
 
 This is an authored dense reference runtime, not an HGCA/BEYOND reproduction.
-Only unpadded, evaluation-mode float32 single-query decoding is supported.
+Unpadded evaluation-mode single-query decoding; explicit low-precision storage.
 """
 from __future__ import annotations
 
@@ -37,9 +37,25 @@ def partial_attention(q: Tensor, k: Tensor, v: Tensor, scale: float | None = Non
     """Return locally normalized output and log normalizer; no empty partitions."""
     if k.shape[-2] == 0:
         raise ValueError("partial_attention requires a nonempty partition")
-    scores = torch.matmul(q, k.transpose(-1, -2)) * (scale if scale is not None else q.shape[-1] ** -0.5)
+    # Promote both devices to FP32 for low-precision storage. This conversion is
+    # part of measured execution, not an unreported preprocessing step.
+    if q.dtype in (torch.float16, torch.bfloat16):
+        q, k, v = q.float(), k.float(), v.float()
+    heads, kv_heads = q.shape[1], k.shape[1]
+    if heads % kv_heads:
+        raise ValueError("Query heads must be a multiple of KV heads")
+    if heads != kv_heads:
+        grouped=q.reshape(q.shape[0],kv_heads,heads//kv_heads,q.shape[-2],q.shape[-1])
+        scores=torch.matmul(grouped,k.unsqueeze(2).transpose(-1,-2)).flatten(1,2)
+    else:
+        scores = torch.matmul(q, k.transpose(-1, -2))
+    scores = scores * (scale if scale is not None else q.shape[-1] ** -0.5)
     lse = torch.logsumexp(scores, dim=-1, keepdim=True)
-    return torch.matmul(torch.softmax(scores, dim=-1), v), lse
+    probs=torch.softmax(scores,dim=-1)
+    if heads != kv_heads:
+        out=torch.matmul(probs.reshape(q.shape[0],kv_heads,heads//kv_heads,q.shape[-2],k.shape[-2]),v.unsqueeze(2)).flatten(1,2)
+    else:out=torch.matmul(probs,v)
+    return out,lse
 
 
 def fuse(a: tuple[Tensor, Tensor], b: tuple[Tensor, Tensor]) -> Tensor:
@@ -50,7 +66,7 @@ def fuse(a: tuple[Tensor, Tensor], b: tuple[Tensor, Tensor]) -> Tensor:
     return out_a * torch.exp(lse_a - total) + out_b * torch.exp(lse_b - total)
 
 
-class DecodeCache:
+class ShiftDecodeCache:
     """One layer's persistent, append-only old CPU / rolling recent GPU cache.
 
     GPU buffers are fixed capacity. CPU buffers use pinned memory on CUDA systems.
@@ -130,6 +146,84 @@ class DecodeCache:
         gpu = partial_attention(q, gk, gv, scale)
         cpu = partial_attention(cq, ck, cv, scale)
         return fuse(gpu, (cpu[0].to(q.device), cpu[1].to(q.device)))
+
+
+class DecodeCache:
+    """Single-storage GPU ring and append-only host cache, O(1) token eviction.
+
+    Two chronological GPU views are normalized separately at wraparound. No
+    mirrored buffer or full-window shift is hidden in append. Capacity includes
+    future decoding; a fixed window may be supplied independently of a fraction.
+    """
+    version = "ring-gqa-fp32-math-v2"
+
+    def __init__(self,k:Tensor,v:Tensor,plan:Plan,capacity:int,*,window:int|None=None,device=None):
+        if k.ndim!=4 or k.shape!=v.shape or k.dtype!=v.dtype or k.device!=v.device or k.dtype not in (torch.float32,torch.float16,torch.bfloat16):
+            raise ValueError("Matching floating B,KVH,T,D caches required")
+        if k.shape[-2]<1 or capacity<k.shape[-2] or not 0<=plan.gpu_fraction<=1:
+            raise ValueError("Invalid capacity/partition")
+        self.plan,self.device,self.dtype=plan,torch.device(device or k.device),k.dtype
+        if self.device.type=='cuda' and self.device.index is None:self.device=torch.device('cuda',torch.cuda.current_device())
+        self.capacity,self.length=capacity,k.shape[-2]
+        self.window=(capacity if plan.executor in ('resident','dense_gpu') else
+                     (min(capacity,window) if window is not None else max(1,int(self.length*plan.gpu_fraction))) if plan.executor=='hybrid' else 0)
+        if self.window<0:raise ValueError("Negative window")
+        self.gpu_count=min(self.window,self.length)
+        self.cpu_count=self.length-self.gpu_count
+        shape=list(k.shape);shape[-2]=self.window
+        self.gk=torch.empty(shape,device=self.device,dtype=k.dtype);self.gv=torch.empty_like(self.gk)
+        shape[-2]=capacity-self.window
+        self.ck=torch.empty(shape,device='cpu',dtype=k.dtype,pin_memory=self.device.type=='cuda');self.cv=torch.empty_like(self.ck,pin_memory=self.device.type=='cuda')
+        if self.cpu_count:
+            self.ck[...,:self.cpu_count,:].copy_(k[...,:self.cpu_count,:]);self.cv[...,:self.cpu_count,:].copy_(v[...,:self.cpu_count,:])
+        if self.gpu_count:
+            self.gk[...,:self.gpu_count,:].copy_(k[...,-self.gpu_count:,:]);self.gv[...,:self.gpu_count,:].copy_(v[...,-self.gpu_count:,:])
+        self.cursor=self.gpu_count%self.window if self.window else 0
+
+    def append(self,k:Tensor,v:Tensor):
+        expected=(*self.gk.shape[:2],1,self.gk.shape[-1])
+        if self.length>=self.capacity or tuple(k.shape)!=expected or k.shape!=v.shape or k.dtype!=self.dtype or v.dtype!=self.dtype or k.device!=self.device or v.device!=self.device:
+            raise ValueError("Cache full or incompatible one-token append")
+        if not self.window:
+            self.ck[...,self.cpu_count:self.cpu_count+1,:].copy_(k);self.cv[...,self.cpu_count:self.cpu_count+1,:].copy_(v);self.cpu_count+=1
+        else:
+            slot=slice(self.cursor,self.cursor+1)
+            if self.gpu_count==self.window:
+                self.ck[...,self.cpu_count:self.cpu_count+1,:].copy_(self.gk[...,slot,:]);self.cv[...,self.cpu_count:self.cpu_count+1,:].copy_(self.gv[...,slot,:]);self.cpu_count+=1
+            else:self.gpu_count+=1
+            self.gk[...,slot,:].copy_(k);self.gv[...,slot,:].copy_(v)
+            self.cursor=(self.cursor+1)%self.window
+        self.length+=1
+
+    @property
+    def gpu_kv_bytes(self):return (self.gk.numel()+self.gv.numel())*self.gk.element_size()
+    @property
+    def cpu_kv_bytes(self):return (self.ck.numel()+self.cv.numel())*self.ck.element_size()
+
+    def segments(self):
+        if self.gpu_count<self.window or self.cursor==0:
+            if self.gpu_count:yield self.gk[...,:self.gpu_count,:],self.gv[...,:self.gpu_count,:]
+        else:
+            yield self.gk[...,self.cursor:,:],self.gv[...,self.cursor:,:]
+            yield self.gk[...,:self.cursor,:],self.gv[...,:self.cursor,:]
+
+    def attend(self,q:Tensor,scale=None):
+        if q.ndim!=4 or q.shape[-2]!=1 or q.dtype!=self.dtype or q.device!=self.device or q.shape[0]!=self.gk.shape[0] or q.shape[-1]!=self.gk.shape[-1] or q.shape[1]%self.gk.shape[1]:
+            raise ValueError("Incompatible single-query attention")
+        gqa=q.shape[1]!=self.gk.shape[1]
+        if self.plan.executor=='resident':
+            return F.scaled_dot_product_attention(q,self.gk[...,:self.gpu_count,:],self.gv[...,:self.gpu_count,:],scale=scale,enable_gqa=gqa)
+        ck,cv=self.ck[...,:self.cpu_count,:],self.cv[...,:self.cpu_count,:]
+        if self.plan.executor=='copy':
+            return F.scaled_dot_product_attention(q,ck.to(q.device,non_blocking=True),cv.to(q.device,non_blocking=True),scale=scale,enable_gqa=gqa)
+        partitions=[partial_attention(q,k,v,scale) for k,v in self.segments()]
+        if self.cpu_count:
+            host=partial_attention(q.cpu(),ck,cv,scale)
+            partitions.append((host[0].to(q.device),host[1].to(q.device)))
+        out,lse=partitions[0]
+        for part in partitions[1:]:
+            out,total=fuse((out,lse),part),torch.logaddexp(lse,part[1]);lse=total
+        return out.to(q.dtype)
 
 
 def error_metrics(actual: Tensor, expected: Tensor, atol: float = 1e-4, rtol: float = 1e-4) -> dict:

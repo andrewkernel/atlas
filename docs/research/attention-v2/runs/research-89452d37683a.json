@@ -1,0 +1,1286 @@
+{
+  "schema_version": 2,
+  "id": "research-89452d37683a",
+  "created_at": "2026-10-18T04:12:53.909801+00:00",
+  "status": "completed",
+  "config": {
+    "kind": "research",
+    "suite": "pressure",
+    "block": 1,
+    "dtype": "float32",
+    "threads": 4,
+    "context": 40000,
+    "split": "test",
+    "offset": 6000,
+    "new_tokens": 4,
+    "window": 256,
+    "methods": [
+      "hybrid50"
+    ],
+    "pressure": true,
+    "case_id": "case-033",
+    "protocol_id": "atlas-attention-v2-93518-a1"
+  },
+  "environment": {
+    "git_head": "f1a6995495e0dad2eb8e77979e623bde2613a09f",
+    "dirty_diff_sha256": "901203176a409122fcdb8157106265893670257c3c2f5b90340a6ea795fbf98f",
+    "source_sha256": {
+      "src/atlas/attention/__init__.py": "451a7fbe1b891bb357f4687392e667c0ca1a0f3ea3e8fbeb0f4e8f4fbc680430",
+      "src/atlas/attention/assets.py": "8ecadbab4094a723dd39ae6b5eb0923ba35a193502309e48b51f9ae0bedb799b",
+      "src/atlas/attention/benchmark.py": "982ae2203040b374cf245c1c08a42c18da8a859d4bfd633d3c7d8ce6580e26b0",
+      "src/atlas/attention/evidence.py": "7959b2ded4dcdebd2d7aed6261043feab21fb0d3fe1a54a0bf7a77118216b6c9",
+      "src/atlas/attention/model.py": "8e9328dc43f805c3a761a017683248c79079eb25b92a59001f47c9dd8d71eac6",
+      "src/atlas/attention/oracle.py": "526e57f0092c75e70abb5cccccb547cca515236831b585c8d7947bc6f9af8108",
+      "src/atlas/attention/protocol.py": "937c5a7e91626f65a0168d0923921c8e1c91c9aa9403d33f6968d4eb0a908984",
+      "src/atlas/attention/qwen.py": "56bff48f367ff053414928d6c365a038090db9d9f6bf8ff799008d9a2455003f",
+      "src/atlas/attention/research.py": "fa7106f5205790f80e9b253fd4bb62a45050f4026abeff25038f077650cdac1c",
+      "src/atlas/attention/runtime.py": "23ba63826cc54e43782e7279c921b8978660a3c41c11a9123f313b7f5e9b2a26",
+      "src/atlas/attention/selector.py": "bfd19c12085d4abd15e848e9f07535e76c0c1f9e9a10cc52bdc1e683bcab7433",
+      "src/atlas/attention/server.py": "dec91cd377301a7d2cef8e3b1d627ae5560ee990a4d7d1531cbcbcc8f6066a37",
+      "src/atlas/attention/telemetry.py": "5adff24ffb2f9610ba926c8e6dc1fc1ce2fe53f97f781f80126d39ab763ec599",
+      "src/atlas/attention/validity.py": "d7115fd550dc90c78456de9f68ba89dad27d3fd932ecf3da87c0e1c079bbabd5",
+      "lab.py": "400a0eade7a01363b067a1758723298f8d3ff4cb601fbe370d04305c1ffb83ea"
+    },
+    "packages": {
+      "torch": "2.14.1+cu130",
+      "transformers": "5.19.0",
+      "numpy": "2.5.4",
+      "fastapi": "0.143.3",
+      "psutil": "7.2.2"
+    },
+    "python": "3.12.10",
+    "platform": "Windows",
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "gpu_total_mib": 12019.875,
+    "cuda": "13.0",
+    "cpu": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "cpu_logical_count": 12,
+    "tf32": false,
+    "gpu_telemetry_start_csv": null
+  },
+  "rows": [
+    {
+      "plan": "hybrid50",
+      "label": "Hybrid \u00b7 50% GPU",
+      "context": 40000,
+      "phase": "model",
+      "dtype": "torch.float32",
+      "block": 1,
+      "status": "completed",
+      "generation_ms": 71725.35189999326,
+      "decode_ms": 11478.315299988026,
+      "prefill_ms": 60247.03420000151,
+      "samples_ms": [
+        3975.4352000018116,
+        3767.829600008554,
+        3724.8462999996264
+      ],
+      "median_ms": 3767.829600008554,
+      "p90_ms": 3933.91408000316,
+      "tokens_per_s": 0.05576828686148804,
+      "generated_token_ids": [
+        315,
+        2088,
+        323,
+        4379
+      ],
+      "allocated_peak_mib": 4410.23681640625,
+      "reserved_peak_mib": 5888.0,
+      "gpu_kv_mib": 56.0,
+      "cpu_kv_mib": 8694.875,
+      "correctness": {
+        "passed": null,
+        "finite": null
+      },
+      "eligibility": {
+        "eligible": false,
+        "reason": "Pressure feasibility run only; full-context numerical replay not measured"
+      },
+      "telemetry": [
+        {
+          "elapsed_s": 0.0005801999941468239,
+          "phase": "setup",
+          "rss_mib": 4067.94921875,
+          "available_ram_mib": 15794.91796875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.876200002618134
+        },
+        {
+          "elapsed_s": 0.5161078999954043,
+          "phase": "hybrid50/generation",
+          "rss_mib": 4580.60546875,
+          "available_ram_mib": 15268.2734375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.560000006691553
+        },
+        {
+          "elapsed_s": 1.030442999996012,
+          "phase": "hybrid50/generation",
+          "rss_mib": 4580.62109375,
+          "available_ram_mib": 15269.83984375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.670500004081987
+        },
+        {
+          "elapsed_s": 1.5448012999986531,
+          "phase": "hybrid50/generation",
+          "rss_mib": 4580.625,
+          "available_ram_mib": 15267.796875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.697200003662147
+        },
+        {
+          "elapsed_s": 2.0595679999969434,
+          "phase": "hybrid50/generation",
+          "rss_mib": 5247.93359375,
+          "available_ram_mib": 14586.98046875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 15.302300002076663
+        },
+        {
+          "elapsed_s": 2.5755468999996083,
+          "phase": "hybrid50/generation",
+          "rss_mib": 5247.96484375,
+          "available_ram_mib": 14584.91015625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.808899995638058
+        },
+        {
+          "elapsed_s": 3.0901777999970363,
+          "phase": "hybrid50/generation",
+          "rss_mib": 5247.96875,
+          "available_ram_mib": 14592.2421875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.033400002517737
+        },
+        {
+          "elapsed_s": 3.6049572999909287,
+          "phase": "hybrid50/generation",
+          "rss_mib": 5247.97265625,
+          "available_ram_mib": 14588.8203125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.673900000867434
+        },
+        {
+          "elapsed_s": 4.119766399991931,
+          "phase": "hybrid50/generation",
+          "rss_mib": 5296.01171875,
+          "available_ram_mib": 14550.66015625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.333300001453608
+        },
+        {
+          "elapsed_s": 4.635129299989785,
+          "phase": "hybrid50/generation",
+          "rss_mib": 5759.9765625,
+          "available_ram_mib": 14073.80859375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 15.161600007559173
+        },
+        {
+          "elapsed_s": 5.150969599999371,
+          "phase": "hybrid50/generation",
+          "rss_mib": 5759.9765625,
+          "available_ram_mib": 14077.859375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.24869999755174
+        },
+        {
+          "elapsed_s": 5.666123599992716,
+          "phase": "hybrid50/generation",
+          "rss_mib": 5759.9765625,
+          "available_ram_mib": 14075.09375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.513700003386475
+        },
+        {
+          "elapsed_s": 6.181407899988699,
+          "phase": "hybrid50/generation",
+          "rss_mib": 5759.9765625,
+          "available_ram_mib": 14076.78515625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 17.377300013322383
+        },
+        {
+          "elapsed_s": 6.700350400002208,
+          "phase": "hybrid50/generation",
+          "rss_mib": 6271.98046875,
+          "available_ram_mib": 13561.82421875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.98479999625124
+        },
+        {
+          "elapsed_s": 7.215068799996516,
+          "phase": "hybrid50/generation",
+          "rss_mib": 6271.98046875,
+          "available_ram_mib": 13563.91015625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.612800001283176
+        },
+        {
+          "elapsed_s": 7.72941770000034,
+          "phase": "hybrid50/generation",
+          "rss_mib": 6271.98046875,
+          "available_ram_mib": 13562.0859375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.495399995008484
+        },
+        {
+          "elapsed_s": 8.243654199992307,
+          "phase": "hybrid50/generation",
+          "rss_mib": 6271.98046875,
+          "available_ram_mib": 13564.6484375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.68180000281427
+        },
+        {
+          "elapsed_s": 8.758956899997429,
+          "phase": "hybrid50/generation",
+          "rss_mib": 6783.98046875,
+          "available_ram_mib": 13040.65234375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 20.6019000033848
+        },
+        {
+          "elapsed_s": 9.281322399998317,
+          "phase": "hybrid50/generation",
+          "rss_mib": 6783.98046875,
+          "available_ram_mib": 13037.19921875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.37170000281185
+        },
+        {
+          "elapsed_s": 9.797301099999459,
+          "phase": "hybrid50/generation",
+          "rss_mib": 6783.98046875,
+          "available_ram_mib": 13045.203125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.147699999739416
+        },
+        {
+          "elapsed_s": 10.312391799991019,
+          "phase": "hybrid50/generation",
+          "rss_mib": 6783.98828125,
+          "available_ram_mib": 13042.58984375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.41530000010971
+        },
+        {
+          "elapsed_s": 10.828009599994402,
+          "phase": "hybrid50/generation",
+          "rss_mib": 7295.98828125,
+          "available_ram_mib": 12521.7265625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.087500007008202
+        },
+        {
+          "elapsed_s": 11.34361809999973,
+          "phase": "hybrid50/generation",
+          "rss_mib": 7295.98828125,
+          "available_ram_mib": 12526.90234375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.818499995977618
+        },
+        {
+          "elapsed_s": 11.858428399995319,
+          "phase": "hybrid50/generation",
+          "rss_mib": 7295.9921875,
+          "available_ram_mib": 12532.9375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.915000003180467
+        },
+        {
+          "elapsed_s": 12.373147999998764,
+          "phase": "hybrid50/generation",
+          "rss_mib": 7295.9921875,
+          "available_ram_mib": 12532.30859375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.686599999549799
+        },
+        {
+          "elapsed_s": 12.890892299998086,
+          "phase": "hybrid50/generation",
+          "rss_mib": 7295.9921875,
+          "available_ram_mib": 12540.078125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.552499997080304
+        },
+        {
+          "elapsed_s": 13.406964099995093,
+          "phase": "hybrid50/generation",
+          "rss_mib": 7807.9921875,
+          "available_ram_mib": 12014.03125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.118999999482185
+        },
+        {
+          "elapsed_s": 13.922285399996326,
+          "phase": "hybrid50/generation",
+          "rss_mib": 7807.99609375,
+          "available_ram_mib": 12019.16796875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.475000003585592
+        },
+        {
+          "elapsed_s": 14.437489899995853,
+          "phase": "hybrid50/generation",
+          "rss_mib": 7807.99609375,
+          "available_ram_mib": 12008.578125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.224399997852743
+        },
+        {
+          "elapsed_s": 14.951600799991866,
+          "phase": "hybrid50/generation",
+          "rss_mib": 7807.99609375,
+          "available_ram_mib": 12011.86328125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.589100009994581
+        },
+        {
+          "elapsed_s": 15.466025799993076,
+          "phase": "hybrid50/generation",
+          "rss_mib": 8319.99609375,
+          "available_ram_mib": 11492.19140625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.633199996547773
+        },
+        {
+          "elapsed_s": 15.980545799990068,
+          "phase": "hybrid50/generation",
+          "rss_mib": 8319.99609375,
+          "available_ram_mib": 11509.59765625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.566800000262447
+        },
+        {
+          "elapsed_s": 16.494983600001433,
+          "phase": "hybrid50/generation",
+          "rss_mib": 8319.99609375,
+          "available_ram_mib": 11505.09375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.950699987821281
+        },
+        {
+          "elapsed_s": 17.01086709999072,
+          "phase": "hybrid50/generation",
+          "rss_mib": 8319.99609375,
+          "available_ram_mib": 11509.53125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.266800000565127
+        },
+        {
+          "elapsed_s": 17.52515269999276,
+          "phase": "hybrid50/generation",
+          "rss_mib": 8832.015625,
+          "available_ram_mib": 10991.625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.47589999588672
+        },
+        {
+          "elapsed_s": 18.040711199995712,
+          "phase": "hybrid50/generation",
+          "rss_mib": 8832.02734375,
+          "available_ram_mib": 10996.3984375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.487300006090663
+        },
+        {
+          "elapsed_s": 18.555143799996586,
+          "phase": "hybrid50/generation",
+          "rss_mib": 8832.03515625,
+          "available_ram_mib": 10994.53125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.036699998541735
+        },
+        {
+          "elapsed_s": 19.07013179999194,
+          "phase": "hybrid50/generation",
+          "rss_mib": 8832.05078125,
+          "available_ram_mib": 11000.58203125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.962199998786673
+        },
+        {
+          "elapsed_s": 19.585093799993047,
+          "phase": "hybrid50/generation",
+          "rss_mib": 9344.05078125,
+          "available_ram_mib": 10488.8671875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.606599997729063
+        },
+        {
+          "elapsed_s": 20.099959499988472,
+          "phase": "hybrid50/generation",
+          "rss_mib": 9344.05078125,
+          "available_ram_mib": 10494.671875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.554100005421788
+        },
+        {
+          "elapsed_s": 20.614518599992152,
+          "phase": "hybrid50/generation",
+          "rss_mib": 9344.05078125,
+          "available_ram_mib": 10488.62890625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.715699999011122
+        },
+        {
+          "elapsed_s": 21.129148799998802,
+          "phase": "hybrid50/generation",
+          "rss_mib": 9344.05078125,
+          "available_ram_mib": 10493.98046875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.43510000151582
+        },
+        {
+          "elapsed_s": 21.64384039999277,
+          "phase": "hybrid50/generation",
+          "rss_mib": 9856.05078125,
+          "available_ram_mib": 9977.484375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.300800001365133
+        },
+        {
+          "elapsed_s": 22.15969529999711,
+          "phase": "hybrid50/generation",
+          "rss_mib": 9856.05859375,
+          "available_ram_mib": 9984.62109375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.266700003645383
+        },
+        {
+          "elapsed_s": 22.67495119999512,
+          "phase": "hybrid50/generation",
+          "rss_mib": 9856.06640625,
+          "available_ram_mib": 9974.91015625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.504499995382503
+        },
+        {
+          "elapsed_s": 23.19081319999532,
+          "phase": "hybrid50/generation",
+          "rss_mib": 9856.06640625,
+          "available_ram_mib": 9976.82421875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.988899998366833
+        },
+        {
+          "elapsed_s": 23.705790899999556,
+          "phase": "hybrid50/generation",
+          "rss_mib": 10368.19921875,
+          "available_ram_mib": 9468.171875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.002600000821985
+        },
+        {
+          "elapsed_s": 24.22077729999728,
+          "phase": "hybrid50/generation",
+          "rss_mib": 10368.19921875,
+          "available_ram_mib": 9467.2734375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.013299994985573
+        },
+        {
+          "elapsed_s": 24.736408799988567,
+          "phase": "hybrid50/generation",
+          "rss_mib": 10368.19921875,
+          "available_ram_mib": 9459.78515625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.645600003656
+        },
+        {
+          "elapsed_s": 25.251144599998952,
+          "phase": "hybrid50/generation",
+          "rss_mib": 10368.19921875,
+          "available_ram_mib": 9463.23828125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.724699994781986
+        },
+        {
+          "elapsed_s": 25.765999499999452,
+          "phase": "hybrid50/generation",
+          "rss_mib": 10707.26953125,
+          "available_ram_mib": 9121.3125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 15.200800000457093
+        },
+        {
+          "elapsed_s": 26.282317099990905,
+          "phase": "hybrid50/generation",
+          "rss_mib": 10880.2109375,
+          "available_ram_mib": 8939.46484375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.483000006293878
+        },
+        {
+          "elapsed_s": 26.79787339999166,
+          "phase": "hybrid50/generation",
+          "rss_mib": 10880.2109375,
+          "available_ram_mib": 8945.6640625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 12.783500002115034
+        },
+        {
+          "elapsed_s": 27.31170469999779,
+          "phase": "hybrid50/generation",
+          "rss_mib": 10880.2109375,
+          "available_ram_mib": 8943.6640625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.186300002620555
+        },
+        {
+          "elapsed_s": 27.826862399990205,
+          "phase": "hybrid50/generation",
+          "rss_mib": 10880.22265625,
+          "available_ram_mib": 8929.2265625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.278900005389005
+        },
+        {
+          "elapsed_s": 28.341167399994447,
+          "phase": "hybrid50/generation",
+          "rss_mib": 11392.2421875,
+          "available_ram_mib": 8567.11328125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.40419999905862
+        },
+        {
+          "elapsed_s": 28.855617399996845,
+          "phase": "hybrid50/generation",
+          "rss_mib": 11392.2421875,
+          "available_ram_mib": 8570.65234375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.884300002246164
+        },
+        {
+          "elapsed_s": 29.370550799998455,
+          "phase": "hybrid50/generation",
+          "rss_mib": 11392.2421875,
+          "available_ram_mib": 8567.0078125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.212900001439266
+        },
+        {
+          "elapsed_s": 29.88582339999266,
+          "phase": "hybrid50/generation",
+          "rss_mib": 11392.2421875,
+          "available_ram_mib": 8569.17578125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.69310000538826
+        },
+        {
+          "elapsed_s": 30.40158569999039,
+          "phase": "hybrid50/generation",
+          "rss_mib": 11904.2421875,
+          "available_ram_mib": 8058.6640625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.189800000167452
+        },
+        {
+          "elapsed_s": 30.91685689998849,
+          "phase": "hybrid50/generation",
+          "rss_mib": 11904.265625,
+          "available_ram_mib": 8061.28125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.35390001279302
+        },
+        {
+          "elapsed_s": 31.43223880000005,
+          "phase": "hybrid50/generation",
+          "rss_mib": 11904.2890625,
+          "available_ram_mib": 8051.22265625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.209299999289215
+        },
+        {
+          "elapsed_s": 31.94654809999338,
+          "phase": "hybrid50/generation",
+          "rss_mib": 11904.30078125,
+          "available_ram_mib": 8056.1875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.88500000757631
+        },
+        {
+          "elapsed_s": 32.461537499999395,
+          "phase": "hybrid50/generation",
+          "rss_mib": 12416.32421875,
+          "available_ram_mib": 7683.203125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.784099999815226
+        },
+        {
+          "elapsed_s": 32.977429499995196,
+          "phase": "hybrid50/generation",
+          "rss_mib": 12416.33984375,
+          "available_ram_mib": 7709.6640625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.789100004942156
+        },
+        {
+          "elapsed_s": 33.49260279998998,
+          "phase": "hybrid50/generation",
+          "rss_mib": 12416.3515625,
+          "available_ram_mib": 7702.36328125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.683099998161197
+        },
+        {
+          "elapsed_s": 34.007366599995294,
+          "phase": "hybrid50/generation",
+          "rss_mib": 12416.3515625,
+          "available_ram_mib": 7702.859375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.918399999965914
+        },
+        {
+          "elapsed_s": 34.52297700000054,
+          "phase": "hybrid50/generation",
+          "rss_mib": 12928.3515625,
+          "available_ram_mib": 7191.9921875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 15.093399997567758
+        },
+        {
+          "elapsed_s": 35.03986559998884,
+          "phase": "hybrid50/generation",
+          "rss_mib": 12928.3515625,
+          "available_ram_mib": 7199.65625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.928800010238774
+        },
+        {
+          "elapsed_s": 35.5559399999911,
+          "phase": "hybrid50/generation",
+          "rss_mib": 12928.3515625,
+          "available_ram_mib": 7186.2578125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.803300011204556
+        },
+        {
+          "elapsed_s": 36.07126219999918,
+          "phase": "hybrid50/generation",
+          "rss_mib": 12928.3515625,
+          "available_ram_mib": 7183.4140625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.418899998418055
+        },
+        {
+          "elapsed_s": 36.586822999990545,
+          "phase": "hybrid50/generation",
+          "rss_mib": 13440.35546875,
+          "available_ram_mib": 6674.64453125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.882300001569092
+        },
+        {
+          "elapsed_s": 37.10202449999633,
+          "phase": "hybrid50/generation",
+          "rss_mib": 13440.35546875,
+          "available_ram_mib": 6667.609375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.723700001719408
+        },
+        {
+          "elapsed_s": 37.6179703999951,
+          "phase": "hybrid50/generation",
+          "rss_mib": 13440.35546875,
+          "available_ram_mib": 6670.04296875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.825200003338978
+        },
+        {
+          "elapsed_s": 38.13298249999934,
+          "phase": "hybrid50/generation",
+          "rss_mib": 13440.35546875,
+          "available_ram_mib": 6667.69921875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.326899996376596
+        },
+        {
+          "elapsed_s": 38.64903509999567,
+          "phase": "hybrid50/generation",
+          "rss_mib": 13616.66796875,
+          "available_ram_mib": 6505.78125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 18.923600000562146
+        },
+        {
+          "elapsed_s": 39.169289299999946,
+          "phase": "hybrid50/generation",
+          "rss_mib": 13952.41796875,
+          "available_ram_mib": 6154.328125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.944899998023175
+        },
+        {
+          "elapsed_s": 39.68435579999641,
+          "phase": "hybrid50/generation",
+          "rss_mib": 13952.41796875,
+          "available_ram_mib": 6156.3203125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.821899992763065
+        },
+        {
+          "elapsed_s": 40.19937399998889,
+          "phase": "hybrid50/generation",
+          "rss_mib": 13952.41796875,
+          "available_ram_mib": 6155.05859375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.001500006997958
+        },
+        {
+          "elapsed_s": 40.716402299993206,
+          "phase": "hybrid50/generation",
+          "rss_mib": 13950.4375,
+          "available_ram_mib": 6159.2890625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 15.537100000074133
+        },
+        {
+          "elapsed_s": 41.233569699994405,
+          "phase": "hybrid50/generation",
+          "rss_mib": 14464.4375,
+          "available_ram_mib": 5639.78125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.992499996675178
+        },
+        {
+          "elapsed_s": 41.74941239999316,
+          "phase": "hybrid50/generation",
+          "rss_mib": 14464.4375,
+          "available_ram_mib": 5642.484375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.10270000633318
+        },
+        {
+          "elapsed_s": 42.26469179999549,
+          "phase": "hybrid50/generation",
+          "rss_mib": 14464.4375,
+          "available_ram_mib": 5638.51953125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.860699997167103
+        },
+        {
+          "elapsed_s": 42.779729499990935,
+          "phase": "hybrid50/generation",
+          "rss_mib": 14464.4375,
+          "available_ram_mib": 5640.9296875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.777200001641177
+        },
+        {
+          "elapsed_s": 43.29469660000177,
+          "phase": "hybrid50/generation",
+          "rss_mib": 14976.4375,
+          "available_ram_mib": 5148.16796875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.275399997131899
+        },
+        {
+          "elapsed_s": 43.81018079999194,
+          "phase": "hybrid50/generation",
+          "rss_mib": 14976.4375,
+          "available_ram_mib": 5133.6875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.442900002701208
+        },
+        {
+          "elapsed_s": 44.32490490000055,
+          "phase": "hybrid50/generation",
+          "rss_mib": 14976.4375,
+          "available_ram_mib": 5129.078125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.567799993325025
+        },
+        {
+          "elapsed_s": 44.839667699998245,
+          "phase": "hybrid50/generation",
+          "rss_mib": 14976.4375,
+          "available_ram_mib": 5137.3203125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.832500000717118
+        },
+        {
+          "elapsed_s": 45.354716100002406,
+          "phase": "hybrid50/generation",
+          "rss_mib": 15488.4375,
+          "available_ram_mib": 4622.07421875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.517799994791858
+        },
+        {
+          "elapsed_s": 45.870547099999385,
+          "phase": "hybrid50/generation",
+          "rss_mib": 15488.4375,
+          "available_ram_mib": 4618.36328125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.925799998105504
+        },
+        {
+          "elapsed_s": 46.38669859999209,
+          "phase": "hybrid50/generation",
+          "rss_mib": 15488.4375,
+          "available_ram_mib": 4605.05078125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.017200010130182
+        },
+        {
+          "elapsed_s": 46.90203549999569,
+          "phase": "hybrid50/generation",
+          "rss_mib": 15488.4375,
+          "available_ram_mib": 4617.0546875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.382099994691089
+        },
+        {
+          "elapsed_s": 47.417700099991634,
+          "phase": "hybrid50/generation",
+          "rss_mib": 16000.4375,
+          "available_ram_mib": 4096.03125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.616099997307174
+        },
+        {
+          "elapsed_s": 47.9333348999935,
+          "phase": "hybrid50/generation",
+          "rss_mib": 16000.4375,
+          "available_ram_mib": 4093.5390625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.88480000605341
+        },
+        {
+          "elapsed_s": 48.44855249999091,
+          "phase": "hybrid50/generation",
+          "rss_mib": 16000.44140625,
+          "available_ram_mib": 4078.28515625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.039900008356199
+        },
+        {
+          "elapsed_s": 48.96398449999106,
+          "phase": "hybrid50/generation",
+          "rss_mib": 16000.44140625,
+          "available_ram_mib": 3984.24609375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 16.51690001017414
+        },
+        {
+          "elapsed_s": 49.48191129999759,
+          "phase": "hybrid50/generation",
+          "rss_mib": 16512.46484375,
+          "available_ram_mib": 3384.3125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 15.15540000400506
+        },
+        {
+          "elapsed_s": 49.99852729999111,
+          "phase": "hybrid50/generation",
+          "rss_mib": 16512.46484375,
+          "available_ram_mib": 3358.1796875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.990999999805354
+        },
+        {
+          "elapsed_s": 50.51387779999641,
+          "phase": "hybrid50/generation",
+          "rss_mib": 16511.9375,
+          "available_ram_mib": 3422.8671875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.565400004154071
+        },
+        {
+          "elapsed_s": 51.028865899992525,
+          "phase": "hybrid50/generation",
+          "rss_mib": 16511.9375,
+          "available_ram_mib": 3430.9765625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 15.49390000582207
+        },
+        {
+          "elapsed_s": 51.54578039998887,
+          "phase": "hybrid50/generation",
+          "rss_mib": 16858.75,
+          "available_ram_mib": 3115.5546875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 15.32510000106413
+        },
+        {
+          "elapsed_s": 52.06246380000084,
+          "phase": "hybrid50/generation",
+          "rss_mib": 17023.9375,
+          "available_ram_mib": 2940.34765625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.928199987276457
+        },
+        {
+          "elapsed_s": 52.57789609998872,
+          "phase": "hybrid50/generation",
+          "rss_mib": 17023.9375,
+          "available_ram_mib": 2939.328125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.723900003242306
+        },
+        {
+          "elapsed_s": 53.093297599989455,
+          "phase": "hybrid50/generation",
+          "rss_mib": 17023.9609375,
+          "available_ram_mib": 2947.828125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.863400007016025
+        },
+        {
+          "elapsed_s": 53.61016640000162,
+          "phase": "hybrid50/generation",
+          "rss_mib": 16923.01953125,
+          "available_ram_mib": 3035.68359375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 21.367599998484366
+        },
+        {
+          "elapsed_s": 54.13274419998925,
+          "phase": "hybrid50/generation",
+          "rss_mib": 17535.89453125,
+          "available_ram_mib": 2430.6640625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.857300000381656
+        },
+        {
+          "elapsed_s": 54.648111099988455,
+          "phase": "hybrid50/generation",
+          "rss_mib": 17535.89453125,
+          "available_ram_mib": 2425.46484375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.114100005826913
+        },
+        {
+          "elapsed_s": 55.16435749999073,
+          "phase": "hybrid50/generation",
+          "rss_mib": 17535.89453125,
+          "available_ram_mib": 2427.34765625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.466100004734471
+        },
+        {
+          "elapsed_s": 55.67918869999994,
+          "phase": "hybrid50/generation",
+          "rss_mib": 17535.89453125,
+          "available_ram_mib": 2418.96875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.15370000177063
+        },
+        {
+          "elapsed_s": 56.194687199997134,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18047.89453125,
+          "available_ram_mib": 1927.54296875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.800000004470348
+        },
+        {
+          "elapsed_s": 56.711507200001506,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18047.89453125,
+          "available_ram_mib": 2529.1015625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.086799987126142
+        },
+        {
+          "elapsed_s": 57.227070599998115,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18047.921875,
+          "available_ram_mib": 2793.01171875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.024999996763654
+        },
+        {
+          "elapsed_s": 57.742450299992925,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18047.921875,
+          "available_ram_mib": 2891.23046875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.714500004425645
+        },
+        {
+          "elapsed_s": 58.25824369999464,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18559.921875,
+          "available_ram_mib": 2391.640625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.557700007571839
+        },
+        {
+          "elapsed_s": 58.77436250000028,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18559.921875,
+          "available_ram_mib": 2392.23828125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 13.588699992396869
+        },
+        {
+          "elapsed_s": 59.28996679998818,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18559.94921875,
+          "available_ram_mib": 2408.69921875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.28860001033172
+        },
+        {
+          "elapsed_s": 59.805942699997104,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18559.94921875,
+          "available_ram_mib": 2394.03515625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 12.781400000676513
+        },
+        {
+          "elapsed_s": 60.3206741999893,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18657.234375,
+          "available_ram_mib": 2307.1875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 14.438000012887642
+        },
+        {
+          "elapsed_s": 60.838532199995825,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.37109375,
+          "available_ram_mib": 2068.48828125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 29.22749999561347
+        },
+        {
+          "elapsed_s": 61.36946679999528,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.5703125,
+          "available_ram_mib": 2089.27734375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 20.961100002750754
+        },
+        {
+          "elapsed_s": 61.893212999988464,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18785.69140625,
+          "available_ram_mib": 2171.58203125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 19.089700013864785
+        },
+        {
+          "elapsed_s": 62.416671200000565,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.5859375,
+          "available_ram_mib": 2070.921875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 16.824299993459135
+        },
+        {
+          "elapsed_s": 62.93549509999866,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.5859375,
+          "available_ram_mib": 2061.640625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 28.93709999625571
+        },
+        {
+          "elapsed_s": 63.46722379999119,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.58984375,
+          "available_ram_mib": 2055.0625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 19.379800010938197
+        },
+        {
+          "elapsed_s": 63.989010999997845,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.58984375,
+          "available_ram_mib": 2052.8359375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 23.26139999786392
+        },
+        {
+          "elapsed_s": 64.51480019999144,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.62109375,
+          "available_ram_mib": 2030.22265625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 20.577600007527508
+        },
+        {
+          "elapsed_s": 65.03832969999348,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.6328125,
+          "available_ram_mib": 2032.8125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 22.87159999832511
+        },
+        {
+          "elapsed_s": 65.56276000000071,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.6328125,
+          "available_ram_mib": 2055.96484375,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 24.869699991540983
+        },
+        {
+          "elapsed_s": 66.0902161999984,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.6328125,
+          "available_ram_mib": 2030.9765625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 21.391799993580207
+        },
+        {
+          "elapsed_s": 66.61382059998868,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.6328125,
+          "available_ram_mib": 2036.7265625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 21.63460000883788
+        },
+        {
+          "elapsed_s": 67.13747659999353,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.6328125,
+          "available_ram_mib": 2036.9453125,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 32.23179999622516
+        },
+        {
+          "elapsed_s": 67.67200919998868,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.6328125,
+          "available_ram_mib": 2038.546875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 17.033600001013838
+        },
+        {
+          "elapsed_s": 68.1910663000017,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18822.6328125,
+          "available_ram_mib": 2087.41015625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 15.28870000038296
+        },
+        {
+          "elapsed_s": 68.70941689999017,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18785.4140625,
+          "available_ram_mib": 2136.69140625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 19.679800010635518
+        },
+        {
+          "elapsed_s": 69.23157730000094,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.6328125,
+          "available_ram_mib": 2036.94140625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 31.459999998332933
+        },
+        {
+          "elapsed_s": 69.76546429999871,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.6328125,
+          "available_ram_mib": 2036.81640625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 20.40709998982493
+        },
+        {
+          "elapsed_s": 70.28834220000135,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18785.9140625,
+          "available_ram_mib": 2124.16015625,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 19.157299990183674
+        },
+        {
+          "elapsed_s": 70.80933709999954,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18885.0703125,
+          "available_ram_mib": 2031.26171875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 19.14540000143461
+        },
+        {
+          "elapsed_s": 71.33123479998903,
+          "phase": "hybrid50/generation",
+          "rss_mib": 18882.6328125,
+          "available_ram_mib": 2031.88671875,
+          "device_observation": "unavailable",
+          "observer_wall_ms": 19.60260000487324
+        }
+      ]
+    }
+  ],
+  "progress": {
+    "done": 1,
+    "total": 1,
+    "message": "Matched full-model comparison complete"
+  },
+  "limitations": [
+    "One shared Windows consumer GPU; no CXL/DSA hardware or exclusive physical residency guarantee.",
+    "Independent processes share one machine/session; no external replication or unbiased population estimate.",
+    "Small public corpus and bounded continuations are not broad language quality evaluation.",
+    "Native reference is precision matched; passing low-precision bounds does not establish equivalence to FP32."
+  ],
+  "elapsed_s": 77.50392219999048,
+  "model": {
+    "repo": "Qwen/Qwen3-0.6B",
+    "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "license": "Apache-2.0",
+    "files_sha256": {
+      "config.json": "660db3b73d788119c04535e48cf9be5f55bc3100841a718637ae695b442f27dd",
+      "generation_config.json": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+      "LICENSE": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+      "merges.txt": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+      "model.safetensors": "f47f71177f32bcd101b7573ec9171e6a57f4f4d31148d38e382306f42996874b",
+      "README.md": "1ab64a26fcb3b461423b89a433a8c858f1bf8d4086f979cbb3ff878d47cf20e9",
+      "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+      "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+    },
+    "loader": "builtin Transformers, local safetensors only, trust_remote_code=False",
+    "load_s": 1.5195356000040192,
+    "dtype": "torch.float32",
+    "parameter_count": 596049920
+  },
+  "contract": {
+    "atol": 0.0001,
+    "rtol": 0.0001
+  },
+  "uncertainty_unit": "independent worker process, not adjacent tokens",
+  "input": {
+    "split": "test",
+    "offset": 6000,
+    "tokens": 40000,
+    "input_token_sha256": "cea1fcc070fc7f946712568cba29a29d6034c1108bfcdc7f7e78f7bb7a03f116",
+    "dataset": {
+      "repo": "Salesforce/wikitext",
+      "revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+      "subset": "wikitext-2-raw-v1",
+      "license": "CC-BY-SA-3.0 / GFDL",
+      "files_sha256": {
+        "wikitext-2-raw-v1/train-00000-of-00001.parquet": "e83889baabc497075506f91975be5fac0d45c5290b6b20582c8cd1e853d0c9f7",
+        "wikitext-2-raw-v1/validation-00000-of-00001.parquet": "204929b7ff9d6184953f867dedb860e40aa69c078fc1e54b3baaa8fb28511c4c",
+        "wikitext-2-raw-v1/test-00000-of-00001.parquet": "5f1bea067869d04849c0f975a2b29c4ff47d867f484f5010ea5e861eab246d91"
+      },
+      "attribution": "WikiText by Stephen Merity et al.; source text from Wikipedia. See https://huggingface.co/datasets/Salesforce/wikitext"
+    },
+    "scope": "Contiguous public text; finite continuation NLL only, not a downstream task suite"
+  },
+  "method_order": [
+    "hybrid50"
+  ],
+  "protocol": {
+    "id": "atlas-attention-v2-93518-a1",
+    "comparison": "Matched dtype native SDPA; same corpus history in separate validation replay",
+    "timing": "Full free greedy generation: prefill, token selection, input preparation, append/eviction/transfers, synchronized forwards. Validation is a separate replay.",
+    "new_tokens": 4,
+    "prefill_logits": "Final token only for all arms",
+    "window_tokens": 256,
+    "precision": "FP16/BF16 KV storage, FP32 partition math; conversion costs included. Native SDPA uses matched model dtype.",
+    "quality": "Real next-token NLL and distribution diagnostics over a bounded continuation; no general quality or training claim",
+    "memory": "Allocator peaks, process RSS, board observations; Windows WDDM may spill. No hard quota or CXL hardware."
+  },
+  "finished_at": "2026-10-18T04:14:11.413199+00:00"
+}

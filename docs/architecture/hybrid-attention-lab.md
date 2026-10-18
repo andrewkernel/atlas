@@ -38,7 +38,7 @@ CLI and API invoke the same registered workers. No arbitrary import paths, comma
 
 Seeded CPU tensors are the common input; input hashes, source hashes, dirty-diff hash, package versions, hardware, timing samples and configuration are retained. Warm up all methods. Synchronize CUDA before and after each wall-time sample. Shuffle candidate order per length. Do not substitute CUDA-event kernel time for end-to-end time. Record setup separately. Latencies show median and p90 plus raw samples; allocated memory is an allocator measurement, not exclusive VRAM residency. Desktop interference remains possible.
 
-Calibration lengths and held-out lengths are disjoint. Selector cost/calibration cost are recorded, as are the best budget-eligible fixed comparator, per-case budget-eligible measured optimum and regret. Measured optimum is descriptive and cannot supply the policy with held-out timing. Model uses the policy calibrated before its timing and retains model-loading, prefill and decoding costs separately.
+Calibration lengths and held-out lengths are disjoint. Selector cost/calibration cost are recorded, as are the best budget-eligible fixed comparator, per-case budget-eligible measured optimum and regret. Measured optimum is descriptive and cannot supply the policy with held-out timing. Current model routing abstains on layer-only calibration: equal head dimensions do not establish model execution or logit validity.
 
 ## Architecture review before implementation
 
@@ -60,3 +60,15 @@ Reviewed 2026-10-17 by the implementing agent, not an independent reviewer.
 ## Completion evidence
 
 Meaningful runtime tests, cancellation/API controls, real CUDA sweeps, pretrained model inference through all supported methods, an inspected browser UI with working run/filter/detail/export/model actions, architecture/research notes, exact environment export and a one-command local launcher. Negative performance findings remain visible.
+
+## Research v2 implementation
+
+`runtime.DecodeCache` stores one fixed GPU ring and an append-only pinned host cache. Eviction copies one token, advances a cursor and represents wraparound with two views. Stable log-sum-exp fusion combines host/GPU partitions; no full-window shift or mirrored GPU storage is hidden in append. `ShiftDecodeCache` remains for the measured ablation. Query and KV heads can differ through GQA. FP16/BF16 storage is promoted for partition math and conversion costs stay inside timing.
+
+`qwen.QwenAdapter` wraps installed builtin Qwen3 projections, Q/K normalization and rotary embeddings. Native causal prefill is shared, with final-token logits only for long prompts. The adapter owns persistent decoding caches before framework cache concatenation. Real model runs time free greedy generation and validate separately on identical real corpus continuations. Captured layer Q/K/V are checked with the separately authored NumPy oracle where bounded captures are enabled.
+
+`protocol.py` freezes exact assets, core source identities, cases, precision relations and process-block analysis before confirmation. Original attempts and amendments remain inspectable. `selector.py` binds calibration to shape, precision, hardware/software and execution scope, counts temporary GPU KV materialization/promotion, and abstains outside support. Its budget excludes weights, query/output, scores and workspace; it is never a physical-residency promise. Unknown/failed numerical evidence blocks eligibility.
+
+`attention_v2_study.py` uses the owned worker supervisor for independent process blocks. `attention_v2_report.py` checks exact raw hashes and recomputes model ratios, small-n block intervals, cache ablations, rule/fixed/oracle comparisons and calibration costs. Memory-pressure records retain all outcomes. An external shared-board trace supplements unavailable in-worker NVML observations, with timestamp/source labels; absent measurements stay unknown. Neither allocator nor board readings establish exclusive process residency under WDDM.
+
+The UI's Research study page reads the frozen registry and derived records, filters precision/context, displays numerical eligibility and complete generation comparisons, exports evidence and repeats registered cases in fresh workers. Original study ledgers stay fixed when creating separately named replications. See the v2 report and reproduction kit for current evidence and limits.

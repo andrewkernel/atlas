@@ -1,5 +1,31 @@
 # Atlas
 
+## System architecture
+
+```mermaid
+flowchart LR
+    UI[Interactive local dashboard] --> API[Loopback API / validated experiment registry]
+    CLI[Reproducible CLI] --> JOB[Owned bounded worker / one GPU job at a time]
+    API --> JOB
+    P[Versioned protocol + pinned model/corpus] --> JOB
+    JOB --> AD[GPT-2 / Qwen3 workload adapters]
+    AD --> KV[Persistent CPU-GPU KV cache]
+    KV --> EX[Native SDPA / dense / hybrid execution]
+    EX --> OBS[Timing, memory and numerical observations]
+    OR[Independent oracle + reference replay] --> OBS
+    OBS --> GATE[Eligibility / reject / abstain]
+    OBS --> RAW[Immutable source-bound JSON evidence]
+    RAW --> STATS[Paired run-level analysis and reports]
+    STATS --> UI
+    RAW --> UI
+```
+
+The worker executes reviewed builtin adapters using local safetensors. The backend binds to this computer, validates requests, serializes GPU work and owns cancellation/timeout cleanup. Scientific validity is assessed separately from execution completion. Windows job ownership is a lifecycle boundary, not a hostile-code sandbox or exclusive hardware allocation.
+
+The [v2 research study](docs/research/attention-v2/report.md) adds a single-storage ring cache, GQA, a separate NumPy float64 oracle, pinned Qwen3/public-text workloads, matched FP32/FP16/BF16 comparisons, independent process blocks, full-generation timings, real 32k/40k memory-pressure cases and explicit rejection/abstention. Its dashboard distinguishes execution status from numerical eligibility and shows process-level uncertainty. The [frozen protocol](docs/research/attention-v2/protocol-amendment-1.json), [work ledger](docs/roadmap/research-v2-plan.md) and [reproduction kit](docs/research/attention-v2/reproduce.md) record measured scope and remaining limits. The report states whether all planned cases have finished.
+
+**These benchmarks cannot be described as 100% accurate or unbiased.** Failed logit checks remain failures; full-pressure numerical quality is unknown. Public-text selection, small process counts, shared Windows hardware and one modern model family limit generalization. There is no measured CXL/DSA execution, external independent replication or established policy superiority.
+
 **New: [Attention Lab](docs/attention-lab.md)** is an executable local CPU-GPU attention workspace, with real CUDA benchmarks, a pretrained GPT-2 integration, persistent KV caches, and an interactive dashboard. Launch with `./Start-Atlas.ps1`. Its [architecture and review](docs/architecture/hybrid-attention-lab.md) distinguish this owner-authorized engineering track from the historical training proposal below. This is dense attention, not a CXL implementation or a reproduction of HGCA/BEYOND's sparse runtime.
 
 A research and engineering specification for a local scientific-fidelity-aware ML compute optimizer.

@@ -1,0 +1,415 @@
+{
+  "protocol_id": "atlas-attention-v2-93518-a1",
+  "started_at": "2026-10-18T03:55:59.792646+00:00",
+  "cases": [
+    {
+      "case_id": "case-000",
+      "run_id": "research-124045198c2f",
+      "status": "completed",
+      "sha256": "2adf20028f260aa6f2aedeae87256ac02a3802748dd6589d6eabba55f9c70fda",
+      "elapsed_s": 14.108614600001602,
+      "error": null
+    },
+    {
+      "case_id": "case-001",
+      "run_id": "research-ef2a2ce87cbc",
+      "status": "completed",
+      "sha256": "6c70bd074e491f4391aacd88f255e701beabaf593000444eced0d72e51ad5fe6",
+      "elapsed_s": 10.872602599993115,
+      "error": null
+    },
+    {
+      "case_id": "case-002",
+      "run_id": "research-6b14dc946731",
+      "status": "completed",
+      "sha256": "15aa6fdd62c2da9da0850d7670ae3313648fe45aa42fb80763044b49119081cc",
+      "elapsed_s": 15.724220100004459,
+      "error": null
+    },
+    {
+      "case_id": "case-003",
+      "run_id": "research-f1b21dfea411",
+      "status": "completed",
+      "sha256": "507af795d6bcf5de587ee733b79aaffc92386b16ee1174d624592b113d631aa0",
+      "elapsed_s": 54.86781160000828,
+      "error": null
+    },
+    {
+      "case_id": "case-004",
+      "run_id": "research-2e802070b97e",
+      "status": "completed",
+      "sha256": "7ad9093186424c1632f14d31f4192c2ff9305aaf312bad3e3111ffc8937cba5e",
+      "elapsed_s": 14.950899200004642,
+      "error": null
+    },
+    {
+      "case_id": "case-005",
+      "run_id": "research-889c51bc936c",
+      "status": "completed",
+      "sha256": "4ec6276f8d733c12d06eb0f7a3de6ae8715f26888d73166e7182441da5c08514",
+      "elapsed_s": 10.153560999999172,
+      "error": null
+    },
+    {
+      "case_id": "case-006",
+      "run_id": "research-4d36a2ca2445",
+      "status": "completed",
+      "sha256": "52e67f60bf4fabbb13e51aae3591bdd8d7e6fec1b27e789dd886f64707dc0b94",
+      "elapsed_s": 12.455742799997097,
+      "error": null
+    },
+    {
+      "case_id": "case-007",
+      "run_id": "research-c71bd4e11bb2",
+      "status": "completed",
+      "sha256": "a9ae3605c3e8b8b0c7123e4b6f38f5a84ddc4b8d7164964cf778fe7acf0012a5",
+      "elapsed_s": 27.87580419999722,
+      "error": null
+    },
+    {
+      "case_id": "case-008",
+      "run_id": "research-ef2c446e3ef6",
+      "status": "completed",
+      "sha256": "35862fed060cf19dc9159c2d800612464e51a511143dad36a6c75708ef7a48f5",
+      "elapsed_s": 14.727296400000341,
+      "error": null
+    },
+    {
+      "case_id": "case-009",
+      "run_id": "research-268a2c46d2c1",
+      "status": "completed",
+      "sha256": "978a85b1ad80172b1b3279fb843a21f9a560fa51afcc21722e8a4d2aed732752",
+      "elapsed_s": 9.345103899991955,
+      "error": null
+    },
+    {
+      "case_id": "case-010",
+      "run_id": "research-5c3ffda615c6",
+      "status": "completed",
+      "sha256": "73ef4568dec0b22acbf6565708fbe4c328244698a1f68d723746253b3bbf7af2",
+      "elapsed_s": 11.884828800000832,
+      "error": null
+    },
+    {
+      "case_id": "case-011",
+      "run_id": "research-44429867dcf4",
+      "status": "completed",
+      "sha256": "d125ec62ecee9422ade3b79502f62766cb8d9e08572f0002a7e3e90727b23e9f",
+      "elapsed_s": 27.60271950000606,
+      "error": null
+    },
+    {
+      "case_id": "case-012",
+      "run_id": "research-410fa5ac3b46",
+      "status": "completed",
+      "sha256": "1d075c57edc672062ad62a53d1b4cc9534bcc08c5f809a1178314811a4c46b18",
+      "elapsed_s": 2.717756100013503,
+      "error": null
+    },
+    {
+      "case_id": "case-013",
+      "run_id": "research-905c386f6a00",
+      "status": "completed",
+      "sha256": "559be4609d9bd4c20433926979581b8a8cf827ddca334b3ef73b939227e95228",
+      "elapsed_s": 52.21423490000598,
+      "error": null
+    },
+    {
+      "case_id": "case-014",
+      "run_id": "research-55b9b8318fce",
+      "status": "completed",
+      "sha256": "293839b80253e2bf83cd7ab0607b9e5c4e08c8526608679ce2be014c082b011e",
+      "elapsed_s": 56.27244430000428,
+      "error": null
+    },
+    {
+      "case_id": "case-015",
+      "run_id": "research-7b9465b3af6f",
+      "status": "completed",
+      "sha256": "92bc6185437ff7aee9627a5bf6b132d6ac9dc28d5b005da2f6f8e9517dc697a6",
+      "elapsed_s": 100.52632830000948,
+      "error": null
+    },
+    {
+      "case_id": "case-016",
+      "run_id": "research-e31401590cd3",
+      "status": "completed",
+      "sha256": "465d263136f17411069af8c5aedee58752bffa78e3e87ac9df4197bd82a3f9a4",
+      "elapsed_s": 77.86143960000481,
+      "error": null
+    },
+    {
+      "case_id": "case-017",
+      "run_id": "research-7dffa33b06a7",
+      "status": "completed",
+      "sha256": "90173bd9b6c738d468417439fc0167f83a9054148a6f7da243a7236c0dddabda",
+      "elapsed_s": 15.430787999997847,
+      "error": null
+    },
+    {
+      "case_id": "case-018",
+      "run_id": "research-595df129ed6b",
+      "status": "completed",
+      "sha256": "86fbf6f6754d5344ac9cec609f0d58f3f17404020a8ecc35ff64c918d9485937",
+      "elapsed_s": 10.039184699999169,
+      "error": null
+    },
+    {
+      "case_id": "case-019",
+      "run_id": "research-39626e7eb925",
+      "status": "completed",
+      "sha256": "dbae9af43eb4e3a3a1d406f89021ed65c94eef17af341614c6479385bf13b596",
+      "elapsed_s": 14.461694899990107,
+      "error": null
+    },
+    {
+      "case_id": "case-020",
+      "run_id": "research-f2fefa4946bc",
+      "status": "completed",
+      "sha256": "f3e8ac39cf174fb0d708bc656887513118aa6ce768b73df43be3ef956591b054",
+      "elapsed_s": 50.92328839999391,
+      "error": null
+    },
+    {
+      "case_id": "case-021",
+      "run_id": "research-f7d60955213c",
+      "status": "completed",
+      "sha256": "96386b8b947973a45c7dfc347c121d58b406184c5a4a56618ddc5bca9a488335",
+      "elapsed_s": 15.018898599999375,
+      "error": null
+    },
+    {
+      "case_id": "case-022",
+      "run_id": "research-57080c3acbaa",
+      "status": "completed",
+      "sha256": "1803332251ed85a64a8334a8f1d75b9d6e4d024a94b5fa12f67f1268c64933fd",
+      "elapsed_s": 9.811753799993312,
+      "error": null
+    },
+    {
+      "case_id": "case-023",
+      "run_id": "research-dce1d3f90825",
+      "status": "completed",
+      "sha256": "323e77e1aee67aa694f9fe480e25e76843aabfe0079aa13814d82d5bb7e2d69e",
+      "elapsed_s": 12.299235900005442,
+      "error": null
+    },
+    {
+      "case_id": "case-024",
+      "run_id": "research-5b309c8a50b5",
+      "status": "completed",
+      "sha256": "4d3a6422302daed67a19ee523282b0a615207a280f8f65bd0ae166a303a66c4c",
+      "elapsed_s": 27.755281400008244,
+      "error": null
+    },
+    {
+      "case_id": "case-025",
+      "run_id": "research-24cebc38957b",
+      "status": "completed",
+      "sha256": "929008180ecb495a891cbc3e88803a5c60d4eee50f41f6e0f7dd53e66991b3c9",
+      "elapsed_s": 14.910313600004883,
+      "error": null
+    },
+    {
+      "case_id": "case-026",
+      "run_id": "research-ad4d3f7c707d",
+      "status": "completed",
+      "sha256": "8498d45bbcf8f34ce79e8a906813e29712f13fc324d7c295763d95fa39063923",
+      "elapsed_s": 9.43126409999968,
+      "error": null
+    },
+    {
+      "case_id": "case-027",
+      "run_id": "research-d38595348d06",
+      "status": "completed",
+      "sha256": "d75eee80a6b776ae920f9d96ea3e1df0ffa75bdfbd5907a1346ae4b1250a7ce7",
+      "elapsed_s": 11.781803799996851,
+      "error": null
+    },
+    {
+      "case_id": "case-028",
+      "run_id": "research-27f86644c402",
+      "status": "completed",
+      "sha256": "75c169cfd915077fe79d55ac7b87b864ab343a8ed2e7164013d4f6e040c16043",
+      "elapsed_s": 27.555630700007896,
+      "error": null
+    },
+    {
+      "case_id": "case-029",
+      "run_id": "research-68d980cae62e",
+      "status": "completed",
+      "sha256": "d6c888aa88471bf88bd0efbecb4df0d2f437d391b4db5fd8e4579c9126361b14",
+      "elapsed_s": 2.6680573000048753,
+      "error": null
+    },
+    {
+      "case_id": "case-030",
+      "run_id": "research-b5cada72a5c1",
+      "status": "completed",
+      "sha256": "278e29b23a268ccad38f8eb92c761228500c454e5bf88484d16fd22af1fc3989",
+      "elapsed_s": 48.87634689999686,
+      "error": null
+    },
+    {
+      "case_id": "case-031",
+      "run_id": "research-d903b5f8f44c",
+      "status": "completed",
+      "sha256": "d79e0a8d2bae6e1c7127522f66dba1abe21a54d1cdd1d881aec73ddf1512c8d1",
+      "elapsed_s": 56.668734100006986,
+      "error": null
+    },
+    {
+      "case_id": "case-032",
+      "run_id": "research-20fca72def50",
+      "status": "completed",
+      "sha256": "a735e2f9a11896022dcfe5def0453ed869fc3ba16f1d8fcc0a2965cf99af7a90",
+      "elapsed_s": 96.61657959999866,
+      "error": null
+    },
+    {
+      "case_id": "case-033",
+      "run_id": "research-89452d37683a",
+      "status": "completed",
+      "sha256": "397f245943c4ec25640fbc256aca2831d0d26692c97915a91fca26508f7d5fbb",
+      "elapsed_s": 77.50392219999048,
+      "error": null
+    },
+    {
+      "case_id": "case-034",
+      "run_id": "research-1a584ae780d2",
+      "status": "completed",
+      "sha256": "58ee11047020fc230a6916cdd4df293d52a48f15168a62a16276b8018b92a9ad",
+      "elapsed_s": 14.92506819999835,
+      "error": null
+    },
+    {
+      "case_id": "case-035",
+      "run_id": "research-33eba5a66d5d",
+      "status": "completed",
+      "sha256": "1c11efbb17c6c4bdbe36af629d0213d89d4dc69c628b2c742b132611023d7649",
+      "elapsed_s": 10.186612499994226,
+      "error": null
+    },
+    {
+      "case_id": "case-036",
+      "run_id": "research-3a98758e22a6",
+      "status": "completed",
+      "sha256": "b7b5c93f90d671474f738cbd7619da73289b97e32efe502bc14fb3655136e758",
+      "elapsed_s": 14.696003299992299,
+      "error": null
+    },
+    {
+      "case_id": "case-037",
+      "run_id": "research-9129631728ee",
+      "status": "completed",
+      "sha256": "7befe6821ba5c9a8f768089acf68ca12560295c1ed10d2398631caaeb6cdee21",
+      "elapsed_s": 50.719353699998464,
+      "error": null
+    },
+    {
+      "case_id": "case-038",
+      "run_id": "research-7a81fd8dda1a",
+      "status": "completed",
+      "sha256": "7b4d8670b32c7a7c0448a4b7b6bbef413d67bca053ce4d591dab22dd7e04c987",
+      "elapsed_s": 14.842667399992933,
+      "error": null
+    },
+    {
+      "case_id": "case-039",
+      "run_id": "research-a098d4a02a0b",
+      "status": "completed",
+      "sha256": "93357b2eea4ce1d53495e2a71c49e29739e5c5b2ca062e0f723d18527e3301c7",
+      "elapsed_s": 9.98592859999917,
+      "error": null
+    },
+    {
+      "case_id": "case-040",
+      "run_id": "research-be6d763e986f",
+      "status": "completed",
+      "sha256": "22d71b59b19208da2fd0cdb1aba495d0c8e9f34663f3c6bc1edeb2bf4e0842f2",
+      "elapsed_s": 12.22806199999468,
+      "error": null
+    },
+    {
+      "case_id": "case-041",
+      "run_id": "research-6e3185c54f00",
+      "status": "completed",
+      "sha256": "46aa91955400e46322366f9945f42ee63f974fa725548a9adb0cbd9855fd1c84",
+      "elapsed_s": 27.8022947999998,
+      "error": null
+    },
+    {
+      "case_id": "case-042",
+      "run_id": "research-cce95229e73c",
+      "status": "completed",
+      "sha256": "07cf0106cba236a11b442217a1f1ae8954e616d8876d3369e1f9a571368e9ce9",
+      "elapsed_s": 14.94682080000348,
+      "error": null
+    },
+    {
+      "case_id": "case-043",
+      "run_id": "research-950edb75f071",
+      "status": "completed",
+      "sha256": "1d8417d98bddb7e5a007248980915c4b48c0b11a2d4483804b4a710a1a897c87",
+      "elapsed_s": 9.584320699999807,
+      "error": null
+    },
+    {
+      "case_id": "case-044",
+      "run_id": "research-9883bdd4eb78",
+      "status": "completed",
+      "sha256": "a5688bc70a5f632e52109f115bc28e933ac48ef1e6c6378e668a12b74cb10fc0",
+      "elapsed_s": 11.870014300002367,
+      "error": null
+    },
+    {
+      "case_id": "case-045",
+      "run_id": "research-bbb888aea40a",
+      "status": "completed",
+      "sha256": "189bd4afbb73250b50b5b12daf3136b1de0b3aa24083e469f212cf6d0beb1619",
+      "elapsed_s": 27.51453749999928,
+      "error": null
+    },
+    {
+      "case_id": "case-046",
+      "run_id": "research-ab58a8620666",
+      "status": "completed",
+      "sha256": "5e69881f11908676c2366e30a4463d70c1720920d201c70e06e87ef531c83f73",
+      "elapsed_s": 2.709386300004553,
+      "error": null
+    },
+    {
+      "case_id": "case-047",
+      "run_id": "research-9edb21ac4aba",
+      "status": "completed",
+      "sha256": "a4f3a1741f7dbd40960821346cf97546025b2eacf9d156fd12a4142047326fd8",
+      "elapsed_s": 49.81648359999235,
+      "error": null
+    },
+    {
+      "case_id": "case-048",
+      "run_id": "research-a9c2d3ec893f",
+      "status": "completed",
+      "sha256": "307f720ad4541c6564e61a63afc9edd0fb2b1cbf434bf83f06e25e676b2da411",
+      "elapsed_s": 56.27412479999475,
+      "error": null
+    },
+    {
+      "case_id": "case-049",
+      "run_id": "research-d776a4f83e1a",
+      "status": "completed",
+      "sha256": "98a2301ddbad263cffc70d1b759050cedb7cd226950faa0485319f2e6bc555ac",
+      "elapsed_s": 96.65366039999935,
+      "error": null
+    },
+    {
+      "case_id": "case-050",
+      "run_id": "research-9bc72aa5f3d2",
+      "status": "completed",
+      "sha256": "a2018bf304ade1e49419c238706b1b84d5995c718ea647f2afbdcde77eb79847",
+      "elapsed_s": 77.83589980000397,
+      "error": null
+    }
+  ],
+  "finished_at": "2026-10-18T04:23:13.650138+00:00"
+}
