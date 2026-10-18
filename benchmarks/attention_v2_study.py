@@ -23,6 +23,8 @@ def main():
     if args.case_id and not any(c['case_id']==args.case_id for c in protocol['cases']):raise ValueError('Unregistered case ID')
     ledger_path=output/'execution.json' if args.replication_id else EXECUTION_PATH
     ledger=json.loads(ledger_path.read_text()) if ledger_path.exists() else {'protocol_id':protocol['id'],'started_at':utc(),'cases':[]}
+    if len(ledger['cases'])==len(protocol['cases']) and ledger.get('finished_at'):
+        print('Study already complete; use a new --replication-id for fresh evidence.');return
     if not ledger['cases']:
         import atlas.attention.server as controller
         ledger['supervisor_source_sha256']=sha(Path(__file__).read_bytes())

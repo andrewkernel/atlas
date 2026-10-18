@@ -19,7 +19,7 @@ Preparation pins builtin Qwen3-0.6B at `c1899de289a04d12100db370d81485cdf75e47ca
 ## Controls and fresh repeats
 
 ```powershell
-.tools/attention-env/Scripts/python.exe -m pytest tests/test_attention_v2.py tests/test_attention_runtime.py tests/test_attention_model.py tests/test_attention_api.py -q
+.tools/attention-env/Scripts/python.exe -m pytest tests/test_attention_runtime.py tests/test_attention_model.py tests/test_attention_v2.py tests/test_attention_selector.py tests/test_attention_api.py tests/test_attention_study_api.py tests/test_attention_report_integrity.py -q
 .tools/attention-env/Scripts/python.exe benchmarks/attention_v2_study.py analyze
 .tools/attention-env/Scripts/python.exe benchmarks/attention_v2_study.py run --replication-id independent-01
 .tools/attention-env/Scripts/python.exe benchmarks/attention_v2_study.py analyze --replication-id independent-01
