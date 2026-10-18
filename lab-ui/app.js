@@ -1,3 +1,4 @@
+import {initTuning} from './tuning.js';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const colors={gpu_dense:'#428e8c',resident:'#326b49',native:'#326b49',copy:'#bc8b48',cpu:'#7c8ca0',hybrid25:'#c2b4d1',hybrid50:'#9c85b5',hybrid75:'#68517f',adaptive:'#b06852'};
@@ -24,8 +25,8 @@ async function refresh(prefer){
   const [session,runs,reference]=await Promise.all([api('/api/session'),api('/api/runs'),api('/data/reference-history.json').catch(()=>({runs:[]}))]);
   state.referenceRuns=new Set(reference.runs||[]);
   state.token=session.token;state.runs=runs;state.active=session.active_run;
-  $('#run-model').disabled=!session.model_ready||!!state.active;
-  $('#new-run').disabled=!!state.active;
+  $('#run-model').disabled=!session.model_ready||!!state.active||!!session.tuning_active;
+  $('#new-run').disabled=!!state.active||!!session.tuning_active;
   const filtered=runs.filter(r=>r.config?.kind===state.kind);
   const selection=prefer||state.selected;
   state.selected=filtered.some(r=>r.id===selection)?selection:(filtered.find(r=>r.status==='completed')||filtered[0])?.id;
@@ -142,12 +143,14 @@ async function start(config){
 
 function view(){
   const requested=location.hash.slice(1)||'experiments';
-  state.view=['experiments','study','validation','model','architecture','research'].includes(requested)?requested:'experiments';
+  state.view=['experiments','tuning','study','validation','model','architecture','research'].includes(requested)?requested:'experiments';
   $$('.view').forEach(el=>el.hidden=el.id!==`view-${state.view}`);
   $$('nav a').forEach(a=>{a.classList.toggle('active',a.dataset.view===state.view);a.setAttribute('aria-current',a.dataset.view===state.view?'page':'false')});
   const titles={experiments:['Find the crossover.','Explore where attention belongs: GPU, CPU, or somewhere between.'],model:['Follow every token.','Run a pretrained model through the same execution paths.'],architecture:['Built to be inspected.','The runtime, the evidence, and the decisions connecting them.'],research:['Start with the papers.','Source material, connections, and the boundaries of this study.']};
   titles.study=['Test the claim.','Frozen cases, independent process blocks, and honest boundaries.'];
   titles.validation=['Show the evidence.','Long-context memory tradeoffs, full-model checks, and a path to reproduce them.'];
+  titles.tuning=['Measure. Check. Apply.','Find CPU and memory settings for your model workload.'];
+  $('#new-run').hidden=state.view==='tuning';
   $('#page-title').textContent=titles[state.view][0];$('#page-subtitle').textContent=titles[state.view][1];$('#breadcrumb').textContent=state.view==='model'?'Model playground':state.view==='architecture'?'Architecture':state.view==='research'?'Research library':'Attention Lab';
   if(state.view==='study')loadStudy().catch(e=>notice(e.message));
   if(state.view==='validation')loadValidation().catch(e=>notice(e.message));
@@ -238,6 +241,7 @@ window.addEventListener('hashchange',view);
 const papers=[['hgca','HGCA: Hybrid GPU-CPU Attention for Long Context LLM Inference','2025 · arXiv · 14 pages','Recent KV entries on the GPU, selected older entries processed on the CPU. The closest starting point for this runtime.'],['beyond','Scaling Attention Beyond GPUs for LLM Inference','HPDC 2026 · 12 pages','BEYOND combines KV management and hybrid attention into an inference runtime. Atlas starts with dense attention to isolate execution costs.'],['nomad','NOMAD: Non-Exclusive Memory Tiering via Transactional Page Migration','OSDI 2024 · 18 pages','Transactional migration and shadow copies motivate measuring the cost of moving data, alongside placement.'],['miku','Architectural and System Implications of CXL-enabled Tiered Memory','2025 preprint · 14 pages','MIKU studies interference between CXL requests and local DDR. This PC does not supply a CXL validation environment.'],['dsa','DSA-2LM: A CPU-Free Tiered Memory Architecture with Intel DSA','USENIX ATC 2025 · 10 pages','Accelerated page migration highlights how copying overhead changes the value of tiering decisions.']];
 const paperSources={hgca:'https://arxiv.org/pdf/2507.03153',beyond:'https://huilucs.github.io/pubs/hpdc2026.pdf',nomad:'https://www.usenix.org/system/files/osdi24-xiang.pdf',miku:'https://arxiv.org/pdf/2503.17864v2',dsa:'https://ranger.uta.edu/~jrao/papers/atc25.pdf'};
 $('#paper-list').innerHTML=papers.map(([id,title,meta,description],i)=>`<article class="paper"><span class="paper-number">0${i+1}</span><div><h2><a href="${paperSources[id]}" target="_blank" rel="noopener">${esc(title)}</a></h2><p>${esc(description)}</p><small>${esc(meta)}</small></div><a href="${paperSources[id]}" target="_blank" rel="noopener" aria-label="Open ${esc(title)} PDF">↗</a></article>`).join('');
+initTuning(api);
 view();
 await Promise.all([refresh().catch(e=>notice(`Could not connect to the local workspace: ${e.message}`)),api('/api/architecture').then(d=>$('#architecture-text').textContent=d.markdown).catch(e=>notice(e.message))]);
 setInterval(()=>{if(state.active)refresh().catch(e=>notice(`Connection interrupted: ${e.message}`))},1500);

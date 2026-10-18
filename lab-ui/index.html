@@ -14,6 +14,7 @@
   <div class="workspace-label">PERSONAL RESEARCH</div>
   <nav aria-label="Workspace">
     <a href="#experiments" data-view="experiments"><span class="nav-icon">◫</span>Experiments</a>
+    <a href="#tuning" data-view="tuning"><span class="nav-icon">↗</span>Tune performance</a>
     <a href="#study" data-view="study"><span class="nav-icon">⊞</span>Research study</a>
     <a href="#validation" data-view="validation"><span class="nav-icon">✓</span>Long-context evidence</a>
     <a href="#model" data-view="model"><span class="nav-icon">⌘</span>Model playground</a>
@@ -41,6 +42,36 @@
         <div class="table-wrap"><table><thead><tr><th><button data-sort="context">Context ↕</button></th><th>Execution plan</th><th>Phase</th><th><button id="time-sort" data-sort="median_ms">Median ↕</button></th><th id="secondary-time-heading">p90</th><th id="memory-heading">GPU KV</th><th>Numerics</th><th></th></tr></thead><tbody id="measurements"></tbody></table></div>
         <details class="evidence-details"><summary>Environment, protocol & limitations <span>+</span></summary><div id="evidence"></div></details>
       </div>
+    </section>
+    <section id="view-tuning" class="view" hidden>
+      <div class="tune-intro"><p>Choose a workload. Atlas measures CPU and cache settings, checks their outputs, then confirms a proposed change on separate text.</p><p class="fine-print">Changes apply to Atlas model runs on this computer. Finite checks cannot guarantee every future answer.</p></div>
+      <div class="tune-layout">
+        <form id="tune-form" class="panel tune-form">
+          <h2>Find a setting</h2><p>Qwen3 · 0.6B · one sequence</p>
+          <div class="form-grid"><label>Prompt length<select id="tune-context"><option value="512">512 tokens</option><option value="2048" selected>2,048 tokens</option><option value="8192">8,192 tokens</option><option value="32768">32,768 tokens</option></select></label><label>Output length<select id="tune-output"><option value="16">16 tokens</option><option value="32">32 tokens</option><option value="64">64 tokens</option></select></label></div>
+          <label>Precision<select id="tune-dtype"><option value="float32">FP32</option><option value="float16">FP16 · separate campaign</option><option value="bfloat16">BF16 · separate campaign</option></select></label>
+          <label>Objective<select id="tune-goal"><option value="fastest">Fastest confirmed generation</option><option value="budget">Fastest within an allocation target</option></select></label>
+          <label id="tune-budget-label" hidden>GPU allocation target (MiB)<input id="tune-budget" type="number" min="512" max="65536" value="2560" step="1"></label>
+          <label class="tune-check"><input id="tune-auto" type="checkbox" checked> Apply a qualified result automatically</label>
+          <button class="button primary" id="tune-start" type="submit">Measure settings ↗</button>
+          <p class="fine-print">The complete search can take hours at long contexts. Maximum campaign time: four hours; each worker: 20 minutes. Cancel stops owned work. A target limits profile selection, so search and checking may use more memory. It is not a physical VRAM quota.</p>
+        </form>
+        <div class="panel tune-current">
+          <div class="section-heading"><h2>Campaign</h2><button class="button small" id="tune-refresh" type="button">Refresh</button></div>
+          <label for="tune-campaign">Saved and running campaigns</label><select id="tune-campaign"><option value="">No campaigns yet</option></select>
+          <p id="tune-readiness" class="fine-print">Checking local assets…</p>
+          <div id="tune-status" role="status" aria-live="polite">Ready to measure.</div>
+          <progress id="tune-progress" max="1" value="0" hidden></progress>
+          <div class="tune-actions"><button class="button small" id="tune-cancel" hidden>Cancel job</button><a class="button small" id="tune-export" hidden download>Export full evidence ↓</a></div>
+          <div id="tune-decision"></div>
+          <div id="tune-profile"></div>
+        </div>
+      </div>
+      <div id="tune-feedback" class="message" role="status" hidden></div>
+      <section id="tune-measurements" hidden><div class="section-heading table-heading"><h2>Calibration settings</h2><span>Two selection windows · lower time is faster</span></div><div class="table-wrap"><table><thead><tr><th>Setting</th><th>Generation mean</th><th>Peak allocated</th><th>Checks</th><th>Eligible</th></tr></thead><tbody id="tune-rows"></tbody></table></div><div id="tune-pairs"></div></section>
+      <section id="tune-generation" class="panel" hidden><div class="section-heading"><div><h2>Use the active setting</h2><p class="fine-print">Run this exact workload with a registered example or your own prompt. Startup, warmup and optional checking add time.</p></div></div><form id="tune-generate-form"><label class="tune-check"><input id="tune-custom" type="checkbox"> Use my own prompt (must match the exact token count)</label><label id="tune-prompt-label" hidden>Prompt<textarea id="tune-prompt" rows="5" maxlength="200000"></textarea></label><label class="tune-check"><input id="tune-native-check" type="checkbox" checked> Check against native outputs (adds time)</label><button class="button" id="tune-generate" type="submit">Generate with active setting ↗</button></form><p id="tune-inference-state" role="status"></p><div id="tune-text" class="continuation"></div><pre id="tune-inference-detail" class="detail-json" hidden></pre></section>
+      <details class="evidence-details"><summary>Trial outcomes and frozen protocol <span>+</span></summary><pre id="tune-evidence">Start a campaign to collect evidence.</pre></details>
+      <details class="evidence-details"><summary>Apply and revert history <span>+</span></summary><pre id="tune-history">No changes recorded.</pre></details>
     </section>
     <section id="view-study" class="view" hidden>
       <div class="research-boundary"><strong>Execution is separate from validity.</strong><p>Three independent process blocks, matched precision, public text and frozen cases. Failed or unknown numerical relations block recommendations. This single-machine study has sampling and measurement limits.</p></div>
