@@ -55,6 +55,13 @@ an automatic commit. Once a decision has committed, use Revert. A cancelled,
 interrupted or failed campaign cannot become fresh successful evidence by
 editing its status.
 
+A trial below 2 GiB available system RAM is stopped and remains ineligible.
+After its owned processes close, Atlas waits at most 30 seconds for at least
+4 GiB available RAM before continuing the registered grid. Failure to recover
+stops the campaign. Disk checks retain space for full output arrays before and
+during each worker; insufficient headroom stops collection. These observations
+are advisory checks, not exclusive reservations against other applications.
+
 ## What the measurements mean
 
 Generation time includes prefill, greedy token selection, input preparation,
@@ -62,6 +69,10 @@ cache maintenance, transfers, synchronized forward passes and cache teardown.
 It is measured after a full-shape warmup. Loading, warmup, reference generation,
 numerical checking and total tuning time remain separate recorded costs. The
 objective is warmed generation; actual cold requests show their total cost too.
+Worker total includes compatibility checks, loading, warmup and optional native
+replay. Service-job total additionally includes prelaunch setup and owned-process
+exit/cleanup. Browser-observed time includes submission, transport and polling.
+These clocks have different scopes and must not be treated as interchangeable.
 
 The allocation target uses the maximum measured CUDA allocated peak across
 warmup and scored generation. Search and validation may exceed it. It is not a
@@ -110,3 +121,15 @@ profiles and authoritative SQLite state are local. User prompts and inference
 outputs live separately under `private-inference/` and are excluded from research
 exports. Export verification uses Python 3.12 and NumPy without importing PyTorch.
 Weights and environments are excluded. No external service receives these files.
+
+Developer checks include the Python guard/verifier suite and deterministic
+asynchronous UI controls. The latter use Node's built-in test runner with an
+authored API/DOM fixture; they do not launch a browser or model and do not replace
+actual browser verification:
+
+```powershell
+.tools/attention-env/Scripts/python.exe -m pytest tests/test_runtime_tuning.py -q
+node --test --test-timeout=5000 tests/runtime_tuning_ui.test.mjs
+```
+
+Production browser use remains buildless; Node is a development-check tool.

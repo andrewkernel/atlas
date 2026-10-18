@@ -60,8 +60,10 @@
           <div class="section-heading"><h2>Campaign</h2><button class="button small" id="tune-refresh" type="button">Refresh</button></div>
           <label for="tune-campaign">Saved and running campaigns</label><select id="tune-campaign"><option value="">No campaigns yet</option></select>
           <p id="tune-readiness" class="fine-print">Checking local assets…</p>
+          <p id="tune-workload" class="fine-print"></p>
           <div id="tune-status" role="status" aria-live="polite">Ready to measure.</div>
           <progress id="tune-progress" max="1" value="0" hidden></progress>
+          <p id="tune-running-note" class="fine-print" role="status" hidden></p>
           <div class="tune-actions"><button class="button small" id="tune-cancel" hidden>Cancel job</button><a class="button small" id="tune-export" hidden download>Export full evidence ↓</a></div>
           <div id="tune-decision"></div>
           <div id="tune-profile"></div>
@@ -69,7 +71,7 @@
       </div>
       <div id="tune-feedback" class="message" role="status" hidden></div>
       <section id="tune-measurements" hidden><div class="section-heading table-heading"><h2>Calibration settings</h2><span>Two selection windows · lower time is faster</span></div><div class="table-wrap"><table><thead><tr><th>Setting</th><th>Generation mean</th><th>Peak allocated</th><th>Checks</th><th>Eligible</th></tr></thead><tbody id="tune-rows"></tbody></table></div><div id="tune-pairs"></div></section>
-      <section id="tune-generation" class="panel" hidden><div class="section-heading"><div><h2>Use the active setting</h2><p class="fine-print">Run this exact workload with a registered example or your own prompt. Startup, warmup and optional checking add time.</p></div></div><form id="tune-generate-form"><label class="tune-check"><input id="tune-custom" type="checkbox"> Use my own prompt (must match the exact token count)</label><label id="tune-prompt-label" hidden>Prompt<textarea id="tune-prompt" rows="5" maxlength="200000"></textarea></label><label class="tune-check"><input id="tune-native-check" type="checkbox" checked> Check against native outputs (adds time)</label><button class="button" id="tune-generate" type="submit">Generate with active setting ↗</button></form><p id="tune-inference-state" role="status"></p><div id="tune-text" class="continuation"></div><pre id="tune-inference-detail" class="detail-json" hidden></pre></section>
+      <section id="tune-generation" class="panel" hidden><div class="section-heading"><div><h2>Use the active setting</h2><p class="fine-print">Run this exact workload with a registered example or your own prompt. Startup, warmup and optional checking add time.</p></div></div><form id="tune-generate-form"><label class="tune-check"><input id="tune-custom" type="checkbox"> Use my own prompt (must match the exact token count)</label><label id="tune-prompt-label" hidden>Prompt<textarea id="tune-prompt" rows="5" maxlength="200000"></textarea></label><label class="tune-check"><input id="tune-native-check" type="checkbox" checked> Compare 32 token steps with native (adds time)</label><button class="button" id="tune-generate" type="submit">Generate with active setting ↗</button></form><p id="tune-inference-state" role="status"></p><div id="tune-text" class="continuation"></div><pre id="tune-inference-detail" class="detail-json" hidden></pre></section>
       <details class="evidence-details"><summary>Trial outcomes and frozen protocol <span>+</span></summary><pre id="tune-evidence">Start a campaign to collect evidence.</pre></details>
       <details class="evidence-details"><summary>Apply and revert history <span>+</span></summary><pre id="tune-history">No changes recorded.</pre></details>
     </section>

@@ -15,6 +15,10 @@ CONTEXTS = (512, 2048, 8192, 32768)
 OUTPUTS = (16, 32, 64)
 RULES = {'confirmation_repetitions': 3, 'minimum_ratio': 1.05,
          'worker_wall_s': 1200, 'minimum_available_ram_bytes': 2 * 1024**3,
+         'ram_recovery_available_bytes': 4 * 1024**3, 'ram_recovery_wall_s': 30,
+         'minimum_start_disk_bytes': 2 * 32 * 151936 * 4 + 16 * 1024**2 + 128 * 1024**2,
+         'minimum_running_disk_bytes': 32 * 151936 * 4 + 128 * 1024**2,
+         'resource_policy': 'Reject RAM-limited candidate after closed owned scope; continue only after recovery. Disk guard stops collection.',
          'target_shape_warmup': True, 'aggregation': 'geometric mean of two calibration windows',
          'pruning': 'None; preserve all registered calibration outcomes',
          'budget_scope': 'Maximum observed warmup/generation CUDA allocated peak; not a hard quota'}
@@ -107,19 +111,22 @@ def freeze(folder, request, baseline='native-t4', expected_active=None, root=ROO
     choices = profiles(config['context'])
     if baseline not in {p['id'] for p in choices}:
         baseline = 'native-t4'
-    # Reserve an uncompressed upper bound; deduplication can save space, not evidence.
+    # Retain the undeduplicated estimate, but guard each full output write. Exact
+    # post-computation sharing never skips a trial or drops an output position.
     max_cases = 4 + 2 * len(choices) + 4 + 12
     needed = (max_cases + 4) * 32 * 151936 * 4 + 128 * 1024**2
     import shutil
-    if shutil.disk_usage(folder).free < needed:
-        raise RuntimeError(f'Insufficient output space: need {needed // 2**20} MiB free')
-    if psutil.virtual_memory().available < 4 * 1024**3:
+    if shutil.disk_usage(folder).free < RULES['minimum_start_disk_bytes']:
+        raise RuntimeError(f"Insufficient output space: need {RULES['minimum_start_disk_bytes'] // 2**20} MiB free")
+    if psutil.virtual_memory().available < RULES['ram_recovery_available_bytes']:
         raise RuntimeError('Insufficient available system RAM for a bounded campaign')
     protocol = {'schema_version': 1, 'id': folder.name, 'settings': config, 'baseline': baseline,
                 'expected_active': expected_active, 'identity': identity, 'sources': sources,
                 'assets': pinned, 'inputs': inputs, 'profiles': choices, 'vocabulary_size': 151936,
                 'contract': {'atol': 1e-4, 'rtol': 1e-4, 'positions': 32},
-                'rules': RULES,
+                'rules': RULES, 'storage_estimate': {'max_workers': max_cases,
+                    'undeduplicated_output_bound_bytes': needed,
+                    'scope': 'Advisory rolling headroom; full outputs retained; not an exclusive disk reservation'},
                 'limits': ['One shared desktop and finite windows; no population confidence or universal optimum.',
                            '32-position literal relation is not broad answer quality or a guarantee for every future prompt.',
                            'Model startup, full-shape warmup and validation are outside scored generation and retained as costs.',
@@ -138,6 +145,11 @@ def verify_protocol(folder, root=ROOT, with_assets=False):
         raise ValueError('Numerical contract changed')
     if protocol['rules'] != RULES or protocol['vocabulary_size'] != 151936:
         raise ValueError('Predeclared decision or workload rules changed')
+    max_cases = 4 + 2 * len(protocol['profiles']) + 4 + 12
+    if protocol['storage_estimate'] != {'max_workers': max_cases,
+            'undeduplicated_output_bound_bytes': (max_cases + 4) * 32 * 151936 * 4 + 128 * 1024**2,
+            'scope': 'Advisory rolling headroom; full outputs retained; not an exclusive disk reservation'}:
+        raise ValueError('Declared full-output storage estimate changed')
     if protocol['id'] != folder.name or protocol['baseline'] not in {p['id'] for p in protocol['profiles']}:
         raise ValueError('Campaign/baseline identity differs')
     expected_inputs = [(f'{prefix}-{n}', split, offset) for split, prefix in

@@ -6,6 +6,13 @@ final acceptance audit remain unfinished; this is not an end-to-end completion
 claim. The [development amendment](development-amendment.md) preserves the
 earlier implementation and its negative speed decision.
 
+The observations below use the execution identity preceding the
+[resource-recovery amendment](resource-recovery-amendment.md). They remain
+historical evidence; the amended controller requires fresh 2k speed, 2k allocation
+and 32k allocation campaigns before the final completion audit. Both old active
+2k pointers were reverted before changing execution source. Immutable profiles,
+full raw evidence and journals remain.
+
 ## Completed speed campaign
 
 `tune-dc64d8a72091` ran Qwen3-0.6B in FP32 with a 2,048-token prompt and fixed
@@ -13,7 +20,7 @@ earlier implementation and its negative speed decision.
 identities were frozen before measurements. Two train windows select; two
 separate validation windows confirm. The finite grid covers CPU threads 1/2/4/6,
 native and resident caches, Transformers offloading and 256/1,024-token hybrid
-GPU windows. See the [machine-readable result](fastest-2k.json).
+GPU windows. See the [preserved machine-readable result](pre-recovery-fastest-2k.json).
 
 All 42 fresh workers completed. All 38 candidate/control workers passed their
 32-position full-vocabulary literal checks against separately computed native
@@ -32,13 +39,13 @@ same-session observations, not a formal population confidence interval.
 The saved native profile `profile-0f163d62d6c6ca8523e7ddc1` drove an actual
 registered-example request, `generate-280168c02e63`. The fresh 32-position check
 passed. Warmed generation took 0.933745 seconds, versus 14.410382 seconds for
-the entire request, including compatibility/evidence checks, loading, warmup and
+the worker, including compatibility/evidence checks, loading, warmup and
 native replay. A generation-only objective does not establish lower total
 application latency.
 
 Revert restored the default active pointer. Actual request
 `generate-07baf7f55ddb` explicitly used native fallback and passed a fresh check;
-its generation/total times were 0.951360/10.552232 seconds. The saved profile was
+its generation/worker-total times were 0.951360/10.552232 seconds. The saved profile was
 then applied again through the browser. Private inference records remain outside
 the public research inventory even when the selected prompt was a public example.
 
@@ -50,7 +57,7 @@ passed their finite numerical checks. Two separate validation windows and six
 paired repetitions confirmed `offloaded-t4`, the built-in Transformers cache
 offloading comparator. Maximum warmup/generation allocated peaks were
 2,404.407 MiB for this nominee and 2,836.407 MiB for native-t4. See the
-[complete summary](budget-2k.json).
+[preserved complete summary](pre-recovery-budget-2k.json).
 
 The decision is **confirmed memory fit**, not a speed improvement. Confirmation
 native/candidate time ratios ranged from 0.73433 to 0.85639, meaning the chosen
@@ -60,7 +67,7 @@ it is not evidence of an actual OOM rescue or a physical GPU-memory quota.
 
 The resulting `profile-65d8c31ded10874616f69f50` drove actual request
 `generate-64e5f69ccf49`, passed its fresh check and generated 16 tokens in
-1.289850 seconds (15.763138 seconds overall). After Revert, constrained request
+1.289850 seconds (15.763138 seconds for the worker). After Revert, constrained request
 `generate-3df5a74a491e` abstained before model execution because no qualified
 profile was active. Reapplication succeeded. The
 [application receipt](application-checks.json) records these local observations;
@@ -71,7 +78,7 @@ private request arrays are not supplied as public arithmetic proof.
 The earlier real cancellation control, `tune-1cb8fb2880fc`, stopped its owned
 launcher and model processes without applying a profile. Its raw result and
 Windows job records remain available; they belong to the earlier development
-execution identity. Current-source controls also completed: the 60-second
+execution identity. Controls under the pre-recovery source also completed: the 60-second
 deadline run `tune-7b170f96d0e8` timed out and finished owned cleanup in 63.672
 seconds; `tune-287d3ea2c3e4` accepted cancellation while its actual model process
 was live. Both owned scopes closed, all matching observed processes exited and
@@ -88,7 +95,15 @@ profiles, objective separation, asset drift, stale state, cancellation/commit
 serialization, rollback and exclusion of private records. Invented test arrays
 and timings are not model evidence.
 
-The 32k/6,144 MiB campaign has not started. Memory targets are selection constraints on measured warmup/generation
+The 32k/6,144 MiB campaign, `tune-53a712409265`, stopped at the available-RAM guard
+during its first built-in offloading calibration trial after 11 completed workers.
+The [interruption receipt](32k-resource-interruption.json) records closed owned
+processes and no matching live processes. It selected and applied no profile.
+The exact low-RAM sample was not retained; peak commit is not RSS or a proved cause.
+The amended controller retains exact guard/recovery samples and can reject that
+candidate and continue only after owned cleanup and sufficient RAM recovery.
+All three required workflows must run under its new source identity. Memory targets are
+selection constraints on measured warmup/generation
 CUDA allocated peaks, not hard physical-memory quotas. A confirmed memory fit
 may be slower, and unavailable/failed evidence cannot qualify.
 

@@ -13,7 +13,7 @@ from atlas.tuning import common, policy, profiles, registry, verify
 
 def protocol():
     return {'settings': registry.settings({}), 'baseline': 'native-t4',
-            'profiles': registry.profiles(2048)}
+            'profiles': registry.profiles(2048), 'rules': dict(registry.RULES)}
 
 
 def calibration(p):
@@ -43,7 +43,7 @@ def test_selection_is_complete_and_controls_gate_every_candidate():
     assert verify.calibration_summary(p, rows)[1] is None
 
 
-@pytest.mark.parametrize('status', ['failed', 'oom', 'timed_out', 'cancelled', 'running'])
+@pytest.mark.parametrize('status', ['failed', 'oom', 'timed_out', 'cancelled', 'running', 'resource_limited'])
 def test_unknown_and_failures_cannot_win(status):
     p = protocol(); rows = calibration(p)
     row = next(r for r in rows if r['config']['id'] == 'cal-1-native-t1')
@@ -324,6 +324,10 @@ def test_public_export_never_traverses_private_requests(authored_campaign, monke
     folder = home / 'campaigns' / original.name
     shutil.copytree(original, folder)
     common.write_json(home / 'private-inference/do-not-export/request.json', {'prompt': 'authored private sentinel'})
+    common.write_json(folder / 'accidental-private-note.json', {'prompt': 'authored private sentinel'})
+    common.write_json(folder / 'blobs/unreferenced.json', {'prompt': 'authored private sentinel'})
+    common.write_json(tmp_path / 'frontend/assets/api-key.txt', {'prompt': 'authored private sentinel'})
+    common.write_json(tmp_path / 'docs/research/autotuning/private-note.md', {'prompt': 'authored private sentinel'})
     monkeypatch.setattr(bundle, 'ROOT', tmp_path)
     path = bundle.export(folder.name, home)
     with zipfile.ZipFile(path) as archive:
@@ -331,6 +335,49 @@ def test_public_export_never_traverses_private_requests(authored_campaign, monke
         assert all('private-inference' not in name for name in archive.namelist())
         assert all(b'authored private sentinel' not in archive.read(name) for name in archive.namelist())
         assert manifest['evidence_sha256'] == verify.build(folder)['evidence_sha256']
+
+
+def test_export_detects_source_edit_between_inventory_and_zip(authored_campaign, monkeypatch, tmp_path):
+    from atlas.tuning import bundle
+    import shutil, zipfile
+    original, _ = authored_campaign
+    home = tmp_path / 'local-store'
+    folder = home / 'campaigns' / original.name
+    shutil.copytree(original, folder)
+    monkeypatch.setattr(bundle, 'ROOT', tmp_path)
+    original_write = zipfile.ZipFile.write
+    def changed(archive, filename, *args, **kwargs):
+        if Path(filename) == folder / 'protocol.json':
+            raw = common.read_json(Path(filename)); raw['authored_concurrent_edit'] = True
+            common.write_json(Path(filename), raw)
+        return original_write(archive, filename, *args, **kwargs)
+    monkeypatch.setattr(zipfile.ZipFile, 'write', changed)
+    with pytest.raises(ValueError, match='changed while exporting'):
+        bundle.export(folder.name, home)
+    assert not (home / 'exports' / (folder.name + '.zip')).exists()
+
+
+@pytest.mark.parametrize('nested', [False, True])
+def test_export_refuses_extra_private_profile_fields(authored_campaign, monkeypatch, tmp_path, nested):
+    from atlas.tuning import bundle
+    import shutil
+    original, _ = authored_campaign
+    home = tmp_path / 'local-store'
+    folder = home / 'campaigns' / original.name
+    shutil.copytree(original, folder)
+    ident = profiles.save(folder, verify.build(folder), home)
+    altered = profiles.read(ident, home)
+    if nested:
+        altered['settings']['private_prompt'] = 'authored private sentinel'
+    else:
+        altered['private_prompt'] = 'authored private sentinel'
+    forged = 'profile-' + common.digest(altered)[:24]
+    common.write_json(home / 'profiles' / (forged + '.json'), altered)
+    common.write_json(folder / 'status.json', {'id': folder.name, 'status': 'completed', 'profile': forged})
+    monkeypatch.setattr(bundle, 'ROOT', tmp_path)
+    with pytest.raises(ValueError, match='public profile'):
+        bundle.export(folder.name, home)
+    assert not (home / 'exports' / (folder.name + '.zip')).exists()
 
 
 def test_stale_status_never_proves_owner_liveness(monkeypatch, tmp_path):
@@ -343,6 +390,131 @@ def test_stale_status_never_proves_owner_liveness(monkeypatch, tmp_path):
     common.write_json(folder / 'status.json', {'status': 'running', 'controller_process':
                       {'pid': 99999999, 'created_at': 1}})
     assert service.observed_status(folder)['status'] == 'interrupted'
+
+
+def test_supplied_bundle_is_labeled_imported_reference(monkeypatch, tmp_path):
+    pytest.importorskip('fastapi')
+    from atlas.tuning import service
+    folder = tmp_path / 'authored-import'
+    common.write_json(folder / 'status.json', {'status': 'completed', 'id': folder.name})
+    monkeypatch.setattr(service, 'IMPORTED_CAMPAIGN', folder.name)
+    assert service.observed_status(folder)['record_origin'] == 'imported_reference'
+
+
+@pytest.mark.parametrize('disk_free,ram_available,reason', [
+    (0, 8 * 1024**3, 'output space'), (4 * 1024**3, 2 * 1024**3, 'system RAM'),
+    (256 * 1024**2, 8 * 1024**3, None)])
+def test_authored_preflight_pressure_refuses_protocol(monkeypatch, tmp_path, disk_free, ram_available, reason):
+    """Invented headroom observations; no model/real memory pressure is produced."""
+    transformers = pytest.importorskip('transformers')
+    import torch, psutil, shutil
+    from types import SimpleNamespace
+    from atlas.attention import assets as asset_module
+    monkeypatch.setattr(registry, 'source_map', lambda *a: {})
+    monkeypatch.setattr(registry, 'runtime_identity', lambda: {})
+    monkeypatch.setattr(registry, 'assets', lambda *a: {})
+    monkeypatch.setattr(torch.cuda, 'is_initialized', lambda: False)
+    version = registry.importlib.metadata.version
+    pinned = {'torch': '2.14.1+cu130', 'transformers': '5.19.0', 'numpy': '2.5.4'}
+    monkeypatch.setattr(registry.importlib.metadata, 'version', lambda name: pinned.get(name) or version(name))
+    class Tokenizer:
+        def __call__(self, *args, **kwargs):
+            return SimpleNamespace(input_ids=list(range(20000)))
+    monkeypatch.setattr(transformers.AutoTokenizer, 'from_pretrained', lambda *a, **kw: Tokenizer())
+    monkeypatch.setattr(asset_module, 'corpus_text', lambda split: ('authored fixture', {}))
+    monkeypatch.setattr(shutil, 'disk_usage', lambda path: SimpleNamespace(free=disk_free))
+    monkeypatch.setattr(psutil, 'virtual_memory', lambda: SimpleNamespace(available=ram_available))
+    if reason:
+        with pytest.raises(RuntimeError, match=reason):
+            registry.freeze(tmp_path, {'context': 512})
+        assert not (tmp_path / 'protocol.json').exists()
+    else:
+        p = registry.freeze(tmp_path, {'context': 512})
+        assert p['storage_estimate']['undeduplicated_output_bound_bytes'] > disk_free
+        assert p['rules']['minimum_start_disk_bytes'] <= disk_free
+        assert len(p['inputs']) == 4
+
+
+@pytest.mark.parametrize('recovers', [False, True])
+def test_authored_runtime_ram_guard_closes_owned_attempt(monkeypatch, tmp_path, recovers):
+    """A fake child tests supervisor control flow, not a fabricated model trial."""
+    from types import SimpleNamespace
+    from atlas.tuning import controller
+    import time
+    home = tmp_path / 'isolated-state'
+    folder = home / 'campaigns/authored-ram-control'
+    common.write_json(folder / 'request.json', registry.settings({'context': 512}))
+    monkeypatch.setattr(controller, 'ROOT', tmp_path)
+    def freeze(path, request, *args):
+        value = {'settings': request, 'sources': {}, 'rules': {**registry.RULES, 'ram_recovery_wall_s': 0}}
+        common.write_json(path / 'protocol.json', value)
+        return value
+    monkeypatch.setattr(registry, 'freeze', freeze)
+    children = []
+    class Child:
+        def __init__(self, *args):
+            self.started = time.monotonic(); self.closed = False; self.polls = 0
+            self.process = SimpleNamespace(poll=self.poll)
+            children.append(self)
+        def poll(self):
+            self.polls += 1
+            return None if self.polls == 1 else 0
+        def observe(self):
+            pass
+        def close(self):
+            self.closed = True
+        def evidence(self):
+            return {'closed': self.closed, 'observed_processes': []}
+    monkeypatch.setattr(controller, 'OwnedChild', Child)
+    def memory():
+        # Recovery must observe a closed first scope before another launch.
+        if recovers and children[0].closed:
+            return SimpleNamespace(available=8 * 1024**3)
+        return SimpleNamespace(available=0)
+    monkeypatch.setattr(controller.psutil, 'virtual_memory', memory)
+    monkeypatch.setattr(controller.shutil, 'disk_usage', lambda path: SimpleNamespace(free=8 * 1024**3))
+    # Stop at the next launch. Reaching this point proves continuation; no fixture
+    # manufactures successful model arrays or publishes an invented campaign.
+    original_init = Child.__init__
+    def launch(self, *args):
+        if children:
+            assert children[0].closed
+            raise controller.EndCampaign('cancelled', 'Authored stop after verified continuation')
+        original_init(self, *args)
+    monkeypatch.setattr(Child, '__init__', launch)
+    result = controller.run_campaign('authored-ram-control', home)
+    # Later fake launch failures cannot create a qualified profile. The first
+    # case is retained identically in both recovery branches.
+    assert result['status'] == ('failed' if recovers else 'resource_limited')
+    assert len(children) == 1 and children[0].closed
+    raw = common.read_json(folder / 'runs/ref-cal-0/result.json')
+    assert raw['status'] == 'resource_limited' and raw['resource_guard']['available_bytes'] == 0
+    assert raw['resource_recovery']['recovered'] is recovers
+    ledger = common.read_json(folder / 'execution.json')
+    assert ledger['cases'][0]['sha256'] == common.file_digest(folder / 'runs/ref-cal-0/result.json')
+    assert (folder / 'runs/ref-cal-1/config.json').exists() is recovers
+    assert result.get('applied') is None
+    assert not (folder / 'verified.json').exists()
+
+
+def test_resource_recovery_rejects_false_claims_and_honors_cancellation(monkeypatch):
+    from types import SimpleNamespace
+    from atlas.tuning import controller
+    monkeypatch.setattr(controller.psutil, 'virtual_memory', lambda: SimpleNamespace(available=8 * 1024**3))
+    def cancelled():
+        raise controller.EndCampaign('cancelled', 'Authored cancellation during recovery')
+    with pytest.raises(controller.EndCampaign, match='cancellation'):
+        controller.recover_ram(registry.RULES, cancelled)
+    recovery = controller.recover_ram(registry.RULES, lambda: None)
+    raw = {'status': 'resource_limited', 'resource_guard': {'kind': 'ram', 'available_bytes': 1,
+           'minimum_bytes': registry.RULES['minimum_available_ram_bytes']}, 'resource_recovery': recovery}
+    entry = {'ownership': {'closed': True}}
+    verify.check_resource_guard(raw, entry, registry.RULES)
+    raw['resource_recovery']['samples'][-1]['available_bytes'] = 1
+    with pytest.raises(ValueError, match='conclusion'):
+        verify.check_resource_guard(raw, entry, registry.RULES)
+    with pytest.raises(ValueError, match='closed'):
+        verify.check_resource_guard(raw, {'ownership': {'closed': False}}, registry.RULES)
 
 
 def test_import_of_arithmetic_verifier_does_not_load_torch():

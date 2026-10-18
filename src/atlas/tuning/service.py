@@ -22,6 +22,10 @@ from . import profiles
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 gpu_admission = asyncio.Lock()
 TERMINAL = {'completed', 'failed', 'cancelled', 'timed_out', 'resource_limited', 'interrupted', 'abstained'}
+try:
+    IMPORTED_CAMPAIGN = read_json(old.ROOT / 'bundle-manifest.json').get('campaign')
+except (OSError, ValueError):
+    IMPORTED_CAMPAIGN = None
 
 
 def located(ident, kind='campaign'):
@@ -37,6 +41,7 @@ def located(ident, kind='campaign'):
 def observed_status(folder, kind='campaign'):
     path = folder / ('status.json' if kind == 'campaign' else 'result.json')
     doc = read_json(path) if path.exists() else {'id': folder.name, 'status': 'queued'}
+    doc['record_origin'] = 'imported_reference' if kind == 'campaign' and folder.name == IMPORTED_CAMPAIGN else 'recorded_result'
     doc['owned_job_active'] = jobs.active == folder.name
     if doc['status'] not in TERMINAL and not doc['owned_job_active']:
         import psutil
@@ -64,6 +69,7 @@ class Jobs:
         self.cancel_at = None
 
     def start(self, config, kind='campaign'):
+        request_started = time.monotonic()
         with self.lock, old.jobs.lock:
             if self.active or old.jobs.active:
                 raise HTTPException(409, 'A workspace GPU job is already active')
@@ -97,10 +103,10 @@ class Jobs:
                 raise HTTPException(500, 'Owned worker could not start; its failed run is retained') from exc
             self.active, self.child, self.kind, self.cancel_at = ident, child, kind, None
             deadline = config['max_wall_s']+60 if kind == 'campaign' else 2400
-            threading.Thread(target=self.watch, args=(ident, folder, child, state_path, deadline), daemon=True).start()
+            threading.Thread(target=self.watch, args=(ident, folder, child, state_path, deadline, request_started, kind), daemon=True).start()
             return {'id': ident, 'status': 'queued'}
 
-    def watch(self, ident, folder, child, path, deadline):
+    def watch(self, ident, folder, child, path, deadline, request_started, kind):
         forced = None
         try:
             while child.process.poll() is None:
@@ -112,10 +118,19 @@ class Jobs:
                 time.sleep(.2)
         finally:
             child.close()
-            write_json(folder / 'controller-ownership.json', child.evidence())
+            ownership = child.evidence()
+            write_json(folder / 'controller-ownership.json', ownership)
             doc = read_json(path)
+            changed = False
+            if kind == 'inference':
+                doc.update(service_job_total_s=time.monotonic()-request_started,
+                           owned_process_total_s=ownership['elapsed_s'],
+                           service_timing_scope='After request validation through prelaunch setup, owned process startup/execution/exit and cleanup; excludes browser/network transport')
+                changed = True
             if forced or doc['status'] not in TERMINAL:
                 doc.update(status=forced or 'failed', error='Owner ended without a normal terminal record', finished_at=utc())
+                changed = True
+            if changed:
                 write_json(path, doc)
             with self.lock:
                 if self.active == ident:

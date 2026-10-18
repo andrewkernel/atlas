@@ -57,6 +57,45 @@ def check_measurement(value, steps, vocab):
         raise ValueError('Allocator counters are inconsistent')
 
 
+def check_resource_guard(raw, entry, rules):
+    if raw['status'] != 'resource_limited':
+        if raw.get('resource_guard'):
+            raise ValueError('Resource guard has a contradictory terminal status')
+        return
+    guard = raw.get('resource_guard', {})
+    kind = guard.get('kind')
+    key = {'ram': 'minimum_available_ram_bytes', 'disk': 'minimum_running_disk_bytes'}.get(kind)
+    if (not key or guard.get('minimum_bytes') != rules[key]
+            or type(guard.get('available_bytes')) is not int
+            or not 0 <= guard['available_bytes'] < guard['minimum_bytes']
+            or not entry.get('ownership', {}).get('closed')):
+        raise ValueError('Resource guard lacks a closed owned scope or valid headroom sample')
+    recovery = raw.get('resource_recovery')
+    if kind != 'ram':
+        return
+    if not recovery:
+        raise ValueError('RAM-limited case lacks recovery observations')
+    if recovery.get('interrupted'):
+        if recovery['interrupted'] not in ('cancelled', 'timed_out') or recovery.get('recovered') is not False:
+            raise ValueError('Invalid interrupted RAM recovery')
+        return
+    samples = recovery.get('samples', [])
+    if (not samples or recovery.get('required_available_bytes') != rules['ram_recovery_available_bytes']
+            or recovery.get('wall_bound_s') != rules['ram_recovery_wall_s']):
+        raise ValueError('Resource recovery differs from the registered rule')
+    times = [s['elapsed_s'] for s in samples]
+    if any(type(t) not in (int, float) or not math.isfinite(t) or t < 0 for t in times) or times != sorted(times):
+        raise ValueError('Resource recovery has invalid sample times')
+    values = [s['available_bytes'] for s in samples]
+    if any(type(v) is not int or v < 0 for v in values):
+        raise ValueError('Resource recovery has invalid RAM observations')
+    recovered = values[-1] >= rules['ram_recovery_available_bytes']
+    if (recovery.get('recovered') is not recovered or recovery.get('elapsed_s') != times[-1]
+            or any(v >= rules['ram_recovery_available_bytes'] for v in values[:-1])
+            or (not recovered and times[-1] < rules['ram_recovery_wall_s'])):
+        raise ValueError('Resource recovery conclusion disagrees with observations')
+
+
 def inspect(folder, root=ROOT):
     protocol = verify_protocol(folder, root)
     ledger = read_json(folder / 'execution.json')
@@ -78,6 +117,7 @@ def inspect(folder, root=ROOT):
     if [e['id'] for e in ledger['cases']] != [c['id'] for c in expected][:len(ledger['cases'])]:
         raise ValueError('Execution order differs from the predeclared sequence')
     records, seen, processes = {}, set(), set()
+    unrecovered = False
     for entry in ledger['cases']:
         ident = entry['id']
         if ident in seen or ident not in registered:
@@ -85,12 +125,19 @@ def inspect(folder, root=ROOT):
         seen.add(ident)
         if entry['status'] in ('queued', 'running'):
             continue
+        if unrecovered:
+            raise ValueError('Collection continued without registered RAM recovery')
         path = folder / 'runs' / ident / 'result.json'
         if file_digest(path) != entry['sha256']:
             raise ValueError('Raw result changed')
         raw = read_json(path)
         if raw['config'] != registered[ident] or raw['status'] != entry['status']:
             raise ValueError('Raw case/status identity differs')
+        check_resource_guard(raw, entry, protocol['rules'])
+        if raw['status'] == 'resource_limited':
+            unrecovered = not raw.get('resource_recovery', {}).get('recovered', False)
+            if nomination and unrecovered:
+                raise ValueError('Nomination cannot follow unrecovered resource pressure')
         if raw.get('protocol_sha256') != ledger['protocol_sha256']:
             # Startup failures have no numerical authority but remain real attempts.
             if raw['status'] == 'completed':

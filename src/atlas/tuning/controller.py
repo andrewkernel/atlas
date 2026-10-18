@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import time
@@ -86,6 +87,22 @@ class EndCampaign(RuntimeError):
         super().__init__(reason)
 
 
+def recover_ram(rules, check):
+    """Only called after the offending owned scope has closed."""
+    start = time.monotonic()
+    samples = []
+    while True:
+        check()
+        available = psutil.virtual_memory().available
+        elapsed = time.monotonic()-start
+        samples.append({'observed_at': utc(), 'available_bytes': available, 'elapsed_s': elapsed})
+        recovered = available >= rules['ram_recovery_available_bytes']
+        if recovered or elapsed >= rules['ram_recovery_wall_s']:
+            return {'recovered': recovered, 'required_available_bytes': rules['ram_recovery_available_bytes'],
+                    'wall_bound_s': rules['ram_recovery_wall_s'], 'elapsed_s': elapsed, 'samples': samples}
+        time.sleep(.2)
+
+
 def run_campaign(ident, home=STORE):
     from filelock import FileLock
     from .registry import freeze, settings, calibration_cases, reference_cases, confirmation_cases
@@ -114,6 +131,11 @@ def run_campaign(ident, home=STORE):
         write_json(folder / 'execution.json', ledger)
         for case in cases:
             check()
+            free = shutil.disk_usage(folder).free
+            if free < protocol['rules']['minimum_start_disk_bytes']:
+                status(resource_guard={'kind': 'disk_before_worker', 'observed_at': utc(),
+                       'available_bytes': free, 'minimum_bytes': protocol['rules']['minimum_start_disk_bytes']})
+                raise EndCampaign('resource_limited', 'Available disk space fell below the per-worker output reserve')
             target = folder / 'runs' / case['id']
             target.mkdir(parents=True)
             frozen_json(target / 'config.json', case)
@@ -123,7 +145,7 @@ def run_campaign(ident, home=STORE):
             status(status='references' if case['stage'] == 'reference' else case['stage'],
                    active_case=case['id'], progress={'done': sum(e['status'] not in ('queued', 'running')
                           for e in ledger['cases']), 'total': len(ledger['cases']), 'message': case['id']})
-            worker, forced, reason, cancel_at = None, None, None, None
+            worker, forced, reason, cancel_at, guard = None, None, None, None, None
             try:
                 worker = OwnedChild(['worker', ident, case['id']], target / 'worker.log', case['profile']['threads'])
                 while worker.process.poll() is None:
@@ -137,8 +159,17 @@ def run_campaign(ident, home=STORE):
                     if time.monotonic()-worker.started > protocol['rules']['worker_wall_s']:
                         forced, reason = 'timed_out', 'Worker exceeded its registered time bound'
                         break
-                    if psutil.virtual_memory().available < protocol['rules']['minimum_available_ram_bytes']:
+                    available = psutil.virtual_memory().available
+                    free = shutil.disk_usage(folder).free
+                    if available < protocol['rules']['minimum_available_ram_bytes']:
                         forced, reason = 'resource_limited', 'Available system RAM fell below the advisory guard'
+                        guard = {'kind': 'ram', 'observed_at': utc(), 'available_bytes': available,
+                                 'minimum_bytes': protocol['rules']['minimum_available_ram_bytes']}
+                        break
+                    if free < protocol['rules']['minimum_running_disk_bytes']:
+                        forced, reason = 'resource_limited', 'Available disk space fell below the running output reserve'
+                        guard = {'kind': 'disk', 'observed_at': utc(), 'available_bytes': free,
+                                 'minimum_bytes': protocol['rules']['minimum_running_disk_bytes']}
                         break
                     if cancel_at is not None and time.monotonic()-cancel_at > 5:
                         break
@@ -154,11 +185,28 @@ def run_campaign(ident, home=STORE):
             if forced or raw.get('status') in (None, 'running'):
                 raw.update(status=forced or 'failed', error=reason or 'Worker exited without terminal evidence',
                            finished_at=utc())
+                if guard:
+                    raw['resource_guard'] = guard
                 write_json(path, raw)
             entry.update(status=raw['status'], sha256=file_digest(path))
             write_json(folder / 'execution.json', ledger)
             if forced == 'resource_limited':
-                raise EndCampaign(forced, reason)
+                if guard['kind'] != 'ram':
+                    raise EndCampaign(forced, reason)
+                status(status='resource_recovery', resource_guard=guard,
+                       progress={'done': sum(e['status'] not in ('queued', 'running') for e in ledger['cases']),
+                                 'total': len(ledger['cases']), 'message': 'Owned worker closed; checking RAM recovery'})
+                try:
+                    raw['resource_recovery'] = recover_ram(protocol['rules'], check)
+                except EndCampaign as exc:
+                    raw['resource_recovery'] = {'recovered': False, 'interrupted': exc.status, 'reason': str(exc)}
+                    raise
+                finally:
+                    write_json(path, raw)
+                    entry['sha256'] = file_digest(path)
+                    write_json(folder / 'execution.json', ledger)
+                if not raw['resource_recovery']['recovered']:
+                    raise EndCampaign(forced, 'RAM did not recover within the registered recovery bound')
             check()
 
     status()
