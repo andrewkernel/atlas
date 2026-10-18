@@ -80,6 +80,13 @@ regime. The machine, desktop session, model, FP32 precision and dated book corpu
 limit generalization. No claim of zero bias, CXL, DSA, novelty, language-quality
 equivalence, energy savings, exclusive VRAM residency or OOM rescue is implied.
 
+Arms share one model/CUDA process. Device/host allocator history can influence
+later measurements; `empty_cache()` does not prove all host/framework state was
+reset. Balanced order helps expose position effects but does not replace per-arm
+process isolation. In particular, a within-process OOM cannot establish that the
+same arm would fail in a fresh process. Treat isolated-arm controls as a further
+research target before generalizing resource-feasibility conclusions.
+
 PG-19 source, dataset description and upstream license declaration:
 https://github.com/google-deepmind/pg19 . The original public text bucket is
 `deepmind-gutenberg`. No upstream research repository is executed.

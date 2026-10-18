@@ -54,6 +54,13 @@ identity and detects accidental changes; it cannot prove author honesty or
 independent execution. The outer ZIP hash is supplied separately. No upload or
 public release was performed. A repository-wide public license has not been
 selected; upstream dependencies/assets retain their own licenses.
+
+Environment, weight/data preparation and fresh-run output directories are
+expected to grow. The byte verifier ignores new files only under its explicit
+generated-path allowlist; it still checks every shipped file and rejects new
+source files. Downloaded assets and new run results require protocol preflight
+and numerical verification, respectively; bundle verification does not bless
+those new files.
 '''
 
 
@@ -63,6 +70,7 @@ def inventory(root, protocol):
                  root/'benchmarks/package_attention_v3.py', root/'benchmarks/verify_researcher_bundle.py',
                  root/'benchmarks/attention_v3_progress.py',
                  root/'benchmarks/report_attention_v3.py',
+                 root/'benchmarks/finalize_attention_v3.py',
                  root/'docs/attention-lab.md', root/'docs/architecture/hybrid-attention-lab.md',
                  root/'.gitattributes'}
     for relative in ('lab-ui','frontend'):
@@ -72,12 +80,8 @@ def inventory(root, protocol):
     selected |= {root/'frontend/data/snapshot.json', root/'frontend/assets/OFL.txt',
                  root/'frontend/assets/font-source.json',root/'docs/roadmap/research-v3-plan.md'}
     for path in (root/'docs/research/attention-v3').rglob('*'):
-        if path.is_file() and path.name!='bundle-receipt.json' and '__pycache__' not in path.parts:
+        if path.is_file() and path.name not in ('bundle-receipt.json','handoff-verification.json') and '__pycache__' not in path.parts:
             selected.add(path)
-    for name in ('hgca-2507.03153.pdf','beyond-hpdc2026.pdf','nomad-osdi24.pdf',
-                 'miku-2503.17864v2.pdf','dsa-2lm-atc25.pdf'):
-        path=root/'artifacts/cxl-papers'/name
-        if path.is_file():selected.add(path)
     selected.add(root/'docs/research/papers/cxl-context.md')
     for path in (root/'docs/research/attention-v2').glob('*'):
         if path.is_file() and path.suffix in ('.md','.json'):

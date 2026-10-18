@@ -6,6 +6,10 @@ import hashlib
 import json
 from pathlib import Path, PurePosixPath
 
+GENERATED_PREFIXES=('.tools/','.venv/','weights/','data/',
+                    'artifacts/attention-lab/','artifacts/attention-lab-server/',
+                    'artifacts/attention-v3-replications/','artifacts/attention-v3-audits/')
+
 
 def verify(root):
     root = root.resolve()
@@ -26,9 +30,13 @@ def verify(root):
         if hasher.hexdigest()!=expected:raise ValueError('Changed bundle member: '+name)
     actual = {p.relative_to(root).as_posix() for p in root.rglob('*') if p.is_file()
               and '__pycache__' not in p.parts and p.name!='bundle-manifest.json'}
-    if actual!=set(files):
-        raise ValueError('Unmanifested or missing files: '+repr(sorted(actual^set(files))))
-    return {'verified_files':len(files), 'scope':'Byte consistency only; numerical verification and fresh execution are separate.'}
+    missing=set(files)-actual
+    extra={name for name in actual-set(files) if not name.startswith(GENERATED_PREFIXES)}
+    if missing or extra:
+        raise ValueError('Unmanifested or missing files: '+repr(sorted(missing|extra)))
+    return {'verified_files':len(files),
+            'scope':'Shipped-byte consistency only; numerical verification and fresh execution are separate.',
+            'generated_paths_not_authenticated':list(GENERATED_PREFIXES)}
 
 
 if __name__=='__main__':
