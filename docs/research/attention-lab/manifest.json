@@ -1,0 +1,32 @@
+[
+  {
+    "id": "benchmark-8de4c6c31991",
+    "sha256": "61318a074a48e6d87e05f9423117611726eec67542182e5abc69a9c3aa05e4a0",
+    "rows": 49
+  },
+  {
+    "id": "benchmark-bf077396b657",
+    "sha256": "8e54b7d8e5b8126d5ffae0e06211b1341a3a8a44913b17175f7be46805658a91",
+    "rows": 49
+  },
+  {
+    "id": "benchmark-5791670342ea",
+    "sha256": "004a06fe819fbf90edf30b1b6bae9ecb84b71371f9cbf12854fdcf59607ee725",
+    "rows": 49
+  },
+  {
+    "id": "benchmark-91d687643c2f",
+    "sha256": "e99a5ea10c2c8de58951a386304f91d5d0036590a24fdbabb55184632223dafa",
+    "rows": 49
+  },
+  {
+    "id": "model-dc63e61cb94f",
+    "sha256": "b54fe811da741601fac8e77fd09cabce1b08255b3ee17ab68941283de272008f",
+    "rows": 9
+  },
+  {
+    "id": "model-566cda7ff212",
+    "sha256": "716f1f4028fa4d687b4b85f5e07d08d505fb199a749ae0b21f8babc42cc8df83",
+    "rows": 9
+  }
+]

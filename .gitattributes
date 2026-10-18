@@ -12,4 +12,6 @@
 frontend/assets/OFL.txt -text -whitespace
 # Preserve the measured generated figure bytes and renderer whitespace exactly.
 docs/research/workload-screen/qa-resource-figure.svg -text -whitespace
+# These are byte-identical measured records bound by their SHA-256 manifest.
+docs/research/attention-lab/runs/*.json -text -eol
 uv.lock text eol=lf

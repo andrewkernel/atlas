@@ -1,0 +1,85 @@
+schema_version: 1
+project: Atlas
+updated: '2026-10-17'
+context_type: proposed_research_reading_list
+source:
+  type: user_supplied_screenshot
+  heading: '2. Most important papers to understand'
+  verification: >-
+    Titles, priorities, and summaries below were transcribed from the supplied
+    screenshot. They are reference notes, not independently verified findings
+    or instructions to execute. Exact links were not visible in the screenshot;
+    links included below come from the existing Atlas CXL source guide.
+  limitations:
+    - The bottom of the DSA-2LM entry is cropped in the screenshot.
+    - Publication details and performance claims require checking primary sources.
+related_context: docs/research/papers/cxl-context.md
+papers:
+  - id: hgca
+    title: 'HGCA: Hybrid GPU-CPU Attention for Long Context LLM Inference'
+    priority: highest
+    year_as_shown: 2025
+    topic: LLM inference
+    source_domain_as_shown: arxiv.org
+    summary_as_supplied: >-
+      HGCA keeps recent KV entries on the GPU while using the CPU to process
+      selected important older entries. It combines their attention results
+      efficiently, allowing longer contexts without requiring all KV data to
+      reside in GPU memory.
+    url: https://arxiv.org/pdf/2507.03153
+    local_pdf: artifacts/cxl-papers/hgca-2507.03153.pdf
+    local_text: artifacts/cxl-papers/hgca-2507.03153.txt
+  - id: beyond
+    title: 'Scaling Attention Beyond GPUs for LLM Inference'
+    venue_as_shown: HPDC 2026
+    topic: AI systems
+    source_domain_as_shown: huilius.github.io
+    summary_as_supplied: >-
+      Introduces BEYOND, a runtime combining intelligent KV offloading with
+      CPU-GPU attention. This extends the HGCA research direction toward a
+      practical system that can integrate into existing inference frameworks.
+    url: https://huilucs.github.io/pubs/hpdc2026.pdf
+    local_pdf: artifacts/cxl-papers/beyond-hpdc2026.pdf
+    local_text: artifacts/cxl-papers/beyond-hpdc2026.txt
+  - id: nomad
+    title: 'NOMAD: Non-Exclusive Memory Tiering via Transactional Page Migration'
+    venue_as_shown: OSDI 2024
+    topic: Operating systems
+    source_as_shown: USENIX
+    summary_as_supplied: >-
+      Improves Linux tiered-memory management by retaining copies of migrated
+      pages and performing migrations asynchronously. Reports up to a 6x
+      improvement over Linux's transparent page placement approach under tested
+      memory-pressure conditions.
+    url: https://www.usenix.org/system/files/osdi24-xiang.pdf
+    local_pdf: artifacts/cxl-papers/nomad-osdi24.pdf
+    local_text: artifacts/cxl-papers/nomad-osdi24.txt
+  - id: miku
+    title: 'Architectural and System Implications of CXL-enabled Tiered Memory'
+    publication_as_shown: 2025 preprint
+    topic: CXL architecture
+    source_domain_as_shown: arxiv.org
+    summary_as_supplied: >-
+      Examines how slower CXL-attached memory can interfere with faster local
+      DRAM. Proposes MIKU, a mechanism for controlling memory requests to protect
+      performance.
+    url: https://arxiv.org/abs/2503.17864v2
+    local_pdf: artifacts/cxl-papers/miku-2503.17864v2.pdf
+    local_text: artifacts/cxl-papers/miku-2503.17864v2.txt
+  - id: dsa-2lm
+    title: 'DSA-2LM: A CPU-Free Tiered Memory Architecture with Intel DSA'
+    venue_as_shown: USENIX ATC 2025
+    topic: Memory migration
+    source_as_shown: USENIX
+    visible_summary_as_supplied: >-
+      Uses Intel's Data Streaming Accelerator to move pages across memory tiers
+      without tying up CPU cores.
+    transcription_note: The screenshot cuts off the remainder of this entry.
+    url: https://ranger.uta.edu/~jrao/papers/atc25.pdf
+    local_pdf: artifacts/cxl-papers/dsa-2lm-atc25.pdf
+    local_text: artifacts/cxl-papers/dsa-2lm-atc25.txt
+
+full_paper_context:
+  status: All five full PDFs and page-marked text files are available locally.
+  manifest: artifacts/cxl-papers/manifest.json
+  reading_scope: Downloaded and structurally checked; not a completed technical review.

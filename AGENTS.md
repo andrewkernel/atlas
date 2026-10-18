@@ -1,5 +1,11 @@
 # Working on Atlas
 
+## Implemented Attention Lab track (owner requested 2026-10-17)
+
+The owner explicitly authorized an end-to-end consumer CPU-GPU attention application, architecture review, real benchmarks and an interactive dashboard. Read `docs/attention-lab.md`, `docs/architecture/hybrid-attention-lab.md` and `docs/research/attention-lab/report.md` for this implemented engineering track. `lab.py`, `src/atlas/attention/` and `lab-ui/` implement it. `Start-Atlas.ps1` starts the local app. Its CUDA worker uses the separate hash-pinned attention environment; the historical CPU lock remains separate. Preserve measured negative results, failed model-logit predicates and early pilot records. This dense runtime is not CXL implementation or a reproduction of HGCA/BEYOND sparsification. The training research scope below remains distinct.
+
+## Historical training evaluation track
+
 Atlas currently develops a reproducible evaluation package for scoped fidelity evidence and resource tradeoffs on local hardware. Its selected immediate research question measures the coverage of a competent native-plus-existing-checker composition on a future independently reviewed fixed corpus. Policy-superiority research is conditional on specifying a distinct algorithm. Read `docs/research/00-executive-assessment.md`, `04-scientific-fidelity.md`, `06-novelty-analysis.md`, architecture docs and ADRs before architectural changes. Broad novelty is not established.
 
 Read `docs/research/14-updated-recommendation.md` and the amendment ledger before expanding scope. Real-data GPU pilots now exist, but standalone optimizer/verifier novelty remains unconfirmed. Generic state/buffer/gradient checking substantially overlaps existing TrainParity; do not rebuild it under a novelty claim without the required comparison.
@@ -40,3 +46,7 @@ Record code+dirty diff, contract/config/plan hashes, data/tokenizer revisions an
 ## Done means
 
 Applicable acceptance criteria pass; meaningful positive, negative, unknown and failure controls exist; required checks run; docs and source citations are current; actual evidence is distinct from proposed work; artifacts are inspectable and large/sensitive files excluded. Use dedicated branches and meaningful commits; never force-push or delete unrelated work. Preserve the research log and revisit ADRs when assumptions change. Repository public licensing has not been selected by the owner.
+
+## CXL source context (added 2026-10-17)
+
+For owner-requested CXL exploration, read `docs/research/papers/cxl-context.md` and its linked local full-text papers before designing mechanisms or making research claims. The PDFs and page-marked extracted text are in `artifacts/cxl-papers/` (local, Git-ignored). This prospective direction does not establish novelty, hardware access, reproduced paper results or an implemented CXL policy.

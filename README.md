@@ -1,5 +1,7 @@
 # Atlas
 
+**New: [Attention Lab](docs/attention-lab.md)** is an executable local CPU-GPU attention workspace, with real CUDA benchmarks, a pretrained GPT-2 integration, persistent KV caches, and an interactive dashboard. Launch with `./Start-Atlas.ps1`. Its [architecture and review](docs/architecture/hybrid-attention-lab.md) distinguish this owner-authorized engineering track from the historical training proposal below. This is dense attention, not a CXL implementation or a reproduction of HGCA/BEYOND's sparse runtime.
+
 A research and engineering specification for a local scientific-fidelity-aware ML compute optimizer.
 
 **Verdict: advance the evaluation package; define a distinct policy before a superiority study.** Existing systems cover memory optimization, state-aware checks and conditional invariants. [The comparison audit](docs/research/15-comparison-identifiability.md) requires an explicit additional decision algorithm before an equally informed baseline can be a distinct treatment. Standalone novelty and useful expanded access remain unestablished.
