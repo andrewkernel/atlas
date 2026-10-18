@@ -1,0 +1,100 @@
+# Runtime tuning: measured results and validation status
+
+Validation is in progress. The completed 2k speed/memory campaigns and application
+checks below are actual observations. The required 32k memory-target campaign and
+final acceptance audit remain unfinished; this is not an end-to-end completion
+claim. The [development amendment](development-amendment.md) preserves the
+earlier implementation and its negative speed decision.
+
+## Completed speed campaign
+
+`tune-dc64d8a72091` ran Qwen3-0.6B in FP32 with a 2,048-token prompt and fixed
+16-token output on the existing Ryzen 5 7600X / RTX 3060 Windows machine. Source
+identities were frozen before measurements. Two train windows select; two
+separate validation windows confirm. The finite grid covers CPU threads 1/2/4/6,
+native and resident caches, Transformers offloading and 256/1,024-token hybrid
+GPU windows. See the [machine-readable result](fastest-2k.json).
+
+All 42 fresh workers completed. All 38 candidate/control workers passed their
+32-position full-vocabulary literal checks against separately computed native
+references. This finite relation uses `atol=rtol=1e-4`; it is not a broad answer
+quality score or a guarantee for future prompts.
+
+The resident cache won calibration. Confirmation native/candidate ratios were
+1.05379, 1.01506, 1.05462, 1.03446, 1.04978 and 1.04774. Because every ratio must
+exceed 1.05 under the frozen rule, the decision was **keep current: native-t4**.
+No faster execution setting was applied. Total tuning cost was 501.110 seconds;
+there is no positive speed break-even for this decision. These are descriptive
+same-session observations, not a formal population confidence interval.
+
+## Actual model application
+
+The saved native profile `profile-0f163d62d6c6ca8523e7ddc1` drove an actual
+registered-example request, `generate-280168c02e63`. The fresh 32-position check
+passed. Warmed generation took 0.933745 seconds, versus 14.410382 seconds for
+the entire request, including compatibility/evidence checks, loading, warmup and
+native replay. A generation-only objective does not establish lower total
+application latency.
+
+Revert restored the default active pointer. Actual request
+`generate-07baf7f55ddb` explicitly used native fallback and passed a fresh check;
+its generation/total times were 0.951360/10.552232 seconds. The saved profile was
+then applied again through the browser. Private inference records remain outside
+the public research inventory even when the selected prompt was a public example.
+
+## Completed 2k allocation-target campaign
+
+`tune-af0f569e5042` completed another 42 fresh workers for the same FP32 workload
+with a 2,560 MiB measured-allocation target. All 38 candidate/control workers
+passed their finite numerical checks. Two separate validation windows and six
+paired repetitions confirmed `offloaded-t4`, the built-in Transformers cache
+offloading comparator. Maximum warmup/generation allocated peaks were
+2,404.407 MiB for this nominee and 2,836.407 MiB for native-t4. See the
+[complete summary](budget-2k.json).
+
+The decision is **confirmed memory fit**, not a speed improvement. Confirmation
+native/candidate time ratios ranged from 0.73433 to 0.85639, meaning the chosen
+setting was slower. Total tuning cost was 510.640 seconds, with no positive
+speed break-even. This target was chosen using earlier memory observations;
+it is not evidence of an actual OOM rescue or a physical GPU-memory quota.
+
+The resulting `profile-65d8c31ded10874616f69f50` drove actual request
+`generate-64e5f69ccf49`, passed its fresh check and generated 16 tokens in
+1.289850 seconds (15.763138 seconds overall). After Revert, constrained request
+`generate-3df5a74a491e` abstained before model execution because no qualified
+profile was active. Reapplication succeeded. The
+[application receipt](application-checks.json) records these local observations;
+private request arrays are not supplied as public arithmetic proof.
+
+## Controls and unfinished validation
+
+The earlier real cancellation control, `tune-1cb8fb2880fc`, stopped its owned
+launcher and model processes without applying a profile. Its raw result and
+Windows job records remain available; they belong to the earlier development
+execution identity. Current-source controls also completed: the 60-second
+deadline run `tune-7b170f96d0e8` timed out and finished owned cleanup in 63.672
+seconds; `tune-287d3ea2c3e4` accepted cancellation while its actual model process
+was live. Both owned scopes closed, all matching observed processes exited and
+active settings stayed unchanged. See the [lifecycle receipt](lifecycle-checks.json).
+
+Actual local HTTP checks during `tune-af0f569e5042` refused four conflicting
+experiment/generation starts with 409, and refused missing-token and
+foreign-origin requests with 403. Actual stale-revision activation returned 409;
+unknown profiles and invalid settings returned 422 without changing state. See
+the [admission](api-admission-checks.json) and
+[activation](api-activation-checks.json) receipts. Authored temporary tests cover full-array
+failures, altered flags/nomination, incomplete cases, process ownership, immutable
+profiles, objective separation, asset drift, stale state, cancellation/commit
+serialization, rollback and exclusion of private records. Invented test arrays
+and timings are not model evidence.
+
+The 32k/6,144 MiB campaign has not started. Memory targets are selection constraints on measured warmup/generation
+CUDA allocated peaks, not hard physical-memory quotas. A confirmed memory fit
+may be slower, and unavailable/failed evidence cannot qualify.
+
+The [research review](research-and-design.md), [runtime guide](../../runtime-tuning.md)
+and [acceptance gates](../../roadmap/autotuning-acceptance.md) define scope and
+reproduction. One machine/model family, small fixed windows, nested contexts,
+shared desktop scheduling, process variability and public pretraining overlap
+limit generalization. No CXL, OS-wide tuning, external reproduction or new
+algorithmic superiority is established.

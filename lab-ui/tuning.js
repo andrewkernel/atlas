@@ -47,7 +47,9 @@ export function initTuning(api){
     $('#tune-evidence').textContent=JSON.stringify({protocol:p,nomination:n,execution:e,verification:v},null,2);
   }
   async function change(path,expected,message){
-    try{await api(path,{method:'POST',body:JSON.stringify(expected)});feedback(message);await refresh()}catch(e){feedback(e.message)}
+    $('#tune-apply')?.setAttribute('disabled','');$('#tune-revert')?.setAttribute('disabled','');
+    feedback('Checking evidence and active state…');
+    try{await api(path,{method:'POST',body:JSON.stringify(expected)});feedback(message)}catch(e){feedback(e.message)}finally{await refresh()}
   }
   async function pollInference(){
     const r=await api(`/api/tuning/inference/${inference}`);
@@ -76,6 +78,8 @@ export function initTuning(api){
   };
   $('#tune-generate-form').onsubmit=async e=>{
     e.preventDefault();$('#tune-generate').disabled=true;
+    $('#tune-inference-state').textContent='Starting a new request…';
+    $('#tune-text').textContent='';
     try{
       const r=await api('/api/tuning/generate',{method:'POST',body:JSON.stringify({campaign:selected,prompt:$('#tune-custom').checked?$('#tune-prompt').value:null,check_native:$('#tune-native-check').checked})});
       inference=r.id;$('#tune-text').textContent='';$('#tune-inference-detail').hidden=true;await refresh();
