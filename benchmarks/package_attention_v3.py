@@ -62,6 +62,7 @@ def inventory(root, protocol):
     selected |= {root/'src/atlas/__init__.py', root/'Start-Atlas.ps1', root/'Stop-Atlas.ps1',
                  root/'benchmarks/package_attention_v3.py', root/'benchmarks/verify_researcher_bundle.py',
                  root/'benchmarks/attention_v3_progress.py',
+                 root/'benchmarks/report_attention_v3.py',
                  root/'docs/attention-lab.md', root/'docs/architecture/hybrid-attention-lab.md',
                  root/'.gitattributes'}
     for relative in ('lab-ui','frontend'):
@@ -91,6 +92,13 @@ def package():
     if not (STUDY/'report.md').is_file():
         raise ValueError('A researcher-facing report is required')
     write_json(STUDY/'summary.json',result)
+    receipt=read_json(STUDY/'report-receipt.json')
+    if not receipt.get('all_cases_recorded') or receipt['protocol_sha256']!=result['protocol_sha256']:
+        raise ValueError('Final report identity is incomplete or stale')
+    for name in ('execution','summary','report'):
+        path=STUDY/(name+('.md' if name=='report' else '.json'))
+        if file_digest(path)!=receipt[name+'_sha256']:
+            raise ValueError('Final report is stale: '+name)
     protocol = read_json(STUDY/'protocol.json')
     files = inventory(ROOT,protocol)
     for required in ('benchmarks/verify_researcher_bundle.py','src/atlas/__init__.py'):
