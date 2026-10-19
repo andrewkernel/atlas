@@ -65,7 +65,7 @@ def _export(ident, home):
         'research-and-design.md', 'development-amendment.md', 'report.md', 'fastest-2k.json',
         'budget-2k.json', 'budget-32k.json', 'application-checks.json', 'lifecycle-checks.json',
         'api-admission-checks.json', 'api-activation-checks.json', 'preserved-sources.json',
-        'acceptance-audit.md', 'browser-qa.json', 'reproduce.md')]
+        'acceptance-audit.md', 'browser-qa.json', 'checks.json', 'reproduce.md')]
     extra += ['docs/research/autotuning/' + name for name in (
         'resource-recovery-amendment.md', '32k-resource-interruption.json',
         'pre-recovery-fastest-2k.json', 'pre-recovery-budget-2k.json')]

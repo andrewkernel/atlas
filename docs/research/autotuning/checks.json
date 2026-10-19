@@ -1,0 +1,110 @@
+{
+  "captured_at": "2026-10-19 01:32:23 UTC",
+  "scope": "Actual authored checks of current code; no model-performance or browser-execution claim. CPU optional integrations have 15 explicit skips; pinned CUDA attention/tuning suite has no skips.",
+  "checks": [
+    {
+      "command": ".venv/Scripts/uv.exe run --locked pytest -q",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "6a52d4",
+          "wall_time_seconds": 10.0015697,
+          "original_token_count": 41,
+          "output": "......................s..................s................s............. [ 43%]\r\n..............................................................s......... [ 86%]\r\n...ssssssss...........                                                   [100%]\r\n154 passed, 15 skipped in 11.56s\r\n",
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "command": "$atlasTests = @(Get-ChildItem -Path tests/test_attention_*.py | ForEach-Object FullName)\n& .tools/attention-env/Scripts/python.exe -m pytest @atlasTests tests/test_runtime_tuning.py -q",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "de24c7",
+          "wall_time_seconds": 10.0025858,
+          "original_token_count": 32,
+          "output": "........................................................................ [ 54%]\r\n............................................................             [100%]\r\n132 passed in 12.28s\r\n",
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "command": "node --check lab-ui/tuning.js",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "976c84",
+          "wall_time_seconds": 0.0779406,
+          "exit_code": 0,
+          "original_token_count": 0,
+          "output": ""
+        }
+      }
+    },
+    {
+      "command": "node --check lab-ui/app.js",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "5d72a5",
+          "wall_time_seconds": 0.080194,
+          "exit_code": 0,
+          "original_token_count": 0,
+          "output": ""
+        }
+      }
+    },
+    {
+      "command": "node --test --test-timeout=5000 tests/runtime_tuning_ui.test.mjs",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "b76017",
+          "wall_time_seconds": 0.1641573,
+          "exit_code": 0,
+          "original_token_count": 181,
+          "output": "✔ late campaign response cannot overwrite a newer selection (14.9859ms)\n✔ starting a campaign during an old refresh preserves the newly returned ID (2.2625ms)\n✔ unchanged polling preserves action and selection elements (1.0668ms)\n✔ generation from an earlier campaign is not displayed under another campaign (1.9868ms)\n✔ viewing history explicitly identifies the different campaign that Cancel will stop (0.9842ms)\n✔ imported evidence is presented as a recorded reference rather than a new execution (0.6943ms)\n✔ generation waits for owned cleanup and distinguishes all request clocks (1.214ms)\nℹ tests 7\nℹ suites 0\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 81.1505\n"
+        }
+      }
+    },
+    {
+      "command": ".venv/Scripts/uv.exe run --locked python benchmarks/audit_specification.py",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "7fd362",
+          "wall_time_seconds": 1.3617849,
+          "exit_code": 0,
+          "original_token_count": 39,
+          "output": "{\r\n  \"markdown_files\": 185,\r\n  \"local_links_checked\": 890,\r\n  \"unique_external_links_catalogued\": 155,\r\n  \"lock_package_count\": 22,\r\n  \"failures\": []\r\n}\r\n"
+        }
+      }
+    },
+    {
+      "command": ".venv/Scripts/uv.exe run --locked python frontend/scripts/check_dashboard.py",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "601c00",
+          "wall_time_seconds": 0.1451722,
+          "exit_code": 0,
+          "original_token_count": 113,
+          "output": "{\r\n  \"first_load_source_bytes\": 115619,\r\n  \"budget_bytes\": 128000,\r\n  \"asset_bytes\": {\r\n    \"index.html\": 3867,\r\n    \"app.css\": 14600,\r\n    \"app.js\": 19539,\r\n    \"data/snapshot.json\": 7651,\r\n    \"assets/atlas.svg\": 202,\r\n    \"assets/geist.woff2\": 69760\r\n  },\r\n  \"gzip_estimate_bytes\": 84134,\r\n  \"scope\": \"Uncompressed local source bytes and gzip estimate; not observed network transfer, LCP or an internet-latency guarantee.\",\r\n  \"failures\": []\r\n}\r\n"
+        }
+      }
+    },
+    {
+      "command": "git diff --check",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "2b65d1",
+          "wall_time_seconds": 0.094436,
+          "exit_code": 0,
+          "original_token_count": 32,
+          "output": "warning: in the working copy of 'tests/runtime_tuning_ui.test.mjs', LF will be replaced by CRLF the next time Git touches it\n"
+        }
+      }
+    }
+  ]
+}

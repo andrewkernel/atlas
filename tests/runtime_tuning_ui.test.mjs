@@ -152,4 +152,7 @@ test('generation waits for owned cleanup and distinguishes all request clocks',a
   assert.equal(detail.service_job_total_s,3);assert.ok(detail.browser_observed_s>=0);
   assert.match(detail.browser_timing_scope,/polling/);
   assert.equal(h.element('#tune-inference-detail').hidden,false);
+  assert.equal(h.element('#tune-inference-cost').hidden,false);
+  assert.equal(h.element('#tune-request-details').hidden,false);
+  assert.match(h.element('#tune-inference-cost').textContent,/Including launch and cleanup: 3 s/);
 });

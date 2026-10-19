@@ -30,6 +30,23 @@ break-even. A qualified native profile was saved and activated; this records
 the same execution setting rather than a demonstrated speed improvement.
 The amended-source memory campaigns and final end-to-end audit remain pending.
 
+The saved native profile drove actual request `generate-4d900c9c8b06`; its fresh
+32-position native comparison passed. Warmed generation took 0.974805 seconds,
+worker total 14.398072 seconds, service total including launch/cleanup 15.703
+seconds, and browser-observed submission-to-receipt 16.1947 seconds. These
+different clocks do not establish an application-level speed improvement.
+After browser Revert, `generate-e13bc014ea1a` used explicit native fallback and
+passed a fresh check (0.943667-second generation, 10.725879-second worker,
+11.891-second service, 13.247-second browser observation).
+
+An actual authored short-prompt request, `generate-1356190895b0`, was refused:
+four tokens cannot use this exact 2,048-token profile. Its submitted request
+remained intact and no tokens were generated. The
+[application receipt](application-checks.json) contains sanitized outcomes and
+scoped clocks; the raw request text/output/arrays remain private. Seven authored
+asynchronous UI controls also cover the selected-record association, imported
+labels and waiting for owned cleanup before displaying final request clocks.
+
 ## Historical speed campaign
 
 `tune-dc64d8a72091` ran Qwen3-0.6B in FP32 with a 2,048-token prompt and fixed
@@ -111,6 +128,16 @@ failures, altered flags/nomination, incomplete cases, process ownership, immutab
 profiles, objective separation, asset drift, stale state, cancellation/commit
 serialization, rollback and exclusion of private records. Invented test arrays
 and timings are not model evidence.
+
+The amended-source lifecycle controls also passed: `tune-ec8f268f90b9` reached
+its 60-second deadline and completed owned cleanup in 64.485 seconds;
+`tune-ee144274ea5e` accepted cancellation while its actual model process was
+confirmed live and completed cleanup in 17.844 seconds. Both scopes closed,
+matching observed processes exited, and the exact active profile/revision stayed
+unchanged. The lifecycle receipt retains both historical and amended controls.
+The [latest authored checks](checks.json) passed 132 pinned-environment
+attention/tuning tests, 154 CPU tests (15 optional-integration skips), seven
+asynchronous UI controls, syntax, document/link and dashboard-size checks.
 
 The 32k/6,144 MiB campaign, `tune-53a712409265`, stopped at the available-RAM guard
 during its first built-in offloading calibration trial after 11 completed workers.

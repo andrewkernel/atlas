@@ -17,6 +17,7 @@ export function initTuning(api){
     $('#tune-measurements').hidden=true;$('#tune-generation').hidden=true;$('#tune-export').hidden=true;
     $('#tune-evidence').textContent='Loading selected campaign…';
     $('#tune-inference-state').textContent='';$('#tune-text').textContent='';$('#tune-inference-detail').hidden=true;
+    $('#tune-inference-cost').hidden=true;$('#tune-request-details').hidden=true;
   }
   async function refresh(){
     if(loading){refreshPending=true;return}loading=true;
@@ -97,8 +98,11 @@ export function initTuning(api){
     $('#tune-inference-state').textContent=`${label} · ${r.execution?.id||'Checking compatibility'} · Current request check: ${r.request_numerical_check||'unknown'}${r.error?` · ${r.error}`:''}`;
     $('#tune-text').textContent=r.text||'';
     if(finished){
+      const observed=(performance.now()-inferenceStarted)/1000;
+      $('#tune-inference-cost').hidden=false;$('#tune-request-details').hidden=false;
+      $('#tune-inference-cost').textContent=`Generation: ${num(r.measurement?.generation_ms==null?null:r.measurement.generation_ms/1000,2)} s · Model worker: ${num(r.total_request_s,2)} s · Including launch and cleanup: ${num(r.service_job_total_s,2)} s · Observed here: ${num(observed,2)} s.`;
       $('#tune-inference-detail').hidden=false;
-      $('#tune-inference-detail').textContent=JSON.stringify({applied_profile:r.applied_profile,native_fallback:r.native_fallback,fallback_reason:r.fallback_reason,profile_evidence:r.profile_numerical_evidence,request_check:r.request_numerical_check,check_scope:r.check_scope,generation_ms:r.measurement?.generation_ms,model_load_s:r.model_load_s,warmup_ms:r.warmup?.generation_ms,native_check_s:r.native_check_s,worker_request_s:r.total_request_s??null,owned_process_total_s:r.owned_process_total_s??null,service_job_total_s:r.service_job_total_s??null,browser_observed_s:(performance.now()-inferenceStarted)/1000,service_timing_scope:r.service_timing_scope||'Not recorded by this service version',browser_timing_scope:'Submission to receipt, including network and polling delay'},null,2);
+      $('#tune-inference-detail').textContent=JSON.stringify({applied_profile:r.applied_profile,native_fallback:r.native_fallback,fallback_reason:r.fallback_reason,profile_evidence:r.profile_numerical_evidence,request_check:r.request_numerical_check,check_scope:r.check_scope,generation_ms:r.measurement?.generation_ms,model_load_s:r.model_load_s,warmup_ms:r.warmup?.generation_ms,native_check_s:r.native_check_s,worker_request_s:r.total_request_s??null,owned_process_total_s:r.owned_process_total_s??null,service_job_total_s:r.service_job_total_s??null,browser_observed_s:observed,service_timing_scope:r.service_timing_scope||'Not recorded by this service version',browser_timing_scope:'Submission to receipt, including network and polling delay'},null,2);
       inference=null;
     }
   }
@@ -125,6 +129,7 @@ export function initTuning(api){
     $('#tune-generate').disabled=true;
     $('#tune-inference-state').textContent='Starting a new request…';
     $('#tune-text').textContent='';
+    $('#tune-inference-cost').hidden=true;$('#tune-request-details').hidden=true;
     try{
       const r=await api('/api/tuning/generate',{method:'POST',body:JSON.stringify({campaign,prompt:$('#tune-custom').checked?$('#tune-prompt').value:null,check_native:$('#tune-native-check').checked})});
       inference=r.id;inferenceCampaign=campaign;inferenceStarted=submitted;$('#tune-text').textContent='';$('#tune-inference-detail').hidden=true;await refresh();
