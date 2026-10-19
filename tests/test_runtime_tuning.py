@@ -401,6 +401,16 @@ def test_supplied_bundle_is_labeled_imported_reference(monkeypatch, tmp_path):
     assert service.observed_status(folder)['record_origin'] == 'imported_reference'
 
 
+def test_api_error_redacts_windows_repr_filenames(monkeypatch, tmp_path):
+    pytest.importorskip('fastapi')
+    from atlas.tuning import service
+    monkeypatch.setattr(service.old, 'ROOT', tmp_path)
+    error = FileNotFoundError(2, 'Missing file', str(tmp_path / 'missing-profile.json'))
+    message = service.api_error(error)
+    assert str(tmp_path) not in message and str(tmp_path).replace('\\', '\\\\') not in message
+    assert '[workspace]' in message and 'missing-profile.json' in message
+
+
 @pytest.mark.parametrize('launch_fails', [False, True])
 def test_queued_service_job_is_owned_during_prelaunch_and_failure_clears_it(monkeypatch, tmp_path, launch_fails):
     pytest.importorskip('fastapi')

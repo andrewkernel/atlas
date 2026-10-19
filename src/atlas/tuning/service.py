@@ -28,6 +28,15 @@ except (OSError, ValueError):
     IMPORTED_CAMPAIGN = None
 
 
+def api_error(exc):
+    message = public_error(exc)
+    # OSError renders a filename with repr(), doubling Windows backslashes.
+    # Keep the measured execution formatter frozen; redact both API forms here.
+    for root in (str(old.ROOT), old.ROOT.as_posix()):
+        message = message.replace(root.replace('\\', '\\\\'), '[workspace]').replace(root, '[workspace]')
+    return message
+
+
 def located(ident, kind='campaign'):
     try:
         folder = campaign_dir(ident) if kind == 'campaign' else STORE / 'private-inference' / identifier(ident)
@@ -102,7 +111,7 @@ class Jobs:
                 write_json(folder / 'repository.json', provenance)
                 child = OwnedChild(['controller' if kind == 'campaign' else 'inference-worker', ident], folder / 'controller.log')
             except Exception as exc:
-                write_json(state_path, {'id': ident, 'status': 'failed', 'error': public_error(exc)})
+                write_json(state_path, {'id': ident, 'status': 'failed', 'error': api_error(exc)})
                 self.active = self.child = self.kind = self.cancel_at = None
                 raise HTTPException(500, 'Owned worker could not start; its failed run is retained') from exc
             self.active, self.child, self.kind, self.cancel_at = ident, child, kind, None
@@ -249,7 +258,7 @@ def apply(ident: str, expected: Change):
     except profiles.Conflict as exc:
         raise HTTPException(409, str(exc)) from exc
     except (OSError, ValueError, RuntimeError) as exc:
-        raise HTTPException(422, public_error(exc)) from exc
+        raise HTTPException(422, api_error(exc)) from exc
 
 
 @app.post('/api/tuning/domains/{key}/revert')
@@ -261,7 +270,7 @@ def revert(key: str, expected: Change):
     except profiles.Conflict as exc:
         raise HTTPException(409, str(exc)) from exc
     except (OSError, ValueError, RuntimeError) as exc:
-        raise HTTPException(422, public_error(exc)) from exc
+        raise HTTPException(422, api_error(exc)) from exc
 
 
 class Generate(BaseModel):
@@ -295,7 +304,7 @@ def export(ident: str):
     try:
         path = export_bundle(ident)
     except (ValueError, OSError) as exc:
-        raise HTTPException(422, public_error(exc)) from exc
+        raise HTTPException(422, api_error(exc)) from exc
     return FileResponse(path, filename=path.name, media_type='application/zip')
 
 

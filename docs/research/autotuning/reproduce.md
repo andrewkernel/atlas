@@ -60,6 +60,9 @@ using a smaller workload does not reproduce the registered question. Timing is
 affected by other applications, thermal/clock state and system caches. Preserve
 all attempts and record those conditions instead of selecting only favorable
 observations. The finite grid is not a global optimum or a zero-bias guarantee.
+Fixed windows are reused across objectives/source amendments and nested across
+context lengths. Fresh processes are not independent datasets, and confirmation
+text may have appeared in earlier studies or model pretraining.
 
 After a qualified campaign, **Generate with active setting** executes a real
 compatible request. Its optional native comparison covers 32 positions and has

@@ -6,12 +6,12 @@ final acceptance audit remain unfinished; this is not an end-to-end completion
 claim. The [development amendment](development-amendment.md) preserves the
 earlier implementation and its negative speed decision.
 
-The observations below use the execution identity preceding the
-[resource-recovery amendment](resource-recovery-amendment.md). They remain
-historical evidence; the amended controller requires fresh 2k speed, 2k allocation
-and 32k allocation campaigns before the final completion audit. Both old active
-2k pointers were reverted before changing execution source. Immutable profiles,
-full raw evidence and journals remain.
+The [resource-recovery amendment](resource-recovery-amendment.md) requires fresh
+2k speed, 2k allocation and 32k allocation campaigns. The two amended-source 2k
+campaigns below have completed. Pre-recovery observations are labeled historical
+and retained under their original identities. Both old active 2k pointers were
+reverted before changing execution source; immutable profiles, full raw evidence
+and journals remain.
 
 ## Amended-source speed campaign
 
@@ -28,7 +28,7 @@ the required 1.05 threshold, so the verified decision was **keep current:
 native-t4**. Total tuning cost was 495.953 seconds, with no positive speed
 break-even. A qualified native profile was saved and activated; this records
 the same execution setting rather than a demonstrated speed improvement.
-The amended-source memory campaigns and final end-to-end audit remain pending.
+The amended-source 32k campaign and final end-to-end audit remain pending.
 
 The saved native profile drove actual request `generate-4d900c9c8b06`; its fresh
 32-position native comparison passed. Warmed generation took 0.974805 seconds,
@@ -46,6 +46,34 @@ remained intact and no tokens were generated. The
 scoped clocks; the raw request text/output/arrays remain private. Seven authored
 asynchronous UI controls also cover the selected-record association, imported
 labels and waiting for owned cleanup before displaying final request clocks.
+
+## Amended-source 2k allocation-target campaign
+
+`tune-523ff98ee883` completed 42 fresh workers on the same FP32, 2,048-token
+prompt / 16-token output workload with the predeclared 2,560 MiB target. All 38
+scored candidate/control workers passed the full 32-position numerical relation.
+Independent reconstruction matched the recorded decision; the owned controller
+scope closed and all matching observed processes exited. See the
+[current memory summary](budget-2k.json).
+
+Built-in Transformers offloading was confirmed within the allocation target:
+its maximum observed warmup/generation allocated peak was 2,404.407 MiB, compared
+with 2,836.407 MiB for native. Confirmation native/candidate time ratios ranged
+from 0.65499 to 0.74771. This is a slower **memory fit**, not a speed improvement
+or demonstrated OOM rescue. The total tuning cost was 503.172 seconds; no
+positive speed break-even is claimed. The saved offloaded profile was activated
+only after complete independent verification.
+
+Actual request `generate-8b076acdf516` used the saved offloaded profile and passed
+its fresh native comparison. Warmed generation took 1.271639 seconds, worker
+total 15.808157 seconds, service total 17.093 seconds and browser observation
+18.9261 seconds. Its measured warmup/generation peak stayed at 2,404.407 MiB.
+Browser Revert restored the default pointer; `generate-5696d9d88984` then
+abstained without generating or loading a model because no qualified memory
+profile was active. Manual reapplication succeeded. Actual stale-revision,
+historical-source, unknown-profile, invalid-context and incomplete-export
+requests were refused without changing active state. Portable response copies
+redact local checkout prefixes; the local raw observations are retained.
 
 ## Historical speed campaign
 
@@ -68,7 +96,7 @@ No faster execution setting was applied. Total tuning cost was 501.110 seconds;
 there is no positive speed break-even for this decision. These are descriptive
 same-session observations, not a formal population confidence interval.
 
-## Actual model application
+## Historical model application
 
 The saved native profile `profile-0f163d62d6c6ca8523e7ddc1` drove an actual
 registered-example request, `generate-280168c02e63`. The fresh 32-position check
@@ -83,7 +111,7 @@ its generation/worker-total times were 0.951360/10.552232 seconds. The saved pro
 then applied again through the browser. Private inference records remain outside
 the public research inventory even when the selected prompt was a public example.
 
-## Completed 2k allocation-target campaign
+## Historical 2k allocation-target campaign
 
 `tune-af0f569e5042` completed another 42 fresh workers for the same FP32 workload
 with a 2,560 MiB measured-allocation target. All 38 candidate/control workers
@@ -157,3 +185,8 @@ reproduction. One machine/model family, small fixed windows, nested contexts,
 shared desktop scheduling, process variability and public pretraining overlap
 limit generalization. No CXL, OS-wide tuning, external reproduction or new
 algorithmic superiority is established.
+
+The same fixed public-text windows are reused across objectives and execution
+amendments. Fresh worker processes do not create new or independent evaluation
+data. Separate confirmation means separate from the campaign's calibration
+windows; it does not mean unseen by earlier studies or the model's pretraining.
