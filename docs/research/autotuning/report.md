@@ -98,6 +98,10 @@ The stopped case remains numerically unknown and ineligible. The
 [actual recovery receipt](32k-resource-recovery.json) checks this scalar record
 and cleanup; it does not replace full campaign verification or prove the cause
 of memory pressure. No candidate was removed from the remaining registry.
+The second-window offloading attempt also hit the RAM guard (980,561,920 bytes
+available). Its scope closed and matching processes exited; sampled available
+RAM recovered to 4,635,381,760 bytes after 0.391 seconds, and collection continued
+to the next hybrid trial. Both stopped attempts are retained and cannot qualify.
 
 ## Historical speed campaign
 
