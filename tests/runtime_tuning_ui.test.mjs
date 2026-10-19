@@ -131,3 +131,25 @@ test('imported evidence is presented as a recorded reference rather than a new e
   await h.answer('/api/tuning/campaigns/case-a',imported);
   assert.match(h.element('#tune-workload').textContent,/^Imported recorded result/);
 });
+
+test('generation waits for owned cleanup and distinguishes all request clocks',async t=>{
+  const h=harness(t);await initial(h);
+  const submitted=h.element('#tune-generate-form').onsubmit(event);
+  await h.answer('/api/tuning/generate',{id:'inference-clocks'});
+  await h.answer('/api/tuning/state',overview());
+  await h.answer('/api/tuning/campaigns/case-a',record('case-a'));
+  await h.answer('/api/tuning/inference/inference-clocks',{status:'completed',owned_job_active:true,text:'Authored output'});
+  await submitted;
+  assert.match(h.element('#tune-inference-state').textContent,/Finishing owned job cleanup/);
+  assert.equal(h.element('#tune-inference-detail').hidden,true);
+  h.interval();
+  await h.answer('/api/tuning/state',overview());
+  await h.answer('/api/tuning/campaigns/case-a',record('case-a'));
+  await h.answer('/api/tuning/inference/inference-clocks',{status:'completed',owned_job_active:false,
+    total_request_s:1,owned_process_total_s:2,service_job_total_s:3,service_timing_scope:'Authored cleanup scope'});
+  const detail=JSON.parse(h.element('#tune-inference-detail').textContent);
+  assert.equal(detail.worker_request_s,1);assert.equal(detail.owned_process_total_s,2);
+  assert.equal(detail.service_job_total_s,3);assert.ok(detail.browser_observed_s>=0);
+  assert.match(detail.browser_timing_scope,/polling/);
+  assert.equal(h.element('#tune-inference-detail').hidden,false);
+});

@@ -401,6 +401,64 @@ def test_supplied_bundle_is_labeled_imported_reference(monkeypatch, tmp_path):
     assert service.observed_status(folder)['record_origin'] == 'imported_reference'
 
 
+@pytest.mark.parametrize('launch_fails', [False, True])
+def test_queued_service_job_is_owned_during_prelaunch_and_failure_clears_it(monkeypatch, tmp_path, launch_fails):
+    pytest.importorskip('fastapi')
+    from atlas.tuning import service
+    jobs = service.Jobs()
+    monkeypatch.setattr(service, 'jobs', jobs)
+    monkeypatch.setattr(service.old, 'ROOT', tmp_path)
+    runs = tmp_path / 'runs'; runs.mkdir()
+    monkeypatch.setattr(service.old, 'RUNS', runs)
+    monkeypatch.setattr(service, 'campaign_dir', lambda ident: tmp_path / 'campaigns' / ident)
+    monkeypatch.setattr(service, 'source_map', lambda: {})
+    monkeypatch.setattr(service, 'snapshot', lambda *a: None)
+    monkeypatch.setattr(service.subprocess, 'check_output', lambda *a, **kw: b'authored-git-observation')
+    class Child:
+        def __init__(self, args, log):
+            observed = service.observed_status(log.parent)
+            assert observed['status'] == 'queued' and observed['owned_job_active'] is True
+            if launch_fails:
+                raise RuntimeError('Authored failed launch')
+    class Thread:
+        def __init__(self, **kwargs):
+            pass
+        def start(self):
+            pass
+    monkeypatch.setattr(service, 'OwnedChild', Child)
+    monkeypatch.setattr(service.threading, 'Thread', Thread)
+    if launch_fails:
+        with pytest.raises(service.HTTPException) as error:
+            jobs.start(registry.settings({}))
+        assert error.value.status_code == 500 and jobs.active is None and jobs.child is None
+        assert common.read_json(next((tmp_path/'campaigns').glob('*/status.json')))['status'] == 'failed'
+    else:
+        result = jobs.start(registry.settings({}))
+        assert result['id'] == jobs.active and jobs.kind == 'campaign'
+
+
+def test_service_request_clock_includes_owned_cleanup(monkeypatch, tmp_path):
+    pytest.importorskip('fastapi')
+    from types import SimpleNamespace
+    from atlas.tuning import service
+    jobs = service.Jobs(); jobs.active = 'authored-request'; jobs.kind = 'inference'
+    path = tmp_path / 'result.json'
+    common.write_json(path, {'status': 'completed', 'total_request_s': 1})
+    class Child:
+        process = SimpleNamespace(poll=lambda: 0)
+        def close(self):
+            assert jobs.active == 'authored-request'
+            assert 'service_job_total_s' not in common.read_json(path)
+        def evidence(self):
+            return {'closed': True, 'elapsed_s': 3}
+    monkeypatch.setattr(service.time, 'monotonic', lambda: 100)
+    jobs.watch('authored-request', tmp_path, Child(), path, 2400, 95, 'inference')
+    result = common.read_json(path)
+    assert result['total_request_s'] == 1 and result['owned_process_total_s'] == 3
+    assert result['service_job_total_s'] == 5 and 'cleanup' in result['service_timing_scope']
+    assert jobs.active is None and common.read_json(tmp_path/'controller-ownership.json')['closed'] is True
+
+
 @pytest.mark.parametrize('disk_free,ram_available,reason', [
     (0, 8 * 1024**3, 'output space'), (4 * 1024**3, 2 * 1024**3, 'system RAM'),
     (256 * 1024**2, 8 * 1024**3, None)])

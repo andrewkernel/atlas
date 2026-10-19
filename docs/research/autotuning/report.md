@@ -13,7 +13,24 @@ and 32k allocation campaigns before the final completion audit. Both old active
 2k pointers were reverted before changing execution source. Immutable profiles,
 full raw evidence and journals remain.
 
-## Completed speed campaign
+## Amended-source speed campaign
+
+`tune-0ac3414ab599` completed all 42 fresh workers under the amended controller
+and the same fixed 2,048-token FP32 workload. All 38 scored candidate/control
+workers passed the 32-position full-vocabulary relation. Independent NumPy
+reconstruction matched the saved evidence and decision; the owned controller
+scope closed and all matching observed processes exited. See the
+[current summary](fastest-2k.json).
+
+Resident cache again won calibration. Its six native/candidate confirmation
+ratios were 1.03688, 1.04218, 1.03810, 1.04613, 1.03723 and 1.04085. None exceeded
+the required 1.05 threshold, so the verified decision was **keep current:
+native-t4**. Total tuning cost was 495.953 seconds, with no positive speed
+break-even. A qualified native profile was saved and activated; this records
+the same execution setting rather than a demonstrated speed improvement.
+The amended-source memory campaigns and final end-to-end audit remain pending.
+
+## Historical speed campaign
 
 `tune-dc64d8a72091` ran Qwen3-0.6B in FP32 with a 2,048-token prompt and fixed
 16-token output on the existing Ryzen 5 7600X / RTX 3060 Windows machine. Source

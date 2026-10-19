@@ -85,6 +85,9 @@ class Jobs:
             write_json(folder / 'request.json', config)
             state_path = folder / ('status.json' if kind == 'campaign' else 'result.json')
             write_json(state_path, {'id': ident, 'status': 'queued', 'created_at': utc(), 'settings': config})
+            # GET state can run during provenance/owned launch. A queued job has a
+            # real service owner even before its child exists.
+            self.active, self.kind = ident, kind
             try:
                 provenance = {'captured_at': utc(), 'scope': 'Before owned service launch', 'execution_sources': source_map()}
                 try:
@@ -100,6 +103,7 @@ class Jobs:
                 child = OwnedChild(['controller' if kind == 'campaign' else 'inference-worker', ident], folder / 'controller.log')
             except Exception as exc:
                 write_json(state_path, {'id': ident, 'status': 'failed', 'error': public_error(exc)})
+                self.active = self.child = self.kind = self.cancel_at = None
                 raise HTTPException(500, 'Owned worker could not start; its failed run is retained') from exc
             self.active, self.child, self.kind, self.cancel_at = ident, child, kind, None
             deadline = config['max_wall_s']+60 if kind == 'campaign' else 2400
