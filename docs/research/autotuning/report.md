@@ -75,6 +75,15 @@ historical-source, unknown-profile, invalid-context and incomplete-export
 requests were refused without changing active state. Portable response copies
 redact local checkout prefixes; the local raw observations are retained.
 
+## Registered amended-source 32k validation
+
+`tune-eeb99dbc1f00` is the amended-source FP32, 32,768-token prompt / 16-token
+output campaign with the original 6,144 MiB allocation target and all 11
+registered profiles. Its execution source hashes match both completed amended
+2k campaigns. The terminal decision is pending in this report; consult the live
+owned-process state before inferring liveness from a recorded status. No 32k
+profile has been qualified or applied by the observations reported here.
+
 ## Historical speed campaign
 
 `tune-dc64d8a72091` ran Qwen3-0.6B in FP32 with a 2,048-token prompt and fixed
