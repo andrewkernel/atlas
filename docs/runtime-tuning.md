@@ -69,6 +69,12 @@ cache maintenance, transfers, synchronized forward passes and cache teardown.
 It is measured after a full-shape warmup. Loading, warmup, reference generation,
 numerical checking and total tuning time remain separate recorded costs. The
 objective is warmed generation; actual cold requests show their total cost too.
+Campaign `tuning_cost_s` measures the controller interval from preflight through
+verification and optional activation, including its owned workers' startup,
+warmup and checks. The parent-owned process interval, including its own startup
+and cleanup, is retained separately in `controller-ownership.json`. It excludes
+service prelaunch setup and browser transport. A status file's elapsed value is
+a phase-change observation, not a continuously refreshed liveness signal.
 Worker total includes compatibility checks, loading, warmup and optional native
 replay. Service-job total additionally includes prelaunch setup and owned-process
 exit/cleanup. Browser-observed time includes submission, transport and polling.

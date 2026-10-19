@@ -29,6 +29,9 @@ native-t4**. Total tuning cost was 495.953 seconds, with no positive speed
 break-even. A qualified native profile was saved and activated; this records
 the same execution setting rather than a demonstrated speed improvement.
 The amended-source 32k campaign and final end-to-end audit remain pending.
+The parent-owned campaign interval was 496.781 seconds. Controller campaign
+cost and parent startup/cleanup are distinct clocks; neither includes browser
+transport or service prelaunch setup.
 
 The saved native profile drove actual request `generate-4d900c9c8b06`; its fresh
 32-position native comparison passed. Warmed generation took 0.974805 seconds,
@@ -63,6 +66,8 @@ from 0.65499 to 0.74771. This is a slower **memory fit**, not a speed improvemen
 or demonstrated OOM rescue. The total tuning cost was 503.172 seconds; no
 positive speed break-even is claimed. The saved offloaded profile was activated
 only after complete independent verification.
+The parent-owned campaign interval was 504.016 seconds, separately retained from
+the 503.172-second controller campaign measurement.
 
 Actual request `generate-8b076acdf516` used the saved offloaded profile and passed
 its fresh native comparison. Warmed generation took 1.271639 seconds, worker
