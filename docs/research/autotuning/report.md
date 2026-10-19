@@ -89,6 +89,16 @@ registered profiles. Its execution source hashes match both completed amended
 owned-process state before inferring liveness from a recorded status. No 32k
 profile has been qualified or applied by the observations reported here.
 
+Its first built-in offloading trial reached the unchanged advisory RAM guard:
+1,482,407,936 bytes available, below the 2 GiB threshold. The owned trial scope
+closed, matching observed trial processes exited, and three recovery samples
+recorded available RAM reaching 5,089,566,720 bytes after 0.406 seconds, above the
+required 4 GiB. The controller then launched the next registered native trial.
+The stopped case remains numerically unknown and ineligible. The
+[actual recovery receipt](32k-resource-recovery.json) checks this scalar record
+and cleanup; it does not replace full campaign verification or prove the cause
+of memory pressure. No candidate was removed from the remaining registry.
+
 ## Historical speed campaign
 
 `tune-dc64d8a72091` ran Qwen3-0.6B in FP32 with a 2,048-token prompt and fixed

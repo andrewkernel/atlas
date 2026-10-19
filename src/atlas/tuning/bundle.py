@@ -67,7 +67,7 @@ def _export(ident, home):
         'api-admission-checks.json', 'api-activation-checks.json', 'preserved-sources.json',
         'acceptance-audit.md', 'browser-qa.json', 'checks.json', 'reproduce.md')]
     extra += ['docs/research/autotuning/' + name for name in (
-        'resource-recovery-amendment.md', '32k-resource-interruption.json',
+        'resource-recovery-amendment.md', '32k-resource-interruption.json', '32k-resource-recovery.json',
         'pre-recovery-fastest-2k.json', 'pre-recovery-budget-2k.json')]
     for name in extra:
         if (ROOT / name).is_file():
