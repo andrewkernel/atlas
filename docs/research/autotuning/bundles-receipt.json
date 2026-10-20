@@ -1,0 +1,159 @@
+{
+  "captured_at": "2026-10-20T01:25:16.941005+00:00",
+  "scope": "Every final ZIP payload and declared inventory checked, then the unmodified shipped verifier ran from each separate extracted root. Public arrays use hardlinks only after ZIP/source/extracted bytes match. Same-machine byte/array/decision consistency; not fresh-install or independent model replication. Hash-named archives preserve exact delivered bytes.",
+  "bundles": [
+    {
+      "campaign": "tune-0ac3414ab599",
+      "archive_relative": "artifacts/atlas-tuning/exports/tune-0ac3414ab599-3dd3dd2cc7fd0d2a.zip",
+      "archive_sha256": "3dd3dd2cc7fd0d2a7147f869a35ca63ff5f212fdf1ff4a8f1d2e432989415cf2",
+      "archive_bytes": 143523538,
+      "archive_entries_checked": 226,
+      "verified_array_hardlinks": 12,
+      "standalone": {
+        "campaign": "tune-0ac3414ab599",
+        "files_checked": 225,
+        "evidence_sha256": "758f5426b69596aaa9d3eeddd59af88d162004ff8a8d542d3c1a03eebaef36ac",
+        "decision": {
+          "outcome": "keep_current",
+          "profile": "native-t4",
+          "is_change": false,
+          "reason": "No confirmed change improves this objective; current remains qualified",
+          "pair_ratios": [
+            {
+              "input": "hold-0",
+              "repetition": 0,
+              "baseline_ms": 908.4100999752991,
+              "candidate_ms": 876.103000016883,
+              "ratio": 1.036875915226627
+            },
+            {
+              "input": "hold-0",
+              "repetition": 1,
+              "baseline_ms": 916.2740999890957,
+              "candidate_ms": 879.189100000076,
+              "ratio": 1.0421809141958385
+            },
+            {
+              "input": "hold-0",
+              "repetition": 2,
+              "baseline_ms": 909.8300999903586,
+              "candidate_ms": 876.439500018023,
+              "ratio": 1.038098009014483
+            },
+            {
+              "input": "hold-1",
+              "repetition": 0,
+              "baseline_ms": 920.6026000028942,
+              "candidate_ms": 880.0115000049118,
+              "ratio": 1.0461256472191054
+            },
+            {
+              "input": "hold-1",
+              "repetition": 1,
+              "baseline_ms": 910.3929999982938,
+              "candidate_ms": 877.7195999864489,
+              "ratio": 1.0372253280117585
+            },
+            {
+              "input": "hold-1",
+              "repetition": 2,
+              "baseline_ms": 913.9891999948304,
+              "candidate_ms": 878.114999999525,
+              "ratio": 1.0408536467265959
+            }
+          ],
+          "median_saved_ms": null
+        },
+        "scope": "Byte/array/decision consistency; not independent model replication or author authentication"
+      }
+    },
+    {
+      "campaign": "tune-523ff98ee883",
+      "archive_relative": "artifacts/atlas-tuning/exports/tune-523ff98ee883-a432ad9a5a977af5.zip",
+      "archive_sha256": "a432ad9a5a977af5670f521bf2b4535441e8d15fadb7e1cce19f7f0596139967",
+      "archive_bytes": 143523643,
+      "archive_entries_checked": 226,
+      "verified_array_hardlinks": 12,
+      "standalone": {
+        "campaign": "tune-523ff98ee883",
+        "files_checked": 225,
+        "evidence_sha256": "e209ad22cb367acdd0f76b2d98fecee2883c0ac1a8d4428d9cf18886d02cb7f6",
+        "decision": {
+          "outcome": "confirmed_memory_fit",
+          "profile": "offloaded-t4",
+          "is_change": true,
+          "reason": "Candidate confirmed within allocation target; current was not qualified under that target",
+          "pair_ratios": [
+            {
+              "input": "hold-0",
+              "repetition": 0,
+              "baseline_ms": 925.7906000129879,
+              "candidate_ms": 1259.7793999884743,
+              "ratio": 0.7348831073293133
+            },
+            {
+              "input": "hold-0",
+              "repetition": 1,
+              "baseline_ms": 943.2322999928147,
+              "candidate_ms": 1261.4879999891855,
+              "ratio": 0.7477140488065688
+            },
+            {
+              "input": "hold-0",
+              "repetition": 2,
+              "baseline_ms": 930.522699985886,
+              "candidate_ms": 1284.7764999896754,
+              "ratio": 0.7242681509144694
+            },
+            {
+              "input": "hold-1",
+              "repetition": 0,
+              "baseline_ms": 927.5765999918804,
+              "candidate_ms": 1416.1613000032958,
+              "ratio": 0.6549936084185619
+            },
+            {
+              "input": "hold-1",
+              "repetition": 1,
+              "baseline_ms": 936.3749999902211,
+              "candidate_ms": 1296.9658999936655,
+              "ratio": 0.7219734921286631
+            },
+            {
+              "input": "hold-1",
+              "repetition": 2,
+              "baseline_ms": 929.0966999833472,
+              "candidate_ms": 1288.5970000061207,
+              "ratio": 0.7210141727622632
+            }
+          ],
+          "median_saved_ms": null
+        },
+        "scope": "Byte/array/decision consistency; not independent model replication or author authentication"
+      }
+    },
+    {
+      "campaign": "tune-eeb99dbc1f00",
+      "archive_relative": "artifacts/atlas-tuning/exports/tune-eeb99dbc1f00-e0c48e084ffe4951.zip",
+      "archive_sha256": "e0c48e084ffe4951e0c972cf71d363c3fbbff7de9339bf87f94a8e4645d9dacf",
+      "archive_bytes": 107455883,
+      "archive_entries_checked": 187,
+      "verified_array_hardlinks": 10,
+      "standalone": {
+        "campaign": "tune-eeb99dbc1f00",
+        "files_checked": 186,
+        "evidence_sha256": "108748a37a986b7864c0df5a3661a422e7277650dad9ec4aa56b84e79fc5729c",
+        "decision": {
+          "outcome": "no_eligible_profile",
+          "profile": null,
+          "is_change": false,
+          "reason": "No eligible calibration setting",
+          "pair_ratios": [],
+          "median_saved_ms": null
+        },
+        "scope": "Byte/array/decision consistency; not independent model replication or author authentication"
+      },
+      "actual_browser_download_sha256_matches": true
+    }
+  ]
+}

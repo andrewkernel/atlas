@@ -23,8 +23,9 @@ The [runtime tuning workflow](docs/runtime-tuning.md) adds a finite search over
 CPU threads and cache strategies, separate confirmation, reversible profiles,
 and compatible real model requests. Open **Tune performance** in the local app.
 Settings can remain unchanged; a memory fit is distinct from a speed improvement.
-See its [acceptance plan](docs/roadmap/autotuning-acceptance.md) for required
-execution evidence and remaining validation work.
+See the [measured results](docs/research/autotuning/report.md) and
+[evidence audit](docs/research/autotuning/acceptance-audit.md) for the completed
+2k/32k workflows, reproduction checks and their limits.
 
 ## System architecture
 

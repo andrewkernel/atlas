@@ -1,13 +1,14 @@
 # Runtime tuning: measured results and validation status
 
-Validation is in progress. The completed 2k speed/memory campaigns and application
-checks below are actual observations. The required 32k memory-target campaign and
-final acceptance audit remain unfinished; this is not an end-to-end completion
-claim. The [development amendment](development-amendment.md) preserves the
+All three required amended-source campaigns and their application or abstention
+checks are complete. Full public-output archives reproduce their bytes,
+arithmetic and decisions from extracted copies, and the local tool was checked
+at desktop/390px widths and from an extracted package. The
+[development amendment](development-amendment.md) preserves the
 earlier implementation and its negative speed decision.
 
 The [resource-recovery amendment](resource-recovery-amendment.md) requires fresh
-2k speed, 2k allocation and 32k allocation campaigns. The two amended-source 2k
+2k speed, 2k allocation and 32k allocation campaigns. All three amended-source
 campaigns below have completed. Pre-recovery observations are labeled historical
 and retained under their original identities. Both old active 2k pointers were
 reverted before changing execution source; immutable profiles, full raw evidence
@@ -28,7 +29,7 @@ the required 1.05 threshold, so the verified decision was **keep current:
 native-t4**. Total tuning cost was 495.953 seconds, with no positive speed
 break-even. A qualified native profile was saved and activated; this records
 the same execution setting rather than a demonstrated speed improvement.
-The amended-source 32k campaign and final end-to-end audit remain pending.
+The [acceptance audit](acceptance-audit.md) records the scoped evidence and limits.
 The parent-owned campaign interval was 496.781 seconds. Controller campaign
 cost and parent startup/cleanup are distinct clocks; neither includes browser
 transport or service prelaunch setup.
@@ -80,14 +81,36 @@ historical-source, unknown-profile, invalid-context and incomplete-export
 requests were refused without changing active state. Portable response copies
 redact local checkout prefixes; the local raw observations are retained.
 
-## Registered amended-source 32k validation
+## Completed amended-source 32k validation
 
 `tune-eeb99dbc1f00` is the amended-source FP32, 32,768-token prompt / 16-token
 output campaign with the original 6,144 MiB allocation target and all 11
 registered profiles. Its execution source hashes match both completed amended
-2k campaigns. The terminal decision is pending in this report; consult the live
-owned-process state before inferring liveness from a recorded status. No 32k
-profile has been qualified or applied by the observations reported here.
+2k campaigns. All 24 registered calibration/reference workers reached terminal
+outcomes: two references and 22 scored attempts. Independent NumPy reconstruction
+matched the recorded **no eligible profile** decision and evidence digest. All
+owned processes exited, and the active pointer stayed at its original null
+profile / revision 0. See the [full current summary](budget-32k.json).
+
+Of the 22 scored attempts, 15 passed the literal relation, five failed it and two
+were resource-limited with an unknown numerical relation. Native settings passed
+both windows but peaked at 11,146.876 MiB; the resident control peaked at
+11,150.376 MiB. Both exceed the 6,144 MiB target. Hybrid peaks were 4,034.876 MiB
+(256-token window) and 4,202.876 MiB (1,024-token window), but each hybrid setting
+failed the second calibration window. Four 256-window cases each violated one
+vocabulary entry at position index 26, with maximum normalized error 1.02439;
+the 1,024-window case violated two entries there, with maximum 1.14693. These
+finite literal failures are not answer-quality scores. Bounds and positions
+were retained unchanged.
+
+No eligible nominee existed, so the frozen conditional workflow did not launch
+held-out confirmation. Its validation windows were frozen but not measured in
+this campaign. No 32k confirmation or profile is claimed. Controller campaign
+cost was 5,103.843 seconds; parent-owned process cost was 5,104.625 seconds, with
+no positive speed break-even. Actual request `generate-62c58500e566` then
+abstained without loading a model or generating tokens. Worker/service/browser
+intervals were 0.001531 / 0.453 / 1.5618 seconds; the current-request numerical
+relation remains unknown. Its private records stay outside public bundles.
 
 Its first built-in offloading trial reached the unchanged advisory RAM guard:
 1,482,407,936 bytes available, below the 2 GiB threshold. The owned trial scope
@@ -163,7 +186,7 @@ profile was active. Reapplication succeeded. The
 [application receipt](application-checks.json) records these local observations;
 private request arrays are not supplied as public arithmetic proof.
 
-## Controls and unfinished validation
+## Controls, reproduction and limits
 
 The earlier real cancellation control, `tune-1cb8fb2880fc`, stopped its owned
 launcher and model processes without applying a profile. Its raw result and
@@ -191,9 +214,23 @@ its 60-second deadline and completed owned cleanup in 64.485 seconds;
 confirmed live and completed cleanup in 17.844 seconds. Both scopes closed,
 matching observed processes exited, and the exact active profile/revision stayed
 unchanged. The lifecycle receipt retains both historical and amended controls.
-The [latest authored checks](checks.json) passed 132 pinned-environment
-attention/tuning tests, 154 CPU tests (15 optional-integration skips), seven
+The [latest authored checks](checks.json) passed 133 pinned-environment
+attention/tuning tests, 154 CPU tests (16 optional-integration skips), seven
 asynchronous UI controls, syntax, document/link and dashboard-size checks.
+
+All three public-input bundles include the full declared arrays, exact scientific
+sources, pinned setup/reproduction commands and the usable local tool. Each ZIP
+payload was streamed and hashed before byte-verified public arrays were linked
+into separate extraction folders. The unmodified shipped NumPy verifier then
+reconstructed every case relation and decision. This is same-machine consistency
+checking, not a fresh physical-copy or independent model replication. An actual
+browser download matched its generated ZIP. Final hash-named archive versions
+and their full SHA receipts are retained separately from the archives themselves.
+The extracted tool labeled the result imported, had no active setting, disabled
+apply/start while assets were missing, and actually abstained before model load.
+Private inference inputs/outputs, weights, environments and activation state were
+excluded. See the [browser/replay evidence](browser-qa.json) and
+[reproduction instructions](reproduce.md).
 
 The 32k/6,144 MiB campaign, `tune-53a712409265`, stopped at the available-RAM guard
 during its first built-in offloading calibration trial after 11 completed workers.
@@ -202,7 +239,7 @@ processes and no matching live processes. It selected and applied no profile.
 The exact low-RAM sample was not retained; peak commit is not RSS or a proved cause.
 The amended controller retains exact guard/recovery samples and can reject that
 candidate and continue only after owned cleanup and sufficient RAM recovery.
-All three required workflows must run under its new source identity. Memory targets are
+All three required workflows have now run under its amended source identity. Memory targets are
 selection constraints on measured warmup/generation
 CUDA allocated peaks, not hard physical-memory quotas. A confirmed memory fit
 may be slower, and unavailable/failed evidence cannot qualify.
